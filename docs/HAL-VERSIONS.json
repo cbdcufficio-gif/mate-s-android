@@ -1,0 +1,83 @@
+{
+  "runtime_tested": false,
+  "libraries": [
+    {
+      "path": "lib/egl/libGLES_mali.so",
+      "sha256": "ac42bb860d9676264d26a4346a255d5d028c2aae9166964803aacd35e89a078a",
+      "bits": 32,
+      "hardware_tested": false,
+      "device_api_version": "NOT_DETERMINED",
+      "status": "NO_HMI_EXPORT"
+    },
+    {
+      "path": "lib/hw/gralloc.hi3635.so",
+      "sha256": "28d9c55febdfb9bfd999238725991aa8a2ef9c20d1989d23379c86ce9f0858d7",
+      "bits": 32,
+      "hardware_tested": false,
+      "device_api_version": "NOT_DETERMINED",
+      "status": "HMI_NOT_UNIQUELY_FILE_BACKED",
+      "warning": "Cannot read initialized module fields statically; inspect initialization code"
+    },
+    {
+      "path": "lib/hw/hwcomposer.hi3635.so",
+      "sha256": "ba3ab981d4e34602285d3043614fb2ae9aa969dd7d40b9880319dfca8f17f510",
+      "bits": 32,
+      "hardware_tested": false,
+      "device_api_version": "NOT_DETERMINED",
+      "status": "STATIC_MODULE_FIELDS_READ",
+      "tag": "0x48574d54",
+      "module_api_raw": "0x1",
+      "module_api_major": 0,
+      "module_api_minor": 1,
+      "hal_api_raw": "0x0",
+      "warning": "Module version is not the device API version returned by HAL open"
+    },
+    {
+      "path": "lib/libion_huawei.so",
+      "sha256": "f00cf60fb00b08bcd25a42c9c779634cef3ac74fe86022b1e036b16f84b5387b",
+      "bits": 32,
+      "hardware_tested": false,
+      "device_api_version": "NOT_DETERMINED",
+      "status": "NO_HMI_EXPORT"
+    },
+    {
+      "path": "lib64/egl/libGLES_mali.so",
+      "sha256": "61edb874e98437f35f5d107bce1102e9f5d7a4c5248ab750627b080afb68b3c5",
+      "bits": 64,
+      "hardware_tested": false,
+      "device_api_version": "NOT_DETERMINED",
+      "status": "NO_HMI_EXPORT"
+    },
+    {
+      "path": "lib64/hw/gralloc.hi3635.so",
+      "sha256": "bd2c5df671541f84231c24c0de565d85e7cbefa00a4659584d5d8fdcc6007d1f",
+      "bits": 64,
+      "hardware_tested": false,
+      "device_api_version": "NOT_DETERMINED",
+      "status": "HMI_NOT_UNIQUELY_FILE_BACKED",
+      "warning": "Cannot read initialized module fields statically; inspect initialization code"
+    },
+    {
+      "path": "lib64/hw/hwcomposer.hi3635.so",
+      "sha256": "46287c2a098505b26fd2d25873eeab11762c632be7caebedf72f0328a0340591",
+      "bits": 64,
+      "hardware_tested": false,
+      "device_api_version": "NOT_DETERMINED",
+      "status": "STATIC_MODULE_FIELDS_READ",
+      "tag": "0x48574d54",
+      "module_api_raw": "0x1",
+      "module_api_major": 0,
+      "module_api_minor": 1,
+      "hal_api_raw": "0x0",
+      "warning": "Module version is not the device API version returned by HAL open"
+    },
+    {
+      "path": "lib64/libion_huawei.so",
+      "sha256": "537c893de5e02e9812675eeee86d62f54f8c720e368619d6517345c8da0cbc73",
+      "bits": 64,
+      "hardware_tested": false,
+      "device_api_version": "NOT_DETERMINED",
+      "status": "NO_HMI_EXPORT"
+    }
+  ]
+}

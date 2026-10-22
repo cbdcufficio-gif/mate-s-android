@@ -18,6 +18,7 @@ ROOTS = {
           ("native", "libs/ui"),
           ("core", "libbacktrace/include"), ("core", "liblog/include")],
     "q": [("core", "libutils/include"), ("native", "libs/ui/include"),
+          ("native", "include"),
           ("native", "libs/math/include"), ("native", "libs/arect/include"),
           ("core", "libcutils/include"),
           ("core", "libsystem/include"), ("core", "liblog/include"),

@@ -24,7 +24,8 @@ ROOTS = {
           ("core", "libsystem/include"), ("core", "liblog/include"),
           ("core", "base/include"), ("native", "libs/nativebase/include"),
           ("native", "libs/nativewindow/include"), ("core", "include"),
-          ("core", "libutils"), ("native", "libs/ui"), ("core", "libbacktrace/include")],
+          ("core", "libutils"), ("native", "libs/ui"), ("core", "base"),
+          ("core", "libbacktrace/include")],
 }
 
 def run(argv):
@@ -121,7 +122,8 @@ def main():
             # Original Q implementations, compiled to relocatable objects only.
             # Linking, dependency closure and Huawei runtime behavior remain untested.
             if version == "q":
-                for cpp in ("Region.cpp", "VectorImpl.cpp", "SharedBuffer.cpp", "String8.cpp"):
+                for cpp in ("Region.cpp", "VectorImpl.cpp", "SharedBuffer.cpp", "String8.cpp",
+                            "Rect.cpp", "String16.cpp", "Unicode.cpp", "stringprintf.cpp"):
                     fetch(cpp)
                     for arch, triple in (("arm", "armv7a-linux-androideabi"), ("arm64", "aarch64-linux-android")):
                         obj = dest / (cpp + "." + arch + ".o")
@@ -137,13 +139,25 @@ def main():
                         else:
                             entry["error"] = result.stdout
                         report["implementation_objects"].append(entry)
+                report["relocatable_links"] = []
+                for arch, triple in (("arm", "armv7a-linux-androideabi"), ("arm64", "aarch64-linux-android")):
+                    objects = sorted(dest.glob("*." + arch + ".o"))
+                    combined = dest / (arch + "-combined.o")
+                    link = run([str(binpath / (triple + "29-clang++")), "-nostdlib", "-r",
+                                *map(str, objects), "-o", str(combined)])
+                    remaining = run([str(binpath / "llvm-nm"), "-u", str(combined)]) if link.returncode == 0 else None
+                    report["relocatable_links"].append({"arch": arch,
+                        "returncode": link.returncode, "diagnostic": link.stdout,
+                        "unresolved": remaining.stdout if remaining else None,
+                        "shared_library_built": False})
         report["equal_sizes_and_alignments"] = {
             arch: report["results"]["m_" + arch] == report["results"]["q_" + arch]
             for arch in ("arm", "arm64")}
         report["status"] = "HEADER_LAYOUT_MEASURED"
         report["implementation_compile_passed"] = (
-            len(report["implementation_objects"]) == 8 and
-            all(x["returncode"] == 0 for x in report["implementation_objects"]))
+            len(report["implementation_objects"]) == 16 and
+            all(x["returncode"] == 0 for x in report["implementation_objects"]) and
+            all(x["returncode"] == 0 for x in report.get("relocatable_links", [])))
         if not report["implementation_compile_passed"]:
             report["status"] = "IMPLEMENTATION_COMPILE_FAILED"
     except Exception as exc:

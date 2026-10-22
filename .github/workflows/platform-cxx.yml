@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - scripts/platform_cxx_probe.py
+      - scripts/header_layout.py
       - .github/workflows/platform-cxx.yml
 permissions:
   contents: read

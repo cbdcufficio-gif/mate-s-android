@@ -1,0 +1,3558 @@
+{
+  "system/lib/crtbegin_so.o": {
+    "sha256": "c96a60463a843e262d013bf44d5c50ccba358bb6fd5f8a56f673817b2e54d073",
+    "size": 1660
+  },
+  "system/lib/crtend_so.o": {
+    "sha256": "f0c4f254eecc2ecd8a6a704d20332c51382921c62e8815c0a6b3b617765f17ae",
+    "size": 620
+  },
+  "system/lib/drm/libdrmhwomavoneplugin.so": {
+    "sha256": "faeeb49edc416358d4f2bbdec323cf2dc3d2a9f2518e2624479d67bf761426cb",
+    "size": 108912
+  },
+  "system/lib/egl/libGLES_android.so": {
+    "sha256": "7a062f90dfbb5e1c28aa0492fb7766269b3f3aa46284582be6d41c7462c926ad",
+    "size": 104040
+  },
+  "system/lib/helix/aacdec2.so": {
+    "sha256": "28596eda7ed086eca762cf9bd4f7dcdc0064aa51d8afd9a8822d7a76d56fd222",
+    "size": 13164
+  },
+  "system/lib/helix/asfff.so": {
+    "sha256": "d697cb9319f9bbcba1c4af7c2d6764ccb78fb971a0a2e41736d47696b199bc31",
+    "size": 971016
+  },
+  "system/lib/helix/asxff.so": {
+    "sha256": "3cf8f79e9e132c20e244ef9153f86161eb6c3e4f6aacaa5b7a3978dea6b071ba",
+    "size": 106328
+  },
+  "system/lib/helix/asxrender.so": {
+    "sha256": "b45c5bebec0a69f385448e28ef263f49892fe47f6d8d18083ec55760f6c11218",
+    "size": 227500
+  },
+  "system/lib/helix/atrc.so": {
+    "sha256": "3751dd05234bbb8df2512d3735a0f79d74ea68bb89decc5253921b92880bd89f",
+    "size": 41212
+  },
+  "system/lib/helix/audplin.so": {
+    "sha256": "fef24d3af8bd7366f3eec4ce6212cb77a4fb58b8cb35a1816e0fba5635f93da8",
+    "size": 440780
+  },
+  "system/lib/helix/authmgr.so": {
+    "sha256": "9f9087f8658701a574a0dbbe7740833096141777f302c807a2087d171e78f997",
+    "size": 515248
+  },
+  "system/lib/helix/clntxres.so": {
+    "sha256": "e5a676393e22b4b48b3f5d09eab555d3cd5755677d43bfb8cf442b870b146783",
+    "size": 198924
+  },
+  "system/lib/helix/colorcvt.so": {
+    "sha256": "5c60c1a85855e054f54900966a2c9bbeb8c6ad12abbae4910836c8a1298715a5",
+    "size": 685036
+  },
+  "system/lib/helix/cook.so": {
+    "sha256": "d9a8ffe484ec860ccc808c05ac6d203aeb92e4742aff8f7ea63403fbedec3e5d",
+    "size": 88728
+  },
+  "system/lib/helix/cvt1.so": {
+    "sha256": "a995d1a5f7bd6837d8503a33013dabf722d1e9e4555607a21d4dd94f35207f3a",
+    "size": 491640
+  },
+  "system/lib/helix/drv2.so": {
+    "sha256": "3208b99755e2f81301865bc28e8c7a385436de61a062310dd9c99affd0e07814",
+    "size": 334540
+  },
+  "system/lib/helix/drvc.so": {
+    "sha256": "8e1a101a4e80542088bcc8f805d536e620aae09044b140dc9644f8a3fcfd401a",
+    "size": 694208
+  },
+  "system/lib/helix/dtdrplin.so": {
+    "sha256": "41060c318147d27180c55442994f2629aebe3e8caa5f45a6885d2ecb4d63ffae",
+    "size": 1352688
+  },
+  "system/lib/helix/httpfsys.so": {
+    "sha256": "8c94418caf3a9c4d621576d7099eb6b40884a5e2f87589ec48d4f57e2f701d5a",
+    "size": 550456
+  },
+  "system/lib/helix/httplivefformat.so": {
+    "sha256": "89e06294ee2f153b6232adc225d2239de26103a432f1706943250c5de509567d",
+    "size": 330688
+  },
+  "system/lib/helix/hxdtdriver.so": {
+    "sha256": "76c81f4676581cbdf5752c36660213872eb742d6d45c7c122bcc0eee8e594b1b",
+    "size": 812124
+  },
+  "system/lib/helix/hxltcolor.so": {
+    "sha256": "d641ee40e905633176b737ab758246915092f3777588ba8040414b0bd186816a",
+    "size": 486532
+  },
+  "system/lib/helix/hxmedpltfm.so": {
+    "sha256": "eea827f5c197d7bfea073595bd34a74ca0f452c6a1ea503293c812b4880f4aa0",
+    "size": 905040
+  },
+  "system/lib/helix/hxmedplyeng.so": {
+    "sha256": "805ee09f5d6bb62c8561ce8c26c27a63606ed5cbfad09b891a30b7ae56abfb0c",
+    "size": 1841344
+  },
+  "system/lib/helix/hxnetwksvc.so": {
+    "sha256": "da0aae04b0dcc6bd4171c4763c2afc26d9b97a9e518e64d5dcca71c986c3c15e",
+    "size": 423804
+  },
+  "system/lib/helix/hxsdp.so": {
+    "sha256": "eb75ef31a4fbe4a470041c7ccec066fababe3855e8efec03eaee03c5693baaac",
+    "size": 197252
+  },
+  "system/lib/helix/hxxml.so": {
+    "sha256": "aa5e369c62c5cc2e12369726f069ebb0b8d2b0cc2d412fd26cc9c37ba852e963",
+    "size": 131656
+  },
+  "system/lib/helix/nullrend.so": {
+    "sha256": "bcb9e2eeeaedf23e7e4ed267d9276b3a2d107e29d279e7a58aef809168146ad3",
+    "size": 54188
+  },
+  "system/lib/helix/omxv.so": {
+    "sha256": "339d643331b3a30f25d2b884b584fdb7dd92661e3078169d605d4c682c14ed98",
+    "size": 232772
+  },
+  "system/lib/helix/raac.so": {
+    "sha256": "34e9fc172c28e00414e9961a61cd60926e6f35e5d230cbb2b3bb401f826aa150",
+    "size": 13680
+  },
+  "system/lib/helix/ralf.so": {
+    "sha256": "535142e54a28ee14738b5feabdadedb2e23830cd22cc8a27363b2d4f1c650502",
+    "size": 161772
+  },
+  "system/lib/helix/ramfformat.so": {
+    "sha256": "6ca92175b8f0e8e30dcabf9dc3cd0a0de7b70d953a895e76effcdbc3969c4331",
+    "size": 99052
+  },
+  "system/lib/helix/ramrender.so": {
+    "sha256": "ed40d60c67c61aac461af97ccf07efa412474d85415374baa65d8bfcbbeeeaca",
+    "size": 244948
+  },
+  "system/lib/helix/rarender.so": {
+    "sha256": "7e5aead692905df90c7f6810365a8917655fcbfc8aa5834222d0131ee8af73ad",
+    "size": 360928
+  },
+  "system/lib/helix/rmfformat.so": {
+    "sha256": "84a74e38feb9383a5a2d06aa27b6a93033728df37488d8427c000ebe0b5483fb",
+    "size": 485676
+  },
+  "system/lib/helix/rn5auth.so": {
+    "sha256": "d07d1e816a4b7382983c69f53cbdfc12a9f2393f43ee68480cd55f2574b75748",
+    "size": 138596
+  },
+  "system/lib/helix/rtspclnt.so": {
+    "sha256": "025984a3eb96c1fbea819437ae8f0ebb7027bc7903955a09554f30d6a08eaa64",
+    "size": 981108
+  },
+  "system/lib/helix/rtspfformat.so": {
+    "sha256": "7ed963a87801838804730abb005edf6ab862767f912d129b3795ea0fa4aef573",
+    "size": 145040
+  },
+  "system/lib/helix/rv20.so": {
+    "sha256": "ff1fc34615f436f79496f9e053135ca2f920f637ca0eff5a219fea7c58cfab20",
+    "size": 228524
+  },
+  "system/lib/helix/rv30.so": {
+    "sha256": "76d5ce1a44506eac6dc83479a1de12517d60983369b74bfad11d5ebb2212e4a3",
+    "size": 215096
+  },
+  "system/lib/helix/rv40.so": {
+    "sha256": "7057bedf6149acc77e525d8ee1bf37a860537eab0e6fef75209263f50bd01c9b",
+    "size": 110312
+  },
+  "system/lib/helix/rvrender.so": {
+    "sha256": "6aacc70d2b96a5f3f899f9f38a45258bb9f285494500b7ae27ba59d5cb02cd09",
+    "size": 447300
+  },
+  "system/lib/helix/sipr.so": {
+    "sha256": "5f28722918f2e5933481d6f9e8ae23f6723c3573398805fb0a3982e516d80b42",
+    "size": 83916
+  },
+  "system/lib/helix/smlfformat.so": {
+    "sha256": "f65b258e9cd87a9737e542ceb66d79f72153dbe26a2d1fc3df643900c831aa15",
+    "size": 74356
+  },
+  "system/lib/helix/smlrender.so": {
+    "sha256": "75c8819c2c02d73f8015855084f9a131ef2ebcaa585d08ef3b2db206eb2255fb",
+    "size": 1161260
+  },
+  "system/lib/helix/smplfsys.so": {
+    "sha256": "c89e237d0b1107997e1891fc45b328f88db8c5c062ca116b388f735f9b5b4f15",
+    "size": 233936
+  },
+  "system/lib/helix/vidplin.so": {
+    "sha256": "f47e0def373f3fc83f87fc7ac9c345e430a28f2bc56d9f532e1e85ccd5251e2a",
+    "size": 523448
+  },
+  "system/lib/helix/vidsite.so": {
+    "sha256": "be49027ed3c20c396df10a4d588b75226e0b8ec41a8de6955e434b76531616db",
+    "size": 343204
+  },
+  "system/lib/helix/wm9v.so": {
+    "sha256": "9fe911e8724cf676c016a481f5f77cab9cce281656fb4d4a122426c80352ed90",
+    "size": 474672
+  },
+  "system/lib/helix/wma9.so": {
+    "sha256": "d475b05c4c64d5ec50ebdb143ff9499ee334c945f3d5963a6a9e306367e5d196",
+    "size": 346996
+  },
+  "system/lib/helix/wmaA.so": {
+    "sha256": "917ff649e317dfcbdf7e0c277c70fbebd5426f95218c035abbc4f1c737b98013",
+    "size": 674360
+  },
+  "system/lib/helix/wmarender.so": {
+    "sha256": "718bf882bf5943c602af5802ef854b98929da816ad4272bb7452231615a5048c",
+    "size": 221480
+  },
+  "system/lib/helix/wmerender.so": {
+    "sha256": "c56935ac23e15e739446c41bf46aea583ea5fa6fee1b6f3f1ed27beceb23f839",
+    "size": 102408
+  },
+  "system/lib/helix/wmv8.so": {
+    "sha256": "ee15156ae0ee38a5608078ea77d07656e8d3230f970484e5e38fecb2dabc4efd",
+    "size": 304740
+  },
+  "system/lib/helix/wmv9.so": {
+    "sha256": "824bc8a5f86489333aae442f2ee6b0b2726f0f47ca29ebfa3e39b223bcedd437",
+    "size": 940096
+  },
+  "system/lib/helix/wmvrender.so": {
+    "sha256": "86284e204cd8f13a0a7e9f8960093231236bdcd9ea9291ce6659a2f358c73abf",
+    "size": 340232
+  },
+  "system/lib/hw/audio.a2dp.default.so": {
+    "sha256": "41c0ff391d4d6696bab28546b94b5703e9351db9bdf6c04706d5c60dfebeaca9",
+    "size": 22144
+  },
+  "system/lib/hw/audio.primary.default.so": {
+    "sha256": "32de5ad20fde7a1baa7be906372340b9e19c4b3dc58457e4ccf98708582d2371",
+    "size": 18048
+  },
+  "system/lib/hw/audio.primary.hi3635.so": {
+    "sha256": "3509ac169165a1831786dcb4da9a909a8eee2a63b91c86e1a63c54fa1b5edb22",
+    "size": 446904
+  },
+  "system/lib/hw/audio.r_submix.default.so": {
+    "sha256": "92feb2143e6af048c4bd1d13d2db085ce70cfed2f1dd0f44ad2ee3bb854ccc2f",
+    "size": 34484
+  },
+  "system/lib/hw/audio_policy.default.so": {
+    "sha256": "fe8a7685d698b02d26d4b712957d2937ad14b57bfad3f5ef9f98064a7ec40e02",
+    "size": 91952
+  },
+  "system/lib/hw/bluetooth.default.so": {
+    "sha256": "fa5c8f355d42ec933c11cc1b45892c2d761cd742e87259d23bc3887d2e2c5a6c",
+    "size": 1465320
+  },
+  "system/lib/hw/camera.hi3635.so": {
+    "sha256": "caab735f3e109c6548445cd21cda95ec579c606ef6c16beabb985cc2bc59c7dd",
+    "size": 3981732
+  },
+  "system/lib/hw/copybit.hi3635.so": {
+    "sha256": "b4f6af0883e2793d14a4bef86d66e68ac519565bd2c440460115088daa39596c",
+    "size": 18048
+  },
+  "system/lib/hw/displaycaps.default.so": {
+    "sha256": "1b278957a1a035a1ae54f18494abadce6e35cc1403dc1f61c768cc9d42679cbf",
+    "size": 13952
+  },
+  "system/lib/hw/fingerprint.hi3635.so": {
+    "sha256": "174757dc95837cef5fe098f7919b86f308c25279ed2f9c6712bf6677343f6857",
+    "size": 38540
+  },
+  "system/lib/hw/fingerprintd.ex.so": {
+    "sha256": "36e9d238e187cddf9246cb63a3a7731cc77e40e9a1e4c25274f2e3ce151c8368",
+    "size": 58980
+  },
+  "system/lib/hw/fm.bcm.hi3635.so": {
+    "sha256": "08af759f12837e9250322f0c9977bdb9f2bb5d3cb94b0f5271bd5f1ef5b9dc04",
+    "size": 63264
+  },
+  "system/lib/hw/gatekeeper.hi3635.so": {
+    "sha256": "29de7b1ded81d23e48759a32af38af487984e0411b2a1f496cb12ab6e85ebc42",
+    "size": 18048
+  },
+  "system/lib/hw/gralloc.default.so": {
+    "sha256": "4cf6e625117133dd3a722ee18d7a0a9064eca782916c44cc932a03ee8a579723",
+    "size": 22476
+  },
+  "system/lib/hw/gralloc.hi3635.so": {
+    "sha256": "76c73c523662284525c755327e4c61542e194a6bb67f6bd5291602eddef3689f",
+    "size": 34368
+  },
+  "system/lib/hw/hw_af_extend.default.so": {
+    "sha256": "93238721fcec66e40255925de10b21217701b24efe0c54891b949f7651d7e1a5",
+    "size": 26376
+  },
+  "system/lib/hw/hwcomposer.default.so": {
+    "sha256": "2f1d5cb68dae1a12ecc1f8c09f51a04454fed3d840ce0430b86aca557ccd3c64",
+    "size": 13952
+  },
+  "system/lib/hw/hwcomposer.hi3635.so": {
+    "sha256": "ba3ab981d4e34602285d3043614fb2ae9aa969dd7d40b9880319dfca8f17f510",
+    "size": 192216
+  },
+  "system/lib/hw/keystore.default.so": {
+    "sha256": "2b6e0aadee3475da07946836064f751fdf486839861c3a0b61e5fd4067deb5c5",
+    "size": 13872
+  },
+  "system/lib/hw/keystore.hi3635.so": {
+    "sha256": "4a9453ec90de90985364c16418077a01280337472466521d773f8f0ebac1d0f5",
+    "size": 34432
+  },
+  "system/lib/hw/lights.default.so": {
+    "sha256": "84665ee0e36bd56cf5158cbd95060350a8849fbe0c77c2e6b152f15f675d5b7d",
+    "size": 22224
+  },
+  "system/lib/hw/local_time.default.so": {
+    "sha256": "f19c327b7c703298524246765155d5dd7aa4c1e4fb7cd7f716a56760061bf207",
+    "size": 13952
+  },
+  "system/lib/hw/memtrack.hi3635.so": {
+    "sha256": "878fb15c021dfa68b0ef2ad34a2fa95e4bcd211151311414c6db7327455f60f9",
+    "size": 13972
+  },
+  "system/lib/hw/power.default.so": {
+    "sha256": "8a2800c17fa56ce9badbb5d59f3460cb212fbdb591ccd0e9da23bd7c5c400e13",
+    "size": 13964
+  },
+  "system/lib/hw/power.hi3635.so": {
+    "sha256": "c09dd126b7ac86f545a26a919a8807071c35f29554597402c23ab14014499c47",
+    "size": 13976
+  },
+  "system/lib/hw/sensorcaps.default.so": {
+    "sha256": "7554fbce8032ea73fc9eba869d8c41e7d7ad28d9ad6f7dbe0dc657421058a1f0",
+    "size": 13952
+  },
+  "system/lib/hw/sensorhub.default.so": {
+    "sha256": "b8709b974b6941861a5b7ba665a277c76dba96ea73c1c18447d626328e60951c",
+    "size": 38544
+  },
+  "system/lib/hw/vibrator.default.so": {
+    "sha256": "9d0ed8b827e807c5251c63d3b3820cfdfb5f2c2d2f4aa30debb7126382e69af8",
+    "size": 13952
+  },
+  "system/lib/hwcam/hwcam.ddt.so": {
+    "sha256": "0d9f53ed6e9f44d31a7e784c47371de469a5e3fc6fe31c56cc9daf1aa1f46c32",
+    "size": 51228
+  },
+  "system/lib/hwcam/hwcam.hi3635.CARRERA.p.imx179_liteon.so": {
+    "sha256": "285cad84dc236e32719eca7f581e648bbca3bda1306ae471bfeca8fb94d776f1",
+    "size": 66740
+  },
+  "system/lib/hwcam/hwcam.hi3635.CARRERA.p.imx179_sunny.so": {
+    "sha256": "4d142c9e5139c63cf75dfa9f684f6f272becca14a7476738ffde9cf52e2d24a9",
+    "size": 66740
+  },
+  "system/lib/hwcam/hwcam.hi3635.CARRERA.p.imx278.so": {
+    "sha256": "976107561e6d4acd9cca5104df9d458e926b61dab8c355852eea653d603ef7cc",
+    "size": 66740
+  },
+  "system/lib/hwcam/hwcam.hi3635.CARRERA.p.imx278_lg.so": {
+    "sha256": "f01efea75da4b9db7b28569147b8f9180f52aa4bb2b022062d6fed743629d496",
+    "size": 66740
+  },
+  "system/lib/hwcam/hwcam.hi3635.CARRERA.p.imx278_liteon.so": {
+    "sha256": "97dac794afb6c08e29386ad8c580b57b687a0cc9f1407a23367f5cc8e92321bc",
+    "size": 66740
+  },
+  "system/lib/hwcam/hwcam.hi3635.CARRERA.p.imx278_sunny.so": {
+    "sha256": "196e81138ae25d3503106303a4a50ed68a4708dfe608e4efe351e5a38cf87ef7",
+    "size": 66740
+  },
+  "system/lib/hwcam/hwcam.hi3635.CARRERA.s.imx179_liteon.so": {
+    "sha256": "1c3999cc7fd610602ac29a707f564efc761087f6f8c0ea14c51f506b85632e9c",
+    "size": 22528
+  },
+  "system/lib/hwcam/hwcam.hi3635.CARRERA.s.imx179_sunny.so": {
+    "sha256": "e77bf09ff791e27334ff470c9e0780ed7c30150cd37d540805e01990c98392bd",
+    "size": 22528
+  },
+  "system/lib/hwcam/hwcam.hi3635.CARRERA.s.imx278.so": {
+    "sha256": "7cac8f4d431804e9887067b2d3a666bfbf9b39d0874dd462e79f9481fa3742df",
+    "size": 26544
+  },
+  "system/lib/hwcam/hwcam.hi3635.CARRERA.s.imx278_lg.so": {
+    "sha256": "8328c9d32ebb73482cfbe0c3f2de2cd0c7410110b2d923ac002ce697ec55eb4b",
+    "size": 26784
+  },
+  "system/lib/hwcam/hwcam.hi3635.CARRERA.s.imx278_liteon.so": {
+    "sha256": "b6452a8bfd11c335bb05488565f9e45969285bbe1dd2aad78e8d58e3b3dd5ae0",
+    "size": 26784
+  },
+  "system/lib/hwcam/hwcam.hi3635.CARRERA.s.imx278_sunny.so": {
+    "sha256": "4bb697bdb8fd73acd8be002c39beb1fb32aa78dd38ce3c1014bc58b44c76efdd",
+    "size": 26784
+  },
+  "system/lib/hwcam/hwcam.hi3635.m.CARRERA.so": {
+    "sha256": "772493ea959480a917e182ab195f6bb55a7f350c543f5d3fb53ed98a2ec99640",
+    "size": 873596
+  },
+  "system/lib/imedia_filters.so": {
+    "sha256": "1814f1d80a10fc33490c5b2766ec23531de46bd4cf22fa3e99983a464c474448",
+    "size": 783928
+  },
+  "system/lib/libAntiTheftService.so": {
+    "sha256": "8e930cc8352c2c8cab70c5c4eed0f052c0a41cf4811ff197379e1f87794ff02b",
+    "size": 42544
+  },
+  "system/lib/libBestShot.so": {
+    "sha256": "2e01973199d963188fc2d22ba35e7b3c991a54d9c58b01dfac8212249c48cd28",
+    "size": 189068
+  },
+  "system/lib/libBootloaderOeminfo.so": {
+    "sha256": "0551194461d62579696eb612d3ac4ffcc329088b12453c2bb7de150750dd9c22",
+    "size": 13820
+  },
+  "system/lib/libCameraHwExtend.so": {
+    "sha256": "11ecbda683ff470eda22117238cca946c38e93293a4ab22e23c3c63185a161ac",
+    "size": 132932
+  },
+  "system/lib/libCompareBitmap.so": {
+    "sha256": "ae9a3d7bfec381d161314d2a929619858487f236f0ec815b878da3852008f041",
+    "size": 13552
+  },
+  "system/lib/libDocBeauty.so": {
+    "sha256": "16040f79755100e3820fcf627e7b4324d14e68137733399f9779148b07890d24",
+    "size": 5204
+  },
+  "system/lib/libEGL.so": {
+    "sha256": "be83a957a44b490b34541a7007526dbd6f58e07b65cb2d3c97baf60455c5779c",
+    "size": 420296
+  },
+  "system/lib/libETC1.so": {
+    "sha256": "3c4451ba3d89e2a5cfff93d3ee20a46b7ddfd9fddab1759911d033b68528f764",
+    "size": 17916
+  },
+  "system/lib/libFFTEm.so": {
+    "sha256": "1d0e65fff112774e964fca069a87e12db0ff4ee333b298486cc3bc555b3290c3",
+    "size": 214584
+  },
+  "system/lib/libFNVfbEngineLib.so": {
+    "sha256": "07a10e3f7419643421c5be964d5dfc5653b7a4cde40bbdf66882519a451322a6",
+    "size": 1370188
+  },
+  "system/lib/libFaceBeautyMeiwo.so": {
+    "sha256": "ab00b2899b67a32f3b568c0ab424f1620011603276094997435901f17d55afaf",
+    "size": 809604
+  },
+  "system/lib/libFaceBeautyMeiwoJNI.so": {
+    "sha256": "23ba376a33b44f21bd0036ef31040d391e6ddc927ac8264f27f414d245a89cb0",
+    "size": 9416
+  },
+  "system/lib/libFingerprintMMITest.so": {
+    "sha256": "32b1e6746736d2dae64e6a22baa1c394a111299b39b8394da3a5741693670206",
+    "size": 17940
+  },
+  "system/lib/libGLES_trace.so": {
+    "sha256": "18aad6befdfdb6c6bb3a8861afb599228cae3a3e18e5b2735c781d113d245f43",
+    "size": 460256
+  },
+  "system/lib/libGLESv1_CM.so": {
+    "sha256": "ecae3ef69bca3bdd81c79383ecdf2b689fd7c6a2aa6aed32c719e59053f137d1",
+    "size": 50724
+  },
+  "system/lib/libGLESv2.so": {
+    "sha256": "323ae8294dddbb0505941776e9b88e3bfcdba0c028b0de8f81d5e0836d2e2295",
+    "size": 87588
+  },
+  "system/lib/libGLESv3.so": {
+    "sha256": "323ae8294dddbb0505941776e9b88e3bfcdba0c028b0de8f81d5e0836d2e2295",
+    "size": 87588
+  },
+  "system/lib/libHWCamCfgSvr.so": {
+    "sha256": "6664ee14283373c7384027a490ec97bf8dd8ca5320be2d273837d2b3373d7bed",
+    "size": 63076
+  },
+  "system/lib/libHWCamCfgSvr_jni.so": {
+    "sha256": "6b80d81f2947978f930a2b026a007de6474e1ab8aa7b88cf9693c82049b5310e",
+    "size": 17980
+  },
+  "system/lib/libHWExtDeviceService.so": {
+    "sha256": "c971b009647cc38c8771180f7f46604c1247529b3e6c03a3523f79b1eab4c9e4",
+    "size": 67220
+  },
+  "system/lib/libHW_BShutter.so": {
+    "sha256": "b1b55dadd21a9d6796c8e158b1d715fae5c6bf1439a9e9f8ef4ce18fb7153b4a",
+    "size": 755576
+  },
+  "system/lib/libHW_Pano_f.so": {
+    "sha256": "ce8cb1479bc9da54a2a04d97ce132e9c1e227a8cd7cc44e661c1f889891f3065",
+    "size": 451780
+  },
+  "system/lib/libHwExtendedExtractor.so": {
+    "sha256": "597aab53bde205c486b663262d2ebbf374a9a8ae68b0123266fe1aa821c70870",
+    "size": 46900
+  },
+  "system/lib/libHwMMITestCustEx_jni.so": {
+    "sha256": "4fe9032cd58c9afcc35719dd12167ead516212dec6db7a0a8da385edaf877a39",
+    "size": 17964
+  },
+  "system/lib/libHwManufactureCustEx_jni.so": {
+    "sha256": "b6990ad6e773e7c118364ef530afa86fd76fb285959348a9ef72bfb820bc075a",
+    "size": 13856
+  },
+  "system/lib/libHwMotionRecognition.so": {
+    "sha256": "04115449d59ee0bcb7cf8fe41ed1a9e058db7c935e57a37983f40a88993b6b8e",
+    "size": 34532
+  },
+  "system/lib/libHwTmr.so": {
+    "sha256": "80e276fb1f48cf8c1f2e19394228cd1104c4b11c91812139e8c439c13ded62a5",
+    "size": 542408
+  },
+  "system/lib/libImmVibeJ.so": {
+    "sha256": "febcd54ae9e95ff9071b155e40d526bad9d9a804c3aedc139c6d03228c2b91a2",
+    "size": 165752
+  },
+  "system/lib/libIrLearning_jni.so": {
+    "sha256": "5b3fe2cc9533489f204efdd49a1fad4a1bfd2ed429d978f796abd6e6ac3dd4c3",
+    "size": 13940
+  },
+  "system/lib/libIvw35.so": {
+    "sha256": "fa61a68eb1bb8db1bb49da7fcf2ea7528c6c48123c922b671ea7a07a3adf645c",
+    "size": 65536
+  },
+  "system/lib/libIvw35_jni_wrapper.so": {
+    "sha256": "9a8719e9f7b8062d324af7c98dea76d241d2c4710e7e214bf6a71347d05fafa6",
+    "size": 17976
+  },
+  "system/lib/libLLVM.so": {
+    "sha256": "860cd09eec317f3c84a4365a228c4fb30afa958b641988de389056c23d91e251",
+    "size": 10919476
+  },
+  "system/lib/libOpenMAXAL.so": {
+    "sha256": "8af43c26cc3c85f1fa1cb5db73e14a3f72a800a9abb48846c77c11c878ae9882",
+    "size": 17968
+  },
+  "system/lib/libOpenSLES.so": {
+    "sha256": "2ba37bfa7fc2a00ebbb38ca715746a33423d73343e789b570f263881f6c33edc",
+    "size": 17968
+  },
+  "system/lib/libProjectMenuCustEx_jni.so": {
+    "sha256": "de0fe594553fc5e51ff1af100b5efcdb301021e2359e9f5b5bf5b4bf1c7defc1",
+    "size": 38748
+  },
+  "system/lib/libRS.so": {
+    "sha256": "8dcaf8adf54e8eb7022ad4fc3cfe84854911e4e7ccd2f3c88189f65dd27b0a54",
+    "size": 264464
+  },
+  "system/lib/libRSCpuRef.so": {
+    "sha256": "6dfaffea307d326f0bf53d25c748a5e492459e1a916d7ce49c6c27d0c11d1a9e",
+    "size": 235068
+  },
+  "system/lib/libRSDriver.so": {
+    "sha256": "a89826916b0d6a884cc80f13aa6747a92c1a030580153a8b0461e7bc0a1eeb4d",
+    "size": 153136
+  },
+  "system/lib/libRSSupport.so": {
+    "sha256": "a5b0a29cd0c7e713f7a3b4e713720006546d0a38b42c79f92d0f964a09a8217e",
+    "size": 755776
+  },
+  "system/lib/libRScpp.so": {
+    "sha256": "981ca0c64100024fef1b44537923aabf4fe33d52b561860804c0231b7ad15751",
+    "size": 128560
+  },
+  "system/lib/libRefocusContrastPosition.so": {
+    "sha256": "34b4a9c8f304370ed52809eb23fe6d21013f6d7a396ba9ed9d47ced4d20babd6",
+    "size": 5224
+  },
+  "system/lib/libSFBE.so": {
+    "sha256": "50c3d4907061fe48630d4e85f9c146410d6f92b5c7d10e6fcd5ec292d5a6b34f",
+    "size": 2570524
+  },
+  "system/lib/libSmartAE.so": {
+    "sha256": "08dc8274df36e688d3017990a018d79770585d902ce311e3bcb8715ebafe749e",
+    "size": 54404
+  },
+  "system/lib/libSwypeCore.so": {
+    "sha256": "102ad373677eac63972be13e1094324b47e2e1c561380e7e1167732c418e83ef",
+    "size": 5915088
+  },
+  "system/lib/libTHImageOCR.so": {
+    "sha256": "c82d9cb70868bc2b89625c4fffacba7ffefda5da7a352faad517966a18cccf99",
+    "size": 1701184
+  },
+  "system/lib/libVideoDenoise.so": {
+    "sha256": "7d47a8717f1d1144e6f2eec3d1ace48d33c21781c3e2ee0e014236d5d47771fd",
+    "size": 42436
+  },
+  "system/lib/libWnnEngDic.so": {
+    "sha256": "1a0b23426eba4f1be23594c209bf695433ae4c9e3255d19e41248d01d76de40f",
+    "size": 1192824
+  },
+  "system/lib/libWnnJpnDic.so": {
+    "sha256": "d9a37ea26d80804753c0b81cf362320ba67d66c5d1aa460a2f2985c507512b9d",
+    "size": 1341712
+  },
+  "system/lib/lib_atprotocolsw.so": {
+    "sha256": "4cdcda1028bb3dc783462df9dafe1e5a3a83378d4303045bc230e698106918b1",
+    "size": 22012
+  },
+  "system/lib/lib_fpc_tac_shared.so": {
+    "sha256": "437a9b96271d934cffc55085677bebd979654743cc68df552f18b4fc843e22dd",
+    "size": 38412
+  },
+  "system/lib/lib_k3_ffmpeg.so": {
+    "sha256": "eba30c78195e2639af14f66d117715533a7e21aa419e1b41b4d05bff6ba3ebf9",
+    "size": 5312016
+  },
+  "system/lib/lib_nve_operation.so": {
+    "sha256": "aad0d7938f3436de56f3d4728c3a21cb7bf26f9f93a989f06eb628f868d5f4d3",
+    "size": 17916
+  },
+  "system/lib/lib_oeminfo_interface.so": {
+    "sha256": "e7f907a71c16cbfcc53515e0f6ed272c7036b484a63f01c71b3d9433ac20e33c",
+    "size": 13820
+  },
+  "system/lib/lib_runningtest.so": {
+    "sha256": "fe4e8072f0c4703b461b151ed91e9e2cefd816826a8eda059662de4f21639a6c",
+    "size": 43056
+  },
+  "system/lib/lib_vibrator.so": {
+    "sha256": "fa5a782729b0b8b2acb9462ce63411dd8b865a7b7065b2031e434b47f591a7f8",
+    "size": 13820
+  },
+  "system/lib/libaes.so": {
+    "sha256": "9e8b62d814d96fb9abce7ff41995199657e60e4e4c8cf08c422fc6a7a5ae718c",
+    "size": 17916
+  },
+  "system/lib/libandroid.so": {
+    "sha256": "8358bec6cfef6e1b42621933e85287ad6b0d25d8be50c6bf6cbfec7bc9bff683",
+    "size": 67172
+  },
+  "system/lib/libandroid_runtime.so": {
+    "sha256": "8fe17efa33518e55e02bf6d21a67b01acf66c5cb82450f4c52d185e934b8e5ff",
+    "size": 928524
+  },
+  "system/lib/libandroid_servers.so": {
+    "sha256": "f5933ca35c32fb4dc7ed6b3657c117b1db266618b25dfe4a049ad9bee256fc5a",
+    "size": 151244
+  },
+  "system/lib/libandroidfw.so": {
+    "sha256": "94d4eb5c70ba335463007c2b7b69be23fd152c06cd6ac13d8eb89e730fee33d7",
+    "size": 166176
+  },
+  "system/lib/libart-compiler.so": {
+    "sha256": "fddcff9587f5a36f51e358480c2db455a034fba1dbd29b3e34f76499830658f4",
+    "size": 3350016
+  },
+  "system/lib/libart.so": {
+    "sha256": "2586fd3bae16f181470734eee91258696ac864ca59ca41da959d513408dc3800",
+    "size": 5762796
+  },
+  "system/lib/libatpswdck.so": {
+    "sha256": "c1bcc2bc0881b7a36a8e7641b6e566eed1723cf7f240aa539011f4f2bf0992a6",
+    "size": 22012
+  },
+  "system/lib/libaudio-resampler.so": {
+    "sha256": "f821c44d433fefcb0b64644d65fb17b7cff1930cb690cff771792dba984b2c1a",
+    "size": 30204
+  },
+  "system/lib/libaudio_custom.so": {
+    "sha256": "d30c905699d5ab75930ee76363843ab9eaa3c7131d81200f80c0ea3348120aad",
+    "size": 30316
+  },
+  "system/lib/libaudioalgoservice_jni.so": {
+    "sha256": "45a3c724250802bf6903756bd020981ef8e2d1f0608912719f0030911b2d0153",
+    "size": 30332
+  },
+  "system/lib/libaudioeffect_jni.so": {
+    "sha256": "3f506f81676e80247512809433cf0d1e20ece0ae5234b5c20ccf978d2756ad7d",
+    "size": 30628
+  },
+  "system/lib/libaudioflinger.huawei.so": {
+    "sha256": "0448787630e2368bd56039d7758986d5b6610f2a26be993245a8b15f21d8fbf6",
+    "size": 38448
+  },
+  "system/lib/libaudioflinger.so": {
+    "sha256": "1d4c80a2218d097105e67c0c3ef94006b6ece74d2d4449fffb57ed55e237d555",
+    "size": 489088
+  },
+  "system/lib/libaudiopolicyenginedefault.so": {
+    "sha256": "0ae14f672b22ce6dbc85790f750c0389b08e4482120a94a9f0f7d48dbf66953e",
+    "size": 91944
+  },
+  "system/lib/libaudiopolicymanager.so": {
+    "sha256": "fbc8f672e0581b60da2075b4b961f91060cf04e78f100a774b934854613dd38f",
+    "size": 13820
+  },
+  "system/lib/libaudiopolicymanagerdefault.so": {
+    "sha256": "a679ad2c1aa538469e308c5a5011203262552c10f4cca1e1ef1a4b593d7ba1fb",
+    "size": 177720
+  },
+  "system/lib/libaudiopolicyservice.so": {
+    "sha256": "afe1283b76f8d2e03498ccd77b3bd23c1b5f037c693d559c59b9087e2601c65b",
+    "size": 63076
+  },
+  "system/lib/libaudioresampler.so": {
+    "sha256": "e655f81b88a0fd7ce7d1edb0e7e2c777752b4558e0de6ca817351f45780770c6",
+    "size": 144944
+  },
+  "system/lib/libaudioroute.so": {
+    "sha256": "721c4a65c48a20b11ed4ca9665a2cc3ef89d4290647f592d995ffa7ee85a7978",
+    "size": 22012
+  },
+  "system/lib/libaudiospdif.so": {
+    "sha256": "da3cca0643461fd6d5778958f882693a946b9c9b5b34b21f3ab35d8b4cd18204",
+    "size": 22064
+  },
+  "system/lib/libaudiotestalgo.so": {
+    "sha256": "2dadb3729c2fbe6acef3df76dfd9d1ad4b5852d133afe18d7d251cda3e6454f5",
+    "size": 34300
+  },
+  "system/lib/libaudioutils.so": {
+    "sha256": "dd79467c31bc0a8c6814622ed8e31d69df5e07ea446603565b651ae490823e25",
+    "size": 30204
+  },
+  "system/lib/libbacktrace.so": {
+    "sha256": "d6326b8a069084b72ddfc55b84d1e6d7bcfc5c616988bef17d771a60c042d0eb",
+    "size": 38448
+  },
+  "system/lib/libbalong-ril-1.so": {
+    "sha256": "ba89e9c99141ae573a983fc52c207d11c1b80e17b71475cc597aef1ed110bab6",
+    "size": 369152
+  },
+  "system/lib/libbalong-ril.so": {
+    "sha256": "5725afd57487a2aeb55b771a801b3e41d6dff3a964eb427477af366638482e8b",
+    "size": 369152
+  },
+  "system/lib/libbalong_audio_ril.so": {
+    "sha256": "4e750274c9249fd62673dbab31dff12ca4985fbd3585f6b9d8d8e0e092fac8b0",
+    "size": 30216
+  },
+  "system/lib/libbase.so": {
+    "sha256": "ad504f907753eb98e06bf35a1438cefd257bb69ce49e3eb17fe4f9721584d63b",
+    "size": 38504
+  },
+  "system/lib/libbcc.so": {
+    "sha256": "47f3938f17bee3f5a4c25bd6c7b842389bdce7df799976d1c9e490c06b3f0b9d",
+    "size": 366180
+  },
+  "system/lib/libbcinfo.so": {
+    "sha256": "519b18270e37592220ffd5c1f96581a2e504c18b3b2b7eb51f4f07da106637b4",
+    "size": 222820
+  },
+  "system/lib/libbinder.so": {
+    "sha256": "7ad8c8e220a9be14e4e27d62b96a8d7b9180dcbffd3755ac1dd4a277014336a3",
+    "size": 181880
+  },
+  "system/lib/libblas.so": {
+    "sha256": "dd43fd413f00aa2a662fa96df86a08c3c20fcd3e8daff0aba17652690b471134",
+    "size": 808444
+  },
+  "system/lib/libblasV8.so": {
+    "sha256": "d3e3572964335df6b0d6678b6eb3d993b9494d4ba86bac9de71d7d5b009662b6",
+    "size": 1136112
+  },
+  "system/lib/libbluetooth_jni.so": {
+    "sha256": "274ded79cc1f23c611f3330461361837da584456650664423c17b473489c856e",
+    "size": 102924
+  },
+  "system/lib/libbluetoothex_jni.so": {
+    "sha256": "db6d85ed27737fbfbd155e42717dd317fb2628ef30a295037c033b3f8ee17bde",
+    "size": 13856
+  },
+  "system/lib/libbspatchhwouc.so": {
+    "sha256": "5493383b54f8f3acef7cf1388150f1f207055dd71ec11acbef0035e833aa3387",
+    "size": 57552
+  },
+  "system/lib/libbt_factory_test.so": {
+    "sha256": "f677adfc83f4b49a2e915ece98b890aa0054d9b913ccbd7bb89849edb9c87667",
+    "size": 22052
+  },
+  "system/lib/libbtaddrjni.so": {
+    "sha256": "391713bbb23e54002b9b1ee5ef1be86f695fdab09118a7c688396d6c248abfb0",
+    "size": 13844
+  },
+  "system/lib/libc++.so": {
+    "sha256": "8daa08f2181ca2fe7c8043d6d9132aa72b2b541e0a59a9f537ee2909a3b1df7d",
+    "size": 575088
+  },
+  "system/lib/libc.so": {
+    "sha256": "5880d510eccec91c67e2f0642d744300db227f2a6d6f42eee114901d6667c190",
+    "size": 684756
+  },
+  "system/lib/libcamera_ae.so": {
+    "sha256": "037caf3b713d7b8838357150a94ebc01832c6501ba5e1d60e7280d5800905571",
+    "size": 193308
+  },
+  "system/lib/libcamera_af.so": {
+    "sha256": "01584c5de463a064d43073e4b499ae5657ca8251b21fb7c144ecc8da00651c63",
+    "size": 66892
+  },
+  "system/lib/libcamera_algo.so": {
+    "sha256": "6195f75bcbcb66ac53a0d626b75b13f64dbcd72069790eac04fffa0c615e25b3",
+    "size": 2738468
+  },
+  "system/lib/libcamera_client.so": {
+    "sha256": "c5611fe14338861bed2ef5721b333754ea348611f2d4937013ffa39c1d85d248",
+    "size": 206452
+  },
+  "system/lib/libcamera_flash.so": {
+    "sha256": "ee4237d1fe6b32196d56613adbe3aa00ed86d1f97345b261c7481065c6cc7b64",
+    "size": 90840
+  },
+  "system/lib/libcamera_metadata.so": {
+    "sha256": "00772a324bbc3fd5ad3194b27ec8e0e277c9ff9f99659e3d7d5179760f5548f4",
+    "size": 36448
+  },
+  "system/lib/libcameraservice.so": {
+    "sha256": "fda69a972c419b98e73361df619d7422a9c44bf49e449ed7010f3fe537005791",
+    "size": 693968
+  },
+  "system/lib/libcgroup.so": {
+    "sha256": "00901b27de0e52f843dbb0b35172c107b940571298893480b41b096fe7de91f8",
+    "size": 79656
+  },
+  "system/lib/libcheck_script.so": {
+    "sha256": "4fffd70c489a2d8688857a5b8a3912e518e743ad009e15e206a9e3fd36c2531b",
+    "size": 162084
+  },
+  "system/lib/libcommon_time_client.so": {
+    "sha256": "de5012e4485d15e8ad3adce95b3b2d2951dabb40ca1ea14c01c458684c63c72a",
+    "size": 50788
+  },
+  "system/lib/libcompiler_rt.so": {
+    "sha256": "ed5bb815f01c8ee5de08f4315b2b2059f35fd379bb45e8a9bad1f6a4465210ce",
+    "size": 34304
+  },
+  "system/lib/libcontactsnaqtodat.so": {
+    "sha256": "089c01940fcd079b43f841e318c710e04fa87a61ccca0d6ae47d9eb5c1d928d6",
+    "size": 30204
+  },
+  "system/lib/libcrypto.so": {
+    "sha256": "09ebcca481fc5aa4fac1356b7a71c0668d066d578c4f0f4ba05ab5361d3113b3",
+    "size": 636976
+  },
+  "system/lib/libcrypto2.so": {
+    "sha256": "0504576af59ec06bcd81af4ba0c233a39ddaa2f63cdab670052450195334505e",
+    "size": 1024284
+  },
+  "system/lib/libcustpwmanager_jni.so": {
+    "sha256": "b13bcccadf30de7ba929e62c453c83e404944ef48ecd48e6f73904d6e140e046",
+    "size": 17940
+  },
+  "system/lib/libcutils.so": {
+    "sha256": "055c3d232222663fe02b995bdae627b92e64229711e6eac1dee2d17dee41cb00",
+    "size": 75504
+  },
+  "system/lib/libdcamera_sr.so": {
+    "sha256": "01ede3de9239819b25bd59f6661ddad64ffd9839bf07dd6dda3fa62a65214abc",
+    "size": 690620
+  },
+  "system/lib/libdebugcustex_jni.so": {
+    "sha256": "a2b42bd7b6820b8aec65c87ad847fdf3cf3acfbc49dcc29a311012669b785546",
+    "size": 13832
+  },
+  "system/lib/libdicsearch.so": {
+    "sha256": "2c498c648f229614509c696f6043498d5538704f04198c04f176a5620bc89dca",
+    "size": 166140
+  },
+  "system/lib/libdl.so": {
+    "sha256": "097d49657f560b6adf3520adc59ccdd3ff9a4becb826fe73a07e41b31277cc93",
+    "size": 9492
+  },
+  "system/lib/libdmd.so": {
+    "sha256": "b19da47161eff4443cfc5830801f4934b0c438846530fc7a2a6f58bde2437a04",
+    "size": 50856
+  },
+  "system/lib/libdrmbitmap.huawei.so": {
+    "sha256": "b83875d362c395f6c9deb9a0f0763a60f0b488bf9c394612bc7bfed825ec175e",
+    "size": 22068
+  },
+  "system/lib/libdrmdecrypt.so": {
+    "sha256": "c80bcdc1e651e7467f11086f96860ed873395a0da5e48e1ac3cf3cad3f083f6c",
+    "size": 17968
+  },
+  "system/lib/libdrmframework.so": {
+    "sha256": "b136d4a4c77de642c7a1c596b1e23f64dc43cd25ff2fb762cd4d93940dd6d21e",
+    "size": 99940
+  },
+  "system/lib/libdrmframework_jni.so": {
+    "sha256": "61c9ad8ea4601fd1ac90c22f54915015b4fa4b96a0ce036eac29a6e961d7f2b9",
+    "size": 34632
+  },
+  "system/lib/libeffects.so": {
+    "sha256": "d13fb4cd1e5095b77c3fc9204e4014c46f6971beb49642db28de2017fc0dae1d",
+    "size": 22064
+  },
+  "system/lib/libempty.so": {
+    "sha256": "3fda06f08f4b197350e71805585c8ceec2512c3d2fbe9b9dc99ccf0a08c2509e",
+    "size": 37988
+  },
+  "system/lib/libexif.so": {
+    "sha256": "60f67617d141811908e29b3ca0d3eeb53a73c9479668d416f078e5d0a93e4507",
+    "size": 173564
+  },
+  "system/lib/libexpat.so": {
+    "sha256": "f80086fe756823afc2c029b9a060f5f9a6c522372d11bb202d9b4bcb4d2e9c30",
+    "size": 87340
+  },
+  "system/lib/libfaclog.so": {
+    "sha256": "8b436ec2016374b081ec1601589bdd58e5c116e79d2adecaf7bfca6e9d4959ef",
+    "size": 13820
+  },
+  "system/lib/libffmpeg_neon.so": {
+    "sha256": "f28a5b0cde2fe05c0f589b495a5727d342238a0bb18129e6afd8d58aa5290deb",
+    "size": 6527232
+  },
+  "system/lib/libffvplayer.so": {
+    "sha256": "db2bda6b0d59411bbdafe5f7b1c52bb599552b62fccc52192f3cdbe15f88a0f9",
+    "size": 75264
+  },
+  "system/lib/libfido_hal.so": {
+    "sha256": "53f5d106ce071320df9694c3beee02a940c90cb488a14d4899610c5ef0386d8e",
+    "size": 17968
+  },
+  "system/lib/libfidoca.so": {
+    "sha256": "701890a8815b40211d4eee4427da76cad9a95e8d83b5ea497b99ccd74477d7fc",
+    "size": 17968
+  },
+  "system/lib/libfilterfw.so": {
+    "sha256": "7d238460d8118d98d8b017e9432ba09957f902d96aa3a3c12c82352521698851",
+    "size": 124464
+  },
+  "system/lib/libfilterpack_imageproc.so": {
+    "sha256": "f511323ba2e807d03b37d23e70627487dcab2b7be6e267b0f74564ef0f69f2da",
+    "size": 17916
+  },
+  "system/lib/libfm_interface.so": {
+    "sha256": "21347bb57e8f94977bb0124445011568f906588f02960c0a632a8f9570e17700",
+    "size": 13820
+  },
+  "system/lib/libfm_jni.so": {
+    "sha256": "27c0dd5bb4a19c19d738594a9d9bc7e014b9f70acfa9e71bef9de27ee3d51a92",
+    "size": 18120
+  },
+  "system/lib/libfm_volume.so": {
+    "sha256": "795692d42c2d669338431ae3d6e7af34a8802526e40abff1e534bd739bbff254",
+    "size": 54904
+  },
+  "system/lib/libft2.so": {
+    "sha256": "8dcdffa48db529be524836a02e6bdf307764f80e43aec2bf8d979776bb110b33",
+    "size": 402992
+  },
+  "system/lib/libgabi++.so": {
+    "sha256": "9a81566e3352201cac7f3a1a1a504bf52ce51ae70f36af007339c066f9035af4",
+    "size": 30132
+  },
+  "system/lib/libgatekeeper.so": {
+    "sha256": "7573bd98abf2c73cf320bf446fb2484e59f706f727aed463ff1f0d403541fc21",
+    "size": 22064
+  },
+  "system/lib/libgps_factory_test.so": {
+    "sha256": "70aea37a5ea7514b7750c585caa764e388d3ab1756a4d11ef3f1849282032fd7",
+    "size": 26108
+  },
+  "system/lib/libgralloc_ext.default.so": {
+    "sha256": "8e7bfbcb0d57c4836184cdd3cfc5de642fed0fa540ba07d4f45549a10e993c47",
+    "size": 13820
+  },
+  "system/lib/libgralloc_ext.so": {
+    "sha256": "fbf2846c1c5a9a703ccacaabafe3a7fa26749b5b98f597501fa83d75603aadf6",
+    "size": 13820
+  },
+  "system/lib/libgui.so": {
+    "sha256": "241c81279f5f577b742598c009421f659cf65881209686da858f1c59aa431d02",
+    "size": 362276
+  },
+  "system/lib/libhardware.so": {
+    "sha256": "524ea3dfd93ab86c163b6e098f7bd1fddcb326de6ebee975fb913085bc880f52",
+    "size": 17916
+  },
+  "system/lib/libhardware_legacy.so": {
+    "sha256": "78ba69034fc5f77264961beed9df071e590b60eea275a3f11b31def959cc3a57",
+    "size": 91988
+  },
+  "system/lib/libharfbuzz_ng.so": {
+    "sha256": "e064933c94a4caac7ff32da8b7c935c82b8d67fdb27caf4ccfae190d512e1c7a",
+    "size": 312928
+  },
+  "system/lib/libhdr.so": {
+    "sha256": "e9f3849aeb608bb885b257172d7b7efeced46d9b8610a23abfd4b30ae0d626cf",
+    "size": 809968
+  },
+  "system/lib/libhelixplayer.so": {
+    "sha256": "8012cc3b95cc41fbc8588be0360d08e677fe99b4d7a31f58888e4eb3d04195ca",
+    "size": 469656
+  },
+  "system/lib/libhelixplayerwrapper.so": {
+    "sha256": "aaf45c4bff44862121c712e2d71f035a39597fe6f70c5f789d94fab1a0960e0e",
+    "size": 17968
+  },
+  "system/lib/libhidisk_security.so": {
+    "sha256": "0dfcd1cdf3db569fa868be04009c7b3847cde0e36874c152ed6d7843d250f4cf",
+    "size": 28232
+  },
+  "system/lib/libhisi_efuse.so": {
+    "sha256": "d66dd0abccfbbca5e00b8100aaf32638749c4be7116ec405e1041039b22ab035",
+    "size": 13820
+  },
+  "system/lib/libhisichr.so": {
+    "sha256": "b66674fcb44999ffc9d4fba3be2b1e8d71d9d11516c072e2ff673cbf229181f4",
+    "size": 30328
+  },
+  "system/lib/libhuaweiaudioalgoservice.so": {
+    "sha256": "2ab477b2e8568b6831820c84b07dab5982e2b0c49868314c530ff217fa7a8bbf",
+    "size": 34408
+  },
+  "system/lib/libhuaweiaudioeffectutil.so": {
+    "sha256": "8dd3cfcce28a3ab6edd24dea0a5bf46f2bc5810e8114e24b81653ec070313f79",
+    "size": 18112
+  },
+  "system/lib/libhuaweiprocessing.so": {
+    "sha256": "0c2b46bf470e4a5c4d3119c60899f873e60c07e29b2739504fc4528118c6e370",
+    "size": 779480
+  },
+  "system/lib/libhw_display_effect.so": {
+    "sha256": "1d66c49897157b9fa7eb6ad6c2a0c9d39f0ec647918a8ab46e6f10c49d6f1a3a",
+    "size": 17916
+  },
+  "system/lib/libhw_display_test.so": {
+    "sha256": "e781b09446727820df8cc0cc71ffcb6cf944f17b40addf740db547f4f52d12bd",
+    "size": 26108
+  },
+  "system/lib/libhwaps.so": {
+    "sha256": "6c98e86e5b81622c25f61896ccc2d51839e6696032137570b47c7926cceae537",
+    "size": 95976
+  },
+  "system/lib/libhwdeviceinfo.so": {
+    "sha256": "12a5309dd2f0446cef1236d0b01600376ff211912505fa15eff23b40bd39fd3b",
+    "size": 13872
+  },
+  "system/lib/libhwdisplayprocess.so": {
+    "sha256": "4c9713d3fa2c60cf89d2251ba15fc6999e9988e0c4a29cc011bbafebb9f2923c",
+    "size": 17940
+  },
+  "system/lib/libhwextdevice.so": {
+    "sha256": "39cc6a8a0070540ada7ed15dc2a984d2c2c8bcc7bd6616a0344fdcc6b2dfa9a6",
+    "size": 58980
+  },
+  "system/lib/libhwgl.so": {
+    "sha256": "a5afc2f0d6f891e60e726bbe759b435f128b48c3f5eb8396578517ab24eec723",
+    "size": 71244
+  },
+  "system/lib/libhwlog_jni.so": {
+    "sha256": "6bd2dc8c1de86459dbef7d20179df8e541ab2869c98d2256fd2d000a014ced6a",
+    "size": 13832
+  },
+  "system/lib/libhwouc_jni.so": {
+    "sha256": "6a285fb4df62e302f020d0b4da6ddc18d793f9ec77488a3275e1f442b98c2644",
+    "size": 13844
+  },
+  "system/lib/libhwpwmanager_jni.so": {
+    "sha256": "46cc11a9a8f44a8572841bfc1d0e032cb08e3611defe4269326a2c95113ffb61",
+    "size": 17988
+  },
+  "system/lib/libhwsign.so": {
+    "sha256": "be62fe7d0ee3ffe60de3086730eae9bb69245573dfe29d056863941a4a63d23d",
+    "size": 26176
+  },
+  "system/lib/libhwsmartdisplay_jni.so": {
+    "sha256": "ee05e7ea2e0482cba8ee21f542020854a9fd3e07fa10aaa73789878aaddef023",
+    "size": 18016
+  },
+  "system/lib/libhwtee_jni.so": {
+    "sha256": "b048a785a192c5f895c745a8e86f10b2e03484fe30b4449bf31d2566c0dcddf2",
+    "size": 13832
+  },
+  "system/lib/libhwtheme_jni.so": {
+    "sha256": "6968701e2aac0bfb9ce2f5005393b936c4d17102723cce298964212924caab55",
+    "size": 13832
+  },
+  "system/lib/libhwui.so": {
+    "sha256": "34f9335036ef3803b16463e4248eeda184b2a4f8868eaebdd82f2b51e007cf97",
+    "size": 461064
+  },
+  "system/lib/libhwuibp.so": {
+    "sha256": "0cdc3641134a65c207c0981df56b987b8cbf682a81e8af9ae0c3b727f54f7ff6",
+    "size": 30308
+  },
+  "system/lib/libicui18n.so": {
+    "sha256": "e606f52c897c463cc383ba7fc332348a671811efd21436fcc004fea74618e0f4",
+    "size": 1562532
+  },
+  "system/lib/libicuuc.so": {
+    "sha256": "a81884297c30a8db1d3febcec137c2efe5e05cc35d6bbc9f3b0597402dfa4776",
+    "size": 1185356
+  },
+  "system/lib/libimg_utils.so": {
+    "sha256": "b498f307fcccae673ebd9f148b85b72bc29857f3513fa89b4b8be230b432b048",
+    "size": 58980
+  },
+  "system/lib/libinput.so": {
+    "sha256": "b9f1bf599befafbf9e50ebaf70f6e65ca56730578525eb3af680643d1cc464bf",
+    "size": 120428
+  },
+  "system/lib/libinputflinger.so": {
+    "sha256": "9db6f1c0acd3e575e0c9a5375b6c44145069edabf6d38d5452ac2a844594ce79",
+    "size": 263728
+  },
+  "system/lib/libinputservice.so": {
+    "sha256": "45d60fb8bdb92752ae7cd58523a20daeab1bc4a905973eec0a29f9e61b4b1387",
+    "size": 46640
+  },
+  "system/lib/libion.so": {
+    "sha256": "179246cd849e62d969b54130eee289129fc8d94e45ff5760fdd25dfe0aa99964",
+    "size": 17916
+  },
+  "system/lib/libiprouteutil.so": {
+    "sha256": "5d6983d82c2704b9df1153e163b776cc8778da4802c08d4d1aaff0e39535f252",
+    "size": 36420
+  },
+  "system/lib/libjankservice.so": {
+    "sha256": "83697280ae119f64aabbc5c66736c51fefd8ca018bface550d97d13ceba68de8",
+    "size": 181932
+  },
+  "system/lib/libjavacore.so": {
+    "sha256": "883a1bb47b753dc293d0fe58ce3c6a2b7fff3c2a48bacf7a8237aa371051b096",
+    "size": 220096
+  },
+  "system/lib/libjavacrypto.so": {
+    "sha256": "2d58cf3a069a9bb5747bac24e7fa171d677a47887704a59560df6b629626e9d9",
+    "size": 94628
+  },
+  "system/lib/libjhead.so": {
+    "sha256": "b63a6dbcd29327ff4da166b0113ca972ca21e692ea057c29265038e3bc7550e3",
+    "size": 47144
+  },
+  "system/lib/libjhead_jni.so": {
+    "sha256": "3c37deded309879989f9a9dd65853be2548aff474885a4e8dcbaad4f0679f1a5",
+    "size": 22084
+  },
+  "system/lib/libjni_SFBE.so": {
+    "sha256": "ecfb0dbe1933a1b3611cea4de7957c55e6c540052beecfd7273079da15184dbc",
+    "size": 21744
+  },
+  "system/lib/libjni_bardian_filter_effect.so": {
+    "sha256": "22fd6d0f8f87f3132700316cb917f63ebbe636c554eaa35fb57ac2645a8b4294",
+    "size": 17740
+  },
+  "system/lib/libjni_eglfence.so": {
+    "sha256": "02af5265957be9581d905830b40987da51076907b8afdd960a53fedc59f112d2",
+    "size": 13596
+  },
+  "system/lib/libjni_feminine_filters.so": {
+    "sha256": "b4195fb15b4cb2dbfb4db5bc13d98d30e39cba0d7546289a7d7824252ea3d497",
+    "size": 13596
+  },
+  "system/lib/libjni_filtershow_filters.so": {
+    "sha256": "f3d1c691f884ed0fab03b70ecf7d8d55ae224c208c06271806c36cfb61faea30",
+    "size": 66800
+  },
+  "system/lib/libjni_front_panorama_camera.so": {
+    "sha256": "1539651994a4c40ea87e66df4816ef8dd73f9976a1d754a2dad42f67ff431e30",
+    "size": 22012
+  },
+  "system/lib/libjni_morpho_filters.so": {
+    "sha256": "cfc08a6ee75e395f9f65e2c9855de5795b4cd81952192d0a751a92ebee98feb4",
+    "size": 17692
+  },
+  "system/lib/libjni_mrc_cg_filters.so": {
+    "sha256": "52d745e4b54f1a02e04bdf045a7105ba713b4ffcbd82c44ee0b31c8042e95a74",
+    "size": 21788
+  },
+  "system/lib/libjni_mrc_cg_filters_camera.so": {
+    "sha256": "8ead0bec8c2c41c279a5a5fe50de62bf83f4eda9af6c2d58ad8010ae0b4ab13c",
+    "size": 42400
+  },
+  "system/lib/libjni_mrc_cg_hazeremoval.so": {
+    "sha256": "0245153c964c6c4f8c1032a66148317b9ef52bf2eb9693e55d07d3c9d3a470c8",
+    "size": 13552
+  },
+  "system/lib/libjni_omron_facebeautifier.so": {
+    "sha256": "8cc10f16bad80ea5fb370cc14f90569b5ec1caa2c0e49dfb2aa4700a5ada07f3",
+    "size": 25884
+  },
+  "system/lib/libjni_tiltcorrection.so": {
+    "sha256": "8b94e9e6ec573c18567e6f5e725c87aa0dffa3c0b134df62ff3f9d88e0286880",
+    "size": 13552
+  },
+  "system/lib/libjnidcamera_visual_effect.so": {
+    "sha256": "0b535d6f0dd28b334c8b43d28a3040e0e9646c5bc5c9c6d8f5b1ab3393f32022",
+    "size": 29992
+  },
+  "system/lib/libjnigraphics.so": {
+    "sha256": "967b0706312c455813ce4b53afbadd9a855a3da9372350717804205107a684b6",
+    "size": 13860
+  },
+  "system/lib/libjnihw_display_engine.so": {
+    "sha256": "5a8ef361bc02ce201d315a1fc787bd7eb151c89110eb7442e76768edb58a193e",
+    "size": 17648
+  },
+  "system/lib/libjpeg.so": {
+    "sha256": "0b84d000ace0ec9bd09719f65953bd00191b0ce3bd200a4f2a70ec07886396f0",
+    "size": 341504
+  },
+  "system/lib/libjpegenchw.so": {
+    "sha256": "20f1c08546fde4dd32250282c938d59a3c3510d89a0de53afa2bd1b378ab7b55",
+    "size": 22012
+  },
+  "system/lib/libjpu.so": {
+    "sha256": "5a07fc26bf39f2d658c42a32e23aed6a1e3a6e67e50b87155cf665ebc50ad900",
+    "size": 72032
+  },
+  "system/lib/libkeymaster1.so": {
+    "sha256": "756bbd95ecd96451a2441f85657f2677b3a97a92429ff6ac6e2d2bb2c0a52417",
+    "size": 104120
+  },
+  "system/lib/libkeymaster_messages.so": {
+    "sha256": "970aac2c7945b10cf9035493814b214de3cb1505f68c8096c55fe691ff6702bb",
+    "size": 38448
+  },
+  "system/lib/libkeystore-engine.so": {
+    "sha256": "bcbb0ff531341b5914dfdce37d1fafcd0dcc75d6ea78fa65ccc274fee9cfd0b5",
+    "size": 17916
+  },
+  "system/lib/libkeystore_binder.so": {
+    "sha256": "defe157fc60dcccfd2c03c968f2e9826b672f82ab3f46449e764f868c3b39efc",
+    "size": 50788
+  },
+  "system/lib/libl2_test.so": {
+    "sha256": "dd5c6a42b24abdc799f0a17e5c1ff5c51bde7ffa420d762d8c3497f7586d6bd6",
+    "size": 22012
+  },
+  "system/lib/liblifevibes_liveip_4.4.2.so": {
+    "sha256": "5ad699325e0d15866f2b45072abe034d9cee389c24fceafaf97907b5b68079f9",
+    "size": 730940
+  },
+  "system/lib/liblifevibes_liveip_5.0.so": {
+    "sha256": "543ca9bc58c03a8fe7a91139b8c1f5a1d437a21e3b5d6ccd05767f33e16f5c80",
+    "size": 730948
+  },
+  "system/lib/liblifevibes_liveip_5.1.so": {
+    "sha256": "c2e94fd817f42a84530f1977dc24383b5a336e0edaad096c90dc3090181dd22c",
+    "size": 731172
+  },
+  "system/lib/liblifevibes_liveip_M.so": {
+    "sha256": "dee22fdbef5183cf4888ad3e8668063e33b2a462761692a3a9add0bcf7bb7727",
+    "size": 729256
+  },
+  "system/lib/liblifevibes_videoedit.so": {
+    "sha256": "868cbe1c26c8eba9a31e577122e3f7b19b2b87eafa2b70beb355e8ed903ebf42",
+    "size": 2975756
+  },
+  "system/lib/liblifevibes_videoedit_5_0.so": {
+    "sha256": "e08f5b4060f67db700301d3aace101f6db0e526f2f093d8288f78e2bdff81816",
+    "size": 2975208
+  },
+  "system/lib/liblifevibes_videoedit_6_0.so": {
+    "sha256": "02dba53c204d2792e9383413d14bde89496bbb92e42eba997ab2b729b5c5e820",
+    "size": 2109688
+  },
+  "system/lib/liblog.so": {
+    "sha256": "d339346c9c8ef91ceaef14c412677c1cb87f53ae676c56b43ef5579e15b6a378",
+    "size": 42624
+  },
+  "system/lib/liblowpowerplayer.so": {
+    "sha256": "7fa0b2ce68ac2cb26e390078b2b77d5e4470daed999f253d4ccf9125bb957235",
+    "size": 50736
+  },
+  "system/lib/libm.so": {
+    "sha256": "d2a8d1d4e6ff0dd06cb38804a2a204cc1f7e6aa27f8e7ea5699ce3e88af60f6c",
+    "size": 132824
+  },
+  "system/lib/libmax98925.so": {
+    "sha256": "452d82b2ec9b6bbc791d3d4bd30892af4141abc92a1e11891c523444fd59635a",
+    "size": 13820
+  },
+  "system/lib/libmdnssd.so": {
+    "sha256": "f07277852dffd85a6d13b20f4f792409e8d4d11f5e5be3691f7206192fed67c7",
+    "size": 34300
+  },
+  "system/lib/libmedia.so": {
+    "sha256": "71e200ca1cf019670150c083ec07aaae203d8032e9801d9bb0dfbe94c3d16abf",
+    "size": 726628
+  },
+  "system/lib/libmedia_jni.huawei.so": {
+    "sha256": "9dcff1eb4cbe7c4d7f4363de81b780373d4b24f1cc4142119cef20776ddeb6a0",
+    "size": 22060
+  },
+  "system/lib/libmedia_jni.so": {
+    "sha256": "8d94bdc82b151de5e571344fdc9600560d99ebedc77317171570a060316ee112",
+    "size": 295776
+  },
+  "system/lib/libmedialogservice.so": {
+    "sha256": "42e200d58b3ec99ebeca303f7ed36c06c3b8c6323239d4688153f467718d1635",
+    "size": 38448
+  },
+  "system/lib/libmediandk.so": {
+    "sha256": "eb7ab0e413311f9ba29c97c91be15f0c23de564ab84ce61e829d9f1d0a8d33e7",
+    "size": 50832
+  },
+  "system/lib/libmediaplayerservice.so": {
+    "sha256": "34ca47a78683f182415e93ea71796101d4e6e686a6c056bab6f4326c4f59fa35",
+    "size": 640632
+  },
+  "system/lib/libmediautils.so": {
+    "sha256": "d2f50d1bb5cf77caa3c8301bc1061a7bcb346e81e74c2ccfe4ef86f5f8c3c19e",
+    "size": 22116
+  },
+  "system/lib/libmemtrack.so": {
+    "sha256": "248ee47b107ef6f852f7c1ea7d7e1a66771d44e7eab9ce2c553307f279a50b3a",
+    "size": 13820
+  },
+  "system/lib/libminikin.so": {
+    "sha256": "8062d74a8f4524714da2124bdff6dea2ff535ff40f5bc9df1f1725898e0b9496",
+    "size": 67172
+  },
+  "system/lib/libmmiautotest.so": {
+    "sha256": "a04b153c1ea4fd25b9dda7fb72b416adf41a69d431a8b6d348e5ebcfcfcfca6a",
+    "size": 18024
+  },
+  "system/lib/libmorpho_effect_library5.so": {
+    "sha256": "23da5f2f78460520641af71ddb6a1720160ee74294dbec7196dadb958a444488",
+    "size": 4237006
+  },
+  "system/lib/libmorpho_memory_allocator.so": {
+    "sha256": "25ea190c27eeed7e8c936a11fcc6aa03d3e64c26ae0405b5349b680f62acfb75",
+    "size": 13820
+  },
+  "system/lib/libmorpho_panorama_gp.so": {
+    "sha256": "fe24167a3e9a1c7cfd258ce6ca58dc7e0d8b832a30895e89393876c1d22fe4d3",
+    "size": 910556
+  },
+  "system/lib/libmrc_cg_filters.so": {
+    "sha256": "1814f1d80a10fc33490c5b2766ec23531de46bd4cf22fa3e99983a464c474448",
+    "size": 783928
+  },
+  "system/lib/libmrc_cg_ldc.so": {
+    "sha256": "47f7355ac8910bd4592ab5a4fe8e4b9f640854335773ac2d364be896120fff55",
+    "size": 440216
+  },
+  "system/lib/libmrc_cg_mfdenoise.so": {
+    "sha256": "69ac213b6931712dbabdbc3b29f000169832842bd0f2de53c42bd8451f557d3e",
+    "size": 857048
+  },
+  "system/lib/libmrc_cg_mfdenoise_dualcam.so": {
+    "sha256": "a7c20f8faa34eda00804b41b72d6347d8a93de28a43684d934415f8565318605",
+    "size": 745888
+  },
+  "system/lib/libmrc_cg_niceFood.so": {
+    "sha256": "25096d85faaa010ea3dc575620678c62253cc7361b121817d709db2393af4bee",
+    "size": 7536
+  },
+  "system/lib/libmrc_cg_postprocess.so": {
+    "sha256": "fbe0f358ac841949a817b65048524d5a7ca960d5ac08638f5d901dcaf4c55b63",
+    "size": 1140928
+  },
+  "system/lib/libmrc_cg_postprocess_cl.so": {
+    "sha256": "e12b8f4441c3a552d2ffe33abc664c7d731c4ab49c3afa41a7d6bf1c6920060d",
+    "size": 993344
+  },
+  "system/lib/libmrc_cg_sz.so": {
+    "sha256": "7332fe1194ac13a7a25b6ad2724eae98f8acc9c2aafe3b2f3fc3022b40c39aa4",
+    "size": 3019336
+  },
+  "system/lib/libmtp.huawei.so": {
+    "sha256": "25fbb5c1d866a2bed9ac6676eaddfa4dab8ed67013e98780cad960a6c631d656",
+    "size": 17968
+  },
+  "system/lib/libmtp.so": {
+    "sha256": "1d5cf8932dd1dcdaa09f6031efa8ac9dfa6e1a7e9d542592e5f68c4dbd7c9f0f",
+    "size": 91696
+  },
+  "system/lib/libmusicsniffer.so": {
+    "sha256": "9ffb491f6746196667b9325af5239b50deea1d96e58b8c3e24bb588f31049273",
+    "size": 34548
+  },
+  "system/lib/libnativebridge.so": {
+    "sha256": "623ad1c31143999195329bc572af3b1a971b1e48aaf379312a7d4e153f96ec85",
+    "size": 17916
+  },
+  "system/lib/libnativehelper.so": {
+    "sha256": "c4ae060d1bfb796cb7a706ab6a1ba4135fc185e96408a79ac141ed8a51826f0f",
+    "size": 30204
+  },
+  "system/lib/libnbaio.so": {
+    "sha256": "bf3eaa6a6714540d0637d7241bcfcd323ad95b7566bb518dcc41aca8f1bc0333",
+    "size": 38448
+  },
+  "system/lib/libnetd_client.so": {
+    "sha256": "c91ceaa7e205ed286dc7a5b0f443da8c35cf0c1a880ad8e780ab4c8c4aea403c",
+    "size": 17916
+  },
+  "system/lib/libnetlink.so": {
+    "sha256": "91523d53833272a728025d2a4ebd1108b9ce61be075aae1010d3a017281d8ba5",
+    "size": 22016
+  },
+  "system/lib/libnetutils.so": {
+    "sha256": "87d1ca6238e195b7a5d2a6deca6bf1d3d119d35287b1fc3fd4dda1037a6d036a",
+    "size": 30212
+  },
+  "system/lib/libnfc-nci.so": {
+    "sha256": "18846b1e8509667c1e4b14c52c58e39076df179dc6ce7d5c8d45c37cc8394df2",
+    "size": 599920
+  },
+  "system/lib/libnfc_nci_jni.so": {
+    "sha256": "c6b92ed969b1230a2f407fd1b479134baa82cc0db313339ad5cfab3f551bf128",
+    "size": 277640
+  },
+  "system/lib/libnfc_ndef.so": {
+    "sha256": "6859a50ef82cfa87da6edf5125473317a348d69be4d2d908b1c57d873e0219b8",
+    "size": 13820
+  },
+  "system/lib/libnl.so": {
+    "sha256": "96a14ce91950482bb6e37ef517cff35097d0dffbec95be5dd7d5a38e3a674ff7",
+    "size": 77468
+  },
+  "system/lib/libnmsp_speex.so": {
+    "sha256": "828d54b81ff920016e9bede40b77236eacf114369586e60292411a508a570800",
+    "size": 622112
+  },
+  "system/lib/libnvme.so": {
+    "sha256": "ae51d552790edeec7ba8d907339f0043c98f8895bb832fb247e13bf27de56725",
+    "size": 17916
+  },
+  "system/lib/liboeminfo.so": {
+    "sha256": "e743e636f1c42f41e036c68a4f49ee07266eeec255f886fd8241f6832344e9ba",
+    "size": 17916
+  },
+  "system/lib/liboeminfo_jni.so": {
+    "sha256": "19e4baa90225e786a84be49458eafd31b9adae9853f84320dec712606a10f272",
+    "size": 17968
+  },
+  "system/lib/libomni_directional_algoclient_jni.so": {
+    "sha256": "a2a1d4c1b96e299d7290b96b18e6f2a769ea0f60e0c90301fe7cb29bdc122e30",
+    "size": 732032
+  },
+  "system/lib/libomx_vxd.so": {
+    "sha256": "c13081be3a9427a7e7b1b2c15476f07d5114efb6c940b35530f61215a6ce0077",
+    "size": 286372
+  },
+  "system/lib/libomx_vxe.so": {
+    "sha256": "2e20f86dfdb171538c92e70e5e8ac85a5a8a8d5a52f2b508cade365aab3b88b7",
+    "size": 253932
+  },
+  "system/lib/liboperta.so": {
+    "sha256": "0e9db5b1c9967990e693254c321c02cd2b59e99ff4b61b436d9af45664a68eb7",
+    "size": 17916
+  },
+  "system/lib/libopus.so": {
+    "sha256": "984cd22fde09dbe4e3a9247ea416b49f560aeed67f18be1b6561322f8cc18b59",
+    "size": 243196
+  },
+  "system/lib/libpac.so": {
+    "sha256": "f477e6eb7ba7bb87a5a740cdd49a3a1a737375cfe77159d161ce1e76db85ec98",
+    "size": 3264988
+  },
+  "system/lib/libpcre.so": {
+    "sha256": "cfdba2ea6ebf1c0c332f29cd76506f5d078683cd08008466232808f5d0778e5b",
+    "size": 75276
+  },
+  "system/lib/libpdfium.so": {
+    "sha256": "f3c697f41511abd19e4a493cf6f4396828066ae10940fbfb7636fff4979e266c",
+    "size": 4322804
+  },
+  "system/lib/libperfhub.so": {
+    "sha256": "a68a931aa2edf44c730711539abf8ad154b7890e7fa75e3a5cfd7a473b386f6c",
+    "size": 75440
+  },
+  "system/lib/libperfhub_client.so": {
+    "sha256": "d407b0812ce5ab446895226df4cefc0ac6e07dc9966adcd86aded7a21d1dc8c7",
+    "size": 46692
+  },
+  "system/lib/libperfhub_service.so": {
+    "sha256": "06a68a68f2fcdc3e19ed281eff16aa01143550cfac31d8dfe44f6a485ae0db67",
+    "size": 95844
+  },
+  "system/lib/libpixelflinger.so": {
+    "sha256": "d1376362cb64e3b63023b1bf6ee3b7f7e501ac508a5f4697d26e43c14c1b88fa",
+    "size": 142044
+  },
+  "system/lib/libpng.so": {
+    "sha256": "d9f46e86139a7a8dd9174d4658853527fb96a1e80500ff03cfa3f59c162718c4",
+    "size": 165372
+  },
+  "system/lib/libpower.so": {
+    "sha256": "cd9170ddf443d2abb6a8b6578964b6cf8f7a39c5ef30bb3c0c6d20fe0ed79d9f",
+    "size": 13824
+  },
+  "system/lib/libpowergenie_native3.so": {
+    "sha256": "68b3e12355d457dbf46e7fe709dd15d9ac8d86dfb73419e61163a8df92cb8598",
+    "size": 21940
+  },
+  "system/lib/libpowermanager.so": {
+    "sha256": "aa768005739260bd77fef959a322c4fcd35328b80dc18b413a74cf0bacc18d3f",
+    "size": 22116
+  },
+  "system/lib/libpowerprofile.so": {
+    "sha256": "a9e3e6472573ef402743caad0d80c70d9a7cc2b7ce64251e3d0702ae4eaa6a9d",
+    "size": 38500
+  },
+  "system/lib/libprocessgroup.so": {
+    "sha256": "3587f629a2738a4969b77e8cbac0e9d880a72c72fff0b8289ae82ddc3206e164",
+    "size": 17916
+  },
+  "system/lib/libprotobuf-cpp-lite.so": {
+    "sha256": "93bf6f99b62571e3703cdda7493c52e5ac894f2cb77eef7d1ca86a0210a507e2",
+    "size": 99956
+  },
+  "system/lib/libradio.so": {
+    "sha256": "ab34ee5eddac269d04559e82719cac7d16c5ff38ae70ffcea3c49679c300a94b",
+    "size": 50788
+  },
+  "system/lib/libradio_metadata.so": {
+    "sha256": "d8ab68703d32012ec68ce709a2404ff113862310901c5f361e4f9614dcc4e0ba",
+    "size": 13820
+  },
+  "system/lib/libradioservice.so": {
+    "sha256": "87dd8e133fcdfc1f092f382cf597de84da19b3c03d1fec38075203993027806a",
+    "size": 58928
+  },
+  "system/lib/libreference-ril.so": {
+    "sha256": "30914f900c58e053e6d1c67403ec2a8b5029b6fd83b4fd76d9658534f2176a5a",
+    "size": 38416
+  },
+  "system/lib/libresourcemanagerservice.so": {
+    "sha256": "40011c8468261926bd54d3f34a2a63dc22bbbfbf88b3b2fd9a6f617cabf663d9",
+    "size": 46640
+  },
+  "system/lib/libril.so": {
+    "sha256": "867b79ada1a5fbecbd5cc67ba62e941a8853aa72e4cac82c0b71ef83ce553b8c",
+    "size": 520732
+  },
+  "system/lib/librilutils.so": {
+    "sha256": "83963be3fbf1852a9dcbbafb69fba77944adea9c4bf125a913225edf6a00dda7",
+    "size": 17916
+  },
+  "system/lib/librs_jni.so": {
+    "sha256": "d3e8bbfe5484ab5fbfb2c73dca666f21ea77680ccb0642aeb5b5883354ed3518",
+    "size": 48040
+  },
+  "system/lib/librsjni.so": {
+    "sha256": "efabe907ca234403c03a684474a2fb29671cf98f653e40b389f42b6b16ae7769",
+    "size": 43364
+  },
+  "system/lib/librtp_jni.so": {
+    "sha256": "75845acd38cd284ae32f86e196a20d763e841b2f65c673947fe72d82a6a4e334",
+    "size": 120644
+  },
+  "system/lib/libscanner.so": {
+    "sha256": "be7d4443bfa4401a2fd92323e7357ec7121e74f2b253ae8027f81cc2340a80a7",
+    "size": 488636
+  },
+  "system/lib/libselinux.so": {
+    "sha256": "f44295304873c756f66ee86a125cf031362a1365c1f6a549253f87f5cb66d0a7",
+    "size": 63124
+  },
+  "system/lib/libsensorservice.so": {
+    "sha256": "e6e942fc8fdf80f7e023f30882cd22b3464a689cf5abe18f0c93acb08059fd3f",
+    "size": 75368
+  },
+  "system/lib/libservices.huawei.so": {
+    "sha256": "fd206b9693393151bfe3c1cdbac865f7b1444b6a9f88f4df1b7cb62f198d4a51",
+    "size": 17916
+  },
+  "system/lib/libserviceutility.so": {
+    "sha256": "0e9a2ab492822f646ebc1bf0fecb12082343c1a717fcb43a473466fabd0e8d07",
+    "size": 17968
+  },
+  "system/lib/libsigchain.so": {
+    "sha256": "35aa470e3a5c04129fb911c480db1a6cd33a720342c035afcf421fdeeb6a5491",
+    "size": 13820
+  },
+  "system/lib/libskia.so": {
+    "sha256": "84d42197a7b29f8a8e8ef6a4e16cde4bf7e78e4d690ac6baf3bf1f9b6816a208",
+    "size": 2545660
+  },
+  "system/lib/libsoftkeymaster.so": {
+    "sha256": "2566c4de1d6cfdea37f9771d8e8fd9c8d8cebbaa4093fc2673d35a716920fb53",
+    "size": 22144
+  },
+  "system/lib/libsoftkeymasterdevice.so": {
+    "sha256": "57231d41191a451e873a106b2953a53d718d191680a1fb2f182704cfae1525f8",
+    "size": 63224
+  },
+  "system/lib/libsonic.so": {
+    "sha256": "adee1f40936e3d1a4f7fede6fe1d20830a930f3d4e80ceaf180a4222bb818c6c",
+    "size": 17916
+  },
+  "system/lib/libsonivox.so": {
+    "sha256": "05ecb1bc099c601a80e0e59b4121b324d4a8a2ad505b8ba1883569a5a7458a12",
+    "size": 346264
+  },
+  "system/lib/libsoundpool.so": {
+    "sha256": "012de45b2aa3e9972c0700f8804210137a482f02363b89e5b4a91a60d5bcc360",
+    "size": 38636
+  },
+  "system/lib/libsoundtrigger.so": {
+    "sha256": "5842165707348f4487aae29bc7544a92c4f0e363a9adddc438a277bebbda43f4",
+    "size": 50788
+  },
+  "system/lib/libsoundtriggerservice.so": {
+    "sha256": "80ee41ac2408f3ff2ae10d3d4e3146fffe9ff827944c3cc447b1035fdf27f40a",
+    "size": 58928
+  },
+  "system/lib/libspeexresampler.so": {
+    "sha256": "c28e3b66f7ed8e6eef086f51cc57266b9a1b7533327896cae6a63526eb6aa0ff",
+    "size": 31648
+  },
+  "system/lib/libsqlite.so": {
+    "sha256": "55a9a3979ef7911320585d00a57b447db5e21e16c7425e2fa3311051884387eb",
+    "size": 423024
+  },
+  "system/lib/libsqlite_jni.so": {
+    "sha256": "77470c13697dcd95d651be407f6ffecbeb14e2c888b4bc3494a7a4cfabe39a3b",
+    "size": 38396
+  },
+  "system/lib/libsrsprocessing.so": {
+    "sha256": "c88b0c112e8792affc4312250f83e1bc227681877132fef58d617b29409e5a28",
+    "size": 731376
+  },
+  "system/lib/libssl.so": {
+    "sha256": "a4c329f36136e8041add469c1526d0d7f912b1f58906a99c27431c50c167e65d",
+    "size": 148876
+  },
+  "system/lib/libssl2.so": {
+    "sha256": "ad52aa4713fa9543870592b069d754de9939f76efb153dab7268e023278601c6",
+    "size": 262276
+  },
+  "system/lib/libstagefright.huawei.so": {
+    "sha256": "b1f7a57f253ce2e7f3a0d16a0125e36ec0cce9674536f3726c186a96caae6a65",
+    "size": 17968
+  },
+  "system/lib/libstagefright.so": {
+    "sha256": "5243708e6e40399ffee49110da9654e2ddad4b1d4d907248bdab8256b35c952c",
+    "size": 1485976
+  },
+  "system/lib/libstagefright_amrnb_common.so": {
+    "sha256": "bd99d309bd9e1169e33f41a5852ae955dcc2bd6b00e13cd1a247f437c530e4c1",
+    "size": 58928
+  },
+  "system/lib/libstagefright_avc_common.so": {
+    "sha256": "08c61aeb91dca20c149554a2b0e1ad7668dc6c2568b16db5b6ed915e79c29ea6",
+    "size": 30204
+  },
+  "system/lib/libstagefright_enc_common.so": {
+    "sha256": "3a7347e4048bc30f13c14e772d82166743257d646868c003cdae55448d20e343",
+    "size": 13820
+  },
+  "system/lib/libstagefright_foundation.so": {
+    "sha256": "d2b1d80359b0fadd37f69c2478e316f31d4155d288394f91fe881e361f80e072",
+    "size": 104040
+  },
+  "system/lib/libstagefright_http_support.so": {
+    "sha256": "164100fc36bf45bc942168204a51a26ec4915b5fed333f6fdb712abd8ae1cce0",
+    "size": 17916
+  },
+  "system/lib/libstagefright_httplive.so": {
+    "sha256": "cc63d0b0c3f4ca1703845a84ee2c08ee2df583f955147d142d7ca858c2205c4c",
+    "size": 153136
+  },
+  "system/lib/libstagefright_omx.so": {
+    "sha256": "d7e8986f7394e4c6b86d4299e6920660453efc0d264749f40d10b25d380e4a81",
+    "size": 198204
+  },
+  "system/lib/libstagefright_soft_aacdec.so": {
+    "sha256": "e0176896a4e6cac32a43ab99c3995089c64265e83c71bf70bd8d89ed770d21d7",
+    "size": 255796
+  },
+  "system/lib/libstagefright_soft_aacenc.so": {
+    "sha256": "b33f62a7601f943c0a2b399d6d9b8fdfdde796b335a40053b219c4e8ceaaa7ac",
+    "size": 292400
+  },
+  "system/lib/libstagefright_soft_amrdec.so": {
+    "sha256": "ac85dae07d61bea008083cce28c4912c9d35224ccfb0af1de32288f8834bfbde",
+    "size": 108144
+  },
+  "system/lib/libstagefright_soft_amrnbenc.so": {
+    "sha256": "305cd5db1956f2fc18188d865521d9730cfbd7c6ec8702d941c146bf087cfda1",
+    "size": 71216
+  },
+  "system/lib/libstagefright_soft_amrwbenc.so": {
+    "sha256": "e870fb2b9b1810862756ee6ac5b1512f2be43c427d50adc40c98242a4d818341",
+    "size": 176148
+  },
+  "system/lib/libstagefright_soft_avcdec.so": {
+    "sha256": "c0e718039c0141ea75702b60edafe9e63f781c0faed51fb4cf195fcb4481e998",
+    "size": 378416
+  },
+  "system/lib/libstagefright_soft_avcenc.so": {
+    "sha256": "90fcbfbedf570358f2c5dfce99adb251ebd167e79aae78343b921e4fbd9db8ab",
+    "size": 367516
+  },
+  "system/lib/libstagefright_soft_ffmpegaudiodec.so": {
+    "sha256": "fdbefe59a32fa5357ab3e29811e3bdbb2a532f75464759a80c71fcc3dc7b0ca5",
+    "size": 34360
+  },
+  "system/lib/libstagefright_soft_ffmpegvideodec.so": {
+    "sha256": "4a297aa9084f915622fcfa0ca034933c967a63c2feb8f95090cbcd64110d54fd",
+    "size": 34612
+  },
+  "system/lib/libstagefright_soft_flacenc.so": {
+    "sha256": "d10fee5c4a2c70810519bf320c7bbaedf7a0c0bfea36d6bb59d537806655e9ef",
+    "size": 226872
+  },
+  "system/lib/libstagefright_soft_g711dec.so": {
+    "sha256": "3617f08b81318f160d293e82dc872e9897d493117e61f01b7ef04d8a50323da7",
+    "size": 26160
+  },
+  "system/lib/libstagefright_soft_gsmdec.so": {
+    "sha256": "b04313e3fd237b212e5782bedb6d508f142b9e12f07b6171c0f359b6aef0263b",
+    "size": 34508
+  },
+  "system/lib/libstagefright_soft_hevcdec.so": {
+    "sha256": "142c56424211b72bc92cf5aa3050d7e2cdf30cfe9d4b3b69a6da35bc24ca6741",
+    "size": 497420
+  },
+  "system/lib/libstagefright_soft_mp3dec.so": {
+    "sha256": "7d30698b7ba7b6f0faf0b60e10c7f437378d898b4eef56bdc0f75ae2c15bb958",
+    "size": 83504
+  },
+  "system/lib/libstagefright_soft_mpeg2dec.so": {
+    "sha256": "209463d9b3b0bb69b5f8bd35c9f8800ca7ec63ac0bdcb8a0bbd9603563314870",
+    "size": 116272
+  },
+  "system/lib/libstagefright_soft_mpeg4dec.so": {
+    "sha256": "2c697ee306e59b1730292be129c2d83033690157cd5bf24eb2e0ef201592795e",
+    "size": 99888
+  },
+  "system/lib/libstagefright_soft_mpeg4enc.so": {
+    "sha256": "2be955dbc09d12fb633d040b0a28ff902a38778caeae082099d8103cdf6935d6",
+    "size": 128560
+  },
+  "system/lib/libstagefright_soft_opusdec.so": {
+    "sha256": "d0481e13000bc55fce9be9c18e36534cd0c297bfd74d22d7d1d5e4fb1e90aaeb",
+    "size": 30256
+  },
+  "system/lib/libstagefright_soft_rawdec.so": {
+    "sha256": "3035eb12fba1b5f615878342734dfcef050e4e63b56c789548ed7578ef52dc31",
+    "size": 26160
+  },
+  "system/lib/libstagefright_soft_vorbisdec.so": {
+    "sha256": "29b4e48d92015ee953533a36a2e5cf48000df20b2663d9305dec1243570bcddc",
+    "size": 30256
+  },
+  "system/lib/libstagefright_soft_vpxdec.so": {
+    "sha256": "17ed6c68141b7c299e0411501b8c6961d4115a330871dd62aa67c29a28945152",
+    "size": 472700
+  },
+  "system/lib/libstagefright_soft_vpxenc.so": {
+    "sha256": "6ac14876d28992fcac07986dae59751011a074008878969bce40ed399cf6b3e6",
+    "size": 697904
+  },
+  "system/lib/libstagefright_wfd.so": {
+    "sha256": "8f746d0e53f7c78e258f36d34844792c73b35dad118fd2b005598659ac6229a3",
+    "size": 190052
+  },
+  "system/lib/libstagefright_yuv.so": {
+    "sha256": "605a94b10f3129f5117fcc8eaff7b5ddadcff1b75f025d3ae3e412bc72b0b14c",
+    "size": 22012
+  },
+  "system/lib/libstagefrighthw.so": {
+    "sha256": "47ab6505f60adf9a87869e28fa8363e44548ac8d6771763122c4abe3db56f355",
+    "size": 22064
+  },
+  "system/lib/libstdc++.so": {
+    "sha256": "f1a02babb6cc5cab9f41ec204cf9f5c92ec568fdb33d045c4f0f8debe820de51",
+    "size": 21972
+  },
+  "system/lib/libsurfaceflinger.so": {
+    "sha256": "073d72eb6add36bdf1b5181a49727ce11c08432038216f50fb8a65fb550d8e0a",
+    "size": 255592
+  },
+  "system/lib/libsurfaceflinger_ddmconnection.so": {
+    "sha256": "4da612f26dfb8f6ad5cf7919fd2423ad0460398a4099c6885f867cbe7f20ca5b",
+    "size": 13820
+  },
+  "system/lib/libsuspend.so": {
+    "sha256": "ac0f953865393ce2bb4fabf05c340ae22f33b83dcc63b910023af19aee728ae8",
+    "size": 17940
+  },
+  "system/lib/libsync.so": {
+    "sha256": "3f3c5fc0e257456a096908a8951722f87e1108b5b483b60a25d40858e78d7fdc",
+    "size": 13820
+  },
+  "system/lib/libsysrms_jni.so": {
+    "sha256": "8a090010c5783ff49626603b832fd6a6572368a433b1f280a4033d03b3ef891c",
+    "size": 26184
+  },
+  "system/lib/libsysutils.so": {
+    "sha256": "b07f1e1de0681c86280f21a024183078d67c8904e0b5e4ab4cb8ab5f53434aac",
+    "size": 34352
+  },
+  "system/lib/libteec.so": {
+    "sha256": "07c146412b0802abdf723441d63bb5af133dd4ff7414672a492a3f688a7833da",
+    "size": 30208
+  },
+  "system/lib/libtinyalsa.so": {
+    "sha256": "e68d1e0bd62e13b5344edcf5ce4118e0f031a80f1828e3d2b5753840cb7947e6",
+    "size": 26324
+  },
+  "system/lib/libtp_capacitance_test.so": {
+    "sha256": "2bd4be53691125ab8bcc483616d675e018e738bb627efdd244c1ace415fe3106",
+    "size": 22024
+  },
+  "system/lib/libtrack.so": {
+    "sha256": "dfc5dd2fcf1aae36e45796fe461843d87b2d63ccb925efd69b345a15ab5e6832",
+    "size": 83084
+  },
+  "system/lib/libtranslator_jni.so": {
+    "sha256": "f03c5bf31bf7e847b0b76115e3502514ef21441c7cf6ca91bcd34264471730f6",
+    "size": 701404
+  },
+  "system/lib/libtrustzone_signature.so": {
+    "sha256": "f15663f07b2124ef675ae66e10b9bf6a61989157eeb422175f4cf12563700bae",
+    "size": 22080
+  },
+  "system/lib/libtrustzone_storage.so": {
+    "sha256": "ca6b3f0a394bd917e2d80a2fa85901ce3472974fd07207f26be94177a00d1a39",
+    "size": 18048
+  },
+  "system/lib/libttscompat.so": {
+    "sha256": "506fdae375ab89b3dca1381565830ace33563a162321e8404fdd792e627fb7b3",
+    "size": 22224
+  },
+  "system/lib/libttspico.so": {
+    "sha256": "14e1e6b59e7faadf7e745120c779f93726f155c1f2be47cf2651ea4afecb16c8",
+    "size": 211868
+  },
+  "system/lib/libtwcutchr.so": {
+    "sha256": "c39360597454a2f56d2c1c4c880a8bf64725d2d99c77af152cfa39bc3e953f39",
+    "size": 3703192
+  },
+  "system/lib/libtwcutckr.so": {
+    "sha256": "aaa532473a27f5fa54a2fc26bcb1cacb852220968f4117e2965160a0addf2c0a",
+    "size": 2981860
+  },
+  "system/lib/libtwcutle.so": {
+    "sha256": "0d8e7391931db3a103af71912fa987b980aac1370d133e74f930b24e080074fc",
+    "size": 1288276
+  },
+  "system/lib/libtwocr32.so": {
+    "sha256": "864a74577e1546e2d49901d037fdc13a7a0aa14047afc0cba0dd7a1b2a804918",
+    "size": 481560
+  },
+  "system/lib/libui.so": {
+    "sha256": "794ba8b5d64910e04e95366a328aceb420565a1b5317f5369c7d720110d05cb1",
+    "size": 58980
+  },
+  "system/lib/libunwind.so": {
+    "sha256": "c821315658adf87bcd3f266488ac9adcdcbd7ff6aeec77a9c1d2ce82c7889bff",
+    "size": 67116
+  },
+  "system/lib/libusbhost.so": {
+    "sha256": "8c701ff953bb40ec1815a6453598dcebb64c2ed3f78a0e029200b1268e3123f2",
+    "size": 22012
+  },
+  "system/lib/libutils.so": {
+    "sha256": "0c24bdd5451c0414f970728beba1fc674f4744b080d3febb64262aa6e77d2b50",
+    "size": 108148
+  },
+  "system/lib/libvia-ril.so": {
+    "sha256": "fa15c94f1d212c13734112598f81c3b8d0d58dc8aac0389bc0804b5cac3544bb",
+    "size": 290660
+  },
+  "system/lib/libvio.so": {
+    "sha256": "966edb69c94debff05807f5a3274b9913baaf7e1e2aa8a02ad130d381c9ad730",
+    "size": 13820
+  },
+  "system/lib/libvixl.so": {
+    "sha256": "3b65e4174d570786c8fd8b0bc2c309de1af38de81612a362151fd8bd4458269c",
+    "size": 720332
+  },
+  "system/lib/libvorbisidec.so": {
+    "sha256": "1be4c0eb8ba51943516d2c2b8e027561204553a0a9707371aedcaee919aef59e",
+    "size": 125460
+  },
+  "system/lib/libvpp.so": {
+    "sha256": "9d946d10bdca974411412b2822da7d20f1b6da3b90096c6e2c88f89a74997af4",
+    "size": 17916
+  },
+  "system/lib/libwebrtc_audio_preprocessing.so": {
+    "sha256": "1856ef2f813d0e04b659938236b636c3d16329e26f85fe1910df27f2a1386d81",
+    "size": 431736
+  },
+  "system/lib/libwebviewchromium_loader.so": {
+    "sha256": "b594aa7717447727a91c8e0d7f83b5eca4b3c6032086db4dc91fff7cd0c450a6",
+    "size": 17916
+  },
+  "system/lib/libwebviewchromium_plat_support.so": {
+    "sha256": "076f4bab460f8ad0119410f8517a6cfd517ed76ecb223eda0d3d2d7afc2cf109",
+    "size": 17916
+  },
+  "system/lib/libwifi-service.so": {
+    "sha256": "6ad897658bd81036cee9615f88aa9aad0156e78ee98eb9db0e704cc4771391de",
+    "size": 129260
+  },
+  "system/lib/libwifi_factory_test.so": {
+    "sha256": "d131bdf3041705259c4963a96ffc067afcfd39d8a70e2617b09fba71496c104c",
+    "size": 22012
+  },
+  "system/lib/libwifichrstat.so": {
+    "sha256": "ec0cc6775c6be10f24ff79008affee8d611ecb84a1092d45a4d8c81afe9ec0d8",
+    "size": 13832
+  },
+  "system/lib/libwifipro.so": {
+    "sha256": "3262cdbcbe6110159d6639678bba067f6d0a5d11c05d5f00da7a9b7a849738b3",
+    "size": 17984
+  },
+  "system/lib/libwilhelm.so": {
+    "sha256": "ad05146344881c3004b8806cc7523b06989ba0864574a64f482601529f88faf0",
+    "size": 177772
+  },
+  "system/lib/libwnndict.so": {
+    "sha256": "edf373e5a8a60eaa00654f28b256d3df39635bca6899cdcb4f05a6e7f939f818",
+    "size": 54780
+  },
+  "system/lib/libwordseglite.so": {
+    "sha256": "3fda06f08f4b197350e71805585c8ceec2512c3d2fbe9b9dc99ccf0a08c2509e",
+    "size": 37988
+  },
+  "system/lib/libwpa_client.so": {
+    "sha256": "2ed251a10c1e4cc5fe641c40bd943e022eaf6c12005b4daf13e282efdd06cd24",
+    "size": 22016
+  },
+  "system/lib/libwxvoiceembed.so": {
+    "sha256": "8799e828f1a14e8c8f851aeed50c31aad08528dad73b1c30bac3553b1515b7f8",
+    "size": 185652
+  },
+  "system/lib/libz.so": {
+    "sha256": "3693aae335af4d3ceaa6ca2385f3efc19f9909e29a09401b2c56031f91cb252a",
+    "size": 112224
+  },
+  "system/lib/soundfx/libaudiopreprocessing.so": {
+    "sha256": "727134dfc76585af31349dcc2bdf5104a4f995879fd7bad50195c7446be36ea9",
+    "size": 22044
+  },
+  "system/lib/soundfx/libbundlewrapper.so": {
+    "sha256": "63bc5a0bba59c41ad9b559f4a5c008ead764c5de24df0fc9e43898bd51402e19",
+    "size": 75888
+  },
+  "system/lib/soundfx/libdownmix.so": {
+    "sha256": "12ca385379d27164a569bf67a1b90bee3e62d822b9cffb93e300a62b88aa7db1",
+    "size": 17944
+  },
+  "system/lib/soundfx/libeffectproxy.so": {
+    "sha256": "e74e7bbe4754be97d98819ecf57fb342be4e2372c1bb18c4411dd3107f8367dd",
+    "size": 17944
+  },
+  "system/lib/soundfx/libldnhncr.so": {
+    "sha256": "4555d63b2c73f4e1d5a1ed59c426b16e035c3891d2f84d85df6f6a6ef91707c8",
+    "size": 17944
+  },
+  "system/lib/soundfx/libreverbwrapper.so": {
+    "sha256": "007e722cf497de1887ea3fb1c2689dd8cf23fe345ecc2e22784efa98d5d6c2c5",
+    "size": 42520
+  },
+  "system/lib/soundfx/libvisualizer.so": {
+    "sha256": "3bfcb6043caa4bc94582bfcf70015cc18486df7446cd291fac8c27bb6f00e3f6",
+    "size": 17944
+  },
+  "system/lib/static-hal-check.so": {
+    "sha256": "573b9559e72633f51aa87289d7c938ffdc6084b16811d99aeeb9999c1f4c5bd0",
+    "size": 34300
+  },
+  "system/lib64/crtbegin_so.o": {
+    "sha256": "9bf4124a1f83357eb83695769c59c5700b37d23fdf8f0aff9685d2b75e098e39",
+    "size": 2312
+  },
+  "system/lib64/crtend_so.o": {
+    "sha256": "c457b9e0e385ffce9a3d9a70f34de5012853be8bdcf58da2cd219cd01ecbdbb1",
+    "size": 768
+  },
+  "system/lib64/drm/libdrmhwomavoneplugin.so": {
+    "sha256": "e11cebff055b3deb8e42ce3f6913fab6864a3a513660e0a7fb3e0b86b5868f5e",
+    "size": 171240
+  },
+  "system/lib64/egl/libGLES_android.so": {
+    "sha256": "cbb88b27e3c1febe0016519593a086c962bd22b5823a35c17330118409dd04c5",
+    "size": 132904
+  },
+  "system/lib64/hw/audio.a2dp.default.so": {
+    "sha256": "dc594a8e28c78ee6af22630314ec40c0e1afb5345c76dc5467ad5b82b0a71185",
+    "size": 22408
+  },
+  "system/lib64/hw/audio.primary.default.so": {
+    "sha256": "8effe5c998750ffb373cfa904d2183a04201ef1a7a062f062f298d8d34920de3",
+    "size": 10120
+  },
+  "system/lib64/hw/audio.primary.hi3635.so": {
+    "sha256": "b678941714d83feac79b1e62691ee74f45429172d9376519f265de893b897c54",
+    "size": 674560
+  },
+  "system/lib64/hw/audio.r_submix.default.so": {
+    "sha256": "20db8ad88dcd2344b04250437fa0ae26e9c03cf7e6dcdf782e29557c408fdd58",
+    "size": 34792
+  },
+  "system/lib64/hw/audio_policy.default.so": {
+    "sha256": "2f6b740432b50da619d82776888fe52a7bc78448320d3c0cd36d261ae6e3cbee",
+    "size": 133344
+  },
+  "system/lib64/hw/bastet.hi3635.so": {
+    "sha256": "4bc66d28a30dfd5afc9aac6afdeb03ec0eef893c44ddfb7185506f67b56db418",
+    "size": 6024
+  },
+  "system/lib64/hw/camera.hi3635.so": {
+    "sha256": "845f3a63ce63cba80f301199a4c915133f390c7cdbfbfd44fb8d68359a5633d8",
+    "size": 4988264
+  },
+  "system/lib64/hw/copybit.hi3635.so": {
+    "sha256": "51871ae98ac0c65ef9c0f72a0cc43a414e2aa85ad83773d972176a821be1f713",
+    "size": 14216
+  },
+  "system/lib64/hw/displaycaps.default.so": {
+    "sha256": "51c04b43e29d3c637a7a0491baa9ae32c90cf2729927f3b1442976012e56d025",
+    "size": 6024
+  },
+  "system/lib64/hw/fingerprint.hi3635.so": {
+    "sha256": "3bb127fa45c7c62264cb06b8a4acbba8c2bf354c092b94e19aef4f77494a3fe2",
+    "size": 42912
+  },
+  "system/lib64/hw/fingerprintd.ex.so": {
+    "sha256": "5c44846fbd76ace188aa3aa507d6fa9f7dbb43a67157f879430dc0c82fe70bc2",
+    "size": 79648
+  },
+  "system/lib64/hw/flp.default.so": {
+    "sha256": "99b7a304ab10230342d49fb4ca4c088360bac0b3a6c8dc480909ab5f98435d04",
+    "size": 133112
+  },
+  "system/lib64/hw/fm.bcm.hi3635.so": {
+    "sha256": "176123b4c85968d70d2a66ece104c70f433b6cb8d6974c07a58b735e2972b80d",
+    "size": 75984
+  },
+  "system/lib64/hw/gatekeeper.hi3635.so": {
+    "sha256": "8763d2976fce7ce5406a7470ac6bfd4fe6cb4f001dfa1570faec6340b12b8b50",
+    "size": 10120
+  },
+  "system/lib64/hw/gps4752.default.so": {
+    "sha256": "e964e24ed94e611e3d0df43bd82ce74cfc4624ed5a5cc67474c632f711d059fe",
+    "size": 183064
+  },
+  "system/lib64/hw/gps47531.default.so": {
+    "sha256": "83de2d9187ed5759c0573eb013a5fa6925ac3d13daab3ea826ecfa308f60a675",
+    "size": 183064
+  },
+  "system/lib64/hw/gps47531cl.default.so": {
+    "sha256": "46439e332cfd0b6e1831a5b4b3080c41be3b2c602b297dc033d5cf0835b07969",
+    "size": 166448
+  },
+  "system/lib64/hw/gralloc.default.so": {
+    "sha256": "79aa768de0dcfca056ec17d6d409dfe9f6c47952d6c42ab36916b3a90fbc9b2f",
+    "size": 14656
+  },
+  "system/lib64/hw/gralloc.hi3635.so": {
+    "sha256": "6e6bdc076d2b03fe7936aa7df39a544a958bbdc5c555be53db043ef4fd3f3144",
+    "size": 34528
+  },
+  "system/lib64/hw/hwcomposer.default.so": {
+    "sha256": "5714e6f4b609c807e0622336bffcfd3da5eb61bac0fa57c0d36d9f3cd76fe169",
+    "size": 6024
+  },
+  "system/lib64/hw/hwcomposer.hi3635.so": {
+    "sha256": "46287c2a098505b26fd2d25873eeab11762c632be7caebedf72f0328a0340591",
+    "size": 317304
+  },
+  "system/lib64/hw/keystore.default.so": {
+    "sha256": "69d81826d831f13d9082c9f163828f042292addf12e3b4c2bfa2d9c9a72f3c66",
+    "size": 5776
+  },
+  "system/lib64/hw/keystore.hi3635.so": {
+    "sha256": "3d3e4fd4ea4cf5b9bccb6ac1e9f97d1a8831f334cc2c65027fb04204ad55d155",
+    "size": 42888
+  },
+  "system/lib64/hw/lights.default.so": {
+    "sha256": "5893ff8276acd925f4bfa9ae9fbe2e70306396ce3e9402b4622381b9dc9aa68f",
+    "size": 18552
+  },
+  "system/lib64/hw/local_time.default.so": {
+    "sha256": "7ea46b7c42e3cfcb907f03bf1bd6bf69614c074aeb5a621a7ce2137d2986df34",
+    "size": 6024
+  },
+  "system/lib64/hw/memtrack.hi3635.so": {
+    "sha256": "6c6a97c4d48da3c59c8c24159e4449e3deee3590803fd6c3dd4a7df2d1f5d9f2",
+    "size": 10160
+  },
+  "system/lib64/hw/nfc_nci.pn54x.default.so": {
+    "sha256": "ddce580d85fdc2e79dbc5c6b51aa65730656223535c4a7e2c3c2ed4124c1cce2",
+    "size": 190336
+  },
+  "system/lib64/hw/power.default.so": {
+    "sha256": "ee9e36c56d78e5b7c91309813079713de936e300f131cfff1cab84a39bf98db1",
+    "size": 6048
+  },
+  "system/lib64/hw/power.hi3635.so": {
+    "sha256": "172019019f44d3f038bb6c88a99a5901751065922a586baa2412fd070e9febc7",
+    "size": 6096
+  },
+  "system/lib64/hw/sensorcaps.default.so": {
+    "sha256": "148caf84a12cb151d79f5c20d8877188a723d9319acf40165fa12b8bd32806e6",
+    "size": 6024
+  },
+  "system/lib64/hw/sensorhub.default.so": {
+    "sha256": "baa0fe175a83e477645c754119d08ec4ef854255333d87f929e53357c3dfa18f",
+    "size": 34808
+  },
+  "system/lib64/hw/vibrator.default.so": {
+    "sha256": "d97875c4babedd884727b6e3366166fb21343384bff967a2fd6704cd7b122d6b",
+    "size": 10120
+  },
+  "system/lib64/hwcam/hwcam.ddt.so": {
+    "sha256": "1aec643d27b9f4ed546f4179212fdcd748566190f8d4d1e5f18ec274db79e268",
+    "size": 73800
+  },
+  "system/lib64/hwcam/hwcam.hi3635.CARRERA.p.imx179_liteon.so": {
+    "sha256": "2fd7b33ff4018afed1dad3908550cae067cebdd3f794a27b38304f93c64fa31f",
+    "size": 58744
+  },
+  "system/lib64/hwcam/hwcam.hi3635.CARRERA.p.imx179_sunny.so": {
+    "sha256": "33d3c67c3d8a6208b8a00c173fbdf4e5c55668b9faa93d4058189b77a035e80f",
+    "size": 58744
+  },
+  "system/lib64/hwcam/hwcam.hi3635.CARRERA.p.imx278.so": {
+    "sha256": "eae0e2f4a1107a46c61e27d6f4f8a957e6cdf4f3c5409b0f01821609646a3a26",
+    "size": 58744
+  },
+  "system/lib64/hwcam/hwcam.hi3635.CARRERA.p.imx278_lg.so": {
+    "sha256": "4d7ccbb30c0207701c7adac750be9696d6459b3e9c8e7e051b4c7ec9ba3f2564",
+    "size": 58744
+  },
+  "system/lib64/hwcam/hwcam.hi3635.CARRERA.p.imx278_liteon.so": {
+    "sha256": "42083c534344da772427204cb979a58962dc4a8ad4cad19c30699a62b81253dc",
+    "size": 58744
+  },
+  "system/lib64/hwcam/hwcam.hi3635.CARRERA.p.imx278_sunny.so": {
+    "sha256": "65a4277676ae3ec8809c00acc8eacee6c01c8f45f760f1f21035149806c752d9",
+    "size": 58744
+  },
+  "system/lib64/hwcam/hwcam.hi3635.CARRERA.s.imx179_liteon.so": {
+    "sha256": "18ad5943450ee72c5b2589541eb7f21038774234cdb3a074b6ad29cae0f62210",
+    "size": 22720
+  },
+  "system/lib64/hwcam/hwcam.hi3635.CARRERA.s.imx179_sunny.so": {
+    "sha256": "828b8aeac1bd0e36d6ed4bdf9d99dbd20e41428fe8bfa0a789b8f16a0e3c0127",
+    "size": 22720
+  },
+  "system/lib64/hwcam/hwcam.hi3635.CARRERA.s.imx278.so": {
+    "sha256": "562afaf6fc7215442f948a19527590c8c2171b380350e404f66519e8d2fdba06",
+    "size": 22640
+  },
+  "system/lib64/hwcam/hwcam.hi3635.CARRERA.s.imx278_lg.so": {
+    "sha256": "ca9894c6c985288fed9171fa2e672a9ca6080f0c940364e0f2f73520c7ec18ac",
+    "size": 26976
+  },
+  "system/lib64/hwcam/hwcam.hi3635.CARRERA.s.imx278_liteon.so": {
+    "sha256": "e1fe20d3d823a1700772b6c0be6e96bb3c07aed7a1f48ff64da10a936dab5078",
+    "size": 26976
+  },
+  "system/lib64/hwcam/hwcam.hi3635.CARRERA.s.imx278_sunny.so": {
+    "sha256": "8be08c6e5418725939dc227f6d63ad2c6b6a5479796b6306c460b12de6167f2b",
+    "size": 26976
+  },
+  "system/lib64/libAntiTheftService.so": {
+    "sha256": "2b43b0d56e456e3ef8f48518149feeff508e4fc9376d2ed53fb987e36fd806bf",
+    "size": 50904
+  },
+  "system/lib64/libBootloaderOeminfo.so": {
+    "sha256": "1a1ad352fb75eba53b05286d251686c7d884f4469cca56649078ddf5c5cf8f09",
+    "size": 5696
+  },
+  "system/lib64/libCameraHwExtend.so": {
+    "sha256": "d51454dfe3e4afdbb3445db68fee7d8574ec4aaba8fa0d1b00e0aec814da40db",
+    "size": 182256
+  },
+  "system/lib64/libEGL.so": {
+    "sha256": "4f4a7782721f69886d85e5f2f86ef40159193943bd26202edc284a0a7af271e4",
+    "size": 907464
+  },
+  "system/lib64/libETC1.so": {
+    "sha256": "de4fc930b668edd05372061363250e2b1ae45c456c53062383c798f70dad7494",
+    "size": 18056
+  },
+  "system/lib64/libFFTEm.so": {
+    "sha256": "46f6c0a75ee0b95b9790c4f01798992ddfd5ec9b9668d613a165af930ff7050f",
+    "size": 382720
+  },
+  "system/lib64/libFingerprintMMITest.so": {
+    "sha256": "7e61eaef018402bd090796aaef6d7b0cf80061a571e54809ebc38310472b4905",
+    "size": 9912
+  },
+  "system/lib64/libGLES_trace.so": {
+    "sha256": "dc90221ff13a57def2715aadf68ec94b209b5099942f4f40e0b88244785cb7c5",
+    "size": 865800
+  },
+  "system/lib64/libGLESv1_CM.so": {
+    "sha256": "7bded3af92308df7c1876e6bb62571d26d48705bc78f42ff86fba019d34affe8",
+    "size": 54848
+  },
+  "system/lib64/libGLESv2.so": {
+    "sha256": "d3c81434c90cf4836db9a37e1527f26469ed342e590990c3923dc39fd26df4eb",
+    "size": 95808
+  },
+  "system/lib64/libGLESv3.so": {
+    "sha256": "d3c81434c90cf4836db9a37e1527f26469ed342e590990c3923dc39fd26df4eb",
+    "size": 95808
+  },
+  "system/lib64/libHWCamCfgSvr.so": {
+    "sha256": "0c364032b403a4913af479388b63ef5dad0f3b65019a0ffc8be7676eb5b821f0",
+    "size": 87840
+  },
+  "system/lib64/libHWCamCfgSvr_jni.so": {
+    "sha256": "675c676239d44a80d9fc9bcf1e0e5cee0c024b9844687b48d5366a0dde901d85",
+    "size": 9968
+  },
+  "system/lib64/libHWExtDeviceService.so": {
+    "sha256": "77701478e4c3bc82ffe0969047e1a4c4a53c6177b22d6353d1447c3feb30fa05",
+    "size": 87904
+  },
+  "system/lib64/libHiSiUEAgent.so": {
+    "sha256": "357928c9b0f3d3ef4c7349246170889bba9cfa14c7b682c40519da460c9b9d2c",
+    "size": 455400
+  },
+  "system/lib64/libHisiEncClientDll.so": {
+    "sha256": "e2d0efa95913f019f5a020be752614047392d5ee285eb526000c30cfdc56f92d",
+    "size": 391160
+  },
+  "system/lib64/libHwExtendedExtractor.so": {
+    "sha256": "7ada1fedb90cf071303265fb04a9baa90d22c4d1d7d2313bd095837ff56b8c99",
+    "size": 55264
+  },
+  "system/lib64/libHwMMITestCustEx_jni.so": {
+    "sha256": "195e585897c57ff07af49dbbce3122564971e62125741efcfd749fc15904ca65",
+    "size": 9960
+  },
+  "system/lib64/libHwManufactureCustEx_jni.so": {
+    "sha256": "0828dcbedb45b962c6ec5bbec9ddee44df7fec97a8e4872de5995f0c965a736f",
+    "size": 9936
+  },
+  "system/lib64/libHwMotionRecognition.so": {
+    "sha256": "53d989cca8054229dcfdc5628bd61758948bf2f20ab1543d52c6e005b0cce4c0",
+    "size": 30688
+  },
+  "system/lib64/libHwTmr.so": {
+    "sha256": "f9007107b6ffc8bf8a5ec63e3425b22b0cf23ba32ca704dae9d17dfd82d1c4e4",
+    "size": 554592
+  },
+  "system/lib64/libImmVibeJ.so": {
+    "sha256": "0d8963476fa12741998262b8238a129f054b39a04e9d18cad757cd87879e0a42",
+    "size": 225016
+  },
+  "system/lib64/libIrLearning_jni.so": {
+    "sha256": "ae3ab8d42170f136b97238451ce9c4e7dd7fb8ed351becbf80d0d5e35f0c8f4a",
+    "size": 10104
+  },
+  "system/lib64/libLLVM.so": {
+    "sha256": "59378ee946762d19d8ed337e1d14c7e6cf3e3d6f659160c83359fc24e45c7a27",
+    "size": 16523008
+  },
+  "system/lib64/libOpenMAXAL.so": {
+    "sha256": "0781af36305ae3c0e58ccf8b4df38faf1bb5acedb6bc4516694b99e12a0c5e47",
+    "size": 9944
+  },
+  "system/lib64/libOpenSLES.so": {
+    "sha256": "692bfeb88fadf1f9b0c9dac3f8cb5b43c6101828168c9e161b7d611a1e7f8acb",
+    "size": 14040
+  },
+  "system/lib64/libProjectMenuCustEx_jni.so": {
+    "sha256": "1559016c6ba67b07068848494ecb3e7af7d69d71ac41f7a882696e8f0a8fc46a",
+    "size": 47408
+  },
+  "system/lib64/libRS.so": {
+    "sha256": "4810ee4d572814b57ddd370ad3c7f8b20d22f884b3735e559709ad3ef460baf1",
+    "size": 367784
+  },
+  "system/lib64/libRSCpuRef.so": {
+    "sha256": "734d393b2809dc8a7b4168f913066e7702dba69cf1735e29c2a86bec9f845c97",
+    "size": 284416
+  },
+  "system/lib64/libRSDriver.so": {
+    "sha256": "f772caf4344446506dd883461e9cb072b02ede0a3de2b4c9c61a5adb53ddbb4c",
+    "size": 206568
+  },
+  "system/lib64/libRScpp.so": {
+    "sha256": "798e6dfd6876d79dc34b52d2cdddb932bbc4f910a26e7107757b259e31ad8178",
+    "size": 173800
+  },
+  "system/lib64/libWnnEngDic.so": {
+    "sha256": "7af3b4ca1a9eed5a1fe1af7ff07459a55cc58cd99642a8ae564eca39dd757ac5",
+    "size": 1193136
+  },
+  "system/lib64/libWnnJpnDic.so": {
+    "sha256": "14bd5dbed67d50bd64f8a909e5bb4f896ea982edfa0bb91237024fa65d59eb50",
+    "size": 1342048
+  },
+  "system/lib64/lib_atprotocolsw.so": {
+    "sha256": "3d2894a65774bfe76d007f1ffa950df04991909c293d2b7a4c971fb51c5ee2ad",
+    "size": 18136
+  },
+  "system/lib64/lib_fpc_tac_shared.so": {
+    "sha256": "540cd3def03c48c935cb52eaa10592f42c492393cbda8520c09b2664550264f4",
+    "size": 38552
+  },
+  "system/lib64/lib_k3_ffmpeg.so": {
+    "sha256": "66196b35042207a4bf9fbdd4ddb006cf2e031c16358fcaa67fc266ffab5dc605",
+    "size": 9287032
+  },
+  "system/lib64/lib_nve_operation.so": {
+    "sha256": "83fbe5c6b72ba987c00ada4c4d9c028e4b4d42dfde7b2a7dd34d2857c25c31eb",
+    "size": 9864
+  },
+  "system/lib64/lib_oeminfo_interface.so": {
+    "sha256": "ccb8dca46af4f6f4bd442ea391d559978b8f2793f6546c88fb8a93194eea25c4",
+    "size": 9864
+  },
+  "system/lib64/lib_runningtest.so": {
+    "sha256": "1de567c0a4514b0cbef51c13194bcbda2e0430ec8e0ddee918ea72b023f08075",
+    "size": 60128
+  },
+  "system/lib64/lib_vibrator.so": {
+    "sha256": "d140e74ca35e6a7ff05290c3648a084b2660ee936cc70ece0fc3a2319cbc3068",
+    "size": 5768
+  },
+  "system/lib64/libaes.so": {
+    "sha256": "471ed65b417a4d98edc8b5587a26cfe63f51bfe1a116c7f5c28e176ba522bd7b",
+    "size": 9864
+  },
+  "system/lib64/libandroid.so": {
+    "sha256": "af9777c86f1c4ab78f1f8f55d12f4cebd864518cdc6f98becce77c1389fe8702",
+    "size": 108320
+  },
+  "system/lib64/libandroid_runtime.so": {
+    "sha256": "f02f26eed0bccf0814e2032c39faa640b533d93f40bb235ece74c9e5b008792a",
+    "size": 1601592
+  },
+  "system/lib64/libandroid_servers.so": {
+    "sha256": "403be647bd444e622b4c20a54a66bc7c48d4df892a95e2509f413b4a3e28e619",
+    "size": 231368
+  },
+  "system/lib64/libandroidfw.so": {
+    "sha256": "e4c87be14a7052f3760d8db1fcf0cf1bd025dc3c01f8d9dc001a75e99947fa2c",
+    "size": 256520
+  },
+  "system/lib64/libart-compiler.so": {
+    "sha256": "85ed1939f56065fa2ba30b65438c14f21aae85c84a8b60c42a016d261e8b6a07",
+    "size": 4927480
+  },
+  "system/lib64/libart-disassembler.so": {
+    "sha256": "2a2a075eefef775443bbb9c6c60cfe4df7a0623f1c3cb5d99697ac73146ee68b",
+    "size": 187176
+  },
+  "system/lib64/libart.so": {
+    "sha256": "53cc2d9b8ed550c5fb9e404f13f200659aeb7368bbda3f91b5893acc78163674",
+    "size": 7523224
+  },
+  "system/lib64/libatpswdck.so": {
+    "sha256": "cb0982fe2211251a0a0cd7247f8e4e49527a856972aeac5ca78c45fccf73d264",
+    "size": 18056
+  },
+  "system/lib64/libaudio-resampler.so": {
+    "sha256": "4945d3cd97711c2b95d41cf9b1ba90ecb0ec622daacd9b7812a9a0ebf7cdf9cb",
+    "size": 22152
+  },
+  "system/lib64/libaudio_custom.so": {
+    "sha256": "9a3b2980bc111f517994e953b935e3fffc1529a5f41812e2d2d5816031806129",
+    "size": 26472
+  },
+  "system/lib64/libaudioalgoservice_jni.so": {
+    "sha256": "fc2195de444780fe46a2575b93a0679a81c49230683fbd80003a162f16a1a785",
+    "size": 30544
+  },
+  "system/lib64/libaudioeffect_jni.so": {
+    "sha256": "2e86228a700b8dd0855e61c91104dbce411e56c2578dd18ae691d9a1ea6971e0",
+    "size": 31168
+  },
+  "system/lib64/libaudiopolicyenginedefault.so": {
+    "sha256": "51d2b08b9fb52026aa8c8e9fb7bb42fba2cf18e8a80f0b33f377a03b51b8eef3",
+    "size": 137392
+  },
+  "system/lib64/libaudiopolicymanager.so": {
+    "sha256": "43eaa0791253b2ad7aa872c1de9b74264eeaa94ebefd622271e6964007545dfd",
+    "size": 5696
+  },
+  "system/lib64/libaudiopolicymanagerdefault.so": {
+    "sha256": "c06efb078bdf255476aaaa6ce3487efdf198f41b30869c35729dfcc9716034d0",
+    "size": 296688
+  },
+  "system/lib64/libaudiopolicyservice.so": {
+    "sha256": "5ff529eb4b05485f84f72ab3c1764eb1929f3fbccb30b85e56d419dd2a50c801",
+    "size": 116560
+  },
+  "system/lib64/libaudioroute.so": {
+    "sha256": "bf9979b67fef83afe81807fb649c05a920f919de83a1222d03d52b40e93ca026",
+    "size": 22152
+  },
+  "system/lib64/libaudiotestalgo.so": {
+    "sha256": "c308c5b1640ebe05fdcedb1fe706b537714e10e2c64130614fc3ed518a5859c7",
+    "size": 30344
+  },
+  "system/lib64/libaudioutils.so": {
+    "sha256": "8c76e55d4b2bbaa033fcc2e749f5889e873e5b408cb5671ee5b88b534db3029b",
+    "size": 46728
+  },
+  "system/lib64/libavcodec.so": {
+    "sha256": "f042a12c4c782477409d6e3be1f95eecf97f096dd0f2d8fc35b2d2544b0c8b22",
+    "size": 5235336
+  },
+  "system/lib64/libavutil.so": {
+    "sha256": "16c806e30db57911ea8e69cc4a091f04af49a2b58bb788f6b2ebf73b7ce4ec31",
+    "size": 132592
+  },
+  "system/lib64/libbacktrace.so": {
+    "sha256": "8b59bfe8a9587d55ee95767cb12ffd7dd44932f3826ed66ff404b22b5c6cc2ca",
+    "size": 51000
+  },
+  "system/lib64/libbalong-ril-1.so": {
+    "sha256": "249d9aca620d26d2b27348ad7358eb008034d85471915e37e0860fcc66ec1b24",
+    "size": 570784
+  },
+  "system/lib64/libbalong-ril.so": {
+    "sha256": "6ae0f1fc109683b35a2568377cb546b97d6fee83c03429e9e3300ed368700086",
+    "size": 570784
+  },
+  "system/lib64/libbalong_audio_ril.so": {
+    "sha256": "245718ca42f46ddd995ab673578342245d71f2d033190987ab2c48241f0b221d",
+    "size": 34536
+  },
+  "system/lib64/libbase.so": {
+    "sha256": "9857f19433664342ac01ea3bc1d43816033916f8b8b106209ee1d5caf9e173a6",
+    "size": 38808
+  },
+  "system/lib64/libbastet.so": {
+    "sha256": "bfb3e6f5bfc3bb4658dd4a16a60076981e95f3db39119e7a100225325809528c",
+    "size": 301528
+  },
+  "system/lib64/libbcc.so": {
+    "sha256": "4b45d0dc61d81dbe8a534fdfb76db594aa65fc9a54a01468816c79f992b04a85",
+    "size": 407352
+  },
+  "system/lib64/libbcinfo.so": {
+    "sha256": "78ef15ca377fa87fbd10e8dd20bd90b12b0ae6b7f65beb96912a6e5b6189c73e",
+    "size": 309048
+  },
+  "system/lib64/libbinder.so": {
+    "sha256": "e699815ad25b75236ac306cb0a71468e18dac8d8554b133d360a1ce4b95933cc",
+    "size": 325512
+  },
+  "system/lib64/libblas.so": {
+    "sha256": "426d5ece5cb64f58c638da6f0bfbba69b9ae91798f84d08421715b63296ad38b",
+    "size": 1062560
+  },
+  "system/lib64/libbluetoothex_jni.so": {
+    "sha256": "f85cbf971e5dc54b745babc063eaf754c3510e4f25a157229be4591e58a6c590",
+    "size": 9936
+  },
+  "system/lib64/libbt_factory_test.so": {
+    "sha256": "081de0ef18e47e6009ce668070c998453c251f0f7583a8a823e4676330cad957",
+    "size": 22296
+  },
+  "system/lib64/libbtaddrjni.so": {
+    "sha256": "eea484a5bc19b24ae58321b2478618ae19f90da671265d626502184ff0ed9775",
+    "size": 9912
+  },
+  "system/lib64/libc++.so": {
+    "sha256": "6ceacce2f3cd6696e5595975e63a1b05991bd15a0a28aae4a8714756d49c3c8c",
+    "size": 944152
+  },
+  "system/lib64/libc.so": {
+    "sha256": "77c0c8a0c69eb0359a0729c7f27bd0059eee17fc8b67220e5734fb68e9e6f87c",
+    "size": 1041856
+  },
+  "system/lib64/libcamera_client.so": {
+    "sha256": "751706a7edf34174e8faeb03db3b556f12cd03d8cf29ee91d9bf2e4aed805bc1",
+    "size": 300864
+  },
+  "system/lib64/libcamera_metadata.so": {
+    "sha256": "5871947e2ee46c8d2ef21fa47133e62a24e466b52a64fa810d7b652073d11cfe",
+    "size": 42704
+  },
+  "system/lib64/libcameraservice.so": {
+    "sha256": "9794a0fa07722accdc14f8c3dfb3ce804a66e23a700dd10d045a9f8f7adecf85",
+    "size": 1144808
+  },
+  "system/lib64/libcheck_script.so": {
+    "sha256": "c6d76a7f36e98917f29f01f420378e643250521c9afd30b0b0d44c7c318478f4",
+    "size": 260936
+  },
+  "system/lib64/libcommon_time_client.so": {
+    "sha256": "94445717748a2ae7d3a17f4b7d8953d12d5de605d42d79e0fca99113b3c4f931",
+    "size": 83744
+  },
+  "system/lib64/libcompiler_rt.so": {
+    "sha256": "2b0e1fef5da52d28ece20c0e5a30754ddda4e5a63b5879729e9797b1338bf8ae",
+    "size": 112368
+  },
+  "system/lib64/libconn_factory_test.so": {
+    "sha256": "986ccba9860d836b5123bbd649dcefe552203245f1a5c7a6633385ef3c0b1d2b",
+    "size": 13960
+  },
+  "system/lib64/libcontactsnaqtodat.so": {
+    "sha256": "538f0ce2e58d7d3577bdc324adafc00e0526551c7bd3cfd40abe610414458e13",
+    "size": 22152
+  },
+  "system/lib64/libcrypto.so": {
+    "sha256": "7c8d4988f7f60169f08d5c29299f223f4c0cc76b9cb352ddd59f0c6e774b8ace",
+    "size": 1137384
+  },
+  "system/lib64/libcrypto2.so": {
+    "sha256": "9dd90ef0a8df0c4657f6e404588d297cbe2d8799179a659da896d7cadf6e74da",
+    "size": 1554960
+  },
+  "system/lib64/libcustpwmanager_jni.so": {
+    "sha256": "71f7bc472a85ea40f8b86bafb4ff00674f386794f5e4b6035722c30879b79b23",
+    "size": 9912
+  },
+  "system/lib64/libcutils.so": {
+    "sha256": "66ee74ca530a7031ff25592cefca75528c3fc069b9ee991d77e34384c9247abc",
+    "size": 108544
+  },
+  "system/lib64/libdebugcustex_jni.so": {
+    "sha256": "a1c4e2de00603742cd0f9632be0a43e8c1658778496c29527a00d4c759c26fd0",
+    "size": 5792
+  },
+  "system/lib64/libdefcontainer_jni.so": {
+    "sha256": "e1ad471c7abebc08e93d4682e51f5261532ee8d33c9bf9cda320f9ba11052245",
+    "size": 9944
+  },
+  "system/lib64/libdicsearch.so": {
+    "sha256": "6d345666646a74da84499723f4ab3fb6fbf4e267b96880ffc40165ec3d9e7f90",
+    "size": 315096
+  },
+  "system/lib64/libdiskconfig.so": {
+    "sha256": "296fc3525c400f801c444026fe6236795e859de0c4743931def12a5436904c74",
+    "size": 22256
+  },
+  "system/lib64/libdl.so": {
+    "sha256": "769213e8aae22a815b05727509bcc04fdecd1757297202fe10668f0838fc83bf",
+    "size": 5792
+  },
+  "system/lib64/libdmd.so": {
+    "sha256": "976c9be5142bb49b30c6ed2adb14caede06fc139972b107caf3101be445ea0ec",
+    "size": 71728
+  },
+  "system/lib64/libdrmbitmap.huawei.so": {
+    "sha256": "d09b30eda428e0de9bcb8a8790f08dd35e82677e2c9fd43be1992b1c5c87b91f",
+    "size": 22232
+  },
+  "system/lib64/libdrmframework.so": {
+    "sha256": "3744fbf88eda83506585270e0f1bd9fb8b8551ace39ea1405c4ad64971aed254",
+    "size": 157472
+  },
+  "system/lib64/libdrmframework_jni.so": {
+    "sha256": "3c7b4b730527270f92136ee662f5768fe93d81d4b9af60911e932a4bbf70016e",
+    "size": 47336
+  },
+  "system/lib64/libeffects.so": {
+    "sha256": "e7ff49d86f48ce22109c9db17feeb3961b92aca7c5dd05bbe56929fd456784a6",
+    "size": 18136
+  },
+  "system/lib64/libexif.so": {
+    "sha256": "469dfbe09031bc277e5757b3bb7f4168a1d2b8dfda3c583dc6d6a2050f408fb1",
+    "size": 276200
+  },
+  "system/lib64/libexpat.so": {
+    "sha256": "17adc0bdcd0a620d745b02d9fe456691b26b11662d653edfd635ea43b84bea4b",
+    "size": 144976
+  },
+  "system/lib64/libext2_blkid.so": {
+    "sha256": "c6c1bbf9855adedb33ed0fc61b89aeea32188d5603c2ef2e9793a879cba7f158",
+    "size": 54776
+  },
+  "system/lib64/libext2_com_err.so": {
+    "sha256": "4d95f5629d576852ccbdc84a653f9ad736695c2a2497164506dbd08fa8fbad85",
+    "size": 13968
+  },
+  "system/lib64/libext2_e2p.so": {
+    "sha256": "249133c89dd33173cc9281e7d4d0bc31ec2101dc5884f476ed2c3ddb2b8194cc",
+    "size": 31696
+  },
+  "system/lib64/libext2_profile.so": {
+    "sha256": "b09a85d4d6515917a8a03c25ab984dee2f21fb0f1760f0cef4fa36b2d2a1cf4f",
+    "size": 22232
+  },
+  "system/lib64/libext2_quota.so": {
+    "sha256": "056b24415625f6b22e8c28498e847c5732cc1e6d137a3f26b971b06dc66a39f3",
+    "size": 34616
+  },
+  "system/lib64/libext2_uuid.so": {
+    "sha256": "665ffe1a2c6b00ac4aaca987237823960603277c8f063e3c7a2ec2c1b0d28396",
+    "size": 14072
+  },
+  "system/lib64/libext2fs.so": {
+    "sha256": "6da385e36a7347f2f6737a6f83b7b648067e2d0dbf9a7820987c242f6484e4dd",
+    "size": 248600
+  },
+  "system/lib64/libext4_utils.so": {
+    "sha256": "8e64cb91d9484f14b1f147ae14c0476e9b7fd0f228c3e1bf629c09a90e32e3d6",
+    "size": 96096
+  },
+  "system/lib64/libf2fs_sparseblock.so": {
+    "sha256": "8581eddf776f33092ff162bd722b789d70dfae62d4ba500d7893705cbe336154",
+    "size": 18168
+  },
+  "system/lib64/libfaclog.so": {
+    "sha256": "1669e16faf36604176b300801b22df9bc9b331fead16f49820425b5adac11968",
+    "size": 9864
+  },
+  "system/lib64/libfido_hal.so": {
+    "sha256": "3a483db72240d554c18af06414a54cf8a9e539be738357be90d687da164e5d40",
+    "size": 9944
+  },
+  "system/lib64/libfidoca.so": {
+    "sha256": "0620a4b92738eaf7b9ae0b0af6b8f76fb8c21b68a60e2cb7fe8de5a412472080",
+    "size": 9944
+  },
+  "system/lib64/libfilterfw.so": {
+    "sha256": "013112115918694bbeba907e760a2372ff10f79e9749c5c1ffc147f35c6d8ce3",
+    "size": 190168
+  },
+  "system/lib64/libfilterpack_facedetect.so": {
+    "sha256": "3779a357d7f1967562523912ab921be1990f1c2dc9bfab9a2efe1be425a2aec8",
+    "size": 1163528
+  },
+  "system/lib64/libfilterpack_imageproc.so": {
+    "sha256": "3dcdf1a752d442058691159ba855e3c01f75ee2789ddfde7de5f835a9507781c",
+    "size": 9864
+  },
+  "system/lib64/libfingersense.so": {
+    "sha256": "550a0f89b880ab4c96c527a6dbd764375406f10b1c3f7c3c79cc94a7ebb46c95",
+    "size": 162936
+  },
+  "system/lib64/libfm_interface.so": {
+    "sha256": "090090f1fa40551e1e726e34b1f4694bd32b7d87c82a2c13bafbf1f0f875eddd",
+    "size": 5768
+  },
+  "system/lib64/libfm_jni.so": {
+    "sha256": "2c335afa582b74d63bb5223a23edb31dfd55465f2e15a2bbbed49009173d55ad",
+    "size": 10272
+  },
+  "system/lib64/libfm_volume.so": {
+    "sha256": "3213f487f05e6f637979626d020fea195758b453e77aa94a39a787d25c98c7b8",
+    "size": 63392
+  },
+  "system/lib64/libft2.so": {
+    "sha256": "d686920fc4d4a5b025885439f854bd580a8543b93b7562f9f8fbdf71679b87c2",
+    "size": 444120
+  },
+  "system/lib64/libgabi++.so": {
+    "sha256": "0f4aed784a510db1e11e975aff90dfef196721cdd434a5cd5cca5c84f234999e",
+    "size": 34520
+  },
+  "system/lib64/libgatekeeper.so": {
+    "sha256": "d953507eb32c683932792afc775211286380745dc1b362f166f14d346313b7e6",
+    "size": 22160
+  },
+  "system/lib64/libgps_factory_test.so": {
+    "sha256": "5991728cb5f515019f6b90b8f4ccf20e2d355f1bd221f18937d8b325cb26d79e",
+    "size": 26248
+  },
+  "system/lib64/libgralloc_ext.default.so": {
+    "sha256": "a746fb42919a694e7c96a923fd10a7f50b69b4742ded5440472212e8ab8ce444",
+    "size": 5696
+  },
+  "system/lib64/libgralloc_ext.so": {
+    "sha256": "58470fb015b1e1249951323fb72a87df78fc9b2767e357a5afdcc3997ec9396b",
+    "size": 5696
+  },
+  "system/lib64/libgui.so": {
+    "sha256": "048d90725ab2127971abcb6f470c1706fe09edcf8bfdb967d1647118a4666817",
+    "size": 534520
+  },
+  "system/lib64/libhardware.so": {
+    "sha256": "1adf4b3e3af5d16315e72c2a978521374dfca850a4489a02d9e9c86ac6cf1130",
+    "size": 10040
+  },
+  "system/lib64/libhardware_legacy.so": {
+    "sha256": "f06ddedb4c05cbd484739fbbb9da09e7ff338f84bc7e601c7684f955adef49bf",
+    "size": 114480
+  },
+  "system/lib64/libharfbuzz_ng.so": {
+    "sha256": "8a9d64f30b42e7911fd095d7d3cf499620a2e9608dcf6f7318df3f5198ba39af",
+    "size": 329616
+  },
+  "system/lib64/libhidcommand_jni.so": {
+    "sha256": "5f90619a1d9e37b7770d6dd02796f0139471ace7bdebff3623c5d24180d46b5f",
+    "size": 14032
+  },
+  "system/lib64/libhidisk_security.so": {
+    "sha256": "01ab6acb3bc822e29682e4e674e900b8ff0e3f36cb5c3dfe949587dfe40f5a60",
+    "size": 32552
+  },
+  "system/lib64/libhisi_efuse.so": {
+    "sha256": "d0dda381326bd1029fbc349b7432715295bf9332a8888379b690c5e79ed68882",
+    "size": 9864
+  },
+  "system/lib64/libhisichr.so": {
+    "sha256": "7750054714705d1975e22dea73edb3539399c4db9fb0bf7576f8993ced2c225b",
+    "size": 30576
+  },
+  "system/lib64/libhsa_common.so": {
+    "sha256": "ee91f10ea03263d84add1e398838a4523dda389804c36bd32d04d18cb50328eb",
+    "size": 30496
+  },
+  "system/lib64/libhsa_configprocess.so": {
+    "sha256": "4a1f78a38c073e314d66fe28d5dcba51fc54c2697627a2e463860b657610d42c",
+    "size": 158072
+  },
+  "system/lib64/libhsa_hdlc.so": {
+    "sha256": "3abe20698c795ba097b0a9a850e28343b4e3c5ee650293136c2ec419228f2abd",
+    "size": 18112
+  },
+  "system/lib64/libhsa_msgprocess.so": {
+    "sha256": "91e161aaed8f81f2e09a2bf8d88828960dfd5afb3a3d8824907841b9d1b078df",
+    "size": 46928
+  },
+  "system/lib64/libhuaweigpsrpc.so": {
+    "sha256": "19613bc70fcbf444c12ca80207ac453c174afa3505464f2193b4898f02955de1",
+    "size": 18200
+  },
+  "system/lib64/libhw_display_effect.so": {
+    "sha256": "9865a744578283a5c77fddf1b7604019740988e2b0240c4496e26dc1c30f3d03",
+    "size": 9864
+  },
+  "system/lib64/libhw_display_test.so": {
+    "sha256": "f1767753f8f31709967436cf0fd373f3ffc73ef0efc1eeda4567cf267da5f490",
+    "size": 22232
+  },
+  "system/lib64/libhwaps.so": {
+    "sha256": "f1983dacb0cd5058710fbc748059a269d8864ad6f9e09bd8b8e0b352d53bf39d",
+    "size": 137152
+  },
+  "system/lib64/libhwdeviceinfo.so": {
+    "sha256": "f14227f8cc4533249d050923755e364cd4926666035bb3668e9ea87102f4ee01",
+    "size": 5848
+  },
+  "system/lib64/libhwdisplayprocess.so": {
+    "sha256": "bba03f2208838a00ee0347061128c722f711e62843ffec1ef7f7e2e13192a838",
+    "size": 9912
+  },
+  "system/lib64/libhwextdevice.so": {
+    "sha256": "fb97208fa944f894e9b1060078b2e8a9cd26eace6aae0588fae653ade9a8c46e",
+    "size": 91936
+  },
+  "system/lib64/libhwgl.so": {
+    "sha256": "b4d8ead933c7250fdc6f853c9c59702118737658235bc06ffd083905175e495b",
+    "size": 120560
+  },
+  "system/lib64/libhwlog_jni.so": {
+    "sha256": "4928a797a9129f6603afdcabdf09c03b3ab3beb4c48b3629f2689362c55dbd47",
+    "size": 9888
+  },
+  "system/lib64/libhwouc_jni.so": {
+    "sha256": "422feca24b9c12fd5352f3938c3ac90a462a923bed99d65f0773f5153a0f39ad",
+    "size": 9912
+  },
+  "system/lib64/libhwpwmanager_jni.so": {
+    "sha256": "b3b2cce39b1366c1d03c2579eaeef3a9149b27a0bb60f26d8c87fac85a062982",
+    "size": 10008
+  },
+  "system/lib64/libhwsign.so": {
+    "sha256": "f7bd32f4b94ecb139d2a9d10a89223191c92b4ebb26317ceaa8a3853769bc677",
+    "size": 30440
+  },
+  "system/lib64/libhwsmartdisplay_jni.so": {
+    "sha256": "89958ffca6d17c83e856b8b769b16e91ec46f34bd5f398bd5ac4f976267bafee",
+    "size": 10040
+  },
+  "system/lib64/libhwtee_jni.so": {
+    "sha256": "a2a035f958111b5fc77cf7d521cef18c3bf056ec45452bb55fd0fb13c1e422a0",
+    "size": 9888
+  },
+  "system/lib64/libhwtheme_jni.so": {
+    "sha256": "85f32140a4be6b5f69f3ac2621c78633683437bb6bd60056d4f992597e4c2a26",
+    "size": 9888
+  },
+  "system/lib64/libhwui.so": {
+    "sha256": "3bf556df20775597f13cfef9359001b3aed467b732fad8c21cf820ac7eac1b9e",
+    "size": 674888
+  },
+  "system/lib64/libhwuibp.so": {
+    "sha256": "e43daac5c05a6e535247c6029064dfce9b04963a5ebbe16c255dd81535316a1b",
+    "size": 26400
+  },
+  "system/lib64/libicui18n.so": {
+    "sha256": "942b2b4b0b26f43edbe9c860a60110b24439bf6f9d83ea9628f6dc264e311879",
+    "size": 2336912
+  },
+  "system/lib64/libicuuc.so": {
+    "sha256": "31b6f70d65623f275ac4b86162dd4ba24e30080f89ae9f5aae9453b6b9c1c81c",
+    "size": 1697496
+  },
+  "system/lib64/libifdsmartcardapi.so": {
+    "sha256": "29d5ab9573d5fce51ae6c1289804b4a3f419fd9a78656e508cd860ab302c2501",
+    "size": 46880
+  },
+  "system/lib64/libimg_utils.so": {
+    "sha256": "28db2a5bac2b629e012436c1559ca64b4b885b8ed1779901bdc9742eaee115a2",
+    "size": 87840
+  },
+  "system/lib64/libimmvibeandroidmanager.so": {
+    "sha256": "20968e327a952d89213d9fef4e276305f8ec75bdc3c2cda0804df0dfec0ff5c8",
+    "size": 5544
+  },
+  "system/lib64/libinput.so": {
+    "sha256": "8a8d0f42a78b81962505407c5aefffa74f85c2c4d8c9d0cb0b5848a65b9c46ca",
+    "size": 206640
+  },
+  "system/lib64/libinputflinger.so": {
+    "sha256": "03795f8b0f24a04dab6d33710ceed23943975bf8aebcf447b1f2b7fa13d86ef3",
+    "size": 399064
+  },
+  "system/lib64/libinputservice.so": {
+    "sha256": "9dac154287fde83cc29a50b15de3a7710607dc7741e2af12fcde83836537dae6",
+    "size": 55000
+  },
+  "system/lib64/libion.so": {
+    "sha256": "03368ed1bc5bd1aaa3d523ba698d3617129708e4637a5ec8eb9d0c80a6fd9c19",
+    "size": 9864
+  },
+  "system/lib64/libipcom.so": {
+    "sha256": "fd1b8cb79b22ca6ff9cde6f300b5bdfafafdad093fd1b48bdcb3243ea6edce18",
+    "size": 18056
+  },
+  "system/lib64/libiprouteutil.so": {
+    "sha256": "d52113e65dfa3ce250f6f6de0f9b6fc7e4683158e016de90baa79be38adbbd59",
+    "size": 46936
+  },
+  "system/lib64/libjavacore.so": {
+    "sha256": "682dfb4c2d6fce36446c6ee032a9209afd9e770b2388d9835d9abf24cd842b58",
+    "size": 385544
+  },
+  "system/lib64/libjavacrypto.so": {
+    "sha256": "5e7b00ffdb078cf3b74dde106f43fc27c8dfa7f986acc0a978d3df80e81404b7",
+    "size": 171456
+  },
+  "system/lib64/libjhead.so": {
+    "sha256": "931e2ade982401e4e0d8c16490a7caed1b7c1a284e4316919ca553a31e1ac063",
+    "size": 59936
+  },
+  "system/lib64/libjhead_jni.so": {
+    "sha256": "8ef1914ccae0e22cb6e2924ff6db51c63d0810302573176cf4c60e707bb4e6c9",
+    "size": 18200
+  },
+  "system/lib64/libjni_latinime.so": {
+    "sha256": "b911d3b9bb599b00e7a1d026452daa1a8f0d7532519922edd6d418e7e13f0401",
+    "size": 1100032
+  },
+  "system/lib64/libjni_pacprocessor.so": {
+    "sha256": "b0ce07d4e43d220a2bbab67e7369e538288f78edaefa9fca37611be4e9248a8f",
+    "size": 14136
+  },
+  "system/lib64/libjnigraphics.so": {
+    "sha256": "3293923ac1f3f63954411cc840536e85d01fa727737005bfbc60008b8a24ef31",
+    "size": 5768
+  },
+  "system/lib64/libjpeg.so": {
+    "sha256": "bc38eb6a4acb03ee1bff108b08ef6c02ac94df1be8a138a9b952560fbf858da0",
+    "size": 419544
+  },
+  "system/lib64/libjpegenchw.so": {
+    "sha256": "d8d5e00ca613a3c264573f2a5f19814cdfe2f9caeb96238e20c40276e085cef4",
+    "size": 18056
+  },
+  "system/lib64/libjpu.so": {
+    "sha256": "3a3e2a73b080a8eed6920fa783960027e0bfab42057e4babb3e70ba740c91e87",
+    "size": 109128
+  },
+  "system/lib64/libkeymaster1.so": {
+    "sha256": "30241b7c9c80c1f04cc4d438102e34ae9d261b839b3ca3c27247682b7bf389f0",
+    "size": 161808
+  },
+  "system/lib64/libkeymaster_messages.so": {
+    "sha256": "1d6626e834f6b89d6c32e41e94b92026d72aecb8dc5b385e536a6325fed040d0",
+    "size": 51016
+  },
+  "system/lib64/libkeystore-engine.so": {
+    "sha256": "d3240f2c3cf20268f25af2d08200345a3d53fb436c88473471afd6ebb5b0a12c",
+    "size": 14040
+  },
+  "system/lib64/libkeystore_binder.so": {
+    "sha256": "f3e287bb56559c1e111040c16631e0068aba47a78c6bcda84e8ede2508e0a4b3",
+    "size": 71568
+  },
+  "system/lib64/libl2_test.so": {
+    "sha256": "712d6b22475d23e36efbc654a2b0b8e037786dc129d5b677cc5f899cfa135b54",
+    "size": 18056
+  },
+  "system/lib64/liblocSDK6a.so": {
+    "sha256": "d8e0452239d31c1064a364e2d68b1ba11fd18fa75f14f262e8e5e004ce076090",
+    "size": 51304
+  },
+  "system/lib64/liblog.so": {
+    "sha256": "62525051a586c7f1acfa73ccb812cc9af35d196f32bd02b7e592f968f7f080de",
+    "size": 55224
+  },
+  "system/lib64/liblogwrap.so": {
+    "sha256": "2a66437463420210bfb9e34818803e9bcf117b8d0ce19071f69f6767137f7a68",
+    "size": 14064
+  },
+  "system/lib64/liblowpowerplayer.so": {
+    "sha256": "a588a2fb96655d2f8b6e3da67e0e07ef43fd84aa40b9140b1613c956814b6c1e",
+    "size": 59096
+  },
+  "system/lib64/libm.so": {
+    "sha256": "882fee3a4a246ddd0405cde33afe93cff5ac4a4c5badf8362f3919f9a2050c05",
+    "size": 235632
+  },
+  "system/lib64/libmax98925.so": {
+    "sha256": "d75a36018beb29e62ff609156cbf6cf9d84f23c8e96b5e5d49c129e424074126",
+    "size": 9864
+  },
+  "system/lib64/libmdnssd.so": {
+    "sha256": "facca23481fc940eaa1b6a71a2b5fbb9647f0cdcc1856d6738d7aef1aae0a854",
+    "size": 34440
+  },
+  "system/lib64/libmedia.so": {
+    "sha256": "ef239c0a21dc6a8a2dfcfaaf25ae82b5459937c9a231042cf64b3b7e655d043d",
+    "size": 1099576
+  },
+  "system/lib64/libmedia_jni.huawei.so": {
+    "sha256": "3dae8d6e81285cb5f111fb4b87ce31e062b1065c7997ddb70b154918f10edf7c",
+    "size": 18152
+  },
+  "system/lib64/libmedia_jni.so": {
+    "sha256": "6956963b77d2f62b759bfb19751eea491dae33b536f267f2f968a3c1bd087be9",
+    "size": 487704
+  },
+  "system/lib64/libmediandk.so": {
+    "sha256": "77f610c9edcf40edb501421c1c9587826b01baa498f7d57dc49686254861c49f",
+    "size": 75672
+  },
+  "system/lib64/libmediautils.so": {
+    "sha256": "43399029458fddf5059673229f599a48f90f56ce3aa87628fb5aa53cc476543c",
+    "size": 22304
+  },
+  "system/lib64/libmemtrack.so": {
+    "sha256": "bfad71e15063884349d2c240efc5649da340be77670dbc98f730e90adad09920",
+    "size": 9864
+  },
+  "system/lib64/libminikin.so": {
+    "sha256": "b2ceead213ac99e13f35cd294c39d8cf797e1f1a8387b56231ff5f4d2b8dbc28",
+    "size": 96032
+  },
+  "system/lib64/libmmiautotest.so": {
+    "sha256": "291db3f04090242c5aad37831ce9a07898ede75f150cf7e4d4948f0577684eab",
+    "size": 14176
+  },
+  "system/lib64/libmtp.huawei.so": {
+    "sha256": "8fa12a5d45ced096290d1da105153b09a4a6adae15afea35be1b718c06222db5",
+    "size": 9944
+  },
+  "system/lib64/libmtp.so": {
+    "sha256": "54cc8411f282f1f65ce5fc66112b839b39b90982cf552ad8798633d403577105",
+    "size": 141016
+  },
+  "system/lib64/libmusicsniffer.so": {
+    "sha256": "dbd3627154e7ffd2307baa1483134a584f873da63ff659494dcad1df23674556",
+    "size": 38976
+  },
+  "system/lib64/libnativebridge.so": {
+    "sha256": "9338a1e0f82d5908e7b33c965b943cf36cf57b904bf51c3b510a150450c6e74a",
+    "size": 14056
+  },
+  "system/lib64/libnativehelper.so": {
+    "sha256": "a9e6a7085be6708f6104de546ee288f89850fc79e5598c8d6916798a554b0c98",
+    "size": 34464
+  },
+  "system/lib64/libnbaio.so": {
+    "sha256": "735a046aee9f131f172d0a8bbe45f076c5d610c0db0f06ccd4b126de954f1a0f",
+    "size": 50904
+  },
+  "system/lib64/libnetd_client.so": {
+    "sha256": "29dd840a3f64aeadca05372b85ffa6b028c8283200c177c7e633725b383ed659",
+    "size": 9888
+  },
+  "system/lib64/libnetlink.so": {
+    "sha256": "35e49ee26fab1ca04de5bb486662c32305ac2de849c448ce9909f68a74a76bc7",
+    "size": 22160
+  },
+  "system/lib64/libnetutils.so": {
+    "sha256": "acc737d29ef59e344aca1e2dc7e11cc288aee306a409d0b86ceafcb900b04fa4",
+    "size": 34552
+  },
+  "system/lib64/libnfc-nci.so": {
+    "sha256": "9494c4bed84376ceb16601c512e3ce374732fd8d2fadf8e246237ebfbed0a61d",
+    "size": 674112
+  },
+  "system/lib64/libnfc_nci_jni.so": {
+    "sha256": "95d7d0212eafc5dc8e6280d85a02f4d10072de6cfc9f96aa9f9578824363584e",
+    "size": 422760
+  },
+  "system/lib64/libnfc_ndef.so": {
+    "sha256": "0a055ca8f170db9d14ce2d8cbf68e6d89a32d238d35901a59e541c92c6f094cf",
+    "size": 9864
+  },
+  "system/lib64/libnl.so": {
+    "sha256": "31dc808b02ec945721d28ce4bb40cd62b1b1993166ede0c2df316ef8f5063404",
+    "size": 120728
+  },
+  "system/lib64/libnvme.so": {
+    "sha256": "02f456bd075937fa623f1140bd5dce97bf05328db82c7371afd54b7df5760fd7",
+    "size": 9864
+  },
+  "system/lib64/liboeminfo.so": {
+    "sha256": "b48843e4d9cb93a406028f1ed5bc343c48af2e2e40479b83f42765a60c7deded",
+    "size": 13960
+  },
+  "system/lib64/liboeminfo_jni.so": {
+    "sha256": "0c6a56c29ef621c141a2b2f787da7df250d825c51c5330b37842c236db437e73",
+    "size": 14064
+  },
+  "system/lib64/libomx_vxd.so": {
+    "sha256": "af76cb8f4de03b397b8ffaf2af348bf860aef5d33bad5fa3f3cc4da1bc07bf2a",
+    "size": 418960
+  },
+  "system/lib64/libomx_vxe.so": {
+    "sha256": "56d994f0298868afc6d5478bb5b56f6f50ec9a603578ae91a6b3d2bc993af3ea",
+    "size": 382048
+  },
+  "system/lib64/liboperta.so": {
+    "sha256": "b24be337537ccb4a58db8c5d9d54f4252fb91332200d42aed361307a4f803d4b",
+    "size": 9864
+  },
+  "system/lib64/libopus.so": {
+    "sha256": "abba7dd35e3ad7998e1725b0245161b1f126920c14478903122f8988157ab319",
+    "size": 313048
+  },
+  "system/lib64/libpac.so": {
+    "sha256": "b2d74f095dd7b4e0135394053ef7acd47de80f014a8b679f6d5d5c23cd0c9dde",
+    "size": 6729304
+  },
+  "system/lib64/libpcre.so": {
+    "sha256": "a78b5192b18df524ea902898b40800cdd423cb30ac456adf421eb7c023dcf9e2",
+    "size": 108296
+  },
+  "system/lib64/libpdfium.so": {
+    "sha256": "f4117d15a3722e1339bf383d66f704757675788d9bc3c7f9a0b9ac015d5beefe",
+    "size": 4449744
+  },
+  "system/lib64/libperfhub.so": {
+    "sha256": "8c2d3d2c72b0482ef4cb6481a376b26a2ab09bcc1626600377631b78de30c99e",
+    "size": 100232
+  },
+  "system/lib64/libperfhub_client.so": {
+    "sha256": "8a144b295fbab6e18d5c93f5432d5faf840067ceca96f886ce9384e709ecb917",
+    "size": 59168
+  },
+  "system/lib64/libperfhub_service.so": {
+    "sha256": "105efa2fab82746cd4cac95bd7c1ad5fbd42f285ae9fa5863fe31c8b384d16b9",
+    "size": 157472
+  },
+  "system/lib64/libpixelflinger.so": {
+    "sha256": "6afe6b20974ccfb0d7b0985e42f97d34aeec489ed6af099aa32bdeeabc5c0ddd",
+    "size": 208640
+  },
+  "system/lib64/libpng.so": {
+    "sha256": "105e383c74d21004875b70cb7142bb633752fa20d6fd7ce2162ebefb67a1d399",
+    "size": 222880
+  },
+  "system/lib64/libpower.so": {
+    "sha256": "4d4cb3d21e52935969af989e79bc84df9d809bb1db3efd0412244aff49812d03",
+    "size": 5848
+  },
+  "system/lib64/libpowergenie_native3.so": {
+    "sha256": "960dd8ce7bcdc37609bb143636489c49dde26bfba54a3d819f9baa0db2a4a6ec",
+    "size": 34728
+  },
+  "system/lib64/libpowermanager.so": {
+    "sha256": "c320ee1ba0f98bb0c28dae9b2077ced2f638616a249b25cc0689249b6db235a4",
+    "size": 18208
+  },
+  "system/lib64/libpowerprofile.so": {
+    "sha256": "1a7257b43aafba451fe16f28d2a72cb1d496b871f295b0f42e55cf3315bda061",
+    "size": 42784
+  },
+  "system/lib64/libpparam.so": {
+    "sha256": "bf79fcd80e767148ac71f0000e6667be14f46fa89367afafe9a374cf6f0961af",
+    "size": 5744
+  },
+  "system/lib64/libprintspooler_jni.so": {
+    "sha256": "a119361359c3c1f80bcc37d50e303388c5bf27e4b4bd526cbd2dbbb390bd06ac",
+    "size": 9912
+  },
+  "system/lib64/libprocessgroup.so": {
+    "sha256": "0c555508faa13ee12bc39d68acb7c4a67d956f572bc90b443a948ac30335998f",
+    "size": 9864
+  },
+  "system/lib64/libprotobuf-cpp-lite.so": {
+    "sha256": "a596ac651efefe7b9d074c2f586f581f63125396dbf77874951d03b21f32eb6b",
+    "size": 149296
+  },
+  "system/lib64/libqrcode.so": {
+    "sha256": "83219cfaf888aa2a47a82a36cd6a0c05250ab27300cf5138d5f4c84a83258651",
+    "size": 9920
+  },
+  "system/lib64/libradio.so": {
+    "sha256": "9a31ac099cdb53e12aea9d93df86a9a98bcfcd33eaee27a021577232b316e641",
+    "size": 75552
+  },
+  "system/lib64/libradio_metadata.so": {
+    "sha256": "05c858ec14bc35d135cde62a1411f1ffaad6fac45069e241193ab8eb9251087b",
+    "size": 9864
+  },
+  "system/lib64/libradioservice.so": {
+    "sha256": "5c531bf7acfe8f81fc7cdb2a762137ec6b2d05555bdf8f059e4b06176038c68f",
+    "size": 71384
+  },
+  "system/lib64/libreference-ril.so": {
+    "sha256": "4ad769ad67955eb394260a3b5d4fd2163f37c701fff16165160f17f47ecb56bd",
+    "size": 42736
+  },
+  "system/lib64/libril.so": {
+    "sha256": "dd09464558894b3256a392dcd33e46cf4709eed7805f88b8670b5d76959ef393",
+    "size": 833368
+  },
+  "system/lib64/librilutils.so": {
+    "sha256": "33c177b6e4fb9765b0f8d4ce6043337c9a1840541c9b27433b96cbdb41c52574",
+    "size": 9864
+  },
+  "system/lib64/librpc.so": {
+    "sha256": "1f28a3388c68b952c0590b01a0956c73b0b0c7f9f236623ff4c9f5822a9bb3a6",
+    "size": 46808
+  },
+  "system/lib64/librs_jni.so": {
+    "sha256": "5cd500704fcb3b8d9544f2430e9c234ecebf01d5683c0c6a8047ec02cff0f12a",
+    "size": 74208
+  },
+  "system/lib64/librtp_jni.so": {
+    "sha256": "42aa1b6378547b7567f7c9312b8d0ac27ad9f928b525a50a8cea010a9badc393",
+    "size": 219264
+  },
+  "system/lib64/libselinux.so": {
+    "sha256": "18954798fe61a1f41d77bf5034e67ab15b5a3df90481becdc37c53cb9397af6c",
+    "size": 92112
+  },
+  "system/lib64/libsensorservice.so": {
+    "sha256": "ad1e0b6a8f4167b64511a9b61dae1d492313bce0b36fea501e6d451172209e5e",
+    "size": 128808
+  },
+  "system/lib64/libservices.huawei.so": {
+    "sha256": "b6d4e26c691b77ddc5559b3f8c36b9ca2a7aee0c1f9737b473a5e40424c3afc9",
+    "size": 13960
+  },
+  "system/lib64/libserviceutility.so": {
+    "sha256": "7e8b8df50fa01777bb0155e8a377197e9fa270bcd130d73e5a4fee1bbcad3d19",
+    "size": 14040
+  },
+  "system/lib64/libsigchain.so": {
+    "sha256": "13051b650bd65da30993a6f2d34bb12c83c9eb5a58e877020cd669b15cd0a11d",
+    "size": 5768
+  },
+  "system/lib64/libskia.so": {
+    "sha256": "82d41cf256a6d7faec07fa3298cecfc67ca4e62dfeedf3978c3625c9bee366e5",
+    "size": 5072160
+  },
+  "system/lib64/libsoftkeymaster.so": {
+    "sha256": "fde2b497e2c46fbc780508012925bdb7f71830c180b5e3ff30b256bc29ead7e1",
+    "size": 18416
+  },
+  "system/lib64/libsoftkeymasterdevice.so": {
+    "sha256": "4294ee77b4230515cf26ce9138bf51a0221a749e4d88f35af15bc9aa2f7abce0",
+    "size": 92320
+  },
+  "system/lib64/libsonic.so": {
+    "sha256": "c179d991aef4984ae25a34a6ca14904ff6bee289868e41a785040baa184a3882",
+    "size": 18056
+  },
+  "system/lib64/libsonivox.so": {
+    "sha256": "eabae85b4b639bbdfb4f48ed277e2289f039e124d8ce0e02b20d621afc57a77e",
+    "size": 367520
+  },
+  "system/lib64/libsoundpool.so": {
+    "sha256": "fa7ff6c8e7d1a8a59003440cfc83d7bc2453e0b1daad23e0d742a418d0d32504",
+    "size": 47168
+  },
+  "system/lib64/libsoundtrigger.so": {
+    "sha256": "b004e6e6a2a4478fa0bc3a5d54eeb0f5133f7951e49b9e8d5565e660b608edc5",
+    "size": 75552
+  },
+  "system/lib64/libsoundtriggerservice.so": {
+    "sha256": "7f69e844daab8adf3dc8c5527e0869ba131db2f25fe81f18f35d342b4763136b",
+    "size": 75480
+  },
+  "system/lib64/libsparse.so": {
+    "sha256": "5e85d03090ff398a4727820acdd3bf013fd1ccd543d7c670a4451671f0085aad",
+    "size": 30648
+  },
+  "system/lib64/libspeexresampler.so": {
+    "sha256": "c03de5637f2c1a68a05ed3a2c5ff60e63fa574dca9da7ad5c2b4ab32f70aa36b",
+    "size": 15520
+  },
+  "system/lib64/libsqlite.so": {
+    "sha256": "921353cc50d27a9a2deda2a91b1a9a056c42b9d67ca1f6a002aea3e3112372fd",
+    "size": 807560
+  },
+  "system/lib64/libsqlite_jni.so": {
+    "sha256": "9d7674d618992d15e2f15d5dc701d64f170016efea965534e639a953da40f4b3",
+    "size": 50824
+  },
+  "system/lib64/libssl.so": {
+    "sha256": "e1481893c3ab5f29555a106ec231cb1f5c4be3695c473f0b72e2c87ef9d96bb3",
+    "size": 243280
+  },
+  "system/lib64/libssl2.so": {
+    "sha256": "a9adc1cc985243a6f724a29f2d787b6e540976d9ae707d2222deb0e3861083fc",
+    "size": 399024
+  },
+  "system/lib64/libstagefright.huawei.so": {
+    "sha256": "ecccc22ebf8b28451ed3e5e16bd2c2150c39f4282687648034c8aad2f39c6755",
+    "size": 9944
+  },
+  "system/lib64/libstagefright.so": {
+    "sha256": "06641ee987f796b5090379c3f9a0a6854d89c29b6afbd0027acbad4effe48249",
+    "size": 1961888
+  },
+  "system/lib64/libstagefright_amrnb_common.so": {
+    "sha256": "c73bb5ff85446a3051c85d28431c4347d0899a4de8749ade6b967a9372ea6fb2",
+    "size": 67288
+  },
+  "system/lib64/libstagefright_avc_common.so": {
+    "sha256": "50f52f332586446489f8f60c1b606abcbc04d7b0871406414593a73d540c09bc",
+    "size": 42632
+  },
+  "system/lib64/libstagefright_enc_common.so": {
+    "sha256": "5f16228855aa46c3f28652fce55c023caa43a1862533c8cffa53ff7982136879",
+    "size": 5696
+  },
+  "system/lib64/libstagefright_foundation.so": {
+    "sha256": "cbcec012517c45883c8fa312960bb6c7e3e0a22441922f5d7934b6a4ee761961",
+    "size": 132928
+  },
+  "system/lib64/libstagefright_http_support.so": {
+    "sha256": "7a705eb85935a9618241f5f25cefaac072c55b88db7caf8db8786cd7a0e18fc2",
+    "size": 9888
+  },
+  "system/lib64/libstagefright_omx.so": {
+    "sha256": "42401ef06fdd88f973dd7e658a270aa4bc3b371118a39d5f161817cd954e2e8f",
+    "size": 268032
+  },
+  "system/lib64/libstagefright_soft_aacdec.so": {
+    "sha256": "d6a3e9c53e6f24d23fc94f367517bffb4fd366f708bbc9d4c834d477f5b3881d",
+    "size": 551136
+  },
+  "system/lib64/libstagefright_soft_aacenc.so": {
+    "sha256": "02f8f0a7be3d0b25e5aeaad6501cde97e759c463d931edca450851056f90b03a",
+    "size": 579288
+  },
+  "system/lib64/libstagefright_soft_amrdec.so": {
+    "sha256": "05189de7cc75ed1e93a9503213bf8c51454474d8f916029c63a880c8963e0685",
+    "size": 165720
+  },
+  "system/lib64/libstagefright_soft_amrnbenc.so": {
+    "sha256": "65b9fd03fcf412504cb0f52bc9176308ba8533d078a63df31aa2eb64de3acd50",
+    "size": 116440
+  },
+  "system/lib64/libstagefright_soft_amrwbenc.so": {
+    "sha256": "e32c286494b236954c6a652dfc91c9c13078835925aec89c8a80f04665f3d807",
+    "size": 172256
+  },
+  "system/lib64/libstagefright_soft_avcdec.so": {
+    "sha256": "ea1971c7a00d27fa2da0fec36edd0cd9f6a8c4b99477e21e1e6b04eb0c4bfdb0",
+    "size": 493272
+  },
+  "system/lib64/libstagefright_soft_avcenc.so": {
+    "sha256": "f3b3f35bef41402a6eab771378700a111cb85c03334c7931338f540541a39648",
+    "size": 461864
+  },
+  "system/lib64/libstagefright_soft_ffmpegaudiodec.so": {
+    "sha256": "b9fd91fea414d155b8f65a78a9501c7c6a28d76b4383722466e966cb134fbc48",
+    "size": 34528
+  },
+  "system/lib64/libstagefright_soft_ffmpegvideodec.so": {
+    "sha256": "bac687cecb6ae3df9695697e8ae10259568965986abde6cf528a5d521071eba7",
+    "size": 34784
+  },
+  "system/lib64/libstagefright_soft_flacenc.so": {
+    "sha256": "bab3349e0981d72f50fe923533fef764ed350295d046a9852da03317fff1d243",
+    "size": 214760
+  },
+  "system/lib64/libstagefright_soft_g711dec.so": {
+    "sha256": "f607324c17f007f28dd011110253dffd96d7ee67a0abf25ddcb890516eb30cf3",
+    "size": 22232
+  },
+  "system/lib64/libstagefright_soft_gsmdec.so": {
+    "sha256": "3df9d1e2f4bc88e0a0711c3922e0b24945e21776d828b35bbcfed14888e7baa3",
+    "size": 46992
+  },
+  "system/lib64/libstagefright_soft_hevcdec.so": {
+    "sha256": "99ea2824c446935a23473dc216fa6bdbce333702f34321280ada60708e6f827e",
+    "size": 595984
+  },
+  "system/lib64/libstagefright_soft_mp3dec.so": {
+    "sha256": "f64165b87d14f3218210c89a579c57b605373d4b277cfeff752f4058d267678c",
+    "size": 87768
+  },
+  "system/lib64/libstagefright_soft_mpeg2dec.so": {
+    "sha256": "dfbc4dad23ffa7f7a36404d01d1a745a20f57debc60f8dbf936d79e1a93a2415",
+    "size": 128728
+  },
+  "system/lib64/libstagefright_soft_mpeg4dec.so": {
+    "sha256": "e2ac8d5e34dbd843bde49c8c488be6b2dafc37db373cfdcbf17e17dd4c2b0846",
+    "size": 161496
+  },
+  "system/lib64/libstagefright_soft_mpeg4enc.so": {
+    "sha256": "0aa9662cddd40acf261a7dbcd21c2af8a41e7fd27d451ac5595fba95dda80b32",
+    "size": 210648
+  },
+  "system/lib64/libstagefright_soft_opusdec.so": {
+    "sha256": "69c0d3ae406ea08559c92678ac685a72c1a9e62609e2832ae4e3b6482e34db19",
+    "size": 26328
+  },
+  "system/lib64/libstagefright_soft_rawdec.so": {
+    "sha256": "6d4c74f29fc969a1b4d686b5aeb66599df22a17bcf791869676e3dc07f51c7ad",
+    "size": 22232
+  },
+  "system/lib64/libstagefright_soft_vorbisdec.so": {
+    "sha256": "6c09406a931c6b7deacd430ceab96839400e1f6ab924ba25b18c6bee254746f9",
+    "size": 26328
+  },
+  "system/lib64/libstagefright_soft_vpxdec.so": {
+    "sha256": "44a03beed19d2f7ef9699dee5e6c2d7186686bc0bb722b02ca45e583d26bcb57",
+    "size": 493360
+  },
+  "system/lib64/libstagefright_soft_vpxenc.so": {
+    "sha256": "cf89b33169d8346c3270a30ff7139e47ef00ec8b2c692aa876f617ad76948b45",
+    "size": 689880
+  },
+  "system/lib64/libstagefright_yuv.so": {
+    "sha256": "f2a29c7501dfb57dff7d81052db1a922fa68f31d4a5a69f061fb4786f812aea5",
+    "size": 13984
+  },
+  "system/lib64/libstagefrighthw.so": {
+    "sha256": "a43e34c163fd294e1d649402912545405f0c98384e3624eadb2abc39641fdb4a",
+    "size": 14040
+  },
+  "system/lib64/libstdc++.so": {
+    "sha256": "a539dd9252f5469333ebe936cb64eb5359b0809f230f0761873f1405dd09c1c6",
+    "size": 13960
+  },
+  "system/lib64/libsupol.so": {
+    "sha256": "04f0be31cc20455bf4be9ac6bede3a7f20d343eea7880ac7eb2c797dd1a699c4",
+    "size": 170232
+  },
+  "system/lib64/libsurfaceflinger.so": {
+    "sha256": "51ef80a7452d2be9a9b083c7edeab6c1292ab3b0dd97f6a14ffc0eb1c242a3c8",
+    "size": 386872
+  },
+  "system/lib64/libsurfaceflinger_ddmconnection.so": {
+    "sha256": "796e2afd645adf6746bea05507c25d0a2a258a9d747c997d4b0d7ce39fda5a77",
+    "size": 9888
+  },
+  "system/lib64/libsuspend.so": {
+    "sha256": "6bd62d5374c29ea1faaab6c2f7741a56604b427062cfefdaa0e2c4b94347820d",
+    "size": 14008
+  },
+  "system/lib64/libsync.so": {
+    "sha256": "e6fd85a3771367a893918d0f697f27064d645b2aae8c40c1290cf1737b2b281c",
+    "size": 5768
+  },
+  "system/lib64/libsysrms_jni.so": {
+    "sha256": "e4c9fdc29cb4b3a1024dbe36017f364a360e68cd2973a77e751576bc88a18d36",
+    "size": 22280
+  },
+  "system/lib64/libsysutils.so": {
+    "sha256": "d98331478d3f9eb061edb0d741fd89919468d2df90ec41f0a2765123cd1d1802",
+    "size": 42808
+  },
+  "system/lib64/libteec.so": {
+    "sha256": "4a7437a293cb901cf4d13efe4c05337d26e0b9344069e63a47b18c258db9e5a4",
+    "size": 30352
+  },
+  "system/lib64/libtinyalsa.so": {
+    "sha256": "efb3bfdaee72e16b6c9d0404542035edd0198dab0ee82975cc5f06b2711feb53",
+    "size": 26560
+  },
+  "system/lib64/libtp_capacitance_test.so": {
+    "sha256": "5c126fbeb5b558e5d683615b9d918119043a4f2dce8e9fa5a7abe029ce1fc08c",
+    "size": 22184
+  },
+  "system/lib64/libtrustzone_signature.so": {
+    "sha256": "d023c25f8e80c3a92d52453646d81e4e786b043718120dc1b09a28618c6d34fe",
+    "size": 18152
+  },
+  "system/lib64/libtrustzone_storage.so": {
+    "sha256": "4428d88165ea2960b55167c984296444e0e2f2cb333d68b4deb198a3dd450fdd",
+    "size": 10128
+  },
+  "system/lib64/libui.so": {
+    "sha256": "974c02640b2fa608869f39d0b753261f7d5aebf4110a91138e2218e80a33f323",
+    "size": 71480
+  },
+  "system/lib64/libumetrip.so": {
+    "sha256": "dc53d11cfbc171e31157c38f2532ae9d596805af63f73787cee91035d30d5072",
+    "size": 13752
+  },
+  "system/lib64/libunwind.so": {
+    "sha256": "4dd316141ee9b3cce2421042b3bb1a22c84d877d1f4fda2e95d6a3b6ba953d06",
+    "size": 112520
+  },
+  "system/lib64/libusbhost.so": {
+    "sha256": "4390862923731d7029f7d5a8bcac664be5fec0c75a8997755c3a5bb3f5439b40",
+    "size": 18056
+  },
+  "system/lib64/libutils.so": {
+    "sha256": "174560f522c2d54bd4b100a60230986ea8811d73cd3ef881aade1074906ba602",
+    "size": 157592
+  },
+  "system/lib64/libvia-ril.so": {
+    "sha256": "5eacef1d8b534ab642cc99f086d4885dd866e2b92679bc7da171a0dbae76a2c0",
+    "size": 430608
+  },
+  "system/lib64/libviagpsrpc.so": {
+    "sha256": "2961e6700b813497a0f105d7c3f2fc9d539e2e9c2f99d9976615a868375e9a85",
+    "size": 112272
+  },
+  "system/lib64/libvio.so": {
+    "sha256": "5ec07ac91e89bb398e0c4b69af465a4902783f7df06918d12c0423df9a423151",
+    "size": 5768
+  },
+  "system/lib64/libvixl.so": {
+    "sha256": "3ba84f4df69bd60b623d652a94258e950b895b380e5b986817a077654ee02774",
+    "size": 686096
+  },
+  "system/lib64/libvorbisidec.so": {
+    "sha256": "0e7a28d393f169744a66c8052b3cac22aefd656a5720f64444d4a94f7dbbad88",
+    "size": 121496
+  },
+  "system/lib64/libvpp.so": {
+    "sha256": "fb9977869a9fcac795d19d974a54d9834651c9210020b6f1521509cc102496e2",
+    "size": 13960
+  },
+  "system/lib64/libwebrtc_audio_preprocessing.so": {
+    "sha256": "fab30ea33ae26e522fef695ec578336723db4ce1b1ba881be9237dcddc0f7a49",
+    "size": 554808
+  },
+  "system/lib64/libwebviewchromium_loader.so": {
+    "sha256": "b0c91dc8a66a03502133b57c524f5d5ada26438fcefb4740ddf58e266ac62051",
+    "size": 9944
+  },
+  "system/lib64/libwebviewchromium_plat_support.so": {
+    "sha256": "6385df0cf4f88447e3c0edb4300b721597b0581fc2274db0ff8d06d39e56f30f",
+    "size": 18136
+  },
+  "system/lib64/libwifi-service.so": {
+    "sha256": "412fc7600f624476e888f5bdf826c7370cb65857070f13d2b98be1c9bb1089a8",
+    "size": 207920
+  },
+  "system/lib64/libwifi_factory_test.so": {
+    "sha256": "f3aaf8ff6a8f9b9256212c3a90403e5590484128f64b6eb9ef1da177957853c7",
+    "size": 18056
+  },
+  "system/lib64/libwifichrstat.so": {
+    "sha256": "d02f4fa85819d32f1635b0567bdb44b09086d4c1a3c87cfec84695a284cb2c6b",
+    "size": 9888
+  },
+  "system/lib64/libwifipro.so": {
+    "sha256": "fa1f0b594c09b1a043b4fe8855a880e932fe98a80011962a57548e38f1352240",
+    "size": 9992
+  },
+  "system/lib64/libwilhelm.so": {
+    "sha256": "06fd0580890e59c8210b664e58e8b9d7c80b1dfb614e20f7e0ca7432bbccf4ff",
+    "size": 288552
+  },
+  "system/lib64/libwnndict.so": {
+    "sha256": "a60296029787cb00dc887532019d48c1b49e3fd026e7317a7e4330fce189fb3a",
+    "size": 63192
+  },
+  "system/lib64/libwpa_client.so": {
+    "sha256": "1cb521a3b10d3c4e13e2b541c4865fb254cf6c0d9503e352243f374c931c83b5",
+    "size": 22264
+  },
+  "system/lib64/libz.so": {
+    "sha256": "32d25268e9379be05d17abeada8a23a6919bab8de658c604394f4be58caf9851",
+    "size": 116624
+  },
+  "system/lib64/soundfx/libaudiopreprocessing.so": {
+    "sha256": "9360859f6607c19d8a792fafe068c634e55daf37dd8036cfa42b2713eba108f5",
+    "size": 22280
+  },
+  "system/lib64/soundfx/libbundlewrapper.so": {
+    "sha256": "a0a3f51c46a3a44051c60604e960b2a9c50883225c922c4e1e35571311b3df4a",
+    "size": 72048
+  },
+  "system/lib64/soundfx/libdownmix.so": {
+    "sha256": "36811e135fddd9d46f31531cd13598deb8383610fdfb657c3afedb961e781478",
+    "size": 18184
+  },
+  "system/lib64/soundfx/libeffectproxy.so": {
+    "sha256": "1cb840bb19604350e140dd9c3536f610a01a7c92fa40499a10b5ba3d391953ee",
+    "size": 9992
+  },
+  "system/lib64/soundfx/libldnhncr.so": {
+    "sha256": "91591865436728b26e2b2e7c475a4c4321215203f998560aa8f8d2620fba06e2",
+    "size": 9992
+  },
+  "system/lib64/soundfx/libreverbwrapper.so": {
+    "sha256": "ab090d767a0caab40a1c49a80476aeff465813207ed17e84e039b009a027fd9c",
+    "size": 34568
+  },
+  "system/lib64/soundfx/libvisualizer.so": {
+    "sha256": "8e835d98035c6407f6b829b752cd169acd0f94f3aa4b3c96e8d85904911eb048",
+    "size": 9992
+  },
+  "system/lib64/static-hal-check.so": {
+    "sha256": "7741cb7669259be754c2ab309a4c46874922b9715a1231238302c34240cdec00",
+    "size": 63040
+  },
+  "system/vendor/firmware/libpn548ad_fw.so": {
+    "sha256": "9db7d231bdc61ad3f803a610c2913af0a837e0cd581124376c61170149ec7a07",
+    "size": 38031
+  },
+  "system/vendor/lib/drm/libdrmwvmplugin.so": {
+    "sha256": "408a98371894946d573dea858000243c8429e4572ff469aacfcfd65c34e4604b",
+    "size": 95884
+  },
+  "system/vendor/lib/egl/libGLES_mali.so": {
+    "sha256": "dff745e0cc185c4e170fd4ca621c6f94c1b9eebae06f09157f8c0745884e2842",
+    "size": 23557408
+  },
+  "system/vendor/lib/libOpenCL.so": {
+    "sha256": "dff745e0cc185c4e170fd4ca621c6f94c1b9eebae06f09157f8c0745884e2842",
+    "size": 23557408
+  },
+  "system/vendor/lib/libOpenCL.so.1": {
+    "sha256": "dff745e0cc185c4e170fd4ca621c6f94c1b9eebae06f09157f8c0745884e2842",
+    "size": 23557408
+  },
+  "system/vendor/lib/libOpenCL.so.1.1": {
+    "sha256": "dff745e0cc185c4e170fd4ca621c6f94c1b9eebae06f09157f8c0745884e2842",
+    "size": 23557408
+  },
+  "system/vendor/lib/libWVStreamControlAPI_L3.so": {
+    "sha256": "409a20c8fdf7aa95793a55a59ed3c823f78647d421be9f2039c159334887597a",
+    "size": 2467280
+  },
+  "system/vendor/lib/libbt-vendor.so": {
+    "sha256": "079b7cba259a3e7f91a6a91a2627c44806aa18947e2930ce56314bc9b6a36096",
+    "size": 30552
+  },
+  "system/vendor/lib/libwvdrm_L3.so": {
+    "sha256": "75a8f50385eadf1574f826629a8f1a72b68bf6a98192f02d21390f867e12385a",
+    "size": 87524
+  },
+  "system/vendor/lib/libwvm.so": {
+    "sha256": "8659423f1067701ab65e288292ad76e9aa4a3b78d3b44af95c6f83e6b9b38d01",
+    "size": 50800
+  },
+  "system/vendor/lib/mediadrm/libdrmclearkeyplugin.so": {
+    "sha256": "f3a097db7de2b03b3e4130e7c65fdb3a48f3140d8ddf79c1477c4041cee07ea4",
+    "size": 38500
+  },
+  "system/vendor/lib/mediadrm/libwvdrmengine.so": {
+    "sha256": "534746b31686e5be18959b4a63536f80291aec11cd4021be22c1fea74880aec9",
+    "size": 1415044
+  },
+  "system/vendor/lib64/egl/libGLES_mali.so": {
+    "sha256": "a6d416bb3ac278db6d50d89df70e220425d8433ee62a6abfffc2275cbe88dc41",
+    "size": 24541304
+  },
+  "system/vendor/lib64/libOpenCL.so": {
+    "sha256": "a6d416bb3ac278db6d50d89df70e220425d8433ee62a6abfffc2275cbe88dc41",
+    "size": 24541304
+  },
+  "system/vendor/lib64/libOpenCL.so.1": {
+    "sha256": "a6d416bb3ac278db6d50d89df70e220425d8433ee62a6abfffc2275cbe88dc41",
+    "size": 24541304
+  },
+  "system/vendor/lib64/libOpenCL.so.1.1": {
+    "sha256": "a6d416bb3ac278db6d50d89df70e220425d8433ee62a6abfffc2275cbe88dc41",
+    "size": 24541304
+  },
+  "system/vendor/lib64/mediadrm/libdrmclearkeyplugin.so": {
+    "sha256": "18d3e7e02d6a5d42af12209ac8b3210e14eb1a51273369eb17fd368e3d4d2435",
+    "size": 50976
+  }
+}

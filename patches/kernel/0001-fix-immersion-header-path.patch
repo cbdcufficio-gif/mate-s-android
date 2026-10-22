@@ -1,0 +1,13 @@
+diff --git a/drivers/huawei_platform/immersion/tspdrv.c b/drivers/huawei_platform/immersion/tspdrv.c
+index ff83adf0..3ef70d49 100644
+--- a/drivers/huawei_platform/immersion/tspdrv.c
++++ b/drivers/huawei_platform/immersion/tspdrv.c
+@@ -40,7 +40,7 @@
+ #include <asm/uaccess.h>
+ #include <asm/atomic.h>
+ #include <tspdrv.h>
+-#include <../../../../../kernel/drivers/misc/drv2605/drv2605.h>
++#include "../../misc/drv2605/drv2605.h"
+ #include <linux/of.h>
+ 
+ /* 5ms timer by default. This variable could be used by the SPI.*/

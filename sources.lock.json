@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-22",
+  "repositories": [
+    {
+      "directory": "kernel-hi3635",
+      "url": "https://github.com/hi3635-dev/android_kernel_huawei_liszt.git",
+      "commit": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+      "groups": [
+        "kernel"
+      ]
+    },
+    {
+      "directory": "gcc49",
+      "url": "https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.git",
+      "commit": "7280ce2399316a5dbd8872e0bfe69435d8719230",
+      "groups": [
+        "kernel"
+      ]
+    },
+    {
+      "directory": "gcc49-arm",
+      "url": "https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git",
+      "commit": "48ef1e67aa261116d2c244a52a30b8ba044399ff",
+      "groups": [
+        "metadata"
+      ]
+    },
+    {
+      "directory": "device-liszt",
+      "url": "https://github.com/hi3635-dev/android_device_huawei_liszt.git",
+      "commit": "f4e36642c2e83d9327ee78e62746b7abb41c1b09",
+      "groups": [
+        "metadata"
+      ]
+    },
+    {
+      "directory": "android-build",
+      "url": "https://github.com/LineageOS/android_build.git",
+      "commit": "71a47798ac090b81c6b7db0b5c470f1fa3e604cd",
+      "groups": [
+        "metadata"
+      ]
+    },
+    {
+      "directory": "android-core",
+      "url": "https://github.com/LineageOS/android_system_core.git",
+      "commit": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+      "groups": [
+        "metadata"
+      ]
+    },
+    {
+      "directory": "android-manifest",
+      "url": "https://github.com/LineageOS/android.git",
+      "commit": "c7b3d4b65b79e2e0d6a891547ad138e1fcdafb56",
+      "groups": [
+        "metadata"
+      ]
+    },
+    {
+      "directory": "hardware-interfaces",
+      "url": "https://github.com/LineageOS/android_hardware_interfaces.git",
+      "commit": "02951860e9c95f19384fa07522925537d8c17a18",
+      "groups": [
+        "metadata"
+      ]
+    }
+  ],
+  "toolchain_gcc_sha256": "43e72f9b69a8dbd2b77a68695b329bb87f5b0dec29345f48f64d35721d4df830",
+  "note": "Root manifest pinned; full Android projects must be frozen with repo manifest -r after a real sync. Not a complete Android lock.",
+  "stock_config_sha256": "331776cafad6456c36f3b32f6dc4e0662458fee52fbc1ec38e88e99d9f5e238c"
+}

@@ -1,0 +1,5 @@
+# Review/install during the init/ADB milestone; do not replace stock ueventd wholesale.
+/dev/binder       0666 root root
+/dev/hwbinder     0666 root root
+/dev/vndbinder    0666 root root
+# Unix permissions do not replace SELinux device labels and policy.

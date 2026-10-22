@@ -1,0 +1,10 @@
+FROM debian:trixie-slim
+ENV DEBIAN_FRONTEND=noninteractive LC_ALL=C.UTF-8 LANG=C.UTF-8
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    bc bison build-essential ca-certificates cpio curl file flex git \
+    libelf-dev libssl-dev libxml2-utils lz4 patch patchelf python3 rsync \
+    unzip xz-utils zip zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
+WORKDIR /work
+# Cross compilers come from hash/commit-pinned local toolchain repositories.
+# Never mount /dev/bus/usb. Runtime containers use --network=none.

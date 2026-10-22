@@ -1,0 +1,35 @@
+name: Mate S zero-cost preflight
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/remote_preflight.py'
+      - '.github/workflows/preflight.yml'
+      - 'sources.lock.json'
+permissions:
+  contents: read
+concurrency:
+  group: mates-preflight
+  cancel-in-progress: true
+jobs:
+  inspect:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Inspect resources and pinned manifests without Android sync
+        run: python3 scripts/remote_preflight.py --out out/remote-preflight
+      - name: Test static tools and manifest validation
+        run: python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Record small report in job log and summary
+        if: always()
+        run: |
+          if [ -f out/remote-preflight/summary.md ]; then
+            cat out/remote-preflight/summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/remote-preflight/report.json ]; then
+            cat out/remote-preflight/report.json
+          fi

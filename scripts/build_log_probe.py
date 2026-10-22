@@ -19,7 +19,7 @@ def fetch_core(root):
         ["git", "-C", str(root), "remote", "add", "origin", url],
         ["git", "-C", str(root), "fetch", "--depth=1", "--filter=blob:none", "origin", SHA],
         ["git", "-C", str(root), "sparse-checkout", "set", "liblog",
-         "libcutils/include", "libsystem/include", "base/include"],
+         "libcutils/include", "libsystem/include", "base/include", "libutils/include"],
         ["git", "-C", str(root), "checkout", "--detach", "FETCH_HEAD"],
     ]
     for command in commands:
@@ -42,7 +42,8 @@ def build(root, dest, compiler, provider, run):
     flags = ["-fPIC", "-std=c++17", "-nostdinc++", "-fno-exceptions", "-fno-rtti",
              "-DLIBLOG_LOG_TAG=1006", "-DSNET_EVENT_LOG_TAG=1397638484",
              "-Iout/platform-cxx/include"]
-    for inc in ("liblog/include", "liblog", "libcutils/include", "base/include", "libsystem/include"):
+    for inc in ("liblog/include", "liblog", "libcutils/include", "base/include", "libsystem/include",
+                "libutils/include"):
         flags.append("-I" + str(root / inc))
     objects = []
     for name in SOURCES:

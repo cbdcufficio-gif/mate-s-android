@@ -1,0 +1,54 @@
+name: Mate S ephemeral runner capacity
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: mates-runner-capacity
+  cancel-in-progress: true
+jobs:
+  measure:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Measure baseline before reclaiming unused SDKs on this disposable VM
+        run: |
+          test "$GITHUB_ACTIONS" = true
+          test "$RUNNER_ENVIRONMENT" = github-hosted
+          python3 scripts/remote_preflight.py --out out/before
+          for path in /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL; do
+            if [ -d "$path" ]; then sudo du -sk "$path"; fi
+          done
+      - name: Reclaim only the listed SDKs in the ephemeral runner
+        run: |
+          test "$GITHUB_ACTIONS" = true
+          test "$RUNNER_ENVIRONMENT" = github-hosted
+          sudo rm -rf -- /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+      - name: Measure actual remaining space
+        run: python3 scripts/remote_preflight.py --out out/after
+      - name: Install cross compilers only in the disposable VM
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends gcc-arm-linux-gnueabihf gcc-aarch64-linux-gnu patchelf
+      - name: Exercise ARM32 and ARM64 graphics fixtures without skips
+        env:
+          MATES_TEST_CC_ARM: /usr/bin/arm-linux-gnueabihf-gcc
+          MATES_TEST_CC_ARM64: /usr/bin/aarch64-linux-gnu-gcc
+          MATES_PATCHELF: /usr/bin/patchelf
+        run: |
+          python3 -m unittest discover -s tests -p 'test_*.py'
+          python3 scripts/remote_preflight.py --out out/with-cross-tools
+      - name: Record measurements without uploading artifacts
+        if: always()
+        run: |
+          for stage in before after with-cross-tools; do
+            if [ -f "out/$stage/summary.md" ]; then
+              echo "## $stage" >> "$GITHUB_STEP_SUMMARY"
+              cat "out/$stage/summary.md" >> "$GITHUB_STEP_SUMMARY"
+              cat "out/$stage/report.json"
+            fi
+          done

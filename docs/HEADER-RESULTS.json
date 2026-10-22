@@ -1,0 +1,541 @@
+{
+  "run_url": "https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39844806800",
+  "commit": "7679103dd1b694e3fa6c111373cb83b663ff23f6",
+  "rom_built": false,
+  "hardware_tested": false,
+  "linked_android_libraries_built": false,
+  "toolchain": "Pkg.Desc = Android NDK\nPkg.Revision = 27.3.13750724\nPkg.BaseRevision = 27.3.13750724\nPkg.ReleaseName = r27d\n",
+  "downloaded_source_bytes": 358171,
+  "results": {
+    "m_arm": {
+      "align_CallStack": 4,
+      "align_Point": 4,
+      "align_Rect": 4,
+      "align_Region": 4,
+      "align_SharedBuffer": 4,
+      "align_String8": 4,
+      "align_VectorImpl": 4,
+      "size_CallStack": 20,
+      "size_Point": 8,
+      "size_Rect": 16,
+      "size_Region": 20,
+      "size_SharedBuffer": 16,
+      "size_String8": 4,
+      "size_VectorImpl": 20
+    },
+    "m_arm64": {
+      "align_CallStack": 8,
+      "align_Point": 4,
+      "align_Rect": 4,
+      "align_Region": 8,
+      "align_SharedBuffer": 8,
+      "align_String8": 8,
+      "align_VectorImpl": 8,
+      "size_CallStack": 40,
+      "size_Point": 8,
+      "size_Rect": 16,
+      "size_Region": 40,
+      "size_SharedBuffer": 24,
+      "size_String8": 8,
+      "size_VectorImpl": 40
+    },
+    "q_arm": {
+      "align_CallStack": 4,
+      "align_Point": 4,
+      "align_Rect": 4,
+      "align_Region": 4,
+      "align_SharedBuffer": 4,
+      "align_String8": 4,
+      "align_VectorImpl": 4,
+      "size_CallStack": 20,
+      "size_Point": 8,
+      "size_Rect": 16,
+      "size_Region": 20,
+      "size_SharedBuffer": 16,
+      "size_String8": 4,
+      "size_VectorImpl": 20
+    },
+    "q_arm64": {
+      "align_CallStack": 8,
+      "align_Point": 4,
+      "align_Rect": 4,
+      "align_Region": 8,
+      "align_SharedBuffer": 8,
+      "align_String8": 8,
+      "align_VectorImpl": 8,
+      "size_CallStack": 40,
+      "size_Point": 8,
+      "size_Rect": 16,
+      "size_Region": 40,
+      "size_SharedBuffer": 24,
+      "size_String8": 8,
+      "size_VectorImpl": 40
+    }
+  },
+  "equal_sizes_and_alignments": {
+    "arm": true,
+    "arm64": true
+  },
+  "objects": [
+    {
+      "source": "Region.cpp",
+      "arch": "arm",
+      "returncode": 0,
+      "sha256": "c2f11b5844c66c738cf2dc34070e48f05dbfea616a7e53d82fa6a2011f72debe"
+    },
+    {
+      "source": "Region.cpp",
+      "arch": "arm64",
+      "returncode": 0,
+      "sha256": "0f31ca7c1b3558daa36ce8f96e9d4241251a8178cd88778f509f1673f548a8fe"
+    },
+    {
+      "source": "VectorImpl.cpp",
+      "arch": "arm",
+      "returncode": 0,
+      "sha256": "c794418766c73a3ef99813294e20d8b33c58844661a16eb76762b93a7d39b92d"
+    },
+    {
+      "source": "VectorImpl.cpp",
+      "arch": "arm64",
+      "returncode": 0,
+      "sha256": "a141b4098aec030b4311afa08dd7af50e1c7fac5f663f645388ca7322130d61d"
+    },
+    {
+      "source": "SharedBuffer.cpp",
+      "arch": "arm",
+      "returncode": 0,
+      "sha256": "fb76b51b2a136474a801ccbfdaab9b3fa7d324be85f0157b5ada51b64d63b3d1"
+    },
+    {
+      "source": "SharedBuffer.cpp",
+      "arch": "arm64",
+      "returncode": 0,
+      "sha256": "11a83302bcbaafb6433c2aff97aedc0d73b5baa311da3a7fdfdda4d2cc847022"
+    },
+    {
+      "source": "String8.cpp",
+      "arch": "arm",
+      "returncode": 0,
+      "sha256": "44f26610b22c9b5b4d110de90d3eeba9b34b1d0a636da06712954abce1a73eb1"
+    },
+    {
+      "source": "String8.cpp",
+      "arch": "arm64",
+      "returncode": 0,
+      "sha256": "609c8741f6835168494781b0a5a7f28a349b2410909ff2d9957677d1c2587ac0"
+    }
+  ],
+  "sources": [
+    {
+      "version": "m",
+      "include": "ui/Region.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_frameworks_native/b58cb7c4adf7b1754bab68a959df03a71d431cb3/include/ui/Region.h",
+      "sha256": "41413a7e82043a2f90d9fc298845dd1da4023b7ad2966be944f04acd2a372298",
+      "bytes": 8283
+    },
+    {
+      "version": "m",
+      "include": "utils/Vector.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/utils/Vector.h",
+      "sha256": "b8443fdb99ee4f6c321e7dfb52e0dedb95f17759a969a6df9c56d467c65478e1",
+      "bytes": 13846
+    },
+    {
+      "version": "m",
+      "include": "cutils/log.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/cutils/log.h",
+      "sha256": "73abb3a501626b16b0dc2eb77947aec6ab27f294f478b5f3828e4eada2dd601e",
+      "bytes": 21
+    },
+    {
+      "version": "m",
+      "include": "log/log.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/log/log.h",
+      "sha256": "bc1b618cea8ed30cf810cab261d240bbb557e215044da73996aeab7db6de176d",
+      "bytes": 18016
+    },
+    {
+      "version": "m",
+      "include": "log/logd.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/log/logd.h",
+      "sha256": "9c3d926a3aab7880ef8b8a1fc107b95b44ee21a65c152892c41bdf2d1e02991b",
+      "bytes": 1379
+    },
+    {
+      "version": "m",
+      "include": "android/log.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/android/log.h",
+      "sha256": "327c55ed511dfdca15cddd8ce0e2efe89600b8e0fee5b98e6c9b8d09b93c6fb0",
+      "bytes": 4337
+    },
+    {
+      "version": "m",
+      "include": "log/uio.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/log/uio.h",
+      "sha256": "c8c6265e30f22109fbbf6c3d6be2523e84117926fefc1e7aa191481be539496d",
+      "bytes": 1105
+    },
+    {
+      "version": "m",
+      "include": "utils/VectorImpl.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/utils/VectorImpl.h",
+      "sha256": "bf1a313a1a21064845e10050ed01c34e6b3eb9fd8bc478708f0a1cd5653ce266",
+      "bytes": 7409
+    },
+    {
+      "version": "m",
+      "include": "utils/Errors.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/utils/Errors.h",
+      "sha256": "e16f6257b3251e1ef16abf5cbbbb24b6841bb9e905068b47e505f40fa61fee4c",
+      "bytes": 2557
+    },
+    {
+      "version": "m",
+      "include": "utils/TypeHelpers.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/utils/TypeHelpers.h",
+      "sha256": "c88e1e955cb8a34f06b8164b9d3eb8dfc2d067b286614da7107527870691a6f8",
+      "bytes": 9146
+    },
+    {
+      "version": "m",
+      "include": "ui/Rect.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_frameworks_native/b58cb7c4adf7b1754bab68a959df03a71d431cb3/include/ui/Rect.h",
+      "sha256": "cca36f033a93ba645cf22521ab991768ae8a537f554c7215696988da33460677",
+      "bytes": 5305
+    },
+    {
+      "version": "m",
+      "include": "utils/Flattenable.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/utils/Flattenable.h",
+      "sha256": "f2b92a49f5332fe29941cc79091c8b95df5682e046b3bc5d5be80a57af0c8625",
+      "bytes": 6566
+    },
+    {
+      "version": "m",
+      "include": "utils/Debug.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/utils/Debug.h",
+      "sha256": "7ea7cae93880ddeca9e966fc9a67e790b764a0bfebe3bf231941651fe33526dc",
+      "bytes": 1630
+    },
+    {
+      "version": "m",
+      "include": "utils/Log.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/utils/Log.h",
+      "sha256": "2c08767cc89633244e345b6cf78551e9a1c2401c63b7e4fb24f8bf966425152d",
+      "bytes": 2140
+    },
+    {
+      "version": "m",
+      "include": "ui/Point.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_frameworks_native/b58cb7c4adf7b1754bab68a959df03a71d431cb3/include/ui/Point.h",
+      "sha256": "a5c557fa1646b971b6fd5983c4d4e58f9284234982da3ed7d04b4c673a278308",
+      "bytes": 2242
+    },
+    {
+      "version": "m",
+      "include": "android/rect.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_frameworks_native/b58cb7c4adf7b1754bab68a959df03a71d431cb3/include/android/rect.h",
+      "sha256": "7cc1c4048bdea60287aa1d882bc7d6f6022650f9046e25aff467460e824682eb",
+      "bytes": 1360
+    },
+    {
+      "version": "m",
+      "include": "utils/CallStack.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/utils/CallStack.h",
+      "sha256": "18d8b6d380b3ad3ce01434ce8bff4a54df69747d6548effb2747a33b733c4cbe",
+      "bytes": 2391
+    },
+    {
+      "version": "m",
+      "include": "backtrace/backtrace_constants.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/backtrace/backtrace_constants.h",
+      "sha256": "b668968236f604576a6d3ac7acb3f50234f29ce2303c7844faa0c91e9e31062a",
+      "bytes": 1168
+    },
+    {
+      "version": "m",
+      "include": "utils/String8.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/utils/String8.h",
+      "sha256": "b99516e7575092489777f9132b06a7f20cfb35e23a51831649ed144db6347bc7",
+      "bytes": 12597
+    },
+    {
+      "version": "m",
+      "include": "utils/SharedBuffer.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/utils/SharedBuffer.h",
+      "sha256": "b2d7a3909b2e60b2e2a1d3ba7ef64f3a31dd23d6d7257c1bac952fd94644a6d4",
+      "bytes": 4334
+    },
+    {
+      "version": "m",
+      "include": "utils/Unicode.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/b4d2495b2bfbe47341cbbe43008ade12d61bee4a/include/utils/Unicode.h",
+      "sha256": "17ec95a8d422948c90d08a42e862491f23f26d70c8cd565b06b737d26cb72f27",
+      "bytes": 6294
+    },
+    {
+      "version": "q",
+      "include": "ui/Region.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_frameworks_native/cff66a74a4940821634fa4a07b3e6da550a41076/libs/ui/include/ui/Region.h",
+      "sha256": "b44b7eac1051e5b99194a193d177883b3f5655b13514043070504c0684e2bb9f",
+      "bytes": 8164
+    },
+    {
+      "version": "q",
+      "include": "utils/Vector.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/include/utils/Vector.h",
+      "sha256": "8c6b5b8e2ef11762f58fbe32620468b413f344f04b0baf763ed6172974e751a8",
+      "bytes": 13959
+    },
+    {
+      "version": "q",
+      "include": "log/log.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/liblog/include/log/log.h",
+      "sha256": "ffbe55e0c534eba1dc871899a015ba67580540f8d591dac4f019e7ce85e74346",
+      "bytes": 5221
+    },
+    {
+      "version": "q",
+      "include": "android/log.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/liblog/include/android/log.h",
+      "sha256": "fc8fc078fd946a8f20bb677e62dbdd32258963bb5b828b78436f973935998555",
+      "bytes": 5929
+    },
+    {
+      "version": "q",
+      "include": "log/log_id.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/liblog/include/log/log_id.h",
+      "sha256": "c6e698e87034cd2e9beedf2ad10e35c8230d1f47aa5c442d897f151bb42022a0",
+      "bytes": 1620
+    },
+    {
+      "version": "q",
+      "include": "log/log_main.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/liblog/include/log/log_main.h",
+      "sha256": "7a882ece7da1b6475ce9342d7772fd992c0d1cae87d23efd6756a75a6681f542",
+      "bytes": 11187
+    },
+    {
+      "version": "q",
+      "include": "log/log_radio.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/liblog/include/log/log_radio.h",
+      "sha256": "4cb49268ef1a657377d5e0bb55c325dab2ee80a686d84b6b57afa71ee4d1cecc",
+      "bytes": 4806
+    },
+    {
+      "version": "q",
+      "include": "log/log_read.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/liblog/include/log/log_read.h",
+      "sha256": "dacc5547edb16e35293e3c9658d96413367357c0807f79966509bda534f1791d",
+      "bytes": 8137
+    },
+    {
+      "version": "q",
+      "include": "log/log_time.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/liblog/include/log/log_time.h",
+      "sha256": "ebae61d7ad1fdde4df196d5a1595ea787322f25d09c34f43e1c90ae119ea1465",
+      "bytes": 5236
+    },
+    {
+      "version": "q",
+      "include": "log/log_safetynet.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/liblog/include/log/log_safetynet.h",
+      "sha256": "8e6756ce54e47c8882d24ae784674574a525ec495f67aad52717c6d08dc0b382",
+      "bytes": 710
+    },
+    {
+      "version": "q",
+      "include": "log/log_system.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/liblog/include/log/log_system.h",
+      "sha256": "2544affd0297a771a2fd318b3cc11e9907c0797053cb0e1d1e121797470b7e61",
+      "bytes": 4762
+    },
+    {
+      "version": "q",
+      "include": "utils/TypeHelpers.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/include/utils/TypeHelpers.h",
+      "sha256": "c5ba6abcc6df8ab3fe2531d7da7e185a0f1627920159294f475cc2d6c5998057",
+      "bytes": 9877
+    },
+    {
+      "version": "q",
+      "include": "utils/VectorImpl.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/include/utils/VectorImpl.h",
+      "sha256": "2c0d7bff0eb9e8aee019ec5c2a939951200104068ece641485014f0c5f4c2bf2",
+      "bytes": 7414
+    },
+    {
+      "version": "q",
+      "include": "utils/Errors.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/include/utils/Errors.h",
+      "sha256": "13f8a999d0838df8681813dee08b31f21178f453e397522e93289f47788e669b",
+      "bytes": 2483
+    },
+    {
+      "version": "q",
+      "include": "ui/Rect.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_frameworks_native/cff66a74a4940821634fa4a07b3e6da550a41076/libs/ui/include/ui/Rect.h",
+      "sha256": "eb5a28ef73a5ee1b0eeff83c6085e285c89dd5a17f354c3b234e499ea40fd827",
+      "bytes": 6299
+    },
+    {
+      "version": "q",
+      "include": "utils/Flattenable.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/include/utils/Flattenable.h",
+      "sha256": "accaf74ca7fbb8dccce0e068391b85dd9a94fc2a875d2491ac88084132223c54",
+      "bytes": 7132
+    },
+    {
+      "version": "q",
+      "include": "utils/Debug.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/include/utils/Debug.h",
+      "sha256": "47d61b97135903b12cd638c4321ec17f57471a642b67bf239e883d9019b4f45b",
+      "bytes": 1295
+    },
+    {
+      "version": "q",
+      "include": "utils/Log.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/include/utils/Log.h",
+      "sha256": "74f0f6c731593ec8c2bcd05e71c74372b469236977136af113ac8a15bdfbf939",
+      "bytes": 270
+    },
+    {
+      "version": "q",
+      "include": "ui/FloatRect.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_frameworks_native/cff66a74a4940821634fa4a07b3e6da550a41076/libs/ui/include/ui/FloatRect.h",
+      "sha256": "f5c78b2fbb6f55d49e32db00923592d49506498ded177b720d1f362fc3444b50",
+      "bytes": 1824
+    },
+    {
+      "version": "q",
+      "include": "ui/Point.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_frameworks_native/cff66a74a4940821634fa4a07b3e6da550a41076/libs/ui/include/ui/Point.h",
+      "sha256": "5438f5663a08f1753ef45d4712fea3c491e537d4ba50ae0c87611d0aaa51b842",
+      "bytes": 2246
+    },
+    {
+      "version": "q",
+      "include": "ui/Size.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_frameworks_native/cff66a74a4940821634fa4a07b3e6da550a41076/libs/ui/include/ui/Size.h",
+      "sha256": "3f44a15336cb76dc7d9b07dd1a4e7f697e270c0b4fa9f81a01e878baef7b3d3d",
+      "bytes": 5737
+    },
+    {
+      "version": "q",
+      "include": "android/rect.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_frameworks_native/cff66a74a4940821634fa4a07b3e6da550a41076/libs/arect/include/android/rect.h",
+      "sha256": "8cffbe3f6202b1c437bb56a90fa04bec4a68a1acb9bcdf263e94568b73b98402",
+      "bytes": 1622
+    },
+    {
+      "version": "q",
+      "include": "android-base/macros.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/base/include/android-base/macros.h",
+      "sha256": "ed5e0d7ae3ce9ed19f87ffcec27c31c11b26f5778c4dd92c2eecd30c6af6ede6",
+      "bytes": 5816
+    },
+    {
+      "version": "q",
+      "include": "utils/CallStack.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/include/utils/CallStack.h",
+      "sha256": "f0d98a404a3a181e41074d554d3705aa9f0c2f7174f9436f72d0e09f5f2a56cb",
+      "bytes": 6387
+    },
+    {
+      "version": "q",
+      "include": "backtrace/backtrace_constants.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libbacktrace/include/backtrace/backtrace_constants.h",
+      "sha256": "1141a8d8db6dac61391b42db7930a297c4360a5586b8bd60bf5a9d6af122085a",
+      "bytes": 1173
+    },
+    {
+      "version": "q",
+      "include": "utils/String8.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/include/utils/String8.h",
+      "sha256": "610f4f036b80475e1bb97236858fda90c96fc74dd45b36b8c18b672291dfb6ed",
+      "bytes": 12593
+    },
+    {
+      "version": "q",
+      "include": "utils/Unicode.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/include/utils/Unicode.h",
+      "sha256": "d5849ad7b8019aaa0a9d602d4577676dbab576959a40c6d58a167a57c3e6d043",
+      "bytes": 6724
+    },
+    {
+      "version": "q",
+      "include": "utils/SharedBuffer.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/SharedBuffer.h",
+      "sha256": "e7222e0e229f23e58afcbd7200fe6b801dbf7521e6ea8a4f3e30402669a20987",
+      "bytes": 4627
+    },
+    {
+      "version": "q",
+      "include": "Region.cpp",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_frameworks_native/cff66a74a4940821634fa4a07b3e6da550a41076/libs/ui/Region.cpp",
+      "sha256": "db88941fcdeb5739729188348ac5c2f70ab5eda517a95a8bab76640272c8783f",
+      "bytes": 27636
+    },
+    {
+      "version": "q",
+      "include": "android-base/stringprintf.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/base/include/android-base/stringprintf.h",
+      "sha256": "127525d36c8546925f09a3c2299a744080400b7ee73b64a1e9f8a6b9d27f2917",
+      "bytes": 1434
+    },
+    {
+      "version": "q",
+      "include": "private/ui/RegionHelper.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_frameworks_native/cff66a74a4940821634fa4a07b3e6da550a41076/include/private/ui/RegionHelper.h",
+      "sha256": "a92f9c93871d7813b30bf1bbf02da07518ceb9a1cd3c37937f5eb6110b825744",
+      "bytes": 9623
+    },
+    {
+      "version": "q",
+      "include": "VectorImpl.cpp",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/VectorImpl.cpp",
+      "sha256": "3b248e372cd0a26fc9d8b3e248ddd033e5b17d4c70c0633c480de311aa764334",
+      "bytes": 20209
+    },
+    {
+      "version": "q",
+      "include": "SharedBuffer.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/SharedBuffer.h",
+      "sha256": "e7222e0e229f23e58afcbd7200fe6b801dbf7521e6ea8a4f3e30402669a20987",
+      "bytes": 4627
+    },
+    {
+      "version": "q",
+      "include": "SharedBuffer.cpp",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/SharedBuffer.cpp",
+      "sha256": "d028f6df7dd42176716479d2eb48f591e9ee31167f4784175488c99f8c4748ca",
+      "bytes": 3953
+    },
+    {
+      "version": "q",
+      "include": "String8.cpp",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/String8.cpp",
+      "sha256": "1cb9e3b63884b7768a5b0311f349a916252db3a3bfaedb3d4635a4f91e7f0f28",
+      "bytes": 15075
+    },
+    {
+      "version": "q",
+      "include": "utils/Compat.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/include/utils/Compat.h",
+      "sha256": "64dc73025f359099a87bb82e54707b94687a6df75c18e666ba458068db5ceb08",
+      "bytes": 2385
+    },
+    {
+      "version": "q",
+      "include": "utils/String16.h",
+      "url": "https://raw.githubusercontent.com/LineageOS/android_system_core/6d27634866be5b646a8cea1f9abeae902fd831e5/libutils/include/utils/String16.h",
+      "sha256": "219a210eed1129d85def06c7be27b64e63f24214fe31fe39aea82474f241350b",
+      "bytes": 7853
+    }
+  ],
+  "freellmapi": {
+    "successful_calls": 6,
+    "reported_tokens": 13069
+  }
+}

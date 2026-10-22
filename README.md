@@ -1,3 +1,5 @@
+Aggiornamento 22 ottobre: [compilazione ARM32/ARM64 degli header e di quattro implementazioni Q](docs/HEADER-EXPERIMENT.md), con 54 import selezionati coperti. Nessuna ROM installabile ancora prodotta.
+
 # Huawei Mate S — Android 10+ port
 
 Experimental source project for Huawei Mate S CRR-L09 / Carrera / Kirin 935.

@@ -1,5 +1,11 @@
 # Grafica B321 → Q: confronto statico, 22 ottobre 2026
 
+Aggiornamento: [esperimento compilato ARM32/ARM64](HEADER-EXPERIMENT.md).
+Dimensioni e allineamenti dei sette tipi di riferimento coincidono; quattro
+implementazioni Q compilano e coprono i 54 import selezionati Region/VectorImpl.
+Il punto 1 sotto è completato per i riferimenti e la toolchain documentati,
+ma non certifica gli header effettivi Huawei B321.
+
 Gli otto candidati grafici presenti localmente sono stati ricontrollati contro
 gli hash stock, le dipendenze previste e i payload originali. Il risultato è
 strutturale: non è una prova del linker Android né di rendering sul telefono.

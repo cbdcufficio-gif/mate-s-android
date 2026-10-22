@@ -14,13 +14,14 @@ TYPES = ["Region", "CallStack", "VectorImpl", "SharedBuffer", "String8", "Rect",
 HEADERS = ["ui/Region.h", "utils/CallStack.h", "utils/VectorImpl.h",
            "utils/SharedBuffer.h", "utils/String8.h", "ui/Rect.h", "ui/Point.h"]
 ROOTS = {
-    "m": [("core", "include"), ("native", "include"), ("core", "libutils")],
+    "m": [("core", "include"), ("native", "include"), ("core", "libutils"),
+          ("core", "libbacktrace/include"), ("core", "liblog/include")],
     "q": [("core", "libutils/include"), ("native", "libs/ui/include"),
           ("native", "libs/math/include"), ("core", "libcutils/include"),
           ("core", "libsystem/include"), ("core", "liblog/include"),
           ("core", "base/include"), ("native", "libs/nativebase/include"),
           ("native", "libs/nativewindow/include"), ("core", "include"),
-          ("core", "libutils")],
+          ("core", "libutils"), ("core", "libbacktrace/include")],
 }
 
 def run(argv):
@@ -76,7 +77,8 @@ def main():
                     # Fetch Android internal includes. Standard headers come from NDK.
                     for inc in re.findall(r'^\s*#\s*include\s*[<"]([^>"]+)[>"]', data.decode(), re.M):
                         if inc.startswith(("utils/", "ui/", "math/", "cutils/", "log/",
-                                           "android-base/", "system/", "nativebase/", "nativewindow/")):
+                                           "android-base/", "android/", "backtrace/",
+                                           "system/", "nativebase/", "nativewindow/")):
                             fetch(inc)
                     return
                 raise RuntimeError("Missing original header: " + version + "/" + header)

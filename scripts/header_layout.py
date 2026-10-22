@@ -35,10 +35,13 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--ndk", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
+    p.add_argument("--platform-cxx", type=Path)
     a = p.parse_args()
     a.out.mkdir(parents=True, exist_ok=False)
     lock = json.loads(Path("configs/layout-sources.json").read_text())
     binpath = a.ndk / "toolchains/llvm/prebuilt/linux-x86_64/bin"
+    cxxflags = (["-nostdinc++", "-I" + str(a.platform_cxx.resolve())]
+                if a.platform_cxx else [])
     report = {"rom_built": False, "hardware_tested": False,
               "historical_vendor_abi_proven": False, "sources": [], "results": {},
               "implementation_objects": [],
@@ -99,7 +102,7 @@ def main():
                 result = run([str(binpath / (triple + api + "-clang++")), "-std=c++17",
                               "-fno-rtti", "-fno-exceptions",
                               "-Xclang", "-fdump-record-layouts", "-I" + str(dest),
-                              "-c", str(source), "-o", str(obj)])
+                              *cxxflags, "-c", str(source), "-o", str(obj)])
                 (dest / (arch + ".log")).write_text(result.stdout)
                 print("RECORD_LAYOUT " + version + "/" + arch + "\n" + result.stdout)
                 if result.returncode:
@@ -124,7 +127,7 @@ def main():
                         obj = dest / (cpp + "." + arch + ".o")
                         result = run([str(binpath / (triple + "29-clang++")), "-std=c++17",
                                       "-fPIC", "-fno-rtti", "-fno-exceptions", "-I" + str(dest),
-                                      "-c", str(dest / cpp), "-o", str(obj)])
+                                      *cxxflags, "-c", str(dest / cpp), "-o", str(obj)])
                         print("IMPLEMENTATION " + cpp + "/" + arch + "\n" + result.stdout)
                         entry = {"source": cpp, "arch": arch, "returncode": result.returncode}
                         if result.returncode == 0:

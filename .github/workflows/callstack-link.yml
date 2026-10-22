@@ -1,0 +1,24 @@
+name: Mate S strict CallStack link
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/callstack_link_probe.py
+      - .github/workflows/callstack-link.yml
+permissions:
+  contents: read
+jobs:
+  link:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - run: python3 scripts/callstack_link_probe.py
+      - if: always()
+        run: |
+          if [ -f out/callstack-link/report.json ]; then
+            cat out/callstack-link/report.json
+          fi

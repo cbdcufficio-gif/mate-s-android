@@ -1,3 +1,7 @@
+Aggiornamento 23 ottobre: acquisizione boot/DTB e prova grafo Android; vedere BOOT-RESULT.md e BUILD-BLOCKERS.md.
+
+Aggiornamento 22 ottobre: [compilazione ARM32/ARM64 degli header e di quattro implementazioni Q](HEADER-EXPERIMENT.md), con 54 import selezionati coperti. Nessuna ROM installabile ancora prodotta.
+
 # Stato verificato — 22 ottobre 2026
 
 ## Prosecuzione desktop
@@ -50,13 +54,12 @@ Il sorgente include un percorso di aggiornamento firmware touchscreen al boot:
 va revisionato prima di avviare un nuovo kernel. L'archivio kernel è materiale
 di sviluppo, NON un pacchetto installabile. Non flashare le Image fornite.
 
-## Prossimo input minimo
+## Prossimi passaggi
 
-Eseguire prepare_graphics.py ed export_review.py come nel README e inviare
-soltanto mates-graphics-review-v02.tar.gz. Le otto librerie reali restano nel Dell;
-il report contiene hash, simboli, metadati ELF e ricette. Non occorre riavviare
-o utilizzare il telefono per questo passaggio. In caso di errore inviare il
-messaggio STOP completo; non disattivare i controlli.
+Boot, dtimage e recovery acquisiti in sola lettura dal CRR-L09 il 23 ottobre.
+Vedere BOOT-RESULT.md e DTIMAGE-RESULT.md; non occorre richiedere nuovamente
+i candidati grafici o il dump boot. Avviato esperimento remoto di sync sorgenti
+e grafo Android reale, con limiti di spazio e tempo. Non equivale a una build ROM.
 
 Android 10 è un primo candidato tecnico. Non si promettono una data di rilascio,
 un tetto massimo Android o una ROM completa senza build e prove sul dispositivo.

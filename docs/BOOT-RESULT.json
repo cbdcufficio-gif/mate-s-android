@@ -1,0 +1,39 @@
+{
+  "status": "STATIC_INSPECTION_ONLY",
+  "bytes": 25165824,
+  "sha256": "8474582f3b093036731ac456e327f53c9da1465e174aa43fe8fec666810175e1",
+  "page_size": 2048,
+  "kernel_addr": 6815744,
+  "ramdisk_addr": 130023424,
+  "second_addr": 15728640,
+  "tags_addr": 2097152,
+  "components": {
+    "kernel": {
+      "offset": 2048,
+      "bytes": 21102856,
+      "sha256": "9780bb7addb49ee9d79c68aae81bf37609bef874db154c317d790ea1a19b61e5"
+    },
+    "ramdisk": {
+      "offset": 21106688,
+      "bytes": 4021800,
+      "sha256": "59af79911e8499bf2ae98197423795b17eea090816f2e77cf309029f89f5bb04"
+    },
+    "second": {
+      "offset": 25128960,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "legacy_sha1_id_matches": true,
+  "tail": {
+    "offset": 25128960,
+    "bytes": 36864,
+    "nonzero_bytes": 36749,
+    "sha256": "2903afee5136fabeb028d85c328f26059ccf7de554c6dd3d5628197241323179"
+  },
+  "ramdisk_uncompressed_bytes": 8137984,
+  "firmware_authenticity_verified": false,
+  "hardware_boot_tested": false,
+  "source_partition": "boot",
+  "device_and_local_sha256_match": true
+}

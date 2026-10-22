@@ -52,7 +52,7 @@ def main():
         ('init', ['repo', 'init', '-u', 'https://github.com/LineageOS/android.git', '-b', COMMIT,
                   '--depth=1', '--no-clone-bundle', '--groups=default,-darwin'], 180),
         ('sync', ['repo', 'sync', '-c', '-j4', '--no-clone-bundle', '--no-tags', '--fail-fast'], 1200),
-        ('graph', ['bash', '-c', 'set -eo pipefail; source build/envsetup.sh; lunch aosp_arm64-userdebug; m -j2 nothing'], 600),
+        ('graph', ['bash', '-c', 'set -eo pipefail; source build/envsetup.sh; lunch lineage_arm64-userdebug; m -j2 nothing'], 600),
     ]
     try:
         for name, argv, seconds in stages:

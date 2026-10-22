@@ -17,7 +17,8 @@ ROOTS = {
     "m": [("core", "include"), ("native", "include"), ("core", "libutils"),
           ("core", "libbacktrace/include"), ("core", "liblog/include")],
     "q": [("core", "libutils/include"), ("native", "libs/ui/include"),
-          ("native", "libs/math/include"), ("core", "libcutils/include"),
+          ("native", "libs/math/include"), ("native", "libs/arect/include"),
+          ("core", "libcutils/include"),
           ("core", "libsystem/include"), ("core", "liblog/include"),
           ("core", "base/include"), ("native", "libs/nativebase/include"),
           ("native", "libs/nativewindow/include"), ("core", "include"),
@@ -93,9 +94,11 @@ def main():
                 api = "23" if version == "m" else "29"
                 obj = dest / (arch + ".o")
                 result = run([str(binpath / (triple + api + "-clang++")), "-std=c++17",
-                              "-fno-rtti", "-fno-exceptions", "-I" + str(dest),
+                              "-fno-rtti", "-fno-exceptions",
+                              "-Xclang", "-fdump-record-layouts", "-I" + str(dest),
                               "-c", str(source), "-o", str(obj)])
                 (dest / (arch + ".log")).write_text(result.stdout)
+                print("RECORD_LAYOUT " + version + "/" + arch + "\n" + result.stdout)
                 if result.returncode:
                     raise RuntimeError(version + "/" + arch + ": " + result.stdout)
                 nm = run([str(binpath / "llvm-nm"), "-S", "--defined-only", str(obj)])

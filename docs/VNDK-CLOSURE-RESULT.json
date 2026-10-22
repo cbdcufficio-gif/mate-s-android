@@ -1,0 +1,256 @@
+{
+  "run_url": "https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39852629910",
+  "commit": "2e659f04a7cde964415c82dd7507610769165408",
+  "runtime_tested": false,
+  "android_namespace_verified": false,
+  "architectures": [
+    {
+      "arch": "arm",
+      "providers": {
+        "libbacktrace.so": {
+          "url": "https://android.googlesource.com/platform/prebuilts/vndk/v29/+/2e659f04a7cde964415c82dd7507610769165408/arm/arch-arm-armv7-a-neon/shared/vndk-sp/libbacktrace.so?format=TEXT",
+          "git_blob": "4d5838ca0607f5dbaa69e47cef22d3278933d3bb",
+          "sha256": "df96ba42ec624ba566f570f2ae26fc51064a0ec12b0c62d07eb3b735f0c8dacc",
+          "bytes": 84788,
+          "needed": [
+            "libbase.so",
+            "liblog.so",
+            "libunwindstack.so",
+            "libc++.so",
+            "libc.so",
+            "libm.so",
+            "libdl.so"
+          ]
+        },
+        "libc++.so": {
+          "url": "https://android.googlesource.com/platform/prebuilts/vndk/v29/+/2e659f04a7cde964415c82dd7507610769165408/arm/arch-arm-armv7-a-neon/shared/vndk-sp/libc++.so?format=TEXT",
+          "git_blob": "aaea72cc802c1eb1f6a1115dc44752463653d378",
+          "sha256": "bb88b783d1bb7d9bcf7e178fab3f7deb24ad1dbd9f4b5cc23d4541a34c1b3732",
+          "bytes": 584964,
+          "needed": [
+            "libc.so",
+            "libm.so",
+            "libdl.so"
+          ]
+        },
+        "libunwindstack.so": {
+          "url": "https://android.googlesource.com/platform/prebuilts/vndk/v29/+/2e659f04a7cde964415c82dd7507610769165408/arm/arch-arm-armv7-a-neon/shared/vndk-sp/libunwindstack.so?format=TEXT",
+          "git_blob": "d944e963e8dc7a754cf3b1671af5cd91f1010c35",
+          "sha256": "4ffc05257a894156a4f7b8f0a88eac6c5df1d002a132eb4529929b6f615eb694",
+          "bytes": 286580,
+          "needed": [
+            "libbase.so",
+            "liblog.so",
+            "liblzma.so",
+            "libc++.so",
+            "libc.so",
+            "libm.so",
+            "libdl.so"
+          ]
+        },
+        "liblzma.so": {
+          "url": "https://android.googlesource.com/platform/prebuilts/vndk/v29/+/2e659f04a7cde964415c82dd7507610769165408/arm/arch-arm-armv7-a-neon/shared/vndk-sp/liblzma.so?format=TEXT",
+          "git_blob": "eb97135e60d6b14f5d467b6f34517c7af02be1b1",
+          "sha256": "e33dcbafd9fb451b3da13580844dade8082a2b04cf01ca9638bfab68e54653f5",
+          "bytes": 121796,
+          "needed": [
+            "libc.so",
+            "libm.so",
+            "libdl.so"
+          ]
+        },
+        "libbase.so": {
+          "url": "https://android.googlesource.com/platform/prebuilts/vndk/v29/+/2e659f04a7cde964415c82dd7507610769165408/arm/arch-arm-armv7-a-neon/shared/vndk-sp/libbase.so?format=TEXT",
+          "git_blob": "c3df502fbe8e54ec380ecd70ee25f9d0d76dca7c",
+          "sha256": "6d414600331e117bd594a6202e821cc47c76e4accb4effc1063f47036c00c660",
+          "bytes": 63172,
+          "needed": [
+            "liblog.so",
+            "libc++.so",
+            "libc.so",
+            "libm.so",
+            "libdl.so"
+          ]
+        }
+      },
+      "missing_nonboundary_libraries": [],
+      "encountered_boundary": [
+        "libc.so",
+        "libdl.so",
+        "liblog.so",
+        "libm.so"
+      ],
+      "static_symbol_coverage": {
+        "libbacktrace.so": {
+          "reachable_supplied_providers": [
+            "libbase.so",
+            "libc++.so",
+            "liblzma.so",
+            "libunwindstack.so"
+          ],
+          "imports_checked": 92,
+          "unmatched_strong_imports": 44,
+          "warning": "Unmatched includes absent system boundary providers; not proof of broken library"
+        },
+        "libc++.so": {
+          "reachable_supplied_providers": [],
+          "imports_checked": 133,
+          "unmatched_strong_imports": 133,
+          "warning": "Unmatched includes absent system boundary providers; not proof of broken library"
+        },
+        "libunwindstack.so": {
+          "reachable_supplied_providers": [
+            "libbase.so",
+            "libc++.so",
+            "liblzma.so"
+          ],
+          "imports_checked": 81,
+          "unmatched_strong_imports": 39,
+          "warning": "Unmatched includes absent system boundary providers; not proof of broken library"
+        },
+        "liblzma.so": {
+          "reachable_supplied_providers": [],
+          "imports_checked": 22,
+          "unmatched_strong_imports": 18,
+          "warning": "Unmatched includes absent system boundary providers; not proof of broken library"
+        },
+        "libbase.so": {
+          "reachable_supplied_providers": [
+            "libc++.so"
+          ],
+          "imports_checked": 127,
+          "unmatched_strong_imports": 73,
+          "warning": "Unmatched includes absent system boundary providers; not proof of broken library"
+        }
+      }
+    },
+    {
+      "arch": "arm64",
+      "providers": {
+        "libbacktrace.so": {
+          "url": "https://android.googlesource.com/platform/prebuilts/vndk/v29/+/2e659f04a7cde964415c82dd7507610769165408/arm64/arch-arm64-armv8-a/shared/vndk-sp/libbacktrace.so?format=TEXT",
+          "git_blob": "233fd23e42982e2421365d84cf04086025cd4671",
+          "sha256": "f23a1ab73ce22815b6daf7b2f60698a590c933fa83df1b371fa95c11d599d6d1",
+          "bytes": 109672,
+          "needed": [
+            "libbase.so",
+            "liblog.so",
+            "libunwindstack.so",
+            "libc++.so",
+            "libc.so",
+            "libm.so",
+            "libdl.so"
+          ]
+        },
+        "libc++.so": {
+          "url": "https://android.googlesource.com/platform/prebuilts/vndk/v29/+/2e659f04a7cde964415c82dd7507610769165408/arm64/arch-arm64-armv8-a/shared/vndk-sp/libc++.so?format=TEXT",
+          "git_blob": "5646444f49c25f49e3492771cb66d2c886fa7016",
+          "sha256": "757594bc3d10f8ca552ae836f1478067508c84cc2799576c07528e87be58b483",
+          "bytes": 841856,
+          "needed": [
+            "libc.so",
+            "libm.so",
+            "libdl.so"
+          ]
+        },
+        "libunwindstack.so": {
+          "url": "https://android.googlesource.com/platform/prebuilts/vndk/v29/+/2e659f04a7cde964415c82dd7507610769165408/arm64/arch-arm64-armv8-a/shared/vndk-sp/libunwindstack.so?format=TEXT",
+          "git_blob": "cc137a8ad086e2ee2bd19e0c8791cfd7cff7ac1d",
+          "sha256": "fe01e82ec02f728f7fbf67de25ce6638cf303a258f3e4c77efd04a9350ccd123",
+          "bytes": 369360,
+          "needed": [
+            "libbase.so",
+            "liblog.so",
+            "liblzma.so",
+            "libc++.so",
+            "libc.so",
+            "libm.so",
+            "libdl.so"
+          ]
+        },
+        "liblzma.so": {
+          "url": "https://android.googlesource.com/platform/prebuilts/vndk/v29/+/2e659f04a7cde964415c82dd7507610769165408/arm64/arch-arm64-armv8-a/shared/vndk-sp/liblzma.so?format=TEXT",
+          "git_blob": "26dfa4b54df3f43127257f0330af7c9ddc9d7d76",
+          "sha256": "b950b1d73563d29a3afd51e07f14f4d1958a0c951c98e7865bd68e533cc77ee3",
+          "bytes": 152672,
+          "needed": [
+            "libc.so",
+            "libm.so",
+            "libdl.so"
+          ]
+        },
+        "libbase.so": {
+          "url": "https://android.googlesource.com/platform/prebuilts/vndk/v29/+/2e659f04a7cde964415c82dd7507610769165408/arm64/arch-arm64-armv8-a/shared/vndk-sp/libbase.so?format=TEXT",
+          "git_blob": "41d75d828db2bcf387078c688fb2b55c54b6c943",
+          "sha256": "1a164b9097724839aa86d9e1f2e4cd91c3822886ede5f5fa6606dad2ed6a7092",
+          "bytes": 83552,
+          "needed": [
+            "liblog.so",
+            "libc++.so",
+            "libc.so",
+            "libm.so",
+            "libdl.so"
+          ]
+        }
+      },
+      "missing_nonboundary_libraries": [],
+      "encountered_boundary": [
+        "libc.so",
+        "libdl.so",
+        "liblog.so",
+        "libm.so"
+      ],
+      "static_symbol_coverage": {
+        "libbacktrace.so": {
+          "reachable_supplied_providers": [
+            "libbase.so",
+            "libc++.so",
+            "liblzma.so",
+            "libunwindstack.so"
+          ],
+          "imports_checked": 91,
+          "unmatched_strong_imports": 43,
+          "warning": "Unmatched includes absent system boundary providers; not proof of broken library"
+        },
+        "libc++.so": {
+          "reachable_supplied_providers": [],
+          "imports_checked": 134,
+          "unmatched_strong_imports": 133,
+          "warning": "Unmatched includes absent system boundary providers; not proof of broken library"
+        },
+        "libunwindstack.so": {
+          "reachable_supplied_providers": [
+            "libbase.so",
+            "libc++.so",
+            "liblzma.so"
+          ],
+          "imports_checked": 78,
+          "unmatched_strong_imports": 37,
+          "warning": "Unmatched includes absent system boundary providers; not proof of broken library"
+        },
+        "liblzma.so": {
+          "reachable_supplied_providers": [],
+          "imports_checked": 16,
+          "unmatched_strong_imports": 16,
+          "warning": "Unmatched includes absent system boundary providers; not proof of broken library"
+        },
+        "libbase.so": {
+          "reachable_supplied_providers": [
+            "libc++.so"
+          ],
+          "imports_checked": 127,
+          "unmatched_strong_imports": 72,
+          "warning": "Unmatched includes absent system boundary providers; not proof of broken library"
+        }
+      }
+    }
+  ],
+  "boundary_not_audited": [
+    "libc.so",
+    "libdl.so",
+    "liblog.so",
+    "libm.so"
+  ],
+  "status": "STATIC_AUDIT_COMPLETED",
+  "downloaded_provider_bytes": 2698412
+}

@@ -1,0 +1,22 @@
+{
+  "native_m": {
+    "repo": "LineageOS/android_frameworks_native",
+    "sha": "b58cb7c4adf7b1754bab68a959df03a71d431cb3",
+    "tree": "ddddfc93321ad9c87d42fb1284b95947a785bff4"
+  },
+  "native_q": {
+    "repo": "LineageOS/android_frameworks_native",
+    "sha": "cff66a74a4940821634fa4a07b3e6da550a41076",
+    "tree": "ffe70b4daf093ac23cbcc34b04405b84364fddf3"
+  },
+  "core_m": {
+    "repo": "LineageOS/android_system_core",
+    "sha": "b4d2495b2bfbe47341cbbe43008ade12d61bee4a",
+    "tree": "e79b820bb95606d72428317b71e87db6d52520b1"
+  },
+  "core_q": {
+    "repo": "LineageOS/android_system_core",
+    "sha": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+    "tree": "33cd0de6ca53e580173d9e44be7cedc54070185a"
+  }
+}

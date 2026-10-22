@@ -1,0 +1,30 @@
+name: Mate S original header layout
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/header_layout.py
+      - configs/layout-sources.json
+      - .github/workflows/header-layout.yml
+permissions:
+  contents: read
+jobs:
+  layout:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Compile original headers using preinstalled Android NDK
+        run: python3 scripts/header_layout.py --ndk "$ANDROID_NDK_HOME" --out out/layout
+      - name: Preserve concise results in job summary
+        if: always()
+        run: |
+          if [ -f out/layout/report.json ]; then
+            echo 'Compile-only header experiment; no vendor ABI or ROM certification.' >> "$GITHUB_STEP_SUMMARY"
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat out/layout/report.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi

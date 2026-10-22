@@ -13,6 +13,9 @@ BUILD = '''set -eo pipefail
 source build/envsetup.sh
 lunch lineage_carrera-userdebug
 m -j"$MATES_JOBS" libion_huawei gralloc.hi3635 libGLES_mali hwcomposer.hi3635 \
+    libutilscallstack \
+    android.hardware.graphics.allocator@2.0-impl android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.mapper@2.0-impl \
     android.hardware.graphics.composer@2.1-impl android.hardware.graphics.composer@2.1-service
 '''
 

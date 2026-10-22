@@ -84,6 +84,9 @@ def main():
                         "url": url, "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data)})
                     # Fetch Android internal includes. Standard headers come from NDK.
                     for inc in re.findall(r'^\s*#\s*include\s*[<"]([^>"]+)[>"]', data.decode(), re.M):
+                        if header.startswith("system/") and inc.startswith("graphics-") and inc.endswith(".h"):
+                            fetch("system/" + inc)
+                            continue
                         if inc in ("SharedBuffer.h", "VectorImpl.h") or inc.startswith(("utils/", "ui/", "math/", "cutils/", "log/",
                                            "android-base/", "android/", "backtrace/",
                                            "system/", "nativebase/", "nativewindow/", "private/")):

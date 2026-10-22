@@ -15,6 +15,7 @@ HEADERS = ["ui/Region.h", "utils/CallStack.h", "utils/VectorImpl.h",
            "utils/SharedBuffer.h", "utils/String8.h", "ui/Rect.h", "ui/Point.h"]
 ROOTS = {
     "m": [("core", "include"), ("native", "include"), ("core", "libutils"),
+          ("native", "libs/ui"),
           ("core", "libbacktrace/include"), ("core", "liblog/include")],
     "q": [("core", "libutils/include"), ("native", "libs/ui/include"),
           ("native", "libs/math/include"), ("native", "libs/arect/include"),
@@ -22,7 +23,7 @@ ROOTS = {
           ("core", "libsystem/include"), ("core", "liblog/include"),
           ("core", "base/include"), ("native", "libs/nativebase/include"),
           ("native", "libs/nativewindow/include"), ("core", "include"),
-          ("core", "libutils"), ("core", "libbacktrace/include")],
+          ("core", "libutils"), ("native", "libs/ui"), ("core", "libbacktrace/include")],
 }
 
 def run(argv):
@@ -39,6 +40,7 @@ def main():
     binpath = a.ndk / "toolchains/llvm/prebuilt/linux-x86_64/bin"
     report = {"rom_built": False, "hardware_tested": False,
               "historical_vendor_abi_proven": False, "sources": [], "results": {},
+              "implementation_objects": [],
               "toolchain": (a.ndk / "source.properties").read_text()}
     total = 0
     try:
@@ -77,7 +79,7 @@ def main():
                         "url": url, "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data)})
                     # Fetch Android internal includes. Standard headers come from NDK.
                     for inc in re.findall(r'^\s*#\s*include\s*[<"]([^>"]+)[>"]', data.decode(), re.M):
-                        if inc.startswith(("utils/", "ui/", "math/", "cutils/", "log/",
+                        if inc in ("SharedBuffer.h", "VectorImpl.h") or inc.startswith(("utils/", "ui/", "math/", "cutils/", "log/",
                                            "android-base/", "android/", "backtrace/",
                                            "system/", "nativebase/", "nativewindow/")):
                             fetch(inc)
@@ -112,6 +114,25 @@ def main():
                 if len(values) != len(TYPES) * 2:
                     raise RuntimeError("Incomplete object symbol measurements")
                 report["results"][version + "_" + arch] = values
+            # Original Q implementations, compiled to relocatable objects only.
+            # Linking, dependency closure and Huawei runtime behavior remain untested.
+            if version == "q":
+                for cpp in ("Region.cpp", "VectorImpl.cpp", "SharedBuffer.cpp", "String8.cpp"):
+                    fetch(cpp)
+                    for arch, triple in (("arm", "armv7a-linux-androideabi"), ("arm64", "aarch64-linux-android")):
+                        obj = dest / (cpp + "." + arch + ".o")
+                        result = run([str(binpath / (triple + "29-clang++")), "-std=c++17",
+                                      "-fPIC", "-fno-rtti", "-fno-exceptions", "-I" + str(dest),
+                                      "-c", str(dest / cpp), "-o", str(obj)])
+                        print("IMPLEMENTATION " + cpp + "/" + arch + "\n" + result.stdout)
+                        entry = {"source": cpp, "arch": arch, "returncode": result.returncode}
+                        if result.returncode == 0:
+                            symbols = run([str(binpath / "llvm-nm"), "-P", str(obj)])
+                            entry["symbols"] = symbols.stdout
+                            entry["sha256"] = hashlib.sha256(obj.read_bytes()).hexdigest()
+                        else:
+                            entry["error"] = result.stdout
+                        report["implementation_objects"].append(entry)
         report["equal_sizes_and_alignments"] = {
             arch: report["results"]["m_" + arch] == report["results"]["q_" + arch]
             for arch in ("arm", "arm64")}

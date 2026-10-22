@@ -4,6 +4,7 @@ import io
 from pathlib import Path
 import tarfile
 import urllib.request
+import subprocess
 
 SHA = "6d27634866be5b646a8cea1f9abeae902fd831e5"
 SOURCES = """config_read config_write log_event_list log_event_write logger_lock
@@ -11,29 +12,31 @@ logger_name logger_read logger_write logprint stderr_write event_tag_map log_tim
 properties pmsg_reader pmsg_writer logd_reader logd_writer""".split()
 
 def fetch_core(root):
-    url = "https://codeload.github.com/LineageOS/android_system_core/tar.gz/" + SHA
-    with urllib.request.urlopen(url, timeout=45) as stream:
-        data = stream.read(32 * 1024**2 + 1)
-    if len(data) > 32 * 1024**2:
-        raise ValueError("Core archive budget exceeded")
-    total = count = 0
-    with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as archive:
-        for member in archive:
-            relative = Path(*Path(member.name).parts[1:])
-            if not member.isfile() or not any(str(relative).startswith(p) for p in
-                    ("liblog/", "libcutils/include/", "libsystem/include/", "base/include/")):
-                continue
-            if relative.is_absolute() or ".." in relative.parts:
-                raise ValueError("Unsafe archive path")
-            total += member.size
-            count += 1
-            if total > 8 * 1024**2 or count > 1000:
-                raise ValueError("Core extraction budget exceeded")
-            target = root / relative
-            target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_bytes(archive.extractfile(member).read())
-    return {"url": url, "commit": SHA, "bytes": total,
-            "archive_sha256": hashlib.sha256(data).hexdigest()}
+    url = "https://github.com/LineageOS/android_system_core.git"
+    root.mkdir()
+    commands = [
+        ["git", "init", str(root)],
+        ["git", "-C", str(root), "remote", "add", "origin", url],
+        ["git", "-C", str(root), "fetch", "--depth=1", "--filter=blob:none", "origin", SHA],
+        ["git", "-C", str(root), "sparse-checkout", "set", "liblog",
+         "libcutils/include", "libsystem/include", "base/include"],
+        ["git", "-C", str(root), "checkout", "--detach", "FETCH_HEAD"],
+    ]
+    for command in commands:
+        result = subprocess.run(command, text=True, stdout=subprocess.PIPE,
+                                stderr=subprocess.STDOUT, timeout=120)
+        if result.returncode:
+            raise RuntimeError(result.stdout)
+    actual = subprocess.check_output(["git", "-C", str(root), "rev-parse", "HEAD"],
+                                     text=True).strip()
+    if actual != SHA:
+        raise ValueError("Pinned source commit mismatch")
+    total = sum(p.stat().st_size for p in root.rglob("*")
+                if p.is_file() and ".git" not in p.relative_to(root).parts)
+    if total > 8 * 1024**2:
+        raise ValueError("Sparse source budget exceeded")
+    return {"url": url, "commit": SHA, "source_bytes": total,
+            "transfer": "shallow blob-filtered sparse checkout"}
 
 def build(root, dest, compiler, provider, run):
     flags = ["-fPIC", "-std=c++17", "-nostdinc++", "-fno-exceptions", "-fno-rtti",

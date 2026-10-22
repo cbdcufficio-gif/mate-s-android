@@ -33,7 +33,7 @@ def main():
     report = {"rom_built": False, "hardware_tested": False,
               "replacement_library_built": False, "architectures": [],
               "provider_commit": COMMIT,
-              "link_scope": "Real VNDK29 libc++; NDK API29 C/log stubs and modern compiler runtime"}
+              "link_scope": "Real VNDK29 libc++; original Q liblog; NDK API29 C stubs and modern compiler runtime"}
     try:
         core = root / "core"
         report["log_source"] = fetch_core(core)

@@ -53,6 +53,15 @@ Nessuna strategia globale, abbonamento o quota a pagamento è stata attivata.
 
 ## Evidenze locali di questa sessione
 
+Risultati remoti reali:
+[preflight riuscito](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39841220576)
+e [capacità/test ARM riusciti](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39842020143).
+Il runner ha 4 CPU, circa 16 GB RAM e 86,1 GiB liberi iniziali. Rimuovendo solo
+SDK inutilizzati nella VM effimera: 105,5 GiB. Dopo installazione cross compiler:
+105,1 GiB, con tutti i 21 test passati e zero skip. Nessun sorgente Android
+completo è stato scaricato; questi risultati non provano che una build ROM entri
+nello spazio o nelle 6 ore. Dati esatti in SESSION-20261022.json.
+
 - Otto candidati grafici reali: hash stock confrontati con il lock B321 e patch
   ricontrollate con `verify_patch`, inclusi segmenti, simboli/versioni e payload.
 - Inventario statico: 880 librerie lette e 73 file HAL/RIL. La ricerca per SONAME
@@ -68,8 +77,8 @@ Nessuna strategia globale, abbonamento o quota a pagamento è stata attivata.
 
 ## Passaggi che determinano il progresso
 
-1. Risolvere l'accesso GitHub di scrittura e pubblicare solo l'allowlist revisionata.
-2. Eseguire il preflight remoto e registrare URL del run e risorse effettive.
+1. Completato: accesso GitHub e pubblicazione dell'allowlist dei soli sorgenti.
+2. Completato: preflight e capacità remota misurati, inclusi test ARM senza skip.
 3. Confrontare Region/Vector/CallStack e simboli reali con Q; compilare gli
    adattatori grafici con controlli ELF attivi. Nessuna shim che restituisce successo
    senza implementare allocazione, fence e formati buffer corretti.

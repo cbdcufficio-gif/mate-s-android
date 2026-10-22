@@ -13,6 +13,12 @@ bootable boot.img, or successful hardware boot is provided yet.**
 - Public standard-runner CI with no Android source sync, paid runner, cache,
   artifact storage, LFS, Packages or credentials required.
 
+Remote checks completed: [preflight](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39841220576)
+and [capacity plus ARM32/ARM64 tests](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39842020143).
+The disposable runner provided 4 CPUs, approximately 16 GB RAM and 105.1 GiB free
+after reclaiming unused SDKs and installing cross compilers. All 21 tool tests
+passed without skips. This is not an Android module or ROM build.
+
 The kernel source uses a Liszt repository as a reference. This does not make
 Liszt, GRACE or Honor 7 images/DTBs compatible with Carrera. Keep the verified
 Carrera stock DTB; packaging remains a separate unverified task.
@@ -26,6 +32,8 @@ HAL integration, Huawei boot packaging and the hardware acceptance matrix.
 
 Read [the technical and zero-cost plan](docs/ZERO-COST-PLAN.md),
 [source references](SOURCES.md), and [hardware matrix](docs/HARDWARE-MATRIX.md).
+The [ABI investigation](docs/ABI-REVIEW.md) records the specific graphics contracts
+still needing proof; [session evidence](docs/SESSION-20261022.json) records results.
 
 ## Small checks
 

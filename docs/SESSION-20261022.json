@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-22",
+  "rom_status": "NO_BOOTABLE_ROM_YET",
+  "repository": "https://github.com/cbdcufficio-gif/mate-s-android",
+  "source_commit": "e3183174ad6ec38fd164f6b14c770ac63796ad66",
+  "preflight_run": "https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39841220576",
+  "capacity_and_cross_test_run": "https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39842020143",
+  "remote_tests": {
+    "run": 21,
+    "passed": 21,
+    "skipped": 0
+  },
+  "remote_capacity": [
+    {
+      "stage": "before_cleanup",
+      "disk_free_bytes": 92449009664,
+      "disk_total_bytes": 155897610240,
+      "ram_total_bytes": 16765415424,
+      "cgroup_memory_limit_bytes": null,
+      "effective_ram_bytes": 16765415424,
+      "cpu_count": 4,
+      "github_actions": true
+    },
+    {
+      "stage": "after_cleanup",
+      "disk_free_bytes": 113324109824,
+      "disk_total_bytes": 155897610240,
+      "ram_total_bytes": 16765415424,
+      "cgroup_memory_limit_bytes": null,
+      "effective_ram_bytes": 16765415424,
+      "cpu_count": 4,
+      "github_actions": true
+    },
+    {
+      "stage": "with_cross_compilers",
+      "disk_free_bytes": 112822558720,
+      "disk_total_bytes": 155897610240,
+      "ram_total_bytes": 16765415424,
+      "cgroup_memory_limit_bytes": null,
+      "effective_ram_bytes": 16765415424,
+      "cpu_count": 4,
+      "github_actions": true
+    }
+  ],
+  "local_tests": {
+    "run": 21,
+    "passed": 20,
+    "skipped": 1,
+    "reason": "Cross compilers not configured locally"
+  },
+  "graphics_candidates_structural_verifications": 8,
+  "stock_libraries_parsed": 880,
+  "hal_and_ril_files": 73,
+  "manifest_projects": 794,
+  "manifest_revisions_not_frozen_to_sha": 792,
+  "freellmapi": {
+    "attempts": 10,
+    "successful_answers": 7,
+    "distinct_models": [
+      "@cf/openai/gpt-oss-120b",
+      "nvidia/nemotron-3-ultra-550b-a55b",
+      "@cf/qwen/qwen2.5-coder-32b-instruct",
+      "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+    ],
+    "reported_tokens": 15792,
+    "note": "Provider-reported metadata, not independently measured and not ChatGPT usage savings"
+  },
+  "full_android_sync_started": false,
+  "android_native_modules_built": false,
+  "boot_image_created": false,
+  "hardware_boot_tested": false,
+  "paid_services_enabled": false,
+  "remaining": [
+    "Build actual Android 10 graphics modules and verify ABI/namespace/ION/fences",
+    "Complete init/fstab/ueventd, HALs, SELinux and VINTF integration",
+    "Verify Huawei boot packaging and recovery path",
+    "Build full system and test full hardware matrix"
+  ],
+  "phone_modified": false
+}

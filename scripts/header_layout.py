@@ -81,7 +81,7 @@ def main():
                     for inc in re.findall(r'^\s*#\s*include\s*[<"]([^>"]+)[>"]', data.decode(), re.M):
                         if inc in ("SharedBuffer.h", "VectorImpl.h") or inc.startswith(("utils/", "ui/", "math/", "cutils/", "log/",
                                            "android-base/", "android/", "backtrace/",
-                                           "system/", "nativebase/", "nativewindow/")):
+                                           "system/", "nativebase/", "nativewindow/", "private/")):
                             fetch(inc)
                     return
                 raise RuntimeError("Missing original header: " + version + "/" + header)
@@ -137,13 +137,18 @@ def main():
             arch: report["results"]["m_" + arch] == report["results"]["q_" + arch]
             for arch in ("arm", "arm64")}
         report["status"] = "HEADER_LAYOUT_MEASURED"
+        report["implementation_compile_passed"] = (
+            len(report["implementation_objects"]) == 8 and
+            all(x["returncode"] == 0 for x in report["implementation_objects"]))
+        if not report["implementation_compile_passed"]:
+            report["status"] = "IMPLEMENTATION_COMPILE_FAILED"
     except Exception as exc:
         report["status"] = "EXPERIMENT_FAILED"
         report["error"] = str(exc)
     report["downloaded_header_bytes"] = total
     (a.out / "report.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))
-    return int(report["status"] == "EXPERIMENT_FAILED")
+    return int(report["status"] != "HEADER_LAYOUT_MEASURED")
 
 if __name__ == "__main__":
     raise SystemExit(main())

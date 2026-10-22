@@ -9,6 +9,7 @@ import subprocess
 import sys
 import urllib.request
 from elf_audit import Elf
+from build_log_probe import fetch_core, build
 
 COMMIT = "2e659f04a7cde964415c82dd7507610769165408"
 BASE = "https://android.googlesource.com/platform/prebuilts/vndk/v29/+/" + COMMIT + "/"
@@ -34,6 +35,8 @@ def main():
               "provider_commit": COMMIT,
               "link_scope": "Real VNDK29 libc++; NDK API29 C/log stubs and modern compiler runtime"}
     try:
+        core = root / "core"
+        report["log_source"] = fetch_core(core)
         for arch, (relative, expected_blob, machine) in PROVIDERS.items():
             dest = root / arch
             dest.mkdir()
@@ -63,12 +66,18 @@ def main():
                 raise ValueError("Strict unresolved-symbol negative control failed")
             combined = Path("out/platform-layout/q") / (arch + "-combined.o")
             output = dest / "libmates_graphics_probe.so"
+            log_result = build(core, dest, compiler, provider, run)
+            if log_result["status"] != "LINK_PASSED":
+                report["architectures"].append({"arch": arch, "returncode": 1,
+                    "log_build": log_result, "negative_control_rejected": True})
+                continue
             command = [compiler, *strict, "-Wl,-soname,libmates_graphics_probe.so",
-                       combined, provider, "-llog", "-o", output]
+                       combined, provider, dest / "liblog.so", "-o", output]
             link = run(command)
             entry = {"arch": arch, "returncode": link.returncode,
                      "diagnostic": link.stdout, "command": list(map(str, command)),
                      "negative_control_rejected": True, "provider_url": url,
+                     "log_build": log_result,
                      "provider_git_blob": actual_blob,
                      "provider_sha256": hashlib.sha256(data).hexdigest(),
                      "provider_bytes": len(data)}

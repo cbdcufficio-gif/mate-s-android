@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - scripts/shared_link_probe.py
+      - scripts/build_log_probe.py
       - .github/workflows/shared-link.yml
 permissions:
   contents: read

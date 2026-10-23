@@ -59,7 +59,7 @@ tenta m -j2 systemimage, massimo120min e riserva8GiB. Il timeout complessivo
 e230min, entro il limite del job standard. Il codice non accetta input Huawei.
 
 Solo se compilazione e controlli riescono, conserva system.img compresso,
-manifest sorgenti risolto, report e checksum in una prerelease chiaramente
+i soli moduli grafici pubblici verificati, manifest sorgenti risolto, report e checksum in una prerelease chiaramente
 marcata Generic Android Q development base — DO NOT FLASH. Nessuna cache,
 artifact storage Actions, Packages o LFS. Ogni asset deve essere sotto2GiB.
 La configurazione Carrera, il boot e i blob Huawei non sono inclusi. Il report

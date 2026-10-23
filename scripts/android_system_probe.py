@@ -8,6 +8,7 @@ import shutil
 import struct
 import subprocess
 import sys
+import tarfile
 from android_graph_probe import ROOT, guarded
 from elf_audit import sha256
 
@@ -78,9 +79,19 @@ def main():
                 'No Carrera init, policy or complete Huawei hardware integration has been validated.\n'
                 'No boot, recovery, DTB, modem, userdata or Huawei proprietary file is included.\n'
                 'Use only as a development input after architecture, configuration, ABI and partition review.\n'
-                'Resolved source manifest and image SHA256 are included. No hardware test performed.\n')
+                'Public graphics module binaries, resolved manifest and SHA256 are included. No hardware test performed.\n')
             shutil.copyfile(ROOT/'resolved-manifest.xml',assets/'resolved-manifest.xml')
             shutil.copyfile(ROOT/'modules-report.json',assets/'modules-report.json')
+            modules = json.loads((ROOT/'modules-report.json').read_text())
+            with tarfile.open(assets/'public-graphics-modules.tar.gz', 'w:gz') as tar:
+                for item in modules['files']:
+                    relative = Path(item['path'])
+                    if relative.is_absolute() or '..' in relative.parts:
+                        raise ValueError('Unsafe module output path')
+                    file = product/relative
+                    if file.is_symlink() or product not in file.resolve().parents or sha256(file) != item['sha256']:
+                        raise ValueError('Module changed after ELF verification')
+                    tar.add(file, arcname=str(relative), recursive=False)
             (assets/'system-report.json').write_text(json.dumps(report,indent=2)+'\n')
             sums=''.join(sha256(f)+'  '+f.name+'\n' for f in sorted(assets.iterdir()))
             (assets/'SHA256SUMS').write_text(sums)

@@ -1,3 +1,7 @@
+Aggiornamento successivo 23 ottobre — primo errore Carrera risolto nei sorgenti:
+
+Il run39930952198 ha superato sync e grafo generico, poi il prodotto Carrera e fallito prima della compilazione per PRODUCT_SHIPPING_API_LEVEL duplicato:23 23. Rimosso il valore ridondante da device.mk; il prodotto eredita gia API23 da product_launched_with_m.mk. Aggiunto controllo del valore risolto nel probe. Nuovo tentativo necessario; nessun ramdisk prodotto dal run fallito. Moduli Q con correzione HWC in compilazione nel run39933540063; immagine generica ancora in corso nel run39927971028.
+
 Aggiornamento successivo 23 ottobre — callback HWC Q:
 
 Corrette nel sorgente pubblico Q le chiamate a setActiveConfig e setCursorPositionAsync quando il vecchio HAL omette le callback. Il cursore passa alla composizione client; i cambi di modalita mancanti sono rifiutati senza simulare successo. Applicazione vincolata agli hash, prova comportamentale su cinque corpi di funzione reali con ASan/UBSan passata. Dettagli in HWC-CALLBACKS.md. Non e una prova di ABI o rendering Huawei.

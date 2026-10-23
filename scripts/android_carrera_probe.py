@@ -32,6 +32,7 @@ def main():
         shutil.copytree(device,target)
         os.environ['MATES_PRODUCT_PATH'] = str((ROOT/'carrera-product-path.txt').resolve())
         cmd = ('set -eo pipefail; source build/envsetup.sh; lunch lineage_carrera_public-userdebug; '
+               'test "$(get_build_var PRODUCT_SHIPPING_API_LEVEL)" = 23; '
                'get_build_var PRODUCT_OUT > "$MATES_PRODUCT_PATH"; m -j2 host_init_verifier ramdisk')
         report['build'] = guarded(['bash','-c',cmd],source,ROOT/'carrera.log',seconds=1800,reserve=12*1024**3)
         if report['build']['returncode'] or report['build']['stop_reason']:

@@ -1,5 +1,5 @@
 DEVICE_PATH := device/huawei/carrera
-PRODUCT_SHIPPING_API_LEVEL := 23
+# API 23 is inherited once from product_launched_with_m.mk in the product.
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 

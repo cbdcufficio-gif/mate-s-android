@@ -1,5 +1,17 @@
 # Prima integrazione rootdir Carrera
 
+## Primo tentativo remoto e correzione
+
+Il run [39930952198](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39930952198)
+ha sincronizzato i sorgenti e completato il grafo generico. Il prodotto Carrera
+si e fermato prima della compilazione: `Multiple words in a single argument: 23 23`,
+in core/product_config.mk:381. product_launched_with_m.mk e device.mk
+assegnavano entrambi PRODUCT_SHIPPING_API_LEVEL; l'ereditarieta dei prodotti
+Q componeva due valori. Rimossa l'assegnazione in device.mk: rimane la sorgente
+canonica [product_launched_with_m.mk](https://github.com/LineageOS/android_build/blob/71a47798ac090b81c6b7db0b5c470f1fa3e604cd/target/product/product_launched_with_m.mk).
+Il probe ora verifica esplicitamente che il valore risolto sia esattamente 23.
+Occorre un nuovo esito remoto: il tentativo fallito non ha prodotto un ramdisk.
+
 Il prodotto sperimentale ora copia nella root del ramdisk tre file originali
 del progetto: init.hi3635.rc, fstab.hi3635 e ueventd.hi3635.rc. Il valore
 ro.hardware=hi3635 e stato letto dal dispositivo collegato in recovery;

@@ -56,3 +56,12 @@ pretesa di avere provato il comportamento hardware.
 
 Suite locale dopo l'integrazione: 64 test, 63 passati e uno skip per un
 cross compiler opzionale. Nessun flash, riavvio o esecuzione del blob.
+
+## Compilazione remota riuscita
+
+Run39933540063, commit770036f35af70d7a2dc867669ffd2171a52b2624: patch
+applicata agli hash previsti, prova dei cinque corpi di funzione riuscita,
+moduli reali ARM32/ARM64 compilati.14 ELF installati:2 sotto system e12
+sotto vendor del prodotto generico. Report in ANDROID-MODULE-PATCHED-RESULT.json.
+Build735,7s;47065083904 byte liberi. Il risultato verifica compilazione e
+simboli, non l'esecuzione del composer Huawei nel nuovo Android.

@@ -1,0 +1,13 @@
+{
+  "scope": "NATIVE_ARM64_KERNEL_QUERY_IN_TWRP_NOT_ANDROID_Q_BOOT",
+  "created_utc": "2026-10-23T10:23:24.810529+00:00",
+  "binary_bytes": 2792,
+  "binary_sha256": "2700dca7dfcc5ec70086c97154d01b6a7c20f5556e6da99ec4ebe8c68b100a8d",
+  "source_sha256": "fddc7c6116dbf00b9e58004ec359a925473f7fbc140b6bd87fb34af4d1e221a9",
+  "partition_writes": false,
+  "rebooted": false,
+  "returncode": 0,
+  "stdout": "uname=0\nrelease=3.10.74-gfa6dc6d\nmachine=aarch64\n/dev/binder=3\nbinder_version_ioctl=0\nbinder_protocol=8\n/dev/hwbinder=-2\n/dev/vndbinder=-2\nframebuffer_open=3\nframebuffer_get_var=0\nxres=1080\nyres=1920\nbpp=32\n/dev/ion=3\n/dev/mali0=3\ngetrandom_nonblock=-38\nmemfd_create=-38\n",
+  "stderr": "",
+  "temporary_ram_file_removed": true
+}

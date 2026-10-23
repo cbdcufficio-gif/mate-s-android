@@ -1,3 +1,13 @@
+Stato corrente — 23 ottobre, consegna tecnica:
+
+- Kernel con controllo firmware touch: run39937087192 riuscito; prerelease con Image pubbliche/config/report. DiagnosticoSHA3ec66f2b1a20270b101d72374b697dbfb1c178b749781e5580c356b7429b3bb9.
+- Moduli grafici Q corretti: run39933540063 riuscito ARM32/ARM64,14 ELF installati; ANDROID-MODULE-PATCHED-RESULT.json.
+- Ramdisk Carrera: run39937831656 riuscito,802884 byte, tre file verificati nel cpio; CARRERA-RAMDISK-RESULT.json.
+- Sonda ARM64 eseguita in RAM di TWRP: Binder8, display1080x1920x32, ION/Mali aperti; getrandom/memfd assenti nel vecchio kernel.
+- Un solo fastboot boot diagnostico: trasferimento OKAY, avvio rifiutato Command not allowed. Nessun flash. Rientro in TWRP2.8.7.0/kernel3.10.74 verificato. RAM-KERNEL-TEST.md.
+-74 test:73 passati,1 skip opzionale. Build sistema generico ancora in corso; aggiunta build del prodotto pubblico Carrera con system e ramdisk corrispondenti.
+- ROM completa NON pronta: vedere BUILD-BLOCKERS.md per integrazione primo stadio, HAL, policy e boot residui. Non manca soltanto il confezionamento di uno zip.
+
 Aggiornamento successivo 23 ottobre — ramdisk compilato, verifica staging corretta:
 
 Run39934489950: lunch/API23, parser init nativo e compilazione ramdisk riusciti; build507,5s. Il controllo finale ha fermato la pubblicazione: i tre file erano destinati a root mentre Q impacchetta lo staging ramdisk separato. Aggiunte copie esplicite in TARGET_COPY_OUT_RAMDISK e acquisizione del TARGET_RAMDISK_OUT effettivo nel probe. Nuovo tentativo richiesto; nessun artefatto incompleto pubblicato. Il confronto SHA256 del dump recovery identifica esattamente il prefisso ufficiale TWRP2.8.7.0 (25040896 byte). Nessun aggiornamento recovery necessario per l'acquisizione attuale.

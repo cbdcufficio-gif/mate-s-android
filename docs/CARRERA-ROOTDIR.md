@@ -1,4 +1,10 @@
-# Prima integrazione rootdir Carrera
+# Integrazione rootdir Carrera
+
+Esito aggiornato: run39937831656 riuscito. Ramdisk802884 byte, staging
+out/target/product/carrera/ramdisk; tre file confrontati con le sorgenti e
+con il contenuto cpio. Parser init Q passato. Report in
+CARRERA-RAMDISK-RESULT.json e prerelease carrera-public-ramdisk-39937831656.
+Non e una boot image e non dimostra il montaggio primo stadio o un boot Q.
 
 ## Secondo tentativo: compilazione riuscita, staging distinto
 

@@ -57,4 +57,10 @@ class PublicProbeIsolation(unittest.TestCase):
         with patch.dict(os.environ,{'GITHUB_ACTIONS':'false'}):
             with self.assertRaises(SystemExit): main()
 
+    def test_system_probe_refuses_local_android_download(self):
+        sys.path.insert(0,str(ROOT/'scripts'))
+        from android_carrera_system_probe import main
+        with patch.dict(os.environ,{'GITHUB_ACTIONS':'false'}):
+            with self.assertRaises(SystemExit): main()
+
 if __name__=='__main__':unittest.main()

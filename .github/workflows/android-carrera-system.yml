@@ -1,0 +1,58 @@
+name: Mate S public Carrera system and ramdisk
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/android_carrera_system_probe.py
+      - .github/workflows/android-carrera-system.yml
+permissions:
+  contents: write
+concurrency:
+  group: mates-carrera-public-system
+  cancel-in-progress: false
+jobs:
+  graph:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 230
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          ref: ${{ github.sha }}
+      - name: Prepare disposable runner for public Android sources
+        run: |
+          test "$GITHUB_ACTIONS" = true
+          test "$RUNNER_ENVIRONMENT" = github-hosted
+          sudo rm -rf -- /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends repo python2 git-lfs bc bison flex gperf libncurses5 libxml2-utils xsltproc zip unzip rsync gcc-multilib g++-multilib libssl-dev liblz4-tool
+          git config --global user.name mates-source-probe
+          git config --global user.email mates-source-probe@users.noreply.github.com
+      - name: Build and verify the public Carrera system and ramdisk
+        run: python3 scripts/android_carrera_system_probe.py
+      - name: Retain diagnostics in logs only
+        if: always()
+        run: |
+          for report in report carrera-report carrera-system-report; do
+            if [ -f "out/android-graph/$report.json" ]; then
+              cat "out/android-graph/$report.json"
+              cat "out/android-graph/$report.json" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
+          for phase in init sync graph carrera carrera-system; do
+            if [ -f "out/android-graph/$phase.log" ]; then tail -n 80 "out/android-graph/$phase.log"; fi
+          done
+      - name: Retain the public Carrera development pair
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          GITHUB_REPOSITORY_VISIBILITY: ${{ github.event.repository.visibility }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY_VISIBILITY" = public
+          assets=out/android-graph/carrera-system-assets
+          test -f "$assets/carrera-public-system.img.gz"
+          tag="carrera-public-system-$GITHUB_RUN_ID"
+          gh release create "$tag" "$assets"/* --target "$(git rev-parse HEAD)" --prerelease --title "Carrera public Q development pair $GITHUB_RUN_ID — DO NOT FLASH" --notes-file "$assets/README.txt"

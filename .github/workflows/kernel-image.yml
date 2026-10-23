@@ -30,7 +30,7 @@ jobs:
           sudo rm -rf -- /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends bc bison flex libncurses5-dev libssl-dev
-          free_bytes=$(df -PB1 --output=avail "$GITHUB_WORKSPACE" | tail -n 1 | tr -d ' ')
+          free_bytes=$(df -B1 --output=avail "$GITHUB_WORKSPACE" | tail -n 1 | tr -d ' ')
           test "$free_bytes" -ge "$((70 * 1024 * 1024 * 1024))"
           git config --global user.name mates-source-probe
           git config --global user.email mates-source-probe@users.noreply.github.com
@@ -56,7 +56,7 @@ jobs:
           fetch_locked kernel "$kernel_url" "$kernel_commit"
           fetch_locked gcc49 "$compiler_url" "$compiler_commit"
           git -C out/sources/kernel apply patches/kernel/0001-fix-immersion-header-path.patch
-          free_bytes=$(df -PB1 --output=avail "$GITHUB_WORKSPACE" | tail -n 1 | tr -d ' ')
+          free_bytes=$(df -B1 --output=avail "$GITHUB_WORKSPACE" | tail -n 1 | tr -d ' ')
           test "$free_bytes" -ge "$((70 * 1024 * 1024 * 1024))"
       - name: Compile stock and Android 10 diagnostic Images
         run: |

@@ -2,6 +2,7 @@ from pathlib import Path
 import unittest
 import os
 import sys
+import tempfile
 from unittest.mock import patch
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -40,6 +41,22 @@ class CarreraRootdirContract(unittest.TestCase):
         self.assertIn('BOARD_BUILD_SYSTEM_ROOT_IMAGE := false',board)
         system=next(r for r in entries(DEVICE/'rootdir/fstab.hi3635') if r[1]=='/system')
         self.assertNotIn('first_stage_mount',system[4].split(','))
+        self.assertIn('TARGET_COPY_OUT_VENDOR := system/vendor',board)
+    def test_public_system_probe_requires_legacy_vendor_symlink(self):
+        sys.path.insert(0,str(ROOT/'scripts'))
+        from android_carrera_system_probe import verify_legacy_vendor_link
+        with tempfile.TemporaryDirectory() as tmp:
+            product=Path(tmp);(product/'root').mkdir()
+            os.symlink('/system/vendor',product/'root'/'vendor')
+            self.assertEqual(verify_legacy_vendor_link(product),
+                             {'path':'root/vendor','target':'/system/vendor'})
+            (product/'root'/'vendor').unlink()
+            os.symlink('/wrong/vendor',product/'root'/'vendor')
+            with self.assertRaisesRegex(ValueError,'Unexpected legacy'):
+                verify_legacy_vendor_link(product)
+            (product/'root'/'vendor').unlink()
+            with self.assertRaisesRegex(ValueError,'missing'):
+                verify_legacy_vendor_link(product)
     def test_hardware_permission_metadata(self):
         actual={r[0]:r[1:] for r in entries(DEVICE/'rootdir/ueventd.hi3635.rc')}
         for name in ('binder','hwbinder','vndbinder'):

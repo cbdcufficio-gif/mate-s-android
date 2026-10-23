@@ -11,7 +11,9 @@ Aggiornamento operativo, 23 ottobre — mount Carrera e build:
   39942073472 era ancora in corso alle 11:50 UTC e usa ancora il limite
   precedente. Il prossimo run Carrera avra 10800 secondi e la stessa riserva
   disco di 8 GiB.
-- Suite locale aggiornata:75 test,74 passati,1 skip per cross compiler
+- Il prossimo controllo Carrera richiede anche il link generato
+  `root/vendor -> /system/vendor` per il copy-out vendor legacy.
+- Suite locale aggiornata:76 test,75 passati,1 skip per cross compiler
   opzionale. Nessuna immagine Q installabile o boot Android prodotto.
 
 - Kernel con controllo firmware touch: run39937087192 riuscito; prerelease con Image pubbliche/config/report. DiagnosticoSHA3ec66f2b1a20270b101d72374b697dbfb1c178b749781e5580c356b7429b3bb9.
@@ -19,7 +21,7 @@ Aggiornamento operativo, 23 ottobre — mount Carrera e build:
 - Ramdisk Carrera: run39937831656 riuscito,802884 byte, tre file verificati nel cpio; CARRERA-RAMDISK-RESULT.json.
 - Sonda ARM64 eseguita in RAM di TWRP: Binder8, display1080x1920x32, ION/Mali aperti; getrandom/memfd assenti nel vecchio kernel.
 - Un solo fastboot boot diagnostico: trasferimento OKAY, avvio rifiutato Command not allowed. Nessun flash. Rientro in TWRP2.8.7.0/kernel3.10.74 verificato. RAM-KERNEL-TEST.md.
--75 test:74 passati,1 skip opzionale. Il run generico e fallito per limite interno della fase system; la build specifica Carrera e ancora in corso.
+-76 test:75 passati,1 skip opzionale. Il run generico e fallito per limite interno della fase system; la build specifica Carrera e ancora in corso.
 - ROM completa NON pronta: vedere BUILD-BLOCKERS.md per integrazione primo stadio, HAL, policy e boot residui. Non manca soltanto il confezionamento di uno zip.
 
 Aggiornamento successivo 23 ottobre — ramdisk compilato, verifica staging corretta:

@@ -22,6 +22,13 @@ fstab; una modifica del DT da parte del bootloader sul boot normale resta da
 verificare. Questa decisione statica non prova il montaggio o il boot sul
 telefono.
 
+La verifica della prossima build Carrera richiede anche il collegamento
+generato `root/vendor -> /system/vendor`, coerente con
+`TARGET_COPY_OUT_VENDOR := system/vendor`. Il sorgente Q `rootdir/init.rc`
+crea lo stesso symlink durante `init` quando il prodotto non ha una partizione
+vendor. Il controllo del root generato resta statico: non prova che Android
+attraversi il link o carichi i moduli Huawei sul dispositivo.
+
 Il controllo indipendente della build immagine Carrera e stato esteso da 7200 a
 10800 secondi, mantenendo la riserva disco di 8 GiB e il limite job di 230
 minuti. La modifica risponde al run generico 39927971028, terminato dal guard

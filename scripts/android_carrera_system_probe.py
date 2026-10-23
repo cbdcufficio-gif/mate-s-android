@@ -15,6 +15,16 @@ from android_system_probe import image_metadata,MAX_ASSET
 from elf_audit import sha256
 
 
+def verify_legacy_vendor_link(product):
+    link=product/'root'/'vendor'
+    if not link.is_symlink():
+        raise ValueError('Legacy product root is missing the /vendor symlink')
+    target=os.readlink(link)
+    if target!='/system/vendor':
+        raise ValueError('Unexpected legacy /vendor symlink target: '+target)
+    return {'path':'root/vendor','target':target}
+
+
 def main():
     if os.environ.get('GITHUB_ACTIONS')!='true' or os.environ.get('RUNNER_ENVIRONMENT')!='github-hosted':
         raise SystemExit('Disposable public runner only; no local Android sync')
@@ -36,6 +46,7 @@ def main():
             rel=Path((ROOT/'carrera-product-path.txt').read_text().strip())
             if rel.is_absolute() or '..'in rel.parts:raise ValueError('Unsafe product path')
             product=(source/rel).resolve(strict=True);product.relative_to(source/'out')
+            report['legacy_vendor_link']=verify_legacy_vendor_link(product)
             image=product/'system.img'
             if image.is_symlink():raise ValueError('Unexpected image symlink')
             report['image']=image_metadata(image)

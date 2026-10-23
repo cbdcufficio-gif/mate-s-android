@@ -9,17 +9,17 @@
     "returncode": 0,
     "stop_reason": null,
     "seconds": 510.5,
-    "free_bytes": 47370690560
+    "free_bytes": 47370498048
   },
   "ramdisk_staging_path": "out/target/product/carrera/ramdisk",
   "rootdir": [
     {
       "name": "fstab.hi3635",
-      "sha256": "3af3852dd875dbd8265336ad29b3b7594bc5c4cec2496e020269687197ef3c4a"
+      "sha256": "f0b006e6dcad99e092a3fbea9e6a91bc1686c7402d6664624b391e6751d0ac2b"
     },
     {
       "name": "init.hi3635.rc",
-      "sha256": "c0c3f55060e9af40404aed8227df332feb17e8cac8a65ee37bf40c2e98b40e00"
+      "sha256": "e0439247332f854d2cafa729572c5cdbe0f4ef90c3dd181b559843ea889a3ccc"
     },
     {
       "name": "ueventd.hi3635.rc",
@@ -27,10 +27,13 @@
     }
   ],
   "native_init_parser_passed": true,
-  "ramdisk_bytes": 802884,
-  "ramdisk_sha256": "29ce41f9ffe49d595a575190fd579a4560836112b7bab9b1566948d0401b38de",
+  "ramdisk_bytes": 802915,
+  "ramdisk_sha256": "6379c931e66f326acfa4fdea4d8388aa7da9bf62895aba755b4fdddb62cf6a4a",
   "resolved_manifest_sha256": "3545e29c3bdd90e43488bf948188e19612149b18fe54a3fa0ce88c91d3baf0e6",
-  "run_id": 39937831656,
-  "run_url": "https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39937831656",
-  "source_commit": "972b7733ef191116da6c07515693cd8e52e1c18e"
+  "run_id": 39949624600,
+  "run_url": "https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39949624600",
+  "run_attempt": 1,
+  "source_commit": "69e3120dfebc5397965b4ac80cb04ee8a8c7090f",
+  "release_published": false,
+  "release_error": "GitHub Release API returned 403 because the target commit differed from the default branch in .github/workflows; this requires Workflows: write, which GITHUB_TOKEN cannot receive."
 }

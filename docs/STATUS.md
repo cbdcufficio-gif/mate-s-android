@@ -1,5 +1,13 @@
 Stato corrente — 23 ottobre, consegna tecnica:
 
+Aggiornamento operativo, 23 ottobre, 12:20 UTC — build ramdisk Carrera:
+
+- Il run [39949624600](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39949624600) ha compilato il ramdisk del prodotto pubblico lineage_carrera_public-userdebug in 510,5 secondi. Misura 802.915 byte; parser init Q passato e tre file rootdir verificati nello staging. SHA256 e limiti sono in CARRERA-RAMDISK-RESULT.json e CARRERA-ROOTDIR.md.
+- Il job è fallito solo dopo la compilazione, quando la prerelease ha richiesto un permesso Workflows: write non concedibile al GITHUB_TOKEN: il commit puntava a una revisione precedente del workflow rispetto a main. Il run corrente 39951112143 è sul tip di main; il retry del vecchio run è stato richiesto in cancellazione.
+- I run 39942073472 (Carrera completo, limite vecchio) e 39937861011 (sistema generico) erano ancora in corso; 39951112143 (Carrera completo, limite 10800 s) era in coda. Non c'è ancora una system image verificata.
+- Suite locale: 76 test, 75 passati, 1 skip per cross compiler opzionale. Nessuna boot image, ROM installabile o prova di avvio Android prodotta.
+
+
 Aggiornamento operativo, 23 ottobre — mount Carrera e build:
 
 - Il rootdir Q monta system/cache con `mount_all --early` e ritarda userdata a

@@ -29,22 +29,30 @@ crea lo stesso symlink durante `init` quando il prodotto non ha una partizione
 vendor. Il controllo del root generato resta statico: non prova che Android
 attraversi il link o carichi i moduli Huawei sul dispositivo.
 
-La nuova verifica immagine convertirà la system image sparse in un file ext4
-temporaneo sul runner e userà `debugfs` in sola lettura per estrarre i moduli
+La verifica immagine convertirà la system image sparse in un file ext4
+temporaneo sul runner e userà debugfs in sola lettura per estrarre i moduli
 grafici pubblici. Gli hash nell'immagine dovranno coincidere con quelli dello
-staging compilato; il risultato remoto è ancora pendente.
+staging compilato; il run Carrera completo è ancora in attesa.
 
-Il controllo indipendente della build immagine Carrera e stato esteso da 7200 a
-10800 secondi, mantenendo la riserva disco di 8 GiB e il limite job di 230
-minuti. La modifica risponde al run generico 39927971028, terminato dal guard
-interno dopo 7201 secondi con `TIME_BUDGET_REACHED` e 25,8 GB liberi; il run
-Carrera gia attivo usa ancora il limite precedente.
+Esito aggiornato: nel run [39949624600](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39949624600)
+il prodotto lineage_carrera_public-userdebug ha compilato il grafo e il
+ramdisk in 510,5 secondi, lasciando 47.370.498.048 byte liberi. Il ramdisk
+misura 802.915 byte, SHA256
+6379c931e66f326acfa4fdea4d8388aa7da9bf62895aba755b4fdddb62cf6a4a.
+Il parser init Q è passato e gli hash di fstab.hi3635, init.hi3635.rc e
+ueventd.hi3635.rc nello staging corrispondono ai file sorgente.
 
-Esito aggiornato: run39937831656 riuscito. Ramdisk802884 byte, staging
-out/target/product/carrera/ramdisk; tre file confrontati con le sorgenti e
-con il contenuto cpio. Parser init Q passato. Report in
-CARRERA-RAMDISK-RESULT.json e prerelease carrera-public-ramdisk-39937831656.
-Non e una boot image e non dimostra il montaggio primo stadio o un boot Q.
+Il job è poi fallito solo nel passaggio di pubblicazione della prerelease:
+GitHub ha risposto 403 perché il commit del run differiva dal ramo predefinito
+per .github/workflows/android-carrera-system.yml. L'API Release richiede in
+quel caso il permesso Workflows: write, che il GITHUB_TOKEN non può ricevere
+(https://docs.github.com/en/rest/releases/releases#create-a-release).
+Il build non ha prodotto boot.img, non include input proprietari e non ha
+provato hardware. Il report completo è in CARRERA-RAMDISK-RESULT.json.
+
+Il precedente run [39937831656](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39937831656)
+resta una compilazione riuscita e pubblicata. Entrambi i ramdisk sono output
+di sviluppo: nessuno dimostra il montaggio reale o un boot Android Q.
 
 ## Secondo tentativo: compilazione riuscita, staging distinto
 

@@ -1,3 +1,11 @@
+Aggiornamento 23 ottobre — build effettive e seguito automatico:
+
+- Kernel stock e android10-diagnostic compilati con successo nel run39924712678; hash e limiti in KERNEL-REMOTE-RESULT.md.
+- Gralloc ARM64 dichiara modulo0.3 dopo il costruttore, percorso Gralloc0Hal verificato; dettagli in GRALLOC-INITIALIZATION.md.
+- Build moduli Q reali riuscita nel run39924712682:14 ELF installati verificati, librerie ARM32/ARM64 e servizi ARM64; export Mali CallStack presenti su entrambe le architetture. Nessuna compatibilita hardware dichiarata.
+- Il workflow android-system.yml e partito automaticamente nel run39927971028, ripete i controlli e tenta una system.img generica. Conserva esclusivamente output pubblici in una prerelease esplicitamente non installabile sul Mate S. Nessun blob Huawei e incluso.
+- La suite locale ha53 test:52 passati,1 saltato. Nessuna ROM Carrera completa, integrazione hardware completa o prova di avvio Android10.
+
 Aggiornamento 23 ottobre: acquisizione boot/DTB e prova grafo Android; vedere BOOT-RESULT.md e BUILD-BLOCKERS.md.
 
 Aggiornamento 23 ottobre, run Actions 39873522042, commit `277d150a16f391b9964783fcdf922e1fdba0fc5c`:

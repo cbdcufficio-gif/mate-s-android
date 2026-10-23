@@ -1,0 +1,344 @@
+{
+  "status": "PUBLIC_GRAPHICS_MODULES_BUILT",
+  "modules": [
+    "libutilscallstack",
+    "libhwc2on1adapter",
+    "libhwc2onfbadapter",
+    "android.hardware.graphics.allocator@2.0-impl",
+    "android.hardware.graphics.allocator@2.0-service",
+    "android.hardware.graphics.mapper@2.0-impl",
+    "android.hardware.graphics.composer@2.1-impl",
+    "android.hardware.graphics.composer@2.1-service"
+  ],
+  "product": "lineage_arm64-userdebug",
+  "rom_built": false,
+  "carrera_built": false,
+  "hardware_tested": false,
+  "proprietary_inputs": false,
+  "build": {
+    "returncode": 0,
+    "stop_reason": null,
+    "seconds": 804.8,
+    "free_bytes": 47066038272
+  },
+  "files": [
+    {
+      "path": "system/lib/libutilscallstack.so",
+      "bytes": 24256,
+      "sha256": "30e1a09fdb59b43eb79eacb4aa365ec458ed9d3dc7775b0b6192e4549ca1194d",
+      "bits": 32,
+      "machine": 40,
+      "needed": [
+        "libcutils.so",
+        "liblog.so",
+        "libutils.so",
+        "libbacktrace.so",
+        "libprocessgroup.so",
+        "libvndksupport.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": "libutilscallstack.so",
+      "callstack_mali_exports": [
+        "_ZN7android9CallStackC1EPKci",
+        "_ZN7android9CallStackD1Ev"
+      ]
+    },
+    {
+      "path": "system/lib64/libutilscallstack.so",
+      "bytes": 28520,
+      "sha256": "4f6b65c880f085c0583e683ede367ff1abb08d60a70005ec02b2a2fd6f32fbda",
+      "bits": 64,
+      "machine": 183,
+      "needed": [
+        "libcutils.so",
+        "liblog.so",
+        "libutils.so",
+        "libbacktrace.so",
+        "libprocessgroup.so",
+        "libvndksupport.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": "libutilscallstack.so",
+      "callstack_mali_exports": [
+        "_ZN7android9CallStackC1EPKci",
+        "_ZN7android9CallStackD1Ev"
+      ]
+    },
+    {
+      "path": "vendor/bin/hw/android.hardware.graphics.allocator@2.0-service",
+      "bytes": 11584,
+      "sha256": "92f179902430203892dff0998493ea4f87df7e261ab7cc323afaa4d7e195352b",
+      "bits": 64,
+      "machine": 183,
+      "needed": [
+        "android.hardware.graphics.allocator@2.0.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "liblog.so",
+        "libutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": null,
+      "callstack_mali_exports": []
+    },
+    {
+      "path": "vendor/bin/hw/android.hardware.graphics.composer@2.1-service",
+      "bytes": 11672,
+      "sha256": "26b91564d20bc27c3f42217e9e753b2e028180cfe0a90eec99ff4cbf55e9a40e",
+      "bits": 64,
+      "machine": 183,
+      "needed": [
+        "android.hardware.graphics.composer@2.1.so",
+        "libbinder.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "liblog.so",
+        "libsync.so",
+        "libutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": null,
+      "callstack_mali_exports": []
+    },
+    {
+      "path": "vendor/lib/hw/android.hardware.graphics.allocator@2.0-impl.so",
+      "bytes": 24548,
+      "sha256": "9862a0b8a4b0e91c50e7c0eb53922c130fe69d473895770e80273cbcc034a39e",
+      "bits": 32,
+      "machine": 40,
+      "needed": [
+        "android.hardware.graphics.allocator@2.0.so",
+        "libbase.so",
+        "libcutils.so",
+        "libhardware.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "liblog.so",
+        "libutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": "android.hardware.graphics.allocator@2.0-impl.so",
+      "callstack_mali_exports": []
+    },
+    {
+      "path": "vendor/lib/hw/android.hardware.graphics.composer@2.1-impl.so",
+      "bytes": 79408,
+      "sha256": "13cfb7e60aca1183efad5b2d34172e8117d66907e3b0155ff0391220be9883c9",
+      "bits": 32,
+      "machine": 40,
+      "needed": [
+        "android.hardware.graphics.composer@2.1.so",
+        "android.hardware.graphics.mapper@2.0.so",
+        "android.hardware.graphics.mapper@3.0.so",
+        "libbase.so",
+        "libcutils.so",
+        "libfmq.so",
+        "libhardware.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "liblog.so",
+        "libsync.so",
+        "libutils.so",
+        "libhwc2on1adapter.so",
+        "libhwc2onfbadapter.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": "android.hardware.graphics.composer@2.1-impl.so",
+      "callstack_mali_exports": []
+    },
+    {
+      "path": "vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl.so",
+      "bytes": 29696,
+      "sha256": "6a679658810c51944d9efd99e4526537eda62bd34c51bdff9cf088baeaa9ff54",
+      "bits": 32,
+      "machine": 40,
+      "needed": [
+        "android.hardware.graphics.mapper@2.0.so",
+        "libbase.so",
+        "libcutils.so",
+        "libhardware.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "liblog.so",
+        "libsync.so",
+        "libutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": "android.hardware.graphics.mapper@2.0-impl.so",
+      "callstack_mali_exports": []
+    },
+    {
+      "path": "vendor/lib/libhwc2on1adapter.so",
+      "bytes": 115288,
+      "sha256": "03dd70924d50b055661eceeb7f8dfe84a558571d08aa13091c9671cca7deca44",
+      "bits": 32,
+      "machine": 40,
+      "needed": [
+        "libutils.so",
+        "libcutils.so",
+        "liblog.so",
+        "libhardware.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": "libhwc2on1adapter.so",
+      "callstack_mali_exports": []
+    },
+    {
+      "path": "vendor/lib/libhwc2onfbadapter.so",
+      "bytes": 28992,
+      "sha256": "39692d959c4e429d1cb2a8d26c6d2462d896f101f779a293df4f146a728f5c93",
+      "bits": 32,
+      "machine": 40,
+      "needed": [
+        "liblog.so",
+        "libsync.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": "libhwc2onfbadapter.so",
+      "callstack_mali_exports": []
+    },
+    {
+      "path": "vendor/lib64/hw/android.hardware.graphics.allocator@2.0-impl.so",
+      "bytes": 24912,
+      "sha256": "bfa594186119aa592aedcc42a9b3b0a4633ad76299e8e87cb647913ffc237315",
+      "bits": 64,
+      "machine": 183,
+      "needed": [
+        "android.hardware.graphics.allocator@2.0.so",
+        "libbase.so",
+        "libcutils.so",
+        "libhardware.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "liblog.so",
+        "libutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": "android.hardware.graphics.allocator@2.0-impl.so",
+      "callstack_mali_exports": []
+    },
+    {
+      "path": "vendor/lib64/hw/android.hardware.graphics.composer@2.1-impl.so",
+      "bytes": 104272,
+      "sha256": "e3f9b665b503c0e73a7d8b66f33c04943deb2ce3524b2d040abf7a0ee1bbb0f9",
+      "bits": 64,
+      "machine": 183,
+      "needed": [
+        "android.hardware.graphics.composer@2.1.so",
+        "android.hardware.graphics.mapper@2.0.so",
+        "android.hardware.graphics.mapper@3.0.so",
+        "libbase.so",
+        "libcutils.so",
+        "libfmq.so",
+        "libhardware.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "liblog.so",
+        "libsync.so",
+        "libutils.so",
+        "libhwc2on1adapter.so",
+        "libhwc2onfbadapter.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": "android.hardware.graphics.composer@2.1-impl.so",
+      "callstack_mali_exports": []
+    },
+    {
+      "path": "vendor/lib64/hw/android.hardware.graphics.mapper@2.0-impl.so",
+      "bytes": 34432,
+      "sha256": "2df07f3f0a5caed0634b214179b7d65629c4ac64772625a8056a7a63e798572a",
+      "bits": 64,
+      "machine": 183,
+      "needed": [
+        "android.hardware.graphics.mapper@2.0.so",
+        "libbase.so",
+        "libcutils.so",
+        "libhardware.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "liblog.so",
+        "libsync.so",
+        "libutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": "android.hardware.graphics.mapper@2.0-impl.so",
+      "callstack_mali_exports": []
+    },
+    {
+      "path": "vendor/lib64/libhwc2on1adapter.so",
+      "bytes": 159976,
+      "sha256": "5255ccacf14655653f60944595c4c3ebf38500b52503a4ddfdfd4e6dfa7613dd",
+      "bits": 64,
+      "machine": 183,
+      "needed": [
+        "libutils.so",
+        "libcutils.so",
+        "liblog.so",
+        "libhardware.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": "libhwc2on1adapter.so",
+      "callstack_mali_exports": []
+    },
+    {
+      "path": "vendor/lib64/libhwc2onfbadapter.so",
+      "bytes": 32784,
+      "sha256": "3bb810f431bd27a0359bfaa33e3e70a45f6a65f2eb974364576f1e27653efb65",
+      "bits": 64,
+      "machine": 183,
+      "needed": [
+        "liblog.so",
+        "libsync.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ],
+      "soname": "libhwc2onfbadapter.so",
+      "callstack_mali_exports": []
+    }
+  ],
+  "resolved_manifest_sha256": "3545e29c3bdd90e43488bf948188e19612149b18fe54a3fa0ce88c91d3baf0e6",
+  "run_id": 39924712682,
+  "url": "https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39924712682",
+  "inventory_note": "Only system/vendor installed paths retained; intermediates and symbol copies omitted."
+}

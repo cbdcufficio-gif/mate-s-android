@@ -1,3 +1,18 @@
+# Risultato verificato — 23 ottobre2026
+
+[Run39924712682](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39924712682)
+riuscito:8 moduli richiesti,14 ELF effettivamente installati nelle cartelle
+system/vendor. Le6 librerie sono presenti ARM32 e ARM64; i2 servizi ARM64.
+Compilazione moduli804,8s, spazio libero finale47.066.038.272 byte.
+Entrambi gli export Mali richiesti da CallStack sono presenti nelle due librerie
+libutilscallstack.so reali. SONAME, dipendenze e hash sono registrati in
+ANDROID-MODULE-RESULT.json, filtrando gli intermediati e le copie di debug.
+Il JSON originale del run includeva anche quelle copie: non erano ulteriori
+moduli installati. Le librerie Huawei non sono state caricate o collegate qui.
+
+[Run39927971028](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39927971028)
+per la system.img generica avviato automaticamente; risultato ancora ignoto.
+
 # Build Android Q dei moduli pubblici
 
 Il grafo Android generico e stato realmente generato nel run
@@ -35,7 +50,7 @@ Carrera con init, policy, vendor e gli altri HAL, poi assemblaggio e test.
 
 ## Revisione e verifiche locali
 
-Suite corrente:48 test eseguiti,47 passati,1 saltato per cross compiler opzionale.
+Suite corrente:53 test eseguiti,52 passati,1 saltato per cross compiler opzionale.
 I tre nuovi test verificano il rifiuto del download locale, degli output
 mancanti e dei symlink usati come falso risultato della build.
 
@@ -71,3 +86,20 @@ hanno limite2GiB per file e nessun limite totale o di banda indicato dalla
 documentazione. I binari pubblici compilati sono allegati separati: non vengono
 commessi nel repository dei sorgenti. Il workflow non pubblica nulla se la build
 fallisce. Il token di scrittura e fornito soltanto al passo di pubblicazione.
+
+## Verifica locale degli asset scaricati
+
+Scaricare tutti i sette asset della stessa prerelease in una cartella nuova, poi:
+
+```sh
+python3 scripts/verify_public_base.py --directory /percorso/asset-scaricati
+```
+
+Il verificatore non modifica file, non estrae archivi, non esegue binari e non
+accede al telefono. Rifiuta symlink, checksum incompleti/duplicati e report che
+affermano una ROM Carrera o un test hardware. Verifica la coerenza tra file e
+report: gli hash scaricati dalla stessa fonte non sono una firma autenticata.
+
+I tentativi FreeLLMAPI per generare il verificatore hanno restituito limiti o
+risposte incomplete. Il codice definitivo e stato scritto e testato localmente,
+senza usare il testo troncato come prova o dichiarare una generazione riuscita.

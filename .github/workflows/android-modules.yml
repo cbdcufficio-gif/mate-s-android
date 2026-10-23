@@ -4,6 +4,10 @@ on:
   push:
     paths:
       - scripts/android_modules_probe.py
+      - scripts/android_patches.py
+      - scripts/check_hwc_callbacks.py
+      - configs/android-patches.json
+      - patches/android/**
       - .github/workflows/android-modules.yml
 permissions:
   contents: read

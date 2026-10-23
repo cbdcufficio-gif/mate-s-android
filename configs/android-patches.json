@@ -1,0 +1,11 @@
+[
+  {
+    "repository": "LineageOS/android_hardware_interfaces",
+    "revision": "02951860e9c95f19384fa07522925537d8c17a18",
+    "path": "graphics/composer/2.1/utils/hwc2on1adapter/HWC2On1Adapter.cpp",
+    "patch": "patches/android/0001-hwc1-null-callbacks.patch",
+    "before_sha256": "acfb7fed21e792aa8eac20b3bf0da72ba34ddf0b352b0fd746df7a10070575dc",
+    "after_sha256": "5fad4cb5473df76ad1bc6865940f4613b69864460de218ead6035e053303a056",
+    "patch_sha256": "caa23965e68cc47da070bfca5e127fe032bbc3fd7147b3226ca8c58873ce4a6c"
+  }
+]

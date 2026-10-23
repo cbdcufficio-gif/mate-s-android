@@ -1,0 +1,59 @@
+--- a/graphics/composer/2.1/utils/hwc2on1adapter/HWC2On1Adapter.cpp
++++ b/graphics/composer/2.1/utils/hwc2on1adapter/HWC2On1Adapter.cpp
+@@ -815,6 +815,9 @@
+     }
+ 
+     if (mDevice.mHwc1MinorVersion >= 4) {
++        if (mDevice.mHwc1Device->setActiveConfig == nullptr) {
++            return Error::BadConfig;
++        }
+         uint32_t hwc1Id = 0;
+         auto error = config->getHwc1IdForColorMode(mActiveColorMode, &hwc1Id);
+         if (error != Error::None) {
+@@ -859,6 +862,9 @@
+     }
+ 
+     if (mDevice.mHwc1MinorVersion >= 4) {
++        if (mDevice.mHwc1Device->setActiveConfig == nullptr) {
++            return Error::Unsupported;
++        }
+         uint32_t hwc1Config = 0;
+         auto error = mActiveConfig->getHwc1IdForColorMode(mode, &hwc1Config);
+         if (error != Error::None) {
+@@ -1751,7 +1757,12 @@
+     if (activeConfig == HWC_ERROR) {
+         ALOGV("There is no active configuration: Picking the first one: 0.");
+         const int defaultIndex = 0;
+-        mDevice.mHwc1Device->setActiveConfig(mDevice.mHwc1Device, mHwc1Id, defaultIndex);
++        if (mDevice.mHwc1Device->setActiveConfig == nullptr ||
++                mDevice.mHwc1Device->setActiveConfig(
++                        mDevice.mHwc1Device, mHwc1Id, defaultIndex) != 0) {
++            ALOGE("Unable to select an initial HWC1 config");
++            return;
++        }
+         activeConfig = defaultIndex;
+     }
+ 
+@@ -1945,6 +1956,9 @@
+ 
+     auto displayId = mDisplay.getHwc1Id();
+     auto hwc1Device = mDisplay.getDevice().getHwc1Device();
++    if (hwc1Device->setCursorPositionAsync == nullptr) {
++        return Error::BadLayer;
++    }
+     hwc1Device->setCursorPositionAsync(hwc1Device, displayId, x, y);
+     return Error::None;
+ }
+@@ -2214,8 +2228,11 @@
+             break;
+         case Composition::Cursor:
+             hwc1Layer.compositionType = HWC_FRAMEBUFFER;
+-            if (mDisplay.getDevice().getHwc1MinorVersion() >= 4) {
++            if (mDisplay.getDevice().getHwc1MinorVersion() >= 4 &&
++                    mDisplay.getDevice().getHwc1Device()->setCursorPositionAsync != nullptr) {
+                 hwc1Layer.hints |= HWC_IS_CURSOR_LAYER;
++            } else {
++                hwc1Layer.flags |= HWC_SKIP_LAYER;
+             }
+             break;
+         case Composition::Sideband:

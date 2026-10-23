@@ -8,6 +8,7 @@ import subprocess
 import sys
 from android_graph_probe import ROOT, guarded
 from elf_audit import Elf, sha256
+from android_patches import apply_patches, TARGET
 
 MODULES = [
     'libutilscallstack', 'libhwc2on1adapter', 'libhwc2onfbadapter',
@@ -58,6 +59,12 @@ def main():
     report_file.write_text(json.dumps(report, indent=2)+'\n')
     try:
         source = (ROOT / 'source').resolve()
+        report['source_patches'] = apply_patches(source)
+        contract = ROOT/'hwc-callback-contract'
+        subprocess.run([sys.executable, str(Path(__file__).with_name('check_hwc_callbacks.py')),
+                        '--source', str(source/TARGET), '--out', str(contract)],
+                       check=True, timeout=60)
+        report['hwc_callback_behavior'] = json.loads((contract/'report.json').read_text())
         # All command text is constant; MODULES is a fixed allowlist above.
         command = ('set -eo pipefail; source build/envsetup.sh; lunch lineage_arm64-userdebug; '
                    'get_build_var PRODUCT_OUT > "$MATES_PRODUCT_PATH"; m -j2 ' + ' '.join(MODULES))

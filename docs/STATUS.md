@@ -1,3 +1,9 @@
+Aggiornamento successivo 23 ottobre — callback HWC Q:
+
+Corrette nel sorgente pubblico Q le chiamate a setActiveConfig e setCursorPositionAsync quando il vecchio HAL omette le callback. Il cursore passa alla composizione client; i cambi di modalita mancanti sono rifiutati senza simulare successo. Applicazione vincolata agli hash, prova comportamentale su cinque corpi di funzione reali con ASan/UBSan passata. Dettagli in HWC-CALLBACKS.md. Non e una prova di ABI o rendering Huawei.
+
+Nuova compilazione moduli predisposta con patch e prova nativa del codice pubblico. Il workflow dell'immagine accoda le nuove build senza interrompere quella gia in corso. Suite locale:64 test,63 passati,1 skip. Le build system e ramdisk sono ancora in corso; nessuna ROM installabile prodotta.
+
 Aggiornamento successivo 23 ottobre — rootdir Carrera:
 
 Aggiunti fstab.hi3635, init.hi3635.rc e ueventd.hi3635.rc derivati dai metadati acquisiti, con copia nel ramdisk del prodotto Carrera. Nessuna formattazione o cifratura forzata introdotta. Dettagli e limiti in CARRERA-ROOTDIR.md.

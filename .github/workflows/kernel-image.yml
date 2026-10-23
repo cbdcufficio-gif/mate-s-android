@@ -5,6 +5,7 @@ on:
     paths:
       - scripts/build_kernel.py
       - scripts/check_touchscreen_guard.py
+      - scripts/package_kernel_development.py
       - sources.lock.json
       - configs/stock-b321.config
       - configs/android10-diagnostic.fragment
@@ -13,7 +14,7 @@ on:
       - configs/kernel-touch-update.json
       - .github/workflows/kernel-image.yml
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: mates-kernel-image
   cancel-in-progress: true
@@ -82,3 +83,15 @@ jobs:
               tail -n 40 "out/kernel-$profile/build.log" || true
             fi
           done
+      - name: Retain public kernels for local diagnostic assembly
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          REPOSITORY_VISIBILITY: ${{ github.event.repository.visibility }}
+        run: |
+          set -euo pipefail
+          test "$REPOSITORY_VISIBILITY" = public
+          python3 scripts/package_kernel_development.py
+          tag="hi3635-development-kernels-$GITHUB_RUN_ID"
+          gh release create "$tag" out/kernel-public-assets/* --target "$(git rev-parse HEAD)" --prerelease --title "Hi3635 development kernels $GITHUB_RUN_ID — DO NOT FLASH" --notes-file out/kernel-public-assets/README.txt

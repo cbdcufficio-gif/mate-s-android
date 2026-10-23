@@ -34,6 +34,10 @@ propagano gli errori del driver; da spento non effettuano chiamate al driver
 ne alla coda. Prova host passata con ASan/UBSan, senza eseguire firmware.
 Il workflow kernel ripete la prova e compila entrambe le Image ARM64.
 La nuova compilazione completa e ancora necessaria prima di usare il kernel.
+Dopo il successo il workflow conserva soltanto Image pubbliche, configurazioni,
+report e checksum in una prerelease di sviluppo. Non contiene recovery TWRP,
+blob Huawei o immagini avviabili: consente il successivo assemblaggio locale
+senza risincronizzare il kernel o occupare il PC con l'albero Android.
 
 Revisione FreeLLMAPI via gateway locale: cohere/north-mini-code:free,
 2019 token, costo dichiarato 0. Scartati i suggerimenti di riallocare fw_name
@@ -55,3 +59,10 @@ Il catalogo [TWRP ufficiale Carrera](https://dl.twrp.me/carrera/), verificato
 il 23 ottobre, elenca solo twrp-2.8.7.0-carrera.img. Non e stato trovato li un
 aggiornamento ufficiale; la recovery collegata permette gia l'acquisizione.
 Nessuna recovery o partizione e stata modificata.
+
+Confronto ulteriore del dump recovery: i primi 25040896 byte coincidono con
+lo SHA256 ufficiale TWRP2.8.7.0,
+`a60b7392b9eeb3c2e8ac69310f20de67d8f24c60f5eb117488f83b5e16b7fb87`.
+Gli 8513536 byte successivi sono esterni a quell'immagine ufficiale. La prova
+conferma l'identita del contenuto nel dump, non un percorso di ripristino gia
+provato dopo un boot fallito. Nessuna verifica PGP e stata effettuata.

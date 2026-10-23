@@ -1,0 +1,78 @@
+name: Mate S pinned Hi3635 kernel images
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/build_kernel.py
+      - sources.lock.json
+      - configs/stock-b321.config
+      - configs/android10-diagnostic.fragment
+      - patches/kernel/0001-fix-immersion-header-path.patch
+      - .github/workflows/kernel-image.yml
+permissions:
+  contents: read
+concurrency:
+  group: mates-kernel-image
+  cancel-in-progress: true
+jobs:
+  kernel:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Prepare disposable standard runner
+        run: |
+          test "$GITHUB_ACTIONS" = true
+          test "$RUNNER_ENVIRONMENT" = github-hosted
+          sudo rm -rf -- /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends bc bison flex libncurses5-dev libssl-dev
+          free_bytes=$(df -PB1 --output=avail "$GITHUB_WORKSPACE" | tail -n 1 | tr -d ' ')
+          test "$free_bytes" -ge "$((70 * 1024 * 1024 * 1024))"
+          git config --global user.name mates-source-probe
+          git config --global user.email mates-source-probe@users.noreply.github.com
+      - name: Fetch only pinned public kernel and compiler sources
+        run: |
+          set -euo pipefail
+          kernel_commit=$(python3 -c 'import json; d=json.load(open("sources.lock.json")); print(next(r["commit"] for r in d["repositories"] if r["directory"] == "kernel-hi3635"))')
+          compiler_commit=$(python3 -c 'import json; d=json.load(open("sources.lock.json")); print(next(r["commit"] for r in d["repositories"] if r["directory"] == "gcc49"))')
+          kernel_url=$(python3 -c 'import json; d=json.load(open("sources.lock.json")); print(next(r["url"] for r in d["repositories"] if r["directory"] == "kernel-hi3635"))')
+          compiler_url=$(python3 -c 'import json; d=json.load(open("sources.lock.json")); print(next(r["url"] for r in d["repositories"] if r["directory"] == "gcc49"))')
+          fetch_locked() {
+            name="$1"
+            url="$2"
+            commit="$3"
+            dir="$GITHUB_WORKSPACE/out/sources/$name"
+            mkdir -p "$dir"
+            git -C "$dir" init -q
+            git -C "$dir" remote add origin "$url"
+            git -C "$dir" fetch --quiet --depth=1 origin "$commit"
+            git -C "$dir" checkout --quiet --detach FETCH_HEAD
+            test "$(git -C "$dir" rev-parse HEAD)" = "$commit"
+          }
+          fetch_locked kernel "$kernel_url" "$kernel_commit"
+          fetch_locked gcc49 "$compiler_url" "$compiler_commit"
+          git -C out/sources/kernel apply patches/kernel/0001-fix-immersion-header-path.patch
+          free_bytes=$(df -PB1 --output=avail "$GITHUB_WORKSPACE" | tail -n 1 | tr -d ' ')
+          test "$free_bytes" -ge "$((70 * 1024 * 1024 * 1024))"
+      - name: Compile stock and Android 10 diagnostic Images
+        run: |
+          set -euo pipefail
+          python3 scripts/build_kernel.py --source out/sources/kernel --cross-prefix "$GITHUB_WORKSPACE/out/sources/gcc49/bin/aarch64-linux-android-" --out out/kernel-stock --profile stock --jobs 4
+          python3 scripts/build_kernel.py --source out/sources/kernel --cross-prefix "$GITHUB_WORKSPACE/out/sources/gcc49/bin/aarch64-linux-android-" --out out/kernel-android10-diagnostic --profile android10-diagnostic --jobs 4
+      - name: Record compile results only
+        if: always()
+        run: |
+          for profile in stock android10-diagnostic; do
+            report="out/kernel-$profile/build-report.json"
+            if [ -f "$report" ]; then
+              echo "## Kernel $profile" >> "$GITHUB_STEP_SUMMARY"
+              echo '```json' >> "$GITHUB_STEP_SUMMARY"
+              cat "$report" >> "$GITHUB_STEP_SUMMARY"
+              echo '```' >> "$GITHUB_STEP_SUMMARY"
+              tail -n 40 "out/kernel-$profile/build.log" || true
+            fi
+          done

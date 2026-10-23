@@ -2,7 +2,7 @@
 
 ## Ultima verifica remota — 23 ottobre 2026, 12:20 UTC
 
-Il run [39949624600](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39949624600) ha superato la compilazione del ramdisk Carrera e il parser init Q: 802.915 byte, 510,5 secondi, 47.370.498.048 byte liberi. Il job ha concluso in errore solo al momento della prerelease: il commit del run era indietro rispetto a main su .github/workflows/android-carrera-system.yml; l'API Release ha restituito 403 perché in questa situazione richiede Workflows: write. Il GITHUB_TOKEN non può ricevere tale permesso. Il retry del run è stato richiesto in cancellazione. Il run 39951112143, sul tip attuale, è in coda. Questa prova non crea una boot image né verifica il telefono.
+Il run [39949624600](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39949624600) ha superato la compilazione del ramdisk Carrera e il parser init Q: 802.915 byte, 510,5 secondi, 47.370.498.048 byte liberi. Il job ha concluso in errore solo al momento della prerelease: il commit del run era indietro rispetto a main su .github/workflows/android-carrera-system.yml; l'API Release ha restituito 403 perché in questa situazione richiede Workflows: write. Il GITHUB_TOKEN non può ricevere tale permesso. Il retry del run è stato richiesto in cancellazione. Il run 39951112143, sul commit 65a89717, è in coda. Il successivo commit b27ae260 aggiorna solo rapporti e checksum; i workflow sono invariati. Questa prova non crea una boot image né verifica il telefono.
 
 
 ## Risultati attuali

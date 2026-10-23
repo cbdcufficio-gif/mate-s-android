@@ -4,10 +4,13 @@ on:
   push:
     paths:
       - scripts/build_kernel.py
+      - scripts/check_touchscreen_guard.py
       - sources.lock.json
       - configs/stock-b321.config
       - configs/android10-diagnostic.fragment
       - patches/kernel/0001-fix-immersion-header-path.patch
+      - patches/kernel/0002-gate-touchscreen-framework-firmware-update.patch
+      - configs/kernel-touch-update.json
       - .github/workflows/kernel-image.yml
 permissions:
   contents: read
@@ -56,8 +59,11 @@ jobs:
           fetch_locked kernel "$kernel_url" "$kernel_commit"
           fetch_locked gcc49 "$compiler_url" "$compiler_commit"
           git -C out/sources/kernel apply "$GITHUB_WORKSPACE/patches/kernel/0001-fix-immersion-header-path.patch"
+          git -C out/sources/kernel apply "$GITHUB_WORKSPACE/patches/kernel/0002-gate-touchscreen-framework-firmware-update.patch"
           free_bytes=$(df -B1 --output=avail "$GITHUB_WORKSPACE" | tail -n 1 | tr -d ' ')
           test "$free_bytes" -ge "$((70 * 1024 * 1024 * 1024))"
+      - name: Test real touchscreen callback bodies with firmware control on and off
+        run: python3 scripts/check_touchscreen_guard.py --source out/sources/kernel/drivers/huawei_platform/touthscreen/huawei_touchscreen.c --out out/touchscreen-framework-test
       - name: Compile stock and Android 10 diagnostic Images
         run: |
           set -euo pipefail

@@ -1,0 +1,17 @@
+{
+  "kernel_commit": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+  "patch": "patches/kernel/0002-gate-touchscreen-framework-firmware-update.patch",
+  "patch_sha256": "60ff47c3cc04017d167427cf81f9be186cacaf497379cadc383065699c4d3de6",
+  "files": [
+    {
+      "path": "drivers/huawei_platform/touthscreen/Kconfig",
+      "before_sha256": "75e84ec8743c3f0def47c1589370ddb5509f7c6e2000ab7e7e08d0aa9d398262",
+      "after_sha256": "517c263322502247af5416f79bed4a569fac5361b4b0da99915659575104be30"
+    },
+    {
+      "path": "drivers/huawei_platform/touthscreen/huawei_touchscreen.c",
+      "before_sha256": "a796665bd4584e346941783d94b3f9b41c3d1599c33d3fe54146e6753e7d6a48",
+      "after_sha256": "710b49d8c66b2a8c72bde3d41d7eeea9f882b976f9409a62324873a63c199703"
+    }
+  ]
+}

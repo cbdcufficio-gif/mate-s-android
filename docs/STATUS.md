@@ -1,3 +1,9 @@
+Aggiornamento successivo 23 ottobre — hardware collegato e controllo firmware touch:
+
+Acquisizione attuale in sola lettura: TWRP CRR-L09/carrera, kernel3.10.74-gfa6dc6d, GPU/ION/framebuffer e input presenti; hwbinder/vndbinder assenti nella recovery. Questo kernel non e quello stock3.10.86 ne il nuovo diagnostico. Nessuna prova Q attribuita a TWRP.
+
+Nuova patch kernel introduce CONFIG_HUAWEI_TS_FW_UPDATE: resta y nel confronto stock, e n nel profilo Android10 diagnostico. Impedisce l'aggiornamento automatico dal framework e rifiuta i suoi callback boot/SD. Tre corpi reali provati con flag acceso/spento, zero chiamate a driver/coda da spento. Nuova build ARM64 richiesta; limiti in TOUCHSCREEN-FW-GUARD.md. Suite locale69 test:68 passati,1 skip. Nessuna scrittura sul telefono o riavvio. Il catalogo TWRP ufficiale Carrera elenca solo2.8.7.0; nessun aggiornamento ufficiale disponibile li.
+
 Aggiornamento successivo 23 ottobre — primo errore Carrera risolto nei sorgenti:
 
 Il run39930952198 ha superato sync e grafo generico, poi il prodotto Carrera e fallito prima della compilazione per PRODUCT_SHIPPING_API_LEVEL duplicato:23 23. Rimosso il valore ridondante da device.mk; il prodotto eredita gia API23 da product_launched_with_m.mk. Aggiunto controllo del valore risolto nel probe. Nuovo tentativo necessario; nessun ramdisk prodotto dal run fallito. Moduli Q con correzione HWC in compilazione nel run39933540063; immagine generica ancora in corso nel run39927971028.

@@ -42,6 +42,28 @@ def config_values(path):
     return result
 
 
+def verify_source_changes(source):
+    immersion = 'drivers/huawei_platform/immersion/tspdrv.c'
+    patch = PROJECT/'patches/kernel/0001-fix-immersion-header-path.patch'
+    touch = json.loads((PROJECT/'configs/kernel-touch-update.json').read_text())
+    if sha256(PROJECT/touch['patch']) != touch['patch_sha256']:
+        raise ValueError('Touchscreen patch checksum mismatch')
+    expected = {immersion, *(row['path'] for row in touch['files'])}
+    changed = set(subprocess.check_output(
+        ['git','-C',str(source),'diff','--name-only'],text=True).splitlines())
+    if changed != expected:
+        raise ValueError('Source changes differ from reviewed kernel patch paths')
+    diff = subprocess.check_output(
+        ['git','-C',str(source),'diff','--binary','--',immersion],text=True)
+    if diff.strip() != patch.read_text().strip():
+        raise ValueError('Immersion source change differs from reviewed patch')
+    for row in touch['files']:
+        target = source/row['path']
+        if target.is_symlink() or sha256(target) != row['after_sha256']:
+            raise ValueError('Touchscreen source differs from reviewed patch')
+    return touch
+
+
 def build(source, cross_prefix, output, profile, jobs):
     source, output = Path(source).resolve(strict=True), Path(output).resolve()
     lock = json.loads((PROJECT / 'sources.lock.json').read_text())
@@ -50,10 +72,8 @@ def build(source, cross_prefix, output, profile, jobs):
     if commit != expected:
         raise ValueError('Kernel revision is not the tested locked revision')
     patch = PROJECT / 'patches/kernel/0001-fix-immersion-header-path.patch'
-    # Require exactly the tested source change, not arbitrary pre-existing edits.
-    diff = subprocess.check_output(['git', '-C', str(source), 'diff', '--binary'], text=True)
-    if diff.strip() != patch.read_text().strip():
-        raise ValueError('Source changes differ from the tested Immersion header patch')
+    # Require exact reviewed contents; other tracked/untracked edits are rejected.
+    touch = verify_source_changes(source)
     untracked = subprocess.check_output(['git', '-C', str(source), 'ls-files', '--others', '--exclude-standard'], text=True)
     if untracked.strip():
         raise ValueError('Untracked source files: review them before building')
@@ -88,6 +108,7 @@ def build(source, cross_prefix, output, profile, jobs):
             'CROSS_COMPILE=' + prefix, 'HOSTCFLAGS=-fcommon']
     report = {'status': 'INCOMPLETE', 'profile': profile, 'kernel_commit': commit,
               'patch_sha256': sha256(patch), 'stock_config_sha256': sha256(stock),
+              'touchscreen_patch_sha256': touch['patch_sha256'],
               'toolchain_commit': compiler_commit, 'compiler_sha256': sha256(compiler),
               'commands': [base + ['olddefconfig'], base + ['-j' + str(jobs), 'Image']],
               'phone_access': False, 'boot_image_created': False,
@@ -105,6 +126,10 @@ def build(source, cross_prefix, output, profile, jobs):
                         raise ValueError(f'Kernel configuration did not retain {key}={value}')
                 report['requested_fragment_verified'] = requested
             stock_values, actual = config_values(stock), config_values(config)
+            expected_fw_update = 'n' if profile == 'android10-diagnostic' else 'y'
+            if actual.get('CONFIG_HUAWEI_TS_FW_UPDATE','n') != expected_fw_update:
+                raise ValueError('Touchscreen firmware update control was not retained')
+            report['touchscreen_framework_fw_update_enabled'] = expected_fw_update == 'y'
             hardware = ['CONFIG_FB_3635', 'CONFIG_MALI_MIDGARD', 'CONFIG_FINGERPRINT',
                         'CONFIG_IMMERSION', 'CONFIG_BACKLIGHT_10000', 'CONFIG_GRACE_SELECT_2A_1A_AC']
             for key in hardware:

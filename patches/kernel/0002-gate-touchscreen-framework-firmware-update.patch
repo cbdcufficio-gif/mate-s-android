@@ -1,0 +1,65 @@
+--- a/drivers/huawei_platform/touthscreen/Kconfig
++++ b/drivers/huawei_platform/touthscreen/Kconfig
+@@ -8,6 +8,15 @@
+ 	help
+ 	  If you say yes here you get support for huawei touchscreen.
+ 	  
++config HUAWEI_TS_FW_UPDATE
++	bool "Allow Huawei touchscreen framework firmware updates"
++	depends on HUAWEI_TS
++	default y
++	help
++	  Preserve the vendor boot/SD update paths when enabled. Diagnostic
++	  Carrera builds disable this to keep those firmware callbacks inactive.
++	  This does not audit firmware writes in other panel/debug drivers.
++
+ config HUAWEI_TS_TEST
+ 	bool "huawei touchscreen test"
+ 	default n
+--- a/drivers/huawei_platform/touthscreen/huawei_touchscreen.c
++++ b/drivers/huawei_platform/touthscreen/huawei_touchscreen.c
+@@ -1161,6 +1161,11 @@
+ {
+ 	int error = NO_ERR;
+ 	struct ts_cmd_node cmd;
++
++	if (!IS_ENABLED(CONFIG_HUAWEI_TS_FW_UPDATE)) {
++		TS_LOG_INFO("touchscreen framework firmware update disabled\n");
++		return -EOPNOTSUPP;
++	}
+ 
+ 	TS_LOG_INFO("ts_fw_update_sd_store called\n");
+ 
+@@ -2380,6 +2385,11 @@
+ 	int error = NO_ERR;
+ 	struct ts_device_data *dev = g_ts_data.chip_data;
+ 
++	if (!IS_ENABLED(CONFIG_HUAWEI_TS_FW_UPDATE)) {
++		TS_LOG_INFO("touchscreen framework firmware update disabled\n");
++		return -EOPNOTSUPP;
++	}
++
+ 	if (dev->ops->chip_fw_update_boot)
+ 		error = dev->ops->chip_fw_update_boot(fw_name);
+ 
+@@ -2402,6 +2412,11 @@
+ {
+ 	int error = NO_ERR;
+ 	struct ts_device_data *dev = g_ts_data.chip_data;
++
++	if (!IS_ENABLED(CONFIG_HUAWEI_TS_FW_UPDATE)) {
++		TS_LOG_INFO("touchscreen framework firmware update disabled\n");
++		return -EOPNOTSUPP;
++	}
+ 
+ 	TS_LOG_INFO("process firmware update sd\n");
+ 
+@@ -3626,7 +3641,7 @@
+ 
+ 	TS_LOG_INFO("touch_recovery_mode is %d\n", touch_recovery_mode);
+ 
+-	if (!touch_recovery_mode) {
++	if (!touch_recovery_mode && IS_ENABLED(CONFIG_HUAWEI_TS_FW_UPDATE)) {
+ 		error = try_update_firmware();
+ 		if (error) {
+ 			TS_LOG_ERR("return fail : %d\n", error);

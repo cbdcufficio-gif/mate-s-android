@@ -1,5 +1,23 @@
 Aggiornamento 23 ottobre: acquisizione boot/DTB e prova grafo Android; vedere BOOT-RESULT.md e BUILD-BLOCKERS.md.
 
+Aggiornamento 23 ottobre, run Actions 39873522042, commit `277d150a16f391b9964783fcdf922e1fdba0fc5c`:
+corretto il target del probe da `aosp_arm64-userdebug` a
+`lineage_arm64-userdebug`, che carica il prodotto LineageOS registrato. Il
+workflow ha sincronizzato il manifest Android Q fissato a
+`c7b3d4b65b79e2e0d6a891547ad138e1fcdafb56` e completato `m -j2 nothing` con
+`GENERIC_BUILD_GRAPH_PASSED`. Tempi: sync 516,5 s; grafo 135,1 s. Spazio libero
+misurato: 113.009.008.640 byte all'avvio del probe, 51.345.686.528 dopo il sync,
+48.843.919.360 dopo il grafo. Log e manifest risolto sono nel run Actions:
+https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39873522042.
+Il risultato è un grafo Android generico, non il prodotto Carrera: nessun
+`systemimage`, `boot.img`, ROM o test hardware è stato eseguito. I 48,8 GB
+rimanenti non dimostrano spazio sufficiente per una build completa.
+Il run precedente [39865914932](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39865914932)
+falliva in `vendor/lineage/build/soong/Android.bp:30` con
+`unknown variable '$(PATH_OVERRIDE_SOONG)'`: usava `aosp_arm64-userdebug`, che
+non caricava la configurazione del prodotto LineageOS. La sostituzione con il
+target LineageOS registrato ha eliminato quell'errore nel run successivo.
+
 Aggiornamento 22 ottobre: [compilazione ARM32/ARM64 degli header e di quattro implementazioni Q](HEADER-EXPERIMENT.md), con 54 import selezionati coperti. Nessuna ROM installabile ancora prodotta.
 
 # Stato verificato — 22 ottobre 2026
@@ -58,8 +76,10 @@ di sviluppo, NON un pacchetto installabile. Non flashare le Image fornite.
 
 Boot, dtimage e recovery acquisiti in sola lettura dal CRR-L09 il 23 ottobre.
 Vedere BOOT-RESULT.md e DTIMAGE-RESULT.md; non occorre richiedere nuovamente
-i candidati grafici o il dump boot. Avviato esperimento remoto di sync sorgenti
-e grafo Android reale, con limiti di spazio e tempo. Non equivale a una build ROM.
+i candidati grafici o il dump boot. Il probe remoto di sync e grafo Android Q
+generico è riuscito, con limiti di spazio e tempo misurati. Non equivale a una
+build del prodotto Carrera o a una build ROM. La suite locale corrente conta
+41 test passati e uno saltato per cross-compiler opzionale.
 
 Android 10 è un primo candidato tecnico. Non si promettono una data di rilascio,
 un tetto massimo Android o una ROM completa senza build e prove sul dispositivo.

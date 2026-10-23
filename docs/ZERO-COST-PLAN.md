@@ -59,8 +59,18 @@ e [capacità/test ARM riusciti](https://github.com/cbdcufficio-gif/mate-s-androi
 Il runner ha 4 CPU, circa 16 GB RAM e 86,1 GiB liberi iniziali. Rimuovendo solo
 SDK inutilizzati nella VM effimera: 105,5 GiB. Dopo installazione cross compiler:
 105,1 GiB, con tutti i 21 test passati e zero skip. Nessun sorgente Android
-completo è stato scaricato; questi risultati non provano che una build ROM entri
-nello spazio o nelle 6 ore. Dati esatti in SESSION-20261022.json.
+completo è stato scaricato in quei run; questi risultati non provano che una
+build ROM entri nello spazio o nelle 6 ore. Dati esatti in SESSION-20261022.json.
+
+Il probe successivo [39873522042](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39873522042)
+ha sincronizzato il manifest LineageOS Q fissato e compilato il grafo Soong
+generico (`lineage_arm64-userdebug`, `m -j2 nothing`). Il sync è durato 516,5 s,
+il grafo 135,1 s; lo spazio libero è passato da 113.009.008.640 a
+48.843.919.360 byte. Ciò prova che il grafo sorgente generico si avvia sul runner,
+ma non prova un target Carrera né una ROM. La build completa resta non dimostrata
+e il margine di disco dopo il sync è limitato; non avviare un full build senza un
+preflight specifico del target e una soglia di spazio che eviti di esaurire il
+runner senza produrre una prova utile.
 
 - Otto candidati grafici reali: hash stock confrontati con il lock B321 e patch
   ricontrollate con `verify_patch`, inclusi segmenti, simboli/versioni e payload.

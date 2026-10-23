@@ -1,0 +1,8 @@
+# Binder nodes follow Android Q permissions. SELinux labels remain policy-controlled.
+/dev/binder          0666 root   root
+/dev/hwbinder        0666 root   root
+/dev/vndbinder       0666 root   root
+# Hardware permissions observed in the acquired CRR-L09 ueventd configuration.
+/dev/ion             0664 system system
+/dev/mali0           0666 system system
+/dev/graphics/fb2    0660 system system

@@ -1,0 +1,6 @@
+# Minimal filesystem integration for the experimental Carrera product.
+# Android Q root init imports /init.${ro.hardware}.rc and triggers fs.
+on fs
+    mount_all /fstab.hi3635
+
+# Proprietary services, firmware triggers and board policy require separate integration.

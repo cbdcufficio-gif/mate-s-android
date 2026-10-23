@@ -1,3 +1,9 @@
+Aggiornamento successivo 23 ottobre — rootdir Carrera:
+
+Aggiunti fstab.hi3635, init.hi3635.rc e ueventd.hi3635.rc derivati dai metadati acquisiti, con copia nel ramdisk del prodotto Carrera. Nessuna formattazione o cifratura forzata introdotta. Dettagli e limiti in CARRERA-ROOTDIR.md.
+
+Predisposto android-carrera.yml: target esplicito lineage_carrera_public-userdebug, senza prebuilts Huawei, per compilare il ramdisk e verificarlo tramite gli strumenti nativi Q. Il prodotto normale continua a richiedere i blob locali. Esito della nuova prova non ancora verificato; nessuna boot.img o ROM completa prodotta. Suite locale61 test:60 passati,1 skip.
+
 Aggiornamento 23 ottobre — build effettive e seguito automatico:
 
 - Kernel stock e android10-diagnostic compilati con successo nel run39924712678; hash e limiti in KERNEL-REMOTE-RESULT.md.

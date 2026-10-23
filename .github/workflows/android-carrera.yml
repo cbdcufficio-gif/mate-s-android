@@ -1,0 +1,63 @@
+name: Mate S public Carrera ramdisk
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/android_carrera_probe.py
+      - device/huawei/carrera/**
+      - .github/workflows/android-carrera.yml
+permissions:
+  contents: write
+concurrency:
+  group: mates-android-carrera
+  cancel-in-progress: true
+jobs:
+  graph:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Prepare disposable runner for public Android sources
+        run: |
+          test "$GITHUB_ACTIONS" = true
+          test "$RUNNER_ENVIRONMENT" = github-hosted
+          sudo rm -rf -- /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends repo python2 git-lfs bc bison flex gperf libncurses5 libxml2-utils xsltproc zip unzip rsync gcc-multilib g++-multilib libssl-dev liblz4-tool
+          git config --global user.name mates-source-probe
+          git config --global user.email mates-source-probe@users.noreply.github.com
+      - name: Build source-only Carrera ramdisk and validate rootdir using native Q tools
+        run: python3 scripts/android_carrera_probe.py
+      - name: Retain diagnostics in logs only
+        if: always()
+        run: |
+          if [ -f out/android-graph/report.json ]; then
+            cat out/android-graph/report.json
+            cat out/android-graph/report.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/android-graph/modules-report.json ]; then
+            cat out/android-graph/modules-report.json
+            cat out/android-graph/modules-report.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/android-graph/carrera-report.json ]; then
+            cat out/android-graph/carrera-report.json
+            cat out/android-graph/carrera-report.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+          for phase in init sync graph carrera; do
+            if [ -f "out/android-graph/$phase.log" ]; then tail -n 80 "out/android-graph/$phase.log"; fi
+          done
+          if [ -f out/android-graph/resolved-manifest.xml ]; then cat out/android-graph/resolved-manifest.xml; fi
+      - name: Retain the public development ramdisk separately
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          REPOSITORY_VISIBILITY: ${{ github.event.repository.visibility }}
+        run: |
+          set -euo pipefail
+          test "$REPOSITORY_VISIBILITY" = public
+          assets=out/android-graph/carrera-public-assets
+          gh release create "carrera-public-ramdisk-$GITHUB_RUN_ID" "$assets"/* --target "$(git rev-parse HEAD)" --prerelease --title "Carrera public ramdisk $GITHUB_RUN_ID — DO NOT FLASH" --notes-file "$assets/README.txt"

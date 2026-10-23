@@ -55,7 +55,7 @@ jobs:
           }
           fetch_locked kernel "$kernel_url" "$kernel_commit"
           fetch_locked gcc49 "$compiler_url" "$compiler_commit"
-          git -C out/sources/kernel apply patches/kernel/0001-fix-immersion-header-path.patch
+          git -C out/sources/kernel apply "$GITHUB_WORKSPACE/patches/kernel/0001-fix-immersion-header-path.patch"
           free_bytes=$(df -B1 --output=avail "$GITHUB_WORKSPACE" | tail -n 1 | tr -d ' ')
           test "$free_bytes" -ge "$((70 * 1024 * 1024 * 1024))"
       - name: Compile stock and Android 10 diagnostic Images

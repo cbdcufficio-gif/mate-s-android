@@ -4,6 +4,7 @@ import gzip
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -20,6 +21,8 @@ def system_image_path(staged_path):
     relative=Path(staged_path)
     if relative.is_absolute() or '..' in relative.parts or not relative.parts or relative.parts[0]!='system':
         raise ValueError('Unsafe or unexpected module path in system staging')
+    if any(not re.fullmatch(r'[A-Za-z0-9_.+-]+',part) for part in relative.parts):
+        raise ValueError('Unexpected character in public module path')
     return '/'+str(relative.relative_to('system'))
 
 

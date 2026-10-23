@@ -47,7 +47,8 @@ class CarreraRootdirContract(unittest.TestCase):
         from android_carrera_system_probe import verify_legacy_vendor_link,system_image_path
         self.assertEqual(system_image_path('system/vendor/lib64/libcomposer.so'),
                          '/vendor/lib64/libcomposer.so')
-        for unsafe in ('vendor/lib/libx.so','system/../outside.so','/system/lib/libx.so'):
+        for unsafe in ('vendor/lib/libx.so','system/../outside.so','/system/lib/libx.so',
+                       'system/vendor/lib64/a;quit.so'):
             with self.assertRaises(ValueError):system_image_path(unsafe)
         with tempfile.TemporaryDirectory() as tmp:
             product=Path(tmp);(product/'root').mkdir()

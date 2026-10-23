@@ -4,6 +4,11 @@ on:
   push:
     paths:
       - scripts/android_carrera_system_probe.py
+      - scripts/android_carrera_probe.py
+      - scripts/android_patches.py
+      - configs/android-patches.json
+      - device/huawei/carrera/**
+      - patches/android/**
       - .github/workflows/android-carrera-system.yml
 permissions:
   contents: write

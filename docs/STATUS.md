@@ -1,11 +1,25 @@
 Stato corrente — 23 ottobre, consegna tecnica:
 
+Aggiornamento operativo, 23 ottobre — mount Carrera e build:
+
+- Il rootdir Q monta system/cache con `mount_all --early` e ritarda userdata a
+  `late-fs` con `latemount`, preservando `encryptable=footer`. La scelta dello
+  staging separato di `/system` e stata verificata sul sorgente Q; il boot sul
+  telefono resta da provare.
+- La build generica 39927971028 ha esaurito il limite interno di 7200 secondi,
+  non il disco: `TIME_BUDGET_REACHED`, 25,8 GB liberi. La build Carrera
+  39942073472 era ancora in corso alle 11:50 UTC e usa ancora il limite
+  precedente. Il prossimo run Carrera avra 10800 secondi e la stessa riserva
+  disco di 8 GiB.
+- Suite locale aggiornata:75 test,74 passati,1 skip per cross compiler
+  opzionale. Nessuna immagine Q installabile o boot Android prodotto.
+
 - Kernel con controllo firmware touch: run39937087192 riuscito; prerelease con Image pubbliche/config/report. DiagnosticoSHA3ec66f2b1a20270b101d72374b697dbfb1c178b749781e5580c356b7429b3bb9.
 - Moduli grafici Q corretti: run39933540063 riuscito ARM32/ARM64,14 ELF installati; ANDROID-MODULE-PATCHED-RESULT.json.
 - Ramdisk Carrera: run39937831656 riuscito,802884 byte, tre file verificati nel cpio; CARRERA-RAMDISK-RESULT.json.
 - Sonda ARM64 eseguita in RAM di TWRP: Binder8, display1080x1920x32, ION/Mali aperti; getrandom/memfd assenti nel vecchio kernel.
 - Un solo fastboot boot diagnostico: trasferimento OKAY, avvio rifiutato Command not allowed. Nessun flash. Rientro in TWRP2.8.7.0/kernel3.10.74 verificato. RAM-KERNEL-TEST.md.
--74 test:73 passati,1 skip opzionale. Build sistema generico ancora in corso; aggiunta build del prodotto pubblico Carrera con system e ramdisk corrispondenti.
+-75 test:74 passati,1 skip opzionale. Il run generico e fallito per limite interno della fase system; la build specifica Carrera e ancora in corso.
 - ROM completa NON pronta: vedere BUILD-BLOCKERS.md per integrazione primo stadio, HAL, policy e boot residui. Non manca soltanto il confezionamento di uno zip.
 
 Aggiornamento successivo 23 ottobre — ramdisk compilato, verifica staging corretta:

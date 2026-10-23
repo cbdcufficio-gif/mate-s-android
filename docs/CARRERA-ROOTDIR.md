@@ -1,5 +1,33 @@
 # Integrazione rootdir Carrera
 
+## Sequenza di montaggio Android Q — 23 ottobre 2026
+
+La revisione del sorgente Q fissato a `6d27634866be5b646a8cea1f9abeae902fd831e5`
+ha trovato che il precedente `mount_all` senza opzioni includeva anche `/data`
+nel trigger `fs`. Il flusso di `rootdir/init.rc` richiede `/system` e `/vendor`
+entro `fs`, lascia `/data` opzionale in quel punto e avvia `late-fs` prima di
+`post-fs-data`. In `init/builtins.cpp`, `mount_all --early` esclude gli ingressi
+`latemount`; `--late` include solo quegli ingressi. Il fstab Carrera ora marca
+userdata `latemount`, monta system e cache con `--early`, poi userdata con
+`--late`. Restano i flag stock `encryptable=footer`; non sono stati aggiunti
+formattazione, cifratura forzata o resize.
+
+Non viene aggiunto `first_stage_mount` a `/system`: `BoardConfig.mk` mantiene
+`BOARD_BUILD_SYSTEM_ROOT_IMAGE := false` e il prodotto usa una partizione
+`/system` separata. Nel sorgente Q `FirstStageMount` filtra il fstab file per
+`first_stage_mount`; se `/system` entra nella sua lista, `TrySwitchSystemAsRoot`
+monta `/system` e cambia root. L'FDT Carrera selezionato non contiene la stringa
+`fstab`, e nella device-tree della recovery attiva non e stato trovato un nodo
+fstab; una modifica del DT da parte del bootloader sul boot normale resta da
+verificare. Questa decisione statica non prova il montaggio o il boot sul
+telefono.
+
+Il controllo indipendente della build immagine Carrera e stato esteso da 7200 a
+10800 secondi, mantenendo la riserva disco di 8 GiB e il limite job di 230
+minuti. La modifica risponde al run generico 39927971028, terminato dal guard
+interno dopo 7201 secondi con `TIME_BUDGET_REACHED` e 25,8 GB liberi; il run
+Carrera gia attivo usa ancora il limite precedente.
+
 Esito aggiornato: run39937831656 riuscito. Ramdisk802884 byte, staging
 out/target/product/carrera/ramdisk; tre file confrontati con le sorgenti e
 con il contenuto cpio. Parser init Q passato. Report in

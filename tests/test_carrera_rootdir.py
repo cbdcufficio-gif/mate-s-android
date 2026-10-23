@@ -21,11 +21,25 @@ class CarreraRootdirContract(unittest.TestCase):
         rows=entries(DEVICE/'rootdir/fstab.hi3635')
         data=next(r for r in rows if r[1]=='/data')
         self.assertIn('encryptable=footer',data[4].split(','))
+        self.assertIn('latemount',data[4].split(','))
         for row in rows:
             self.assertFalse(any(x.startswith(('formattable','forceencrypt','fileencryption','resize')) for x in row[4].split(',')))
         self.assertIn('ro',next(r for r in rows if r[1]=='/system')[3].split(','))
-    def test_init_has_only_the_reviewed_mount_action(self):
-        self.assertEqual(entries(DEVICE/'rootdir/init.hi3635.rc'),[['on','fs'],['mount_all','/fstab.hi3635']])
+    def test_mounts_system_early_and_userdata_late(self):
+        rows=entries(DEVICE/'rootdir/fstab.hi3635')
+        flags={r[1]:set(r[4].split(',')) for r in rows}
+        self.assertNotIn('latemount',flags['/system'])
+        self.assertNotIn('latemount',flags['/cache'])
+        self.assertIn('latemount',flags['/data'])
+        actions=entries(DEVICE/'rootdir/init.hi3635.rc')
+        self.assertEqual(actions,[
+            ['on','fs'],['mount_all','/fstab.hi3635','--early'],
+            ['on','late-fs'],['mount_all','/fstab.hi3635','--late']])
+    def test_separate_system_layout_is_not_switched_to_system_as_root(self):
+        board=(DEVICE/'BoardConfig.mk').read_text()
+        self.assertIn('BOARD_BUILD_SYSTEM_ROOT_IMAGE := false',board)
+        system=next(r for r in entries(DEVICE/'rootdir/fstab.hi3635') if r[1]=='/system')
+        self.assertNotIn('first_stage_mount',system[4].split(','))
     def test_hardware_permission_metadata(self):
         actual={r[0]:r[1:] for r in entries(DEVICE/'rootdir/ueventd.hi3635.rc')}
         for name in ('binder','hwbinder','vndbinder'):

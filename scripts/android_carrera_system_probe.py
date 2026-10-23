@@ -8,11 +8,19 @@ import shutil
 import subprocess
 import sys
 import tarfile
+import tempfile
 from android_graph_probe import ROOT,guarded
 from android_modules_probe import MODULES,REQUIRED,inventory
 from android_patches import apply_patches
 from android_system_probe import image_metadata,MAX_ASSET
 from elf_audit import sha256
+
+
+def system_image_path(staged_path):
+    relative=Path(staged_path)
+    if relative.is_absolute() or '..' in relative.parts or not relative.parts or relative.parts[0]!='system':
+        raise ValueError('Unsafe or unexpected module path in system staging')
+    return '/'+str(relative.relative_to('system'))
 
 
 def verify_legacy_vendor_link(product):
@@ -23,6 +31,45 @@ def verify_legacy_vendor_link(product):
     if target!='/system/vendor':
         raise ValueError('Unexpected legacy /vendor symlink target: '+target)
     return {'path':'root/vendor','target':target}
+
+
+def verify_modules_in_system_image(source,image,modules):
+    debugfs=shutil.which('debugfs')
+    if not debugfs:
+        raise ValueError('debugfs is required to inspect the Carrera system ext4 image')
+    metadata=image_metadata(image)
+    with tempfile.TemporaryDirectory(prefix='carrera-ext4-',dir=ROOT) as temp:
+        raw=image
+        if metadata['format']=='android_sparse':
+            expanded=metadata['expanded_bytes']
+            if shutil.disk_usage(ROOT).free < expanded+8*1024**3:
+                raise ValueError('Insufficient free space to inspect system ext4 while retaining 8 GiB')
+            simg2img=source/'out/host/linux-x86/bin/simg2img'
+            if not simg2img.is_file():
+                raise ValueError('Android simg2img host tool is missing')
+            raw=Path(temp)/'system.raw.img'
+            subprocess.run([str(simg2img),str(image),str(raw)],check=True,timeout=180)
+        with raw.open('rb') as stream:
+            stream.seek(1024+56)
+            if stream.read(2)!=b'\x53\xef':
+                raise ValueError('System image is not an ext4 filesystem')
+        extracted=[]
+        for index,item in enumerate(modules):
+            image_path=system_image_path(item['path'])
+            destination=Path(temp)/f'module-{index}.bin'
+            command=f'dump {image_path} {destination}'
+            result=subprocess.run([debugfs,'-R',command,str(raw)],stdout=subprocess.PIPE,
+                                  stderr=subprocess.STDOUT,text=True,timeout=60)
+            if result.returncode or not destination.is_file() or 'File not found' in result.stdout:
+                raise ValueError('Public module is missing from system ext4: '+image_path)
+            digest=sha256(destination)
+            if digest!=item['sha256']:
+                raise ValueError('Public module hash differs inside system ext4: '+image_path)
+            extracted.append({'path':image_path,'sha256':digest})
+    if not extracted or not any(item['path'].startswith('/vendor/') for item in extracted):
+        raise ValueError('No public vendor module verified inside system ext4')
+    return {'filesystem':'ext4','format':metadata['format'],'modules_verified':len(extracted),
+            'modules':extracted}
 
 
 def main():
@@ -38,7 +85,7 @@ def main():
         source=(ROOT/'source').resolve()
         report['source_patches']=apply_patches(source)
         command=('set -eo pipefail; source build/envsetup.sh; lunch lineage_carrera_public-userdebug; '
-                 'm -j2 '+' '.join(MODULES)+' systemimage')
+                 'm -j2 '+' '.join(MODULES)+' systemimage simg2img')
         report['build']=guarded(['bash','-c',command],source,ROOT/'carrera-system.log',seconds=10800,reserve=8*1024**3)
         if report['build']['returncode'] or report['build']['stop_reason']:
             report['status']='CARRERA_PUBLIC_SYSTEM_BUILD_FAILED'
@@ -55,6 +102,7 @@ def main():
             report['installed_public_modules']=[x for x in inventory(product)if x['path'].startswith('system/')]
             if REQUIRED-{Path(x['path']).name for x in report['installed_public_modules']}:
                 raise ValueError('Requested public modules are not all installed in system staging')
+            report['system_image_modules']=verify_modules_in_system_image(source,image,report['installed_public_modules'])
             report['rootdir_staging']=[]
             for name in ('fstab.hi3635','init.hi3635.rc','ueventd.hi3635.rc'):
                 original=Path(__file__).resolve().parents[1]/'device/huawei/carrera/rootdir'/name
@@ -87,7 +135,7 @@ def main():
             (assets/'carrera-system-report.json').write_text(json.dumps(report,indent=2)+'\n')
             (assets/'README.txt').write_text('Public Carrera Android Q userspace development pair. NOT A COMPLETE ROM. DO NOT FLASH.\n'
                 'No Huawei proprietary HALs, kernel or DTB included. No hardware boot or enforcing policy verified.\n'
-                'Ramdisk cpio and staged rootdir hashes checked; system ext4 contents have not been independently inspected.\n'
+                f"Ramdisk cpio/rootdir checked; read-only ext4 inspection matched {report['system_image_modules']['modules_verified']} public graphics module hashes.\n"
                 'Complete early mount, vendor hardware services, policy and boot integration before any installation.\n')
             (assets/'SHA256SUMS').write_text(''.join(sha256(p)+'  '+p.name+'\n'for p in sorted(assets.iterdir())))
     except Exception as error:

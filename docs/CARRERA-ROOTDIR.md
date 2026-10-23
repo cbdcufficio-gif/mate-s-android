@@ -29,6 +29,11 @@ crea lo stesso symlink durante `init` quando il prodotto non ha una partizione
 vendor. Il controllo del root generato resta statico: non prova che Android
 attraversi il link o carichi i moduli Huawei sul dispositivo.
 
+La nuova verifica immagine convertirà la system image sparse in un file ext4
+temporaneo sul runner e userà `debugfs` in sola lettura per estrarre i moduli
+grafici pubblici. Gli hash nell'immagine dovranno coincidere con quelli dello
+staging compilato; il risultato remoto è ancora pendente.
+
 Il controllo indipendente della build immagine Carrera e stato esteso da 7200 a
 10800 secondi, mantenendo la riserva disco di 8 GiB e il limite job di 230
 minuti. La modifica risponde al run generico 39927971028, terminato dal guard

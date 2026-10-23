@@ -1,3 +1,7 @@
+Aggiornamento successivo 23 ottobre — ramdisk compilato, verifica staging corretta:
+
+Run39934489950: lunch/API23, parser init nativo e compilazione ramdisk riusciti; build507,5s. Il controllo finale ha fermato la pubblicazione: i tre file erano destinati a root mentre Q impacchetta lo staging ramdisk separato. Aggiunte copie esplicite in TARGET_COPY_OUT_RAMDISK e acquisizione del TARGET_RAMDISK_OUT effettivo nel probe. Nuovo tentativo richiesto; nessun artefatto incompleto pubblicato. Il confronto SHA256 del dump recovery identifica esattamente il prefisso ufficiale TWRP2.8.7.0 (25040896 byte). Nessun aggiornamento recovery necessario per l'acquisizione attuale.
+
 Aggiornamento successivo 23 ottobre — hardware collegato e controllo firmware touch:
 
 Acquisizione attuale in sola lettura: TWRP CRR-L09/carrera, kernel3.10.74-gfa6dc6d, GPU/ION/framebuffer e input presenti; hwbinder/vndbinder assenti nella recovery. Questo kernel non e quello stock3.10.86 ne il nuovo diagnostico. Nessuna prova Q attribuita a TWRP.

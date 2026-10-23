@@ -31,9 +31,12 @@ def main():
             raise ValueError('Unexpected existing overlay or source symlink')
         shutil.copytree(device,target)
         os.environ['MATES_PRODUCT_PATH'] = str((ROOT/'carrera-product-path.txt').resolve())
+        os.environ['MATES_RAMDISK_PATH'] = str((ROOT/'carrera-ramdisk-path.txt').resolve())
         cmd = ('set -eo pipefail; source build/envsetup.sh; lunch lineage_carrera_public-userdebug; '
                'test "$(get_build_var PRODUCT_SHIPPING_API_LEVEL)" = 23; '
-               'get_build_var PRODUCT_OUT > "$MATES_PRODUCT_PATH"; m -j2 host_init_verifier ramdisk')
+               'get_build_var PRODUCT_OUT > "$MATES_PRODUCT_PATH"; '
+               'get_build_var TARGET_RAMDISK_OUT > "$MATES_RAMDISK_PATH"; '
+               'm -j2 host_init_verifier ramdisk')
         report['build'] = guarded(['bash','-c',cmd],source,ROOT/'carrera.log',seconds=1800,reserve=12*1024**3)
         if report['build']['returncode'] or report['build']['stop_reason']:
             report['status']='CARRERA_PUBLIC_BUILD_FAILED'
@@ -43,6 +46,12 @@ def main():
                 raise ValueError('Unsafe product output path')
             product = (source/rel).resolve(strict=True)
             product.relative_to(source/'out')
+            ramdisk_rel = Path((ROOT/'carrera-ramdisk-path.txt').read_text().strip())
+            if ramdisk_rel.is_absolute() or '..' in ramdisk_rel.parts:
+                raise ValueError('Unsafe ramdisk staging path')
+            staging = (source/ramdisk_rel).resolve(strict=True)
+            staging.relative_to(product)
+            report['ramdisk_staging_path'] = str(ramdisk_rel)
             verifier = source/'out/host/linux-x86/bin/host_init_verifier'
             env = {**os.environ,'LD_LIBRARY_PATH':str(source/'out/host/linux-x86/lib64')}
             subprocess.run([str(verifier),str(target/'rootdir/init.hi3635.rc')],env=env,check=True,timeout=30)
@@ -57,7 +66,7 @@ def main():
             report['rootdir'] = []
             for name in FILES:
                 original = device/'rootdir'/name
-                installed = product/'root'/name
+                installed = staging/name
                 expected = sha256(original)
                 if installed.is_symlink() or sha256(installed)!=expected or entries.get(name,{}).get('sha256')!=expected:
                     raise ValueError('Rootdir file not preserved in ramdisk: '+name)

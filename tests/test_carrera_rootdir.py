@@ -37,6 +37,7 @@ class CarreraRootdirContract(unittest.TestCase):
         s=(DEVICE/'device.mk').read_text()
         for name in ('fstab.hi3635','init.hi3635.rc','ueventd.hi3635.rc'):
             self.assertIn('$(DEVICE_PATH)/rootdir/'+name+':root/'+name,s)
+            self.assertIn('$(DEVICE_PATH)/rootdir/'+name+':$(TARGET_COPY_OUT_RAMDISK)/'+name,s)
 
 
 class PublicProbeIsolation(unittest.TestCase):

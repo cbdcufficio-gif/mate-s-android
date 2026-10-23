@@ -1,5 +1,23 @@
 # Prima integrazione rootdir Carrera
 
+## Secondo tentativo: compilazione riuscita, staging distinto
+
+Nel run [39934489950](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39934489950)
+il prodotto supera lunch/API23 e compila host_init_verifier e ramdisk in
+507,5 secondi, con 47370854400 byte liberi. Il parser nativo accetta init.hi3635.rc.
+Il controllo successivo fallisce per fstab.hi3635 assente dalla root di output.
+
+Nel build Q fissato, core/envsetup.mk distingue TARGET_ROOT_OUT e
+TARGET_RAMDISK_OUT; con BOARD_BUILD_SYSTEM_ROOT_IMAGE=false il secondo usa
+TARGET_COPY_OUT_RAMDISK=ramdisk. core/Makefile impacchetta quel solo staging.
+Aggiunte quindi destinazioni esplicite $(TARGET_COPY_OUT_RAMDISK) per i tre
+file, mantenendo quelle root per l'integrazione del system Carrera.
+Il probe acquisisce TARGET_RAMDISK_OUT dal build, verifica il percorso e
+confronta i file realmente installati con quelli dentro il cpio.
+Non cambia la geometria boot o la configurazione system-root per superare il test.
+Questi tre file restano candidati minimi: mount primo stadio Q, policy e
+integrazione completa non sono ancora verificati. Occorre un nuovo run.
+
 ## Primo tentativo remoto e correzione
 
 Il run [39930952198](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/39930952198)

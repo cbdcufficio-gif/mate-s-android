@@ -30,4 +30,11 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/rootdir/init.hi3635.rc:root/init.hi3635.rc \
     $(DEVICE_PATH)/rootdir/ueventd.hi3635.rc:root/ueventd.hi3635.rc
 
+# Q stages boot ramdisk separately from the root included in system.img.
+# Keep these development candidates in both stages for explicit verification.
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/rootdir/fstab.hi3635:$(TARGET_COPY_OUT_RAMDISK)/fstab.hi3635 \
+    $(DEVICE_PATH)/rootdir/init.hi3635.rc:$(TARGET_COPY_OUT_RAMDISK)/init.hi3635.rc \
+    $(DEVICE_PATH)/rootdir/ueventd.hi3635.rc:$(TARGET_COPY_OUT_RAMDISK)/ueventd.hi3635.rc
+
 # Leave ADB authentication enabled. No insecure ro.adb.secure=0 override.

@@ -33,7 +33,7 @@ def main():
         os.environ['MATES_PRODUCT_PATH'] = str((ROOT/'carrera-product-path.txt').resolve())
         os.environ['MATES_RAMDISK_PATH'] = str((ROOT/'carrera-ramdisk-path.txt').resolve())
         cmd = ('set -eo pipefail; source build/envsetup.sh; lunch lineage_carrera_public-userdebug; '
-               'test "$(get_build_var PRODUCT_SHIPPING_API_LEVEL)" = 23; '
+               'test "$(get_build_var PRODUCT_SHIPPING_API_LEVEL)" = 22; '
                'get_build_var PRODUCT_OUT > "$MATES_PRODUCT_PATH"; '
                'get_build_var TARGET_RAMDISK_OUT > "$MATES_RAMDISK_PATH"; '
                'm -j2 host_init_verifier ramdisk')

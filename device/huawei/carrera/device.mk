@@ -1,5 +1,5 @@
 DEVICE_PATH := device/huawei/carrera
-# API 23 is inherited once from product_launched_with_m.mk in the product.
+# Launch API 22 (Android 5.1) is inherited once; the acquired B321 firmware is API 23.
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 

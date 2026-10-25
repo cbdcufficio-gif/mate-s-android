@@ -27,9 +27,9 @@ Verify live CI state and the checkout before changing anything.
   boot packaging and recovery -> Q kernel/init/authenticated ADB -> UI/input
   -> hardware/security/stability acceptance. Do not infer one gate from another.
 - Launch API is Android 5.1/API22; acquired B321 stock is Android6/API23.
-  A tested API22 correction is staged in docs/deferred/carrera-launch-api22.patch.
-  Archive the current run as built at API23; apply/review the patch before the
-  next deliberate Carrera build, refreshing checksum hunks if main has moved.
+  The tested API22 correction has been applied after archiving failed API23
+  run 40231781220. docs/deferred/carrera-launch-api22.patch is historical;
+  do not reapply it. Verify API22 in the successor build.
 - Never copy the whole stock framework/ART/bionic/libbinder over Q. Legacy
   libraries need a verified private dependency closure or an explicit IPC/ABI
   bridge. Keep ARM32/ARM64 services separate.

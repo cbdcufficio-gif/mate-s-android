@@ -6,8 +6,8 @@ La cronologia delle prove precedenti è in [STATUS.md](STATUS.md).
 
 | Priorità | Blocco | Prossima prova che riduce l'incertezza |
 |---|---|---|
-| G0 | Sistema pubblico ancora in compilazione nel run 40231781220 | Leggere esito, report, asset/digest, ext4 e ramdisk; non avviare un duplicato |
-| G1 | Configurazione Q e overlay vendor finale incompleti | API22 nella prossima revisione; ld.config, APEX, policy/capability kernel e closure dei soli servizi essenziali |
+| G0 | Run 40231781220 fermato dalla riserva disco a 69330/80491 target | Un successore con pulizia misurata degli SDK inutilizzati; riserva 8 GiB invariata; poi report/ext4/digest |
+| G1 | Configurazione Q e overlay vendor finale incompleti | API22 applicata, da verificare nel prossimo run; ld.config, APEX, policy/capability kernel e closure dei soli servizi essenziali |
 | G2 | Nessuna boot Q Carrera verificata | Formato v0, coda stock, DT handoff, dimensioni intere e percorso di recupero |
 | G3 | Kernel diagnostico e init Q mai avviati | Nuovo kernel identificato, policy/mount/Binder e ADB autenticato con log |
 | G4 | Buffer/ION/fence, ABI C++, EGL/HWC, display e touch non provati in Q | Prove incrementali di caricamento, allocazione, rendering e resume |

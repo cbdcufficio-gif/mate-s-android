@@ -29,7 +29,17 @@ jobs:
         run: |
           test "$GITHUB_ACTIONS" = true
           test "$RUNNER_ENVIRONMENT" = github-hosted
-          sudo rm -rf -- /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/local/share/boost
+          # Explicit allowlist of unused preinstalled SDKs on this disposable runner.
+          # Keep Python/Node, Android source Git metadata and all build outputs.
+          df -B1 .
+          for path in /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/share/swift /usr/local/.ghcup /opt/az /usr/local/share/chromium /opt/hostedtoolcache/Go /opt/hostedtoolcache/Ruby /opt/hostedtoolcache/PyPy /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk; do
+            if [ -e "$path" ]; then
+              sudo du -sx -B1 -- "$path"
+              sudo rm -rf -- "$path"
+            fi
+          done
+          df -B1 .
+          command -v python3 git
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends repo python2 git-lfs bc bison flex gperf libncurses5 libxml2-utils xsltproc zip unzip rsync gcc-multilib g++-multilib libssl-dev liblz4-tool e2fsprogs
           git config --global user.name mates-source-probe
@@ -44,6 +54,10 @@ jobs:
               cat "out/android-graph/$report.json"
               cat "out/android-graph/$report.json" >> "$GITHUB_STEP_SUMMARY"
             fi
+          done
+          df -B1 .
+          for path in out/android-graph/source/.repo out/android-graph/source/out out/android-graph/carrera-system-assets; do
+            if [ -d "$path" ]; then du -sx -B1 -- "$path"; fi
           done
           for phase in init sync graph carrera carrera-system; do
             if [ -f "out/android-graph/$phase.log" ]; then tail -n 80 "out/android-graph/$phase.log"; fi

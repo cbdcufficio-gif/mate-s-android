@@ -7,20 +7,26 @@
   "current_ci": {
     "run_id": 40231781220,
     "source_commit": "2ed1f61f4bd7b79971a901ac11ad755b41277e0a",
-    "status_at_direction_update": "in_progress",
+    "status_at_direction_update": "completed",
     "live_status_required": true,
     "reported_owner": "Antigravity task-28",
     "public_only": true,
     "source_launch_api": 23,
     "system_build_budget_seconds": 19200,
-    "workflow_timeout_minutes": 350
+    "workflow_timeout_minutes": 350,
+    "conclusion": "failure",
+    "stop_reason": "DISK_RESERVE_REACHED",
+    "elapsed_seconds": 8909.7,
+    "free_bytes_at_stop": 8531783680,
+    "ninja_completed": 69330,
+    "ninja_total": 80491
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
     "acquired_stock_api": 23,
     "deferred_patch": "docs/deferred/carrera-launch-api22.patch",
-    "applied_to_current_product": false,
-    "apply_before": "next deliberate Carrera source build after archiving current result",
+    "applied_to_current_product": true,
+    "apply_before": "applied after archiving failed API23 run 40231781220; next build will use API22",
     "local_validation": {
       "tracked_tests_run": 76,
       "passed": 75,
@@ -38,9 +44,9 @@
   "gates": [
     {
       "id": "G0",
-      "state": "in_progress",
+      "state": "open",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "inspect release and report or repair first causal failure"
+      "next": "single API22 successor after bounded runner disk repair"
     },
     {
       "id": "G1",
@@ -90,6 +96,14 @@
       ],
       "deliverable": "stability, matching installer, digests and recovery evidence"
     }
-  ]
+  ],
+  "next_build": {
+    "local_tests_run": 76,
+    "local_tests_passed": 75,
+    "local_tests_skipped": 1,
+    "status": "prepared",
+    "source_launch_api": 22,
+    "repair": "reclaim allowlisted unused runner toolchains and log disk measurements; preserve sources, outputs and 8 GiB reserve",
+    "completion_not_guaranteed": true
+  }
 }
-

@@ -65,9 +65,10 @@ pubblicazione. Tempo, disco e compiler/linker richiedono risposte diverse.
   poi un solo run deliberato. Una mancata release dopo build riuscita è
   un problema di pubblicazione, non una compilazione fallita.
 
-## Correzione concettuale pronta: API di lancio
+## Correzione concettuale: API di lancio
 
-Il target eredita ancora `product_launched_with_m.mk`/23. Il firmware B321
+Il run archiviato 40231781220 ereditava `product_launched_with_m.mk`/23.
+Dopo il suo arresto per disco, il target è stato corretto a L MR1/API22. Il firmware B321
 acquisito è Android6, ma il [modello Huawei nasce con Android5.1](https://consumer.huawei.com/no/phones/mate-s/specs/).
 Il [makefile Q L MR1](https://github.com/LineageOS/android_build/blob/71a47798ac090b81c6b7db0b5c470f1fa3e604cd/target/product/product_launched_with_l_mr1.mk)
 definisce proprio il primo livello di lancio, 22.
@@ -76,12 +77,10 @@ La patch [deferred/carrera-launch-api22.patch](deferred/carrera-launch-api22.pat
 corregge insieme ereditarietà, commento device, guard del probe e checksum.
 È stata applicata e provata su una copia isolata del commit 2ed1f61:
 **76 test tracciati, 75 passati, 1 skip opzionale**. Non comprende file locali
-non tracciati e non è ancora applicata al prodotto corrente.
-Prima della prossima build deliberata: controllare il diff, aggiornare eventuali
-hunk checksum che sono cambiati e ripetere i test. Non modificare retroattivamente
-i rapporti del run API23. Per applicarla da root: `git apply --check
-docs/deferred/carrera-launch-api22.patch`, poi `git apply` con lo stesso file.
-Non usare una variante di API/FCM per aggirare controlli senza motivazione.
+non tracciati. Ora è applicata al prodotto; il file patch resta storico.
+La prossima build deve verificare API22; non riapplicare la patch storica.
+Non modificare retroattivamente i rapporti del run API23. Non usare una variante
+di API/FCM per aggirare controlli senza motivazione.
 
 ## Gate e prove richieste
 

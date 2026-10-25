@@ -1,3 +1,29 @@
+# Aggiornamento operativo — 26 ottobre 2026
+
+Il run [40231781220](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40231781220),
+commit `2ed1f61` con API23, è terminato il 25 ottobre alle 23:27 UTC per
+**DISK_RESERVE_REACHED**, dopo 8909,7 s della fase sistema. Restavano
+8531783680 byte liberi; ultimo target osservato 69330/80491. SIGTERM/143
+è la conseguenza della guardia, non un errore compiler. Il ramdisk era riuscito;
+il sistema/ext4 non è stato completato o verificato e nessuna release della
+coppia è stata pubblicata. G0 resta aperto.
+
+Prima dell'intervento: main `0ab5767`, nessun run successore rilevato.
+Correzione circoscritta: rimuovere ulteriori SDK preinstallati non usati soltanto
+sul runner pubblico monouso, con elenco esplicito e dimensioni prima/dopo.
+Non si eliminano metadati Git dei sorgenti, intermedi Android o output; restano
+riserva 8 GiB, verifica ext4, SELinux e guardie hardware. Il recupero effettivo
+di spazio sarà misurato dal nuovo run: non è una garanzia di completamento.
+
+La patch API22 preparata è ora applicata a ereditarietà prodotto, commento e
+guard del probe per la prossima build deliberata. Il risultato storico API23
+resta tale; il file deferred è conservato come traccia, non va riapplicato.
+Validazione locale sui soli file tracciati: 76 test eseguiti, 75 passati,
+1 skip opzionale. Non equivale a compilazione Android o avvio hardware.
+Ordine successivo invariato: G0 -> G1 configurazione/ABI -> G2 boot/recupero.
+
+---
+
 # Stato corrente — direzione aggiornata il 25 ottobre 2026
 
 La fonte operativa per le prossime fasi è [PORTING-DIRECTION.md](PORTING-DIRECTION.md)

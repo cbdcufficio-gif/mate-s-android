@@ -1,3 +1,13 @@
+# Run successore seguito — 26 ottobre 2026
+
+Avviato [40245174034](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40245174034),
+job `121325107274`, commit `1d932d277dc1339f10e1acb5423f4e57a666a2ac`:
+API22 e pulizia mirata del runner; setup in corso al controllo iniziale.
+Release attesa solo se riesce: `carrera-public-system-40245174034`.
+Annullato il run ramdisk ridondante `40245174036` generato dallo stesso push:
+il workflow completo include già la medesima fase. Nessun secondo sistema avviato.
+Il monitor segue questo successore; non riprocessare il fallimento 40231781220.
+
 # Aggiornamento operativo — 26 ottobre 2026
 
 Il run [40231781220](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40231781220),

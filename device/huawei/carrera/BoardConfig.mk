@@ -12,6 +12,7 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_USES_64_BIT_BINDER := true
 TARGET_BOARD_PLATFORM := hi3635
 TARGET_BOOTLOADER_BOARD_NAME := hi3635
+USE_XML_AUDIO_POLICY_CONF := 1
 
 # This product is for userspace/module compilation. Boot packaging stays gated.
 TARGET_NO_KERNEL := true

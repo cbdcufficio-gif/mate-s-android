@@ -89,7 +89,7 @@ def main():
         report['source_patches']=apply_patches(source)
         command=('set -eo pipefail; source build/envsetup.sh; lunch lineage_carrera_public-userdebug; '
                  'm -j2 '+' '.join(MODULES)+' systemimage simg2img')
-        report['build']=guarded(['bash','-c',command],source,ROOT/'carrera-system.log',seconds=10800,reserve=8*1024**3)
+        report['build']=guarded(['bash','-c',command],source,ROOT/'carrera-system.log',seconds=19200,reserve=8*1024**3)
         if report['build']['returncode'] or report['build']['stop_reason']:
             report['status']='CARRERA_PUBLIC_SYSTEM_BUILD_FAILED'
         else:

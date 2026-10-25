@@ -1,4 +1,12 @@
-Stato corrente — 23 ottobre, consegna tecnica:
+Stato corrente — 25 ottobre:
+
+Aggiornamento operativo, 25 ottobre, 19:56 UTC — build sistema pubblico Carrera:
+
+- Il run [40212475462](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40212475462) sul commit `88f9e9b` ha superato con successo setup, sync, verifica grafo generico e compilazione del ramdisk Carrera.
+- La compilazione del sistema `lineage_carrera_public-userdebug` (`m -j2 ... systemimage simg2img`) è avanzata senza errori di codice, arrivando a 64.967 su 80.500 target Ninja (80,7%).
+- Al secondo 10.801,6 il guard interno della sonda ha arrestato il processo (`TIME_BUDGET_REACHED`, exit 143/SIGTERM) per raggiungimento del limite temporale di 10.800 s (3 ore). Restavano 18.130.833.408 byte liberi (~18,1 GB), ben oltre la riserva minima di 8 GiB.
+- Intervento applicato: esteso il timeout della fase build in `android_carrera_system_probe.py` a 19.200 s (320 minuti / 5h 20m) e il `timeout-minutes` del workflow GitHub adiacente a 350 m. Aggiunta pulizia di `/usr/local/share/boost` nel runner monouso per preservare ulteriore spazio disco.
+- Suite locale: 77 test passati (1 skip opzionale).
 
 Aggiornamento operativo, 23 ottobre, 12:20 UTC — build ramdisk Carrera:
 

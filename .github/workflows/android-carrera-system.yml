@@ -19,7 +19,7 @@ jobs:
   graph:
     if: github.event.repository.private == false
     runs-on: ubuntu-22.04
-    timeout-minutes: 230
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -29,7 +29,7 @@ jobs:
         run: |
           test "$GITHUB_ACTIONS" = true
           test "$RUNNER_ENVIRONMENT" = github-hosted
-          sudo rm -rf -- /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL
+          sudo rm -rf -- /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/local/share/boost
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends repo python2 git-lfs bc bison flex gperf libncurses5 libxml2-utils xsltproc zip unzip rsync gcc-multilib g++-multilib libssl-dev liblz4-tool e2fsprogs
           git config --global user.name mates-source-probe

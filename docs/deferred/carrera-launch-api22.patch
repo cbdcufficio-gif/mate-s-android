@@ -1,0 +1,61 @@
+diff --git a/SHA256SUMS b/SHA256SUMS
+index d41968b..c2faa23 100644
+--- a/SHA256SUMS
++++ b/SHA256SUMS
+@@ -26,8 +26,8 @@ c6a1ce82c9b622d26d1ca4065a9606dc2339aafeb6ed89eedef4e1434252834f  configs/stock-
+ 7d0ca4bc850f2cbb5b9ad4025ecda71ec231176d949d4bcf7e7293628b5a69aa  device/huawei/carrera/AndroidProducts.mk
+ d6aec813a3821252c85bcbb94f0fd57266e7a9a475578f5ba73344a9ff2c6dd3  device/huawei/carrera/BoardConfig.mk
+ ac69555b5b229d2953fd7cb66786569f16eda185893925984ede4aa08a73a851  device/huawei/carrera/configs/manifest.xml
+-591aa0a86ef648f879f255221e78dab09c6e53ea6e04b99f24008ee5a9b97290  device/huawei/carrera/device.mk
+-223d90ae69e9072f2f54f57b46e1c739f33cb4bdb29a4e0a027a644f60421690  device/huawei/carrera/lineage_carrera.mk
++758384d5996bb8bb5c0a44734fd34e1baa575df6bb99b8bff87634072d62babf  device/huawei/carrera/device.mk
++b6cd37ca39b979d14bc297352a874daa2ffa8906c27465c8571b6e3e95f93d5c  device/huawei/carrera/lineage_carrera.mk
+ 916bd28dad52c21e3cd575f35742416170e5ec66f72f3071bb73e9989c900dfb  device/huawei/carrera/lineage_carrera_public.mk
+ f0b006e6dcad99e092a3fbea9e6a91bc1686c7402d6664624b391e6751d0ac2b  device/huawei/carrera/rootdir/fstab.hi3635
+ e0439247332f854d2cafa729572c5cdbe0f4ef90c3dd181b559843ea889a3ccc  device/huawei/carrera/rootdir/init.hi3635.rc
+@@ -77,7 +77,7 @@ caa23965e68cc47da070bfca5e127fe032bbc3fd7147b3226ca8c58873ce4a6c  patches/androi
+ e9b117586d67760acde66b7725ca718880fc0eac4b8e7c08a33e85899d78e6d8  patches/kernel/0001-fix-immersion-header-path.patch
+ 60ff47c3cc04017d167427cf81f9be186cacaf497379cadc383065699c4d3de6  patches/kernel/0002-gate-touchscreen-framework-firmware-update.patch
+ af8067302947c01fd9eee72befa54c7e3ef8a48fecde7fd71277f2290b2bf0f7  patches/kernel/COPYING
+-67ca92d6332b62e2450458d3363dc1bc45b412d1552def94a9ef6818a23eab04  scripts/android_carrera_probe.py
++d86609b790c46cfcf50457e12a9bfc37e24c7092f612ccba0bddb9a071b17c29  scripts/android_carrera_probe.py
+ 6828e8fa8e4bac681a8ecd9775211c5a6a22c21f5895aa87ff23d020a8cb0375  scripts/android_carrera_system_probe.py
+ ece89c64d37fade241b0aa135dec326d5060eb171548cfb7b8dc731d6e362ac7  scripts/android_graph_probe.py
+ d1549336541ddd1118a556468272d75aed0bb8fdeb6c15eea98b057da2997c6e  scripts/android_modules_probe.py
+diff --git a/device/huawei/carrera/device.mk b/device/huawei/carrera/device.mk
+index 0a6adcf..38ebf73 100644
+--- a/device/huawei/carrera/device.mk
++++ b/device/huawei/carrera/device.mk
+@@ -1,5 +1,5 @@
+ DEVICE_PATH := device/huawei/carrera
+-# API 23 is inherited once from product_launched_with_m.mk in the product.
++# Launch API 22 (Android 5.1) is inherited once; the acquired B321 firmware is API 23.
+ PRODUCT_AAPT_CONFIG := normal
+ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+ 
+diff --git a/device/huawei/carrera/lineage_carrera.mk b/device/huawei/carrera/lineage_carrera.mk
+index c2b3540..ecc43af 100644
+--- a/device/huawei/carrera/lineage_carrera.mk
++++ b/device/huawei/carrera/lineage_carrera.mk
+@@ -1,7 +1,7 @@
+ # Experimental Android 10 userspace product. Hardware boot not established.
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
++$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l_mr1.mk)
+ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+ $(call inherit-product, device/huawei/carrera/device.mk)
+ 
+diff --git a/scripts/android_carrera_probe.py b/scripts/android_carrera_probe.py
+index 8ed01e0..09dfae8 100644
+--- a/scripts/android_carrera_probe.py
++++ b/scripts/android_carrera_probe.py
+@@ -33,7 +33,7 @@ def main():
+         os.environ['MATES_PRODUCT_PATH'] = str((ROOT/'carrera-product-path.txt').resolve())
+         os.environ['MATES_RAMDISK_PATH'] = str((ROOT/'carrera-ramdisk-path.txt').resolve())
+         cmd = ('set -eo pipefail; source build/envsetup.sh; lunch lineage_carrera_public-userdebug; '
+-               'test "$(get_build_var PRODUCT_SHIPPING_API_LEVEL)" = 23; '
++               'test "$(get_build_var PRODUCT_SHIPPING_API_LEVEL)" = 22; '
+                'get_build_var PRODUCT_OUT > "$MATES_PRODUCT_PATH"; '
+                'get_build_var TARGET_RAMDISK_OUT > "$MATES_RAMDISK_PATH"; '
+                'm -j2 host_init_verifier ramdisk')

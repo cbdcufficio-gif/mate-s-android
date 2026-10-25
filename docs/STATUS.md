@@ -1,3 +1,37 @@
+# Stato corrente — direzione aggiornata il 25 ottobre 2026
+
+La fonte operativa per le prossime fasi è [PORTING-DIRECTION.md](PORTING-DIRECTION.md)
+e lo snapshot strutturato è [PORTING-STATE.json](PORTING-STATE.json).
+Il seguito automatico deve leggerli prima di elaborare il risultato della build.
+
+- Run seguito: [40231781220](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40231781220),
+  commit `2ed1f61`, in compilazione all'aggiornamento di direzione: verificare lo
+  stato live. Budget fase 19200 s, timeout workflow 350 minuti, riserva 8 GiB.
+- Il precedente 40212475462 è terminato per limite 10800 s a 64967/80500 target,
+  non per un errore compiler osservato in quel punto. Il conteggio Ninja non
+  misura la percentuale di completamento della ROM.
+- Base pubblica, prodotto finale con vendor, boot corretto e prove hardware sono
+  gate distinti. Il primo esito verde non abilita automaticamente un flash.
+- API22 di lancio: correzione preparata e testata in
+  [deferred/carrera-launch-api22.patch](deferred/carrera-launch-api22.patch),
+  da applicare prima della prossima build deliberata dopo archiviazione del run
+  API23 corrente. Nessun input del run in corso modificato da questa revisione.
+- La nuova direzione preserva kernel/driver Carrera, backport misurati e sistema
+  Q coerente; esclude sostituzioni casuali del framework o di librerie stock.
+- Validazione della patch API22 su copia isolata dei soli file tracciati:
+  76 test eseguiti, 75 passati, 1 skip opzionale. Non è una build Android completa.
+
+Il controllo dei checksum pubblici ha inoltre rilevato una voce storica errata
+per `.github/workflows/platform-cxx.yml`: il contenuto tracciato coincide con il
+blob GitHub `770dbd1860b0ebfc3f3925c6e37ff2e9b242e0d3`, SHA256
+`abc9e35f9f592edcf568b12ae244a0a6a5d9fae38364cbe5a2a4e5d4ca34b823`.
+Corretta soltanto la voce in SHA256SUMS; il workflow non è stato modificato.
+
+## Cronologia: ogni esito si riferisce al proprio commit
+
+Le descrizioni in corso/in coda e i conteggi test nelle sezioni seguenti sono
+snapshot storici. Non sovrascrivono lo stato operativo sopra.
+
 Stato corrente — 25 ottobre:
 
 Aggiornamento operativo, 25 ottobre, 19:56 UTC — build sistema pubblico Carrera:

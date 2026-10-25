@@ -1,3 +1,10 @@
+# Aggiornamento operativo del 25 ottobre 2026
+
+Per le prossime fasi usare [PORTING-DIRECTION.md](PORTING-DIRECTION.md) e
+[PORTING-STATE.json](PORTING-STATE.json). Il piano sotto conserva il contesto
+originario e le misure della propria sessione; date, run, test e soglie storiche
+non sono lo stato live. Il run corrente viene seguito senza duplicati.
+
 # Mate S Android 10+ — lavoro concreto e vincoli
 
 Obiettivo finale: ROM Android 10 o superiore avviabile sul CRR-L09, con grafica,

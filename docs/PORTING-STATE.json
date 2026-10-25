@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "direction": "docs/PORTING-DIRECTION.md",
+  "last_reviewed_commit": "2ed1f61f4bd7b79971a901ac11ad755b41277e0a",
+  "rom_complete": false,
+  "android_q_hardware_boot_verified": false,
+  "current_ci": {
+    "run_id": 40231781220,
+    "source_commit": "2ed1f61f4bd7b79971a901ac11ad755b41277e0a",
+    "status_at_direction_update": "in_progress",
+    "live_status_required": true,
+    "reported_owner": "Antigravity task-28",
+    "public_only": true,
+    "source_launch_api": 23,
+    "system_build_budget_seconds": 19200,
+    "workflow_timeout_minutes": 350
+  },
+  "launch_api_correction": {
+    "actual_launch_api": 22,
+    "acquired_stock_api": 23,
+    "deferred_patch": "docs/deferred/carrera-launch-api22.patch",
+    "applied_to_current_product": false,
+    "apply_before": "next deliberate Carrera source build after archiving current result",
+    "local_validation": {
+      "tracked_tests_run": 76,
+      "passed": 75,
+      "skipped": 1,
+      "full_android_build": false
+    }
+  },
+  "evidence_limits": {
+    "system_module_bytes": "verified by CI ext4 check only after successful run",
+    "vendor_symlink": "current verifier checks product/root staging, not system ext4 nor runtime",
+    "rootdir_runtime": "not verified",
+    "kernel_diagnostic": "compiled, not booted",
+    "stock_twrp": "separate kernel; its successful operation does not prove Q"
+  },
+  "gates": [
+    {
+      "id": "G0",
+      "state": "in_progress",
+      "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
+      "next": "inspect release and report or repair first causal failure"
+    },
+    {
+      "id": "G1",
+      "state": "open",
+      "depends_on": [
+        "G0"
+      ],
+      "deliverable": "coherent launch API, resolved linker/APEX/policy/kernel capabilities and minimal private overlay plan"
+    },
+    {
+      "id": "G2",
+      "state": "open",
+      "depends_on": [
+        "G1"
+      ],
+      "deliverable": "Carrera boot packaging, DT handoff, image budgets and recoverable test plan"
+    },
+    {
+      "id": "G3",
+      "state": "unverified",
+      "depends_on": [
+        "G2"
+      ],
+      "deliverable": "new kernel, Q init/policy/mount/Binder and authenticated ADB hardware evidence"
+    },
+    {
+      "id": "G4",
+      "state": "unverified",
+      "depends_on": [
+        "G3"
+      ],
+      "deliverable": "graphics buffers/fences/UI/input and charging/thermal safeguards"
+    },
+    {
+      "id": "G5",
+      "state": "unverified",
+      "depends_on": [
+        "G4"
+      ],
+      "deliverable": "required hardware, telephony, media, security and user app matrix"
+    },
+    {
+      "id": "G6",
+      "state": "open",
+      "depends_on": [
+        "G5"
+      ],
+      "deliverable": "stability, matching installer, digests and recovery evidence"
+    }
+  ]
+}
+

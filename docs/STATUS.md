@@ -1,3 +1,11 @@
+# Successore con budget corretto — 26 ottobre 2026
+
+Run [40405482104](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40405482104),
+job `121862019582`, commit `4691cf465ff85d7bb86211371bd78cb120437009`.
+Release attesa soltanto se riesce: `carrera-public-system-40405482104`.
+Un solo run avviato; nessun ramdisk duplicato. Monitor aggiornato.
+80 test eseguiti: 79 passati, 1 skip; checksum e diff verificati.
+
 # Timeout complessivo; WebView verificato — 26 ottobre 2026
 
 Run [40346676795](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40346676795),

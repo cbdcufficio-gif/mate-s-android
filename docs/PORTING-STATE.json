@@ -5,9 +5,17 @@
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
-    "status_at_direction_update": "successor_prepared",
+    "run_id": 40300253229,
+    "job_id": 121496077489,
+    "source_commit": "85a448452d6029aa9491873470a272d66dbc5b33",
+    "status_at_direction_update": "in_progress",
+    "live_status_required": true,
+    "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
+    "public_only": true,
     "source_launch_api": 22,
-    "live_status_required": true
+    "system_build_budget_seconds": 19200,
+    "workflow_timeout_minutes": 350,
+    "reserve_bytes": 8589934592
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -32,9 +40,9 @@
   "gates": [
     {
       "id": "G0",
-      "state": "open",
+      "state": "in_progress",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "one successor with additional measured host-only cleanup; no source/intermediate deletion"
+      "next": "inspect successor 40300253229; do not repeat archived disk failures"
     },
     {
       "id": "G1",

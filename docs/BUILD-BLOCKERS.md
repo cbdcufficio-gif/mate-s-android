@@ -6,7 +6,7 @@ La cronologia delle prove precedenti è in [STATUS.md](STATUS.md).
 
 | Priorità | Blocco | Prossima prova che riduce l'incertezza |
 |---|---|---|
-| G0 | Run API22 40245174034 fermato per disco a 79885/80491 target | Un successore con recupero JDK/Go/browser/immagini Docker inutilizzati; preservare riserva 8 GiB e poi verificare ext4/digest |
+| G0 | Successore API22 40300253229 in corso dopo arresto disco a 79885/80491 target | Misurare recupero JDK/Go/browser/immagini Docker inutilizzati; preservare riserva 8 GiB e poi verificare ext4/digest |
 | G1 | Configurazione Q e overlay vendor finale incompleti | API22 applicata, da verificare nel prossimo run; ld.config, APEX, policy/capability kernel e closure dei soli servizi essenziali |
 | G2 | Nessuna boot Q Carrera verificata | Formato v0, coda stock, DT handoff, dimensioni intere e percorso di recupero |
 | G3 | Kernel diagnostico e init Q mai avviati | Nuovo kernel identificato, policy/mount/Binder e ADB autenticato con log |

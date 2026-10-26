@@ -1,3 +1,13 @@
+# Successore in corso — 26 ottobre 2026
+
+Run [40300253229](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40300253229),
+job `121496077489`, commit `85a448452d6029aa9491873470a272d66dbc5b33`.
+Avviato dal push della correzione; nessun run ramdisk duplicato generato.
+Release attesa soltanto in caso di successo: `carrera-public-system-40300253229`.
+Validazione locale: 76 test eseguiti, 75 passati, 1 skip opzionale;
+sintassi YAML/bash e checksum verificati. Non è una build Android locale.
+Monitor e stato seguono questo successore, senza riprocessare 40245174034.
+
 # Nuovo arresto disco API22 — 26 ottobre 2026
 
 Il run [40245174034](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40245174034),

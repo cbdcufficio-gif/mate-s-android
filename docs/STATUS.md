@@ -1,3 +1,32 @@
+# Timeout complessivo; WebView verificato — 26 ottobre 2026
+
+Run [40346676795](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40346676795),
+commit `20cd98e`, annullato. Annotazione GitHub: `The job has exceeded the maximum
+execution time of 5h50m0s`. La build era a 78895/80491 target; nessun errore
+compiler osservato nella coda. Al cancel: 17515741184 byte liberi; `.repo`
+17066266624 byte, `out` 47774572544 byte. Nessun sistema/ext4/release verificato.
+
+**WebView risolto come input**: ARM e ARM64 scaricati via LFS in 6 e 9 s,
+dimensioni e SHA256 del puntatore verificati, manifest presente e CRC ZIP validi.
+ARM SHA256 `0dc261c3f37e9ac16a4f593ef316a097fc59815bb2082a8e38c519647bbcb3cc`;
+ARM64 SHA256 `1d2f61832b2596b0046cb82cf3634609ea866098d097a83fac27c35272ac726a`.
+Ramdisk API22 compilato, SHA256
+`6379c931e66f326acfa4fdea4d8388aa7da9bf62895aba755b4fdddb62cf6a4a`.
+Queste prove non attestano installazione WebView né avvio hardware.
+
+Il budget sistema 320 minuti sommato alla preparazione/sync/grafo/ramdisk
+(~36 minuti nel run) eccede il timeout complessivo di 350 minuti prima ancora
+di ext4/compressione/pubblicazione. Correzione: budget sistema 300 minuti,
+timeout job invariato; parallelismo sistema 3 solo con >=4 CPU e >=12 GiB RAM,
+altrimenti 2. Risorse e numero di job vengono registrati prima di compilare,
+così restano anche in un cancel. Nessuna estensione oltre limiti piattaforma;
+riserva disco 8 GiB, output, policy e controlli ext4 invariati.
+Il tempo effettivo va misurato: la nuova scelta non garantisce completamento.
+
+Validazione: 80 test eseguiti, 79 passati, 1 skip opzionale, compresi limiti
+CPU/RAM della selezione del parallelismo. Main `f021427`, nessun successore o
+intervento concorrente al controllo. G0 resta aperto; seguono G1 e G2.
+
 # Successore con preflight WebView — 26 ottobre 2026
 
 Run [40346676795](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40346676795),

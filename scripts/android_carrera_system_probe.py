@@ -17,6 +17,11 @@ from android_system_probe import image_metadata,MAX_ASSET
 from elf_audit import sha256
 
 
+def system_build_jobs(cpus, memory_bytes):
+    # Leave a core and at least 4 GiB per build slot on the standard runner.
+    return 3 if cpus >= 4 and memory_bytes >= 12*1024**3 else 2
+
+
 def system_image_path(staged_path):
     relative=Path(staged_path)
     if relative.is_absolute() or '..' in relative.parts or not relative.parts or relative.parts[0]!='system':
@@ -87,9 +92,14 @@ def main():
     try:
         source=(ROOT/'source').resolve()
         report['source_patches']=apply_patches(source)
+        cpus=os.cpu_count() or 1
+        memory=os.sysconf('SC_PHYS_PAGES')*os.sysconf('SC_PAGE_SIZE')
+        jobs=system_build_jobs(cpus,memory)
+        report['build_resources']={'cpus':cpus,'memory_bytes':memory,'jobs':jobs}
         command=('set -eo pipefail; source build/envsetup.sh; lunch lineage_carrera_public-userdebug; '
-                 'm -j2 '+' '.join(MODULES)+' systemimage simg2img')
-        report['build']=guarded(['bash','-c',command],source,ROOT/'carrera-system.log',seconds=19200,reserve=8*1024**3)
+                 f'm -j{jobs} '+' '.join(MODULES)+' systemimage simg2img')
+        report_path.write_text(json.dumps(report,indent=2)+'\n')
+        report['build']=guarded(['bash','-c',command],source,ROOT/'carrera-system.log',seconds=18000,reserve=8*1024**3)
         if report['build']['returncode'] or report['build']['stop_reason']:
             report['status']='CARRERA_PUBLIC_SYSTEM_BUILD_FAILED'
         else:

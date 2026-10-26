@@ -5,17 +5,12 @@
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
-    "run_id": 40346676795,
-    "job_id": 121655330530,
-    "source_commit": "20cd98e368a192e45bfa20c2f1cb4afe5b15ce39",
-    "status_at_direction_update": "in_progress",
-    "live_status_required": true,
-    "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
-    "public_only": true,
+    "status_at_direction_update": "successor_prepared",
     "source_launch_api": 22,
-    "system_build_budget_seconds": 19200,
+    "system_build_budget_seconds": 18000,
     "workflow_timeout_minutes": 350,
-    "reserve_bytes": 8589934592
+    "max_system_build_jobs": 3,
+    "live_status_required": true
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -40,9 +35,9 @@
   "gates": [
     {
       "id": "G0",
-      "state": "in_progress",
+      "state": "open",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "inspect successor 40346676795 including early WebView LFS validation"
+      "next": "one resource-bounded parallel build with total-time headroom"
     },
     {
       "id": "G1",
@@ -94,9 +89,9 @@
     }
   ],
   "previous_ci": {
-    "run_id": 40300253229,
-    "job_id": 121496077489,
-    "source_commit": "85a448452d6029aa9491873470a272d66dbc5b33",
+    "run_id": 40346676795,
+    "job_id": 121655330530,
+    "source_commit": "20cd98e368a192e45bfa20c2f1cb4afe5b15ce39",
     "status_at_direction_update": "completed",
     "live_status_required": true,
     "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
@@ -105,12 +100,13 @@
     "system_build_budget_seconds": 19200,
     "workflow_timeout_minutes": 350,
     "reserve_bytes": 8589934592,
-    "conclusion": "failure",
-    "stop_reason": null,
-    "elapsed_seconds": 17705.5,
-    "free_bytes_at_stop": 13238657024,
-    "first_causal_error": "webview package.apk invalid ZIP; LFS hydration missing is the working hypothesis",
-    "source_repo_bytes": 16707325952,
-    "source_out_bytes": 52710322176
+    "conclusion": "cancelled",
+    "first_causal_error": "GitHub job timeout 350 minutes; system budget did not leave setup and verification headroom",
+    "free_bytes_at_stop": 17515741184,
+    "ninja_completed": 78895,
+    "ninja_total": 80491,
+    "webview_lfs_verified": true,
+    "source_repo_bytes": 17066266624,
+    "source_out_bytes": 47774572544
   }
 }

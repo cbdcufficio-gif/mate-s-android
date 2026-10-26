@@ -30,3 +30,11 @@ class SystemImageEvidence(unittest.TestCase):
             with self.assertRaises(ValueError):image_metadata(p)
 
 if __name__=='__main__':unittest.main()
+
+
+class CarreraParallelism(unittest.TestCase):
+    def test_resource_limits(self):
+        from android_carrera_system_probe import system_build_jobs
+        self.assertEqual(system_build_jobs(4, 16*1024**3), 3)
+        self.assertEqual(system_build_jobs(2, 16*1024**3), 2)
+        self.assertEqual(system_build_jobs(4, 8*1024**3), 2)

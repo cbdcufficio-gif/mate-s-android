@@ -1,3 +1,27 @@
+# Nuovo arresto disco API22 — 26 ottobre 2026
+
+Il run [40245174034](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40245174034),
+commit `1d932d2`, si è fermato per **DISK_RESERVE_REACHED** a 18011,8 s,
+ultimo target 79885/80491, 8547528704 byte liberi. Ramdisk API22 compilato;
+sistema non completato/verificato, nessuna release della coppia.
+La pulizia precedente ha portato lo spazio iniziale da 112694460416 a
+122925395968 byte (runner diversi: incremento osservato, non misura isolata).
+Diagnostica finale: `.repo` 16707293184 byte; `out` 52677238784 byte.
+Il conteggio Ninja non è una percentuale della ROM né una stima lineare del tempo.
+
+Nessun successore o intervento concorrente rilevato su main `6340864`.
+Seconda correzione circoscritta: SDK Go preinstallato, JDK ospite, moduli Node
+globali e browser di test non usati da questa build; prune delle sole immagini
+Docker inutilizzate. Nessuna cancellazione di container/volumi, sorgenti Git o
+intermedi. Python/Node runtime conservati. Il workflow rifiuta un override Java
+esterno: [Soong Q](https://github.com/LineageOS/android_build_soong/blob/lineage-17.1/ui/build/config.go)
+seleziona `prebuilts/jdk/jdk9` in assenza di override; envsetup esporta quel JAVA_HOME.
+La riserva resta 8 GiB; budget 19200 s e timeout 350 minuti invariati.
+Il nuovo run misurerà lo spazio realmente recuperato: completamento non garantito.
+
+G0 resta aperto; API22 resta applicata; ordine G1 configurazione/ABI e G2
+boot/recupero invariato. Nessuna operazione sul telefono.
+
 # Run successore seguito — 26 ottobre 2026
 
 Avviato [40245174034](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40245174034),

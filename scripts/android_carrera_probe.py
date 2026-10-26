@@ -10,6 +10,7 @@ import zlib
 from android_graph_probe import ROOT, guarded
 from boot_inspect import cpio_entries, LIMIT
 from elf_audit import sha256
+from android_webview_preflight import prepare_webview
 
 PROJECT = Path(__file__).resolve().parents[1]
 FILES = ('fstab.hi3635','init.hi3635.rc','ueventd.hi3635.rc')
@@ -25,6 +26,7 @@ def main():
               'proprietary_inputs':False,'boot_image_created':False,'rom_built':False,'hardware_tested':False}
     try:
         source = (ROOT/'source').resolve()
+        report['webview_inputs'] = prepare_webview(source)
         device = PROJECT/'device/huawei/carrera'
         target = source/'device/huawei/carrera'
         if target.exists() or target.is_symlink() or any(p.is_symlink() for p in device.rglob('*')):

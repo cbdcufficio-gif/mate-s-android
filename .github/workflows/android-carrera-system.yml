@@ -5,6 +5,7 @@ on:
     paths:
       - scripts/android_carrera_system_probe.py
       - scripts/android_carrera_probe.py
+      - scripts/android_webview_preflight.py
       - scripts/android_patches.py
       - configs/android-patches.json
       - device/huawei/carrera/**
@@ -70,7 +71,7 @@ jobs:
           done
           # Measure remaining preinstalled payloads if the disk guard stops again.
           sudo du -x -B1 --max-depth=2 /opt /usr/local /usr/share /usr/lib/jvm 2>/dev/null | sort -nr | head -n 40 || true
-          for phase in init sync graph carrera carrera-system; do
+          for phase in init sync graph webview-lfs-arm webview-lfs-arm64 carrera carrera-system; do
             if [ -f "out/android-graph/$phase.log" ]; then tail -n 80 "out/android-graph/$phase.log"; fi
           done
       - name: Retain the public Carrera development pair

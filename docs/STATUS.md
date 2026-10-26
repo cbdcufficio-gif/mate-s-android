@@ -1,3 +1,33 @@
+# Errore input WebView — 26 ottobre 2026
+
+Run [40300253229](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40300253229),
+commit `85a4484`: fase sistema terminata dopo 17705,5 s, returncode 1,
+stop_reason null, 13238657024 byte liberi. Nessun arresto per tempo/disco.
+Primo errore causale osservato: target `webview_intermediates/package.apk`,
+`failed opening zip: Invalid file`, poi veridex `Expected valid zip or dex file`.
+Il log termina a 79889/80491 target; sistema/ext4 e release restano non verificati.
+
+Il manifest bloccato seleziona repository WebView separati per architettura.
+Il [repository ARM64 pubblico](https://github.com/LineageOS/android_external_chromium-webview_prebuilt_arm64)
+usa `*.apk filter=lfs`; il blob Git osservato è un puntatore di 134 byte,
+non l'APK. L'ipotesi causale è mancata idratazione LFS, coerente con l'assenza
+di un passaggio LFS nel probe; il vecchio log non conserva i byte del file
+invalido, quindi non dimostra direttamente che fosse proprio quel puntatore.
+
+Correzione: dopo sync/grafo e prima della costosa compilazione Carrera,
+recuperare solo `webview.apk` ARM/ARM64 con `git lfs pull`; leggere oid SHA256
+e dimensione dal puntatore del commit risolto; verificare byte, hash, manifest
+APK e CRC ZIP. Download limitato a runner pubblico monouso, guardia 20 GiB
+in questa fase e timeout 300 s per architettura. Nessuna rimozione di WebView
+o aggiramento di veridex; nessun download globale LFS per tutte le architetture.
+I report conservano commit, digest, dimensioni e verifica; un input ancora
+invalido arresta subito il probe. Log LFS inclusi nella diagnostica sistema.
+
+Validazione: 79 test eseguiti, 78 passati, 1 skip; nuovi test su puntatore,
+hash/dimensione/ZIP e rifiuto download locale. Nessuna compilazione Android locale.
+G0 resta aperto; API22 e guardie /vendor, SELinux, firmware touch invariate.
+Nessun run successore o correzione concorrente rilevato su main `49f75ce`.
+
 # Successore in corso — 26 ottobre 2026
 
 Run [40300253229](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40300253229),

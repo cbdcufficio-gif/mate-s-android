@@ -5,17 +5,9 @@
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
-    "run_id": 40300253229,
-    "job_id": 121496077489,
-    "source_commit": "85a448452d6029aa9491873470a272d66dbc5b33",
-    "status_at_direction_update": "in_progress",
-    "live_status_required": true,
-    "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
-    "public_only": true,
+    "status_at_direction_update": "successor_prepared",
     "source_launch_api": 22,
-    "system_build_budget_seconds": 19200,
-    "workflow_timeout_minutes": 350,
-    "reserve_bytes": 8589934592
+    "live_status_required": true
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -40,9 +32,9 @@
   "gates": [
     {
       "id": "G0",
-      "state": "in_progress",
+      "state": "open",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "inspect successor 40300253229; do not repeat archived disk failures"
+      "next": "one successor with early WebView LFS hash/ZIP validation"
     },
     {
       "id": "G1",
@@ -94,23 +86,23 @@
     }
   ],
   "previous_ci": {
-    "run_id": 40245174034,
-    "job_id": 121325107274,
-    "source_commit": "1d932d277dc1339f10e1acb5423f4e57a666a2ac",
+    "run_id": 40300253229,
+    "job_id": 121496077489,
+    "source_commit": "85a448452d6029aa9491873470a272d66dbc5b33",
     "status_at_direction_update": "completed",
     "live_status_required": true,
-    "reported_owner": "Codex heartbeat avvia-porting-linux-nativo; check Antigravity/concurrent changes before repair",
+    "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
     "public_only": true,
     "source_launch_api": 22,
     "system_build_budget_seconds": 19200,
     "workflow_timeout_minutes": 350,
+    "reserve_bytes": 8589934592,
     "conclusion": "failure",
-    "stop_reason": "DISK_RESERVE_REACHED",
-    "elapsed_seconds": 18011.8,
-    "free_bytes_at_stop": 8547528704,
-    "ninja_completed": 79885,
-    "ninja_total": 80491,
-    "source_repo_bytes": 16707293184,
-    "source_out_bytes": 52677238784
+    "stop_reason": null,
+    "elapsed_seconds": 17705.5,
+    "free_bytes_at_stop": 13238657024,
+    "first_causal_error": "webview package.apk invalid ZIP; LFS hydration missing is the working hypothesis",
+    "source_repo_bytes": 16707325952,
+    "source_out_bytes": 52710322176
   }
 }

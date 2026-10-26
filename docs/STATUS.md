@@ -1,3 +1,12 @@
+# Successore con preflight WebView — 26 ottobre 2026
+
+Run [40346676795](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40346676795),
+job `121655330530`, commit `20cd98e368a192e45bfa20c2f1cb4afe5b15ce39`.
+Release attesa solo se riesce: `carrera-public-system-40346676795`.
+Annullato il ramdisk duplicato `40346676667` generato dal push: il workflow
+completo include già quella compilazione e il medesimo preflight WebView.
+Monitor e stato ora seguono questo run; non riprocessare il guasto 40300253229.
+
 # Errore input WebView — 26 ottobre 2026
 
 Run [40300253229](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40300253229),

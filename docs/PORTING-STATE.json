@@ -5,7 +5,7 @@
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
-    "status_at_direction_update": "warm_attempt_prepared",
+    "status_at_direction_update": "queued",
     "source_launch_api": 22,
     "system_build_budget_seconds": 18000,
     "workflow_timeout_minutes": 350,
@@ -27,9 +27,8 @@
       "remote_archive_bytes": 2558560049,
       "statistics_zeroed_per_attempt": true
     },
-    "run_id": 40474812777,
-    "job_id": 122090305948,
-    "source_commit": "faf4d7c73c0b34fad83167935cf585928a0da508",
+    "run_id": 40541710584,
+    "source_commit": "0f0789debadd0580df022b0d3a969339ee7bfe45",
     "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
     "public_only": true,
     "reserve_bytes": 8589934592,
@@ -39,7 +38,9 @@
     "free_bytes_at_stop": 15484002304,
     "ninja_completed": 78981,
     "ninja_total": 80491,
-    "previous_cold_run_id": 40474812777
+    "previous_cold_run_id": 40474812777,
+    "workflow": "android-carrera-system.yml",
+    "warm_attempt_number": 1
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -118,29 +119,41 @@
     }
   ],
   "previous_ci": {
-    "status_at_direction_update": "completed",
+    "status_at_direction_update": "warm_attempt_prepared",
     "source_launch_api": 22,
     "system_build_budget_seconds": 18000,
     "workflow_timeout_minutes": 350,
-    "max_system_build_jobs": 3,
     "live_status_required": true,
-    "run_id": 40405482104,
-    "job_id": 121862019582,
-    "source_commit": "4691cf465ff85d7bb86211371bd78cb120437009",
+    "compiler_cache": {
+      "key": "mates-q-carrera-public-ccache-v1",
+      "max_bytes_decimal": 3000000000,
+      "cold_run_may_timeout": true,
+      "warm_retry_requires_confirmed_cache_save": true,
+      "save_verified": true,
+      "archive_bytes": 2558560049,
+      "reported_size_gb": 2.68,
+      "compilation_hits": 8555,
+      "compilation_misses": 34258,
+      "uncacheable": 78,
+      "cleanups": 24,
+      "warm_retry_requires_resolved_manifest": true,
+      "exact_restore_required": true,
+      "remote_archive_bytes": 2558560049,
+      "statistics_zeroed_per_attempt": true
+    },
+    "run_id": 40474812777,
+    "job_id": 122090305948,
+    "source_commit": "faf4d7c73c0b34fad83167935cf585928a0da508",
     "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
     "public_only": true,
     "reserve_bytes": 8589934592,
     "conclusion": "failure",
     "stop_reason": "TIME_BUDGET_REACHED",
-    "elapsed_seconds": 18000.4,
-    "free_bytes_at_stop": 15311339520,
-    "ninja_completed": 79285,
+    "elapsed_seconds": 18000.7,
+    "free_bytes_at_stop": 15484002304,
+    "ninja_completed": 78981,
     "ninja_total": 80491,
-    "build_resources": {
-      "cpus": 4,
-      "memory_bytes": 16765411328,
-      "jobs": 3
-    }
+    "previous_cold_run_id": 40474812777
   },
   "operational_review": "docs/REVIEW-2026-10-27.md",
   "manifest_lock_probe": {

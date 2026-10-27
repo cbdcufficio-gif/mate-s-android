@@ -1,3 +1,5 @@
+Unico tentativo caldo: [40541710584](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40541710584), sorgente `0f0789d`, workflow sistema pubblico. Nessun retry automatico dopo questo tentativo.
+
 # Sync bloccato verificato; unico tentativo caldo — 27 ottobre 2026
 
 40537259220 riuscito: sync465,5s,66874654720byte liberi. Verificati tutti i778

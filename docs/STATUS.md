@@ -1,3 +1,27 @@
+# Sync bloccato verificato; unico tentativo caldo — 27 ottobre 2026
+
+40537259220 riuscito: sync465,5s,66874654720byte liberi. Verificati tutti i778
+progetti selezionati da default,-darwin contro lock794, più nomi, gruppi come
+insiemi e copyfile/linkfile. Report PINNED_ANDROID_SYNC_PASSED e
+SYNCED_REVISIONS_MATCH_LOCK. Non è prova di compilazione.
+
+Preparata diagnostica pubblica allowlist: report,manifest,log e due possibili
+.ninja_log; massimo32MiB per input (testa/coda se eccede),16MiB output compresso.
+SHA256SUMS e inventory dichiarano troncamenti. Piccole release dedicate,
+escluse dallo storage artifact Actions; pulizia solo release prerelease marcate
+MATES_PUBLIC_DIAGNOSTICS_V1 dopo7giorni alla pubblicazione successiva.
+Se nessun run successivo parte la pulizia non è automatica: il monitor deve
+rimuovere quelle scadute. Nessuna immagine/albero sorgenti incluso.
+Diagnostica best-effort non impedisce pubblicazione sistema riuscito.
+
+Ccache: azzera contatori dopo restore, registra versione/config e statistiche
+verbose prima della cancellazione. Il prossimo sistema richiede cache-hit
+esatto, altrimenti si ferma prima di compilare. Cache remota confermata1voce,
+2558560049byte. Cache calda sola lettura; un solo tentativo deliberato,
+non ulteriore cold build implicita. Revisioni fissate nuove rispetto al run
+freddo non ricostruibile; ccache verifica compiler/input, hit non garantiti.
+88test eseguiti:87passati,1skip; YAML e shell syntax verificati.
+
 Sync senza compilazione: [40537259220](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40537259220), sorgente `75d7d9f`.
 
 # Manifest verificato e sync separato — 27 ottobre 2026

@@ -100,6 +100,9 @@ def main():
                  f'm -j{jobs} '+' '.join(MODULES)+' systemimage simg2img')
         report_path.write_text(json.dumps(report,indent=2)+'\n')
         report['build']=guarded(['bash','-c',command],source,ROOT/'carrera-system.log',seconds=18000,reserve=8*1024**3)
+        if os.environ.get('MATES_USE_CCACHE')=='1':
+            with (ROOT/'ccache-before-cleanup.log').open('w') as stats:
+                subprocess.run(['ccache','--show-stats','--verbose'],stdout=stats,stderr=subprocess.STDOUT,check=False,timeout=30)
         if report['build']['returncode'] or report['build']['stop_reason']:
             report['status']='CARRERA_PUBLIC_SYSTEM_BUILD_FAILED'
         else:

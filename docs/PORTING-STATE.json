@@ -5,7 +5,7 @@
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
-    "status_at_direction_update": "completed",
+    "status_at_direction_update": "warm_attempt_prepared",
     "source_launch_api": 22,
     "system_build_budget_seconds": 18000,
     "workflow_timeout_minutes": 350,
@@ -22,7 +22,10 @@
       "compilation_misses": 34258,
       "uncacheable": 78,
       "cleanups": 24,
-      "warm_retry_requires_resolved_manifest": true
+      "warm_retry_requires_resolved_manifest": true,
+      "exact_restore_required": true,
+      "remote_archive_bytes": 2558560049,
+      "statistics_zeroed_per_attempt": true
     },
     "run_id": 40474812777,
     "job_id": 122090305948,
@@ -35,7 +38,8 @@
     "elapsed_seconds": 18000.7,
     "free_bytes_at_stop": 15484002304,
     "ninja_completed": 78981,
-    "ninja_total": 80491
+    "ninja_total": 80491,
+    "previous_cold_run_id": 40474812777
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -62,7 +66,7 @@
       "id": "G0",
       "state": "in_progress",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "Inspect pinned sync result, then bounded diagnostics and ccache statistics before one deliberate warm build"
+      "next": "One deliberate pinned warm system attempt; inspect cache hit/miss and bounded diagnostics before any further run"
     },
     {
       "id": "G1",
@@ -161,9 +165,19 @@
   },
   "pinned_sync_probe": {
     "workflow": "android-pinned-sync.yml",
-    "status": "queued",
+    "status": "success",
     "compilation": false,
     "run_id": 40537259220,
-    "source_commit": "75d7d9f7ca072b8d78f8bce89df74e6e145d76f0"
+    "source_commit": "75d7d9f7ca072b8d78f8bce89df74e6e145d76f0",
+    "selected_projects": 778,
+    "revision_and_group_selection_verified": true,
+    "sync_seconds": 465.5
+  },
+  "build_diagnostics": {
+    "max_compressed_bytes": 16777216,
+    "max_input_bytes_per_file": 33554432,
+    "retention_days": 7,
+    "cleanup": "next diagnostic publication or monitor cleanup",
+    "contains_android_images": false
   }
 }

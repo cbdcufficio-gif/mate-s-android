@@ -9,7 +9,10 @@ import android_locked_manifest as lock
 class LockedManifestTests(unittest.TestCase):
     def test_reviewed_lock(self):
         data=lock.LOCK.read_bytes();self.assertEqual(len(lock.project_revisions(data)),794)
-        self.assertEqual(lock.verify_synced(data)['selected_projects'],794)
+        selected=ET.fromstring(data)
+        for node in list(selected.findall('project')):
+            if set(node.get('groups','').split(',')) & {'notdefault','darwin'}:selected.remove(node)
+        self.assertEqual(lock.verify_synced(ET.tostring(selected))['selected_projects'],778)
         root=ET.fromstring(data);root.find('project').set('revision','0'*40)
         with self.assertRaises(ValueError):lock.verify_synced(ET.tostring(root))
     def test_invalid(self):

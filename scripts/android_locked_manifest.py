@@ -31,6 +31,10 @@ def install_lock(tree):
 def verify_synced(data):
     expected=project_revisions(LOCK.read_bytes());actual=project_revisions(data)
     # repo exports only groups selected by init (default,-darwin).
+    root=ET.fromstring(LOCK.read_bytes())
+    selected={node.get('path',node.attrib['name']) for node in root.findall('project')
+              if not set(node.get('groups','').split(',')) & {'notdefault','darwin'}}
+    if set(actual)!=selected:raise ValueError('Synced project selection differs from default,-darwin')
     for path,sha in actual.items():
         if expected.get(path)!=sha:raise ValueError('Synced revision differs: '+path)
     return {'status':'SYNCED_REVISIONS_MATCH_LOCK','selected_projects':len(actual),'locked_projects':len(expected)}

@@ -62,7 +62,13 @@ jobs:
           key: mates-q-carrera-public-ccache-v1
       - name: Build and verify the public Carrera system and ramdisk
         run: |
+          # This deliberate warm attempt must not silently become another cold build.
+          test '${{ steps.compiler-cache.outputs.cache-hit }}' = true
           ccache --max-size 3G
+          mkdir -p out/android-graph-cache-info
+          ccache --zero-stats
+          ccache --version > out/android-graph-cache-info/environment.log
+          ccache --show-config >> out/android-graph-cache-info/environment.log
           # Immutable warm cache: do not evict useful entries while compiling misses.
           if [ '${{ steps.compiler-cache.outputs.cache-hit }}' = true ]; then
             export CCACHE_READONLY=true
@@ -108,6 +114,16 @@ jobs:
           for phase in init sync graph webview-lfs-arm webview-lfs-arm64 carrera carrera-system; do
             if [ -f "out/android-graph/$phase.log" ]; then tail -n 80 "out/android-graph/$phase.log"; fi
           done
+      - name: Publish bounded public diagnostics outside Actions artifact storage
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -d out/android-graph ]; then
+            if [ -f out/android-graph-cache-info/environment.log ]; then cp out/android-graph-cache-info/environment.log out/android-graph/ccache-environment.log; fi
+            python3 scripts/android_build_diagnostics.py
+          fi
       - name: Retain the public Carrera development pair
         if: success()
         env:

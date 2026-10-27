@@ -6,7 +6,7 @@ La cronologia delle prove precedenti è in [STATUS.md](STATUS.md).
 
 | Priorità | Blocco | Prossima prova che riduce l'incertezza |
 |---|---|---|
-| G0 | 40474812777 archiviato per tempo; cache salvata ma sorgenti non completamente bloccati | Probe breve per manifest risolto, diagnostica e deduplicazione; poi un solo tentativo caldo motivato |
+| G0 | Sistema completo ancora non compilato; sorgenti bloccati e sync verificato | Unico tentativo caldo con cache esatta, diagnostica limitata e misure prima di ulteriori run |
 | G1 | Configurazione Q e overlay vendor finale incompleti | API22 applicata, da verificare nel prossimo run; ld.config, APEX, policy/capability kernel e closure dei soli servizi essenziali |
 | G2 | Nessuna boot Q Carrera verificata | Formato v0, coda stock, DT handoff, dimensioni intere e percorso di recupero |
 | G3 | Kernel diagnostico e init Q mai avviati | Nuovo kernel identificato, policy/mount/Binder e ADB autenticato con log |

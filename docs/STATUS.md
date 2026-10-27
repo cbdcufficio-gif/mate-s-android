@@ -1,3 +1,5 @@
+Sistema con capacità corretta: [40602929112](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40602929112), sorgente`c42ebaf`.
+
 # Correzione capacità verificata — 28 ottobre 2026
 
 Probe40599220835 riuscito: recupero df3858665472byte,131967766528byte liberi.

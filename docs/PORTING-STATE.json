@@ -5,7 +5,7 @@
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
-    "status_at_direction_update": "capacity_fix_prepared",
+    "status_at_direction_update": "queued",
     "source_launch_api": 22,
     "system_build_budget_seconds": 18000,
     "workflow_timeout_minutes": 350,
@@ -27,27 +27,21 @@
       "remote_archive_bytes": 2558560049,
       "statistics_zeroed_per_attempt": true
     },
-    "run_id": 40541710584,
-    "source_commit": "0f0789debadd0580df022b0d3a969339ee7bfe45",
+    "run_id": 40602929112,
+    "source_commit": "c42ebaf2b72ad3889d13f30381fc8b60447f594a",
     "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
     "public_only": true,
     "reserve_bytes": 8589934592,
-    "conclusion": "failure",
-    "stop_reason": "DISK_RESERVE_REACHED",
-    "elapsed_seconds": 7330.7,
-    "free_bytes_at_stop": 8553492480,
-    "ninja_completed": 79972,
-    "ninja_total": 80491,
     "previous_cold_run_id": 40474812777,
     "workflow": "android-carrera-system.yml",
     "warm_attempt_number": 1,
-    "job_id": 122321530088,
     "measured_bytes": {
       "repo": 17061343232,
       "out": 53997498368
     },
     "minimum_free_after_setup_and_cache": 128000000000,
-    "capacity_correction": "Measured removal of nine unused host tools; no source/Git/intermediate removal"
+    "capacity_correction": "Measured removal of nine unused host tools; no source/Git/intermediate removal",
+    "capacity_corrected_attempt": 1
   },
   "launch_api_correction": {
     "actual_launch_api": 22,

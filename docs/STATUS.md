@@ -1,3 +1,26 @@
+# Correzione capacità verificata — 28 ottobre 2026
+
+Probe40599220835 riuscito: recupero df3858665472byte,131967766528byte liberi.
+Python3.10.12,Git2.55.0 e presenza gzip/tar verificati. ToolcachePython/Node
+preservati; nessun source/Git/intermedio/cachebuild rimosso.
+Il sistema ora applica la stessa allowlist di9strumenti ospiti e richiede
+>=128000000000byte liberi DOPO installazione pacchetti e restore cache,
+prima del sync. Rispetto al precedente caldo124944551936byte iniziali,
+la soglia garantisce almeno3055448064byte di margine iniziale aggiuntivo.
+A identico consumo ciò alzerebbe il punto di arresto precedente da8,55GB
+ad almeno11,61GB; è un confronto di capacità, non un limite superiore al
+lavoro ancora mancante. Picco finale non noto: il guard8GiB rimane attivo.
+
+Verifica ext4: serve fino a2684354560byte temporanei oltre8GiB; il codice
+elimina cache locale dopo compilazione riuscita e prima dell'espansione,
+e rimuove raw temporaneo prima della compressione. Non sommare questi picchi
+come se fossero simultanei. Se lo spazio ancora non basta, nessun altro
+ritocco cieco: usare output e diagnostica effettivi.
+
+Nuovo tentativo deliberato per causa DISCO misurata e corretta; nessun aumento
+di tempo/processi/quote né altro tentativo per timeout. Lock,cacheesatta,
+API22,WebViewLFS e tutti i guard invariati.88test87pass1skip.
+
 Probe recupero misurato: [40599220835](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40599220835), sorgente`ef950f8`, nessuna compilazione.
 
 # Capacità misurata e recupero ospiti circoscritto — 28 ottobre 2026

@@ -50,6 +50,17 @@ jobs:
             sudo docker system df
           fi
           df -B1 .
+          # These nine unused host tools were measured and reclaimed by probe40599220835.
+          # Preserve runner Python/Node and all Android source/Git/output paths.
+          for path in /usr/local/julia* /usr/share/miniconda /usr/share/az_* /usr/local/aws-cli /usr/local/aws-sam-cli /opt/microsoft/powershell /usr/share/gradle-* /usr/share/sbt /usr/share/kotlinc; do
+            if [ -e "$path" ]; then
+              sudo du -sx -B1 -- "$path"
+              sudo rm -rf -- "$path"
+            fi
+          done
+          /usr/bin/python3 --version
+          command -v python3 git gzip tar
+          df -B1 .
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends repo python2 git-lfs ccache bc bison flex gperf libncurses5 libxml2-utils xsltproc zip unzip rsync gcc-multilib g++-multilib libssl-dev liblz4-tool e2fsprogs
           git config --global user.name mates-source-probe
@@ -64,6 +75,10 @@ jobs:
         run: |
           # This deliberate warm attempt must not silently become another cold build.
           test '${{ steps.compiler-cache.outputs.cache-hit }}' = true
+          # Require measured headroom with the cache restored and packages installed.
+          free=$(df -B1 --output=avail . | tail -n 1)
+          echo "free_bytes_after_setup_and_cache=$free"
+          test "$free" -ge 128000000000
           ccache --max-size 3G
           mkdir -p out/android-graph-cache-info
           ccache --zero-stats

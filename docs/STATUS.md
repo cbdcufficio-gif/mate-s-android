@@ -1,3 +1,5 @@
+Probe capacità: [40595739296](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40595739296), sorgente`6c0d9e0`, nessuna compilazione.
+
 # Tentativo caldo: cache efficace, arresto disco — 27 ottobre 2026
 
 40541710584 job122321530088, sorgente0f0789d: DISK_RESERVE_REACHED dopo7330,7s,

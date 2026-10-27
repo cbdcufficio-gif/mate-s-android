@@ -161,7 +161,9 @@
   },
   "pinned_sync_probe": {
     "workflow": "android-pinned-sync.yml",
-    "status": "prepared",
-    "compilation": false
+    "status": "queued",
+    "compilation": false,
+    "run_id": 40537259220,
+    "source_commit": "75d7d9f7ca072b8d78f8bce89df74e6e145d76f0"
   }
 }

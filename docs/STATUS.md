@@ -1,3 +1,5 @@
+Sync senza compilazione: [40537259220](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40537259220), sorgente `75d7d9f`.
+
 # Manifest verificato e sync separato — 27 ottobre 2026
 
 Probe40532026808 riuscito; asset piccoli verificati sui byte con SHA256SUMS.

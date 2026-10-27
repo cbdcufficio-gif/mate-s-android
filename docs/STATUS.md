@@ -1,3 +1,5 @@
+Probe successore: [40532026808](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40532026808), sorgente `8516226`.
+
 # Corretto URL relativo del probe manifest — 27 ottobre 2026
 
 40527024053 è fallito prima di scaricare sorgenti: project_count794,

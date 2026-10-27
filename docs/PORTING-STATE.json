@@ -141,9 +141,11 @@
   "operational_review": "docs/REVIEW-2026-10-27.md",
   "manifest_lock_probe": {
     "workflow": "android-manifest-lock.yml",
-    "status": "corrected_pending_dispatch",
+    "status": "queued",
     "source_downloaded": false,
-    "build_started": false
+    "build_started": false,
+    "run_id": 40532026808,
+    "source_commit": "8516226f1f497da564f23974b110ece531aef8dd"
   },
   "previous_manifest_lock_probe": {
     "workflow": "android-manifest-lock.yml",

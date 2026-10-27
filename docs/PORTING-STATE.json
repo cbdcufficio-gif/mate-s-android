@@ -5,7 +5,7 @@
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
-    "status_at_direction_update": "in_progress",
+    "status_at_direction_update": "completed",
     "source_launch_api": 22,
     "system_build_budget_seconds": 18000,
     "workflow_timeout_minutes": 350,
@@ -14,14 +14,28 @@
       "key": "mates-q-carrera-public-ccache-v1",
       "max_bytes_decimal": 3000000000,
       "cold_run_may_timeout": true,
-      "warm_retry_requires_confirmed_cache_save": true
+      "warm_retry_requires_confirmed_cache_save": true,
+      "save_verified": true,
+      "archive_bytes": 2558560049,
+      "reported_size_gb": 2.68,
+      "compilation_hits": 8555,
+      "compilation_misses": 34258,
+      "uncacheable": 78,
+      "cleanups": 24,
+      "warm_retry_requires_resolved_manifest": true
     },
     "run_id": 40474812777,
     "job_id": 122090305948,
     "source_commit": "faf4d7c73c0b34fad83167935cf585928a0da508",
     "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
     "public_only": true,
-    "reserve_bytes": 8589934592
+    "reserve_bytes": 8589934592,
+    "conclusion": "failure",
+    "stop_reason": "TIME_BUDGET_REACHED",
+    "elapsed_seconds": 18000.7,
+    "free_bytes_at_stop": 15484002304,
+    "ninja_completed": 78981,
+    "ninja_total": 80491
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -48,7 +62,7 @@
       "id": "G0",
       "state": "in_progress",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "inspect run 40474812777 and cache statistics/save before any warm retry"
+      "next": "Capture and pin full resolved Android revisions with a short public probe; retain bounded diagnostics and deduplicate triggers before a deliberate warm build. Do not rerun the archived cold attempt."
     },
     {
       "id": "G1",
@@ -123,5 +137,6 @@
       "memory_bytes": 16765411328,
       "jobs": 3
     }
-  }
+  },
+  "operational_review": "docs/REVIEW-2026-10-27.md"
 }

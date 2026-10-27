@@ -1,3 +1,21 @@
+# Cache fredda salvata; riproducibilità prima del retry — 27 ottobre 2026
+
+Run 40474812777, job 122090305948, sorgente faf4d7c73c0b34fad83167935cf585928a0da508,
+fallito per TIME_BUDGET_REACHED dopo 18000,7 s: 78981/80491 target,
+15484002304 byte liberi. Nessun sistema/ext4/release verificato.
+Ccache: 8555 hit, 34258 miss, 78 chiamate non cacheabili, 24 cleanup;
+dimensione riportata 2,68 GB. Salvataggio confermato della chiave
+mates-q-carrera-public-ccache-v1, archivio 2558560049 byte.
+I contatori primary-storage sono accessi interni e non compilazioni aggiuntive.
+
+Non è stato lanciato un retry: il manifest risolto completo non è conservato
+nei log disponibili. Il commit del repository manifest usa default revision
+refs/heads/lineage-17.1; il solo commit del progetto non fissa tutti i sorgenti.
+Prossimo passo: piccolo probe che acquisisce e blocca revisioni complete,
+diagnostica limitata e deduplicazione trigger prima della build deliberata.
+La cache esistente è un'ottimizzazione candidata, non un checkpoint Ninja.
+Vedere [revisione operativa](REVIEW-2026-10-27.md). G1/G2 precedono gli altri HAL.
+
 # Successore con cache limitata — 27 ottobre 2026
 
 Run [40474812777](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40474812777),

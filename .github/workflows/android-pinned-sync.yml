@@ -1,0 +1,65 @@
+name: Mate S pinned Android sync only
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mates-pinned-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 35
+    env:
+      MATES_SYNC_ONLY: '1'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Prepare disposable runner for public Android sources
+        run: |
+          test "$GITHUB_ACTIONS" = true
+          test "$RUNNER_ENVIRONMENT" = github-hosted
+          # Explicit allowlist of unused preinstalled SDKs on this disposable runner.
+          # Keep Python/Node runtimes, Android source Git metadata and all build outputs.
+          # Q Soong uses its prebuilts/jdk, not /usr/lib/jvm.
+          test -z "${OVERRIDE_ANDROID_JAVA_HOME:-}"
+          df -B1 .
+          for path in /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/share/swift /usr/local/.ghcup /opt/az /usr/local/share/chromium /opt/hostedtoolcache/Go /opt/hostedtoolcache/Ruby /opt/hostedtoolcache/PyPy /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk /opt/hostedtoolcache/go /usr/lib/jvm /usr/local/lib/node_modules /opt/google/chrome /opt/microsoft/msedge; do
+            if [ -e "$path" ]; then
+              sudo du -sx -B1 -- "$path"
+              sudo rm -rf -- "$path"
+            fi
+          done
+          df -B1 .
+          command -v python3 git
+          # This job builds on the host; no Docker image is needed.
+          if command -v docker >/dev/null && sudo docker info >/dev/null 2>&1; then
+            sudo docker system df
+            sudo docker image prune --all --force
+            sudo docker system df
+          fi
+          df -B1 .
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends repo python2 git-lfs ccache bc bison flex gperf libncurses5 libxml2-utils xsltproc zip unzip rsync gcc-multilib g++-multilib libssl-dev liblz4-tool e2fsprogs
+          git config --global user.name mates-source-probe
+          git config --global user.email mates-source-probe@users.noreply.github.com
+      - name: Sync reviewed revisions without compiling
+        run: python3 scripts/android_graph_probe.py
+      - name: Retain small public sync report
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          mkdir -p out/sync-diagnostics
+          for name in report.json resolved-manifest.xml; do
+            if [ -f "out/android-graph/$name" ]; then cp "out/android-graph/$name" out/sync-diagnostics/; fi
+          done
+          for name in init sync; do
+            if [ -f "out/android-graph/$name.log" ]; then tail -c 1048576 "out/android-graph/$name.log" | gzip -1 > "out/sync-diagnostics/$name.tail.log.gz"; fi
+          done
+          test "$(du -sb out/sync-diagnostics | cut -f1)" -le 5242880
+          gh release create "carrera-pinned-sync-$GITHUB_RUN_ID" out/sync-diagnostics/* --target "$GITHUB_SHA" --prerelease --title "Carrera pinned sync $GITHUB_RUN_ID" --notes "Public source sync verification only; no compilation or phone operations. Logs bounded to last 1 MiB per phase."

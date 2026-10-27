@@ -62,7 +62,7 @@
       "id": "G0",
       "state": "in_progress",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "Dispatch and inspect manifest lock probe; then wire locked manifest input and bounded build diagnostics before a deliberate warm build"
+      "next": "Inspect pinned sync result, then bounded diagnostics and ccache statistics before one deliberate warm build"
     },
     {
       "id": "G1",
@@ -141,11 +141,14 @@
   "operational_review": "docs/REVIEW-2026-10-27.md",
   "manifest_lock_probe": {
     "workflow": "android-manifest-lock.yml",
-    "status": "queued",
+    "status": "success",
     "source_downloaded": false,
     "build_started": false,
     "run_id": 40532026808,
-    "source_commit": "8516226f1f497da564f23974b110ece531aef8dd"
+    "source_commit": "8516226f1f497da564f23974b110ece531aef8dd",
+    "manifest_sha256": "b30f6d479b321cab00305b1c9a31450d0a8940138996e7e25cf27f7a0146f845",
+    "projects": 794,
+    "digests_verified_on_bytes": true
   },
   "previous_manifest_lock_probe": {
     "workflow": "android-manifest-lock.yml",
@@ -155,5 +158,10 @@
     "run_id": 40527024053,
     "source_commit": "49ddd880718a9a55c26d1a5e919a9c24e1dc64de",
     "error": "Relative fetch URL duplicated LineageOS namespace"
+  },
+  "pinned_sync_probe": {
+    "workflow": "android-pinned-sync.yml",
+    "status": "prepared",
+    "compilation": false
   }
 }

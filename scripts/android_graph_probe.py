@@ -8,6 +8,7 @@ import signal
 import subprocess
 import time
 from remote_preflight import COMMIT
+from android_locked_manifest import install_lock, verify_synced
 
 ROOT = Path('out/android-graph')
 REPORT = ROOT / 'report.json'
@@ -54,7 +55,7 @@ def main():
     stages = [
         ('init', ['repo', 'init', '-u', 'https://github.com/LineageOS/android.git', '-b', COMMIT,
                   '--depth=1', '--no-clone-bundle', '--groups=default,-darwin'], 180),
-        ('sync', ['repo', 'sync', '-c', '-j4', '--no-clone-bundle', '--no-tags', '--fail-fast'], 1200),
+        ('sync', ['repo', 'sync', '--no-manifest-update', '-c', '-j4', '--no-clone-bundle', '--no-tags', '--fail-fast'], 1200),
         ('graph', ['bash', '-c', 'set -eo pipefail; source build/envsetup.sh; lunch lineage_arm64-userdebug; m -j2 nothing'], 600),
     ]
     try:
@@ -66,9 +67,15 @@ def main():
             if result['returncode'] or result['stop_reason']:
                 report['status'] = name.upper() + '_FAILED'
                 break
+            if name == 'init':
+                report['source_lock']=install_lock(tree)
             if name == 'sync':
                 with (ROOT/'resolved-manifest.xml').open('w') as stream:
                     subprocess.run(['repo', 'manifest', '-r'], cwd=tree, stdout=stream, check=True, timeout=60)
+                report['synced_lock']=verify_synced((ROOT/'resolved-manifest.xml').read_bytes())
+                if os.environ.get('MATES_SYNC_ONLY')=='1':
+                    report['status']='PINNED_ANDROID_SYNC_PASSED'
+                    break
         else:
             report['status'] = 'GENERIC_BUILD_GRAPH_PASSED'
     except Exception as error:
@@ -77,7 +84,7 @@ def main():
     finally:
         REPORT.write_text(json.dumps(report, indent=2)+'\n')
         print(REPORT.read_text())
-    return 0 if report['status'] == 'GENERIC_BUILD_GRAPH_PASSED' else 1
+    return 0 if report['status'] in ('GENERIC_BUILD_GRAPH_PASSED','PINNED_ANDROID_SYNC_PASSED') else 1
 
 if __name__ == '__main__':
     raise SystemExit(main())

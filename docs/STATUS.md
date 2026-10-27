@@ -1,3 +1,17 @@
+# Manifest verificato e sync separato — 27 ottobre 2026
+
+Probe40532026808 riuscito; asset piccoli verificati sui byte con SHA256SUMS.
+Manifest b30f6d479b321cab00305b1c9a31450d0a8940138996e7e25cf27f7a0146f845:
+794 progetti con SHA40, include espansi,1copyfile e37linkfile.
+Installato come configs/android-resolved-manifest.xml e verificato per digest
+prima del sync. repo sync --no-manifest-update impedisce aggiornamento del
+manifest; repo manifest -r successivo confronta ogni progetto selezionato con
+la revisione fissata. La selezione default,-darwin resta invariata.
+Nuovo workflow manuale android-pinned-sync.yml si ferma dopo sync, senza graph
+o compilazione. Cache remota verificata:1voce,2558560049byte.
+87test eseguiti:86passati,1skip. Prima della build calda restano diagnostica
+Ninja/log limitata e statistiche cache prima della cancellazione.
+
 Probe successore: [40532026808](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40532026808), sorgente `8516226`.
 
 # Corretto URL relativo del probe manifest — 27 ottobre 2026

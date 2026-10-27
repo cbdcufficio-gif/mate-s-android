@@ -1,3 +1,5 @@
+Run probe manifest: [40527024053](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40527024053), sorgente `49ddd88`. Nessuna build completa avviata.
+
 # Probe manifest senza compilazione — 27 ottobre 2026
 
 Nuovo workflow manuale android-manifest-lock.yml: risolve i riferimenti pubblici

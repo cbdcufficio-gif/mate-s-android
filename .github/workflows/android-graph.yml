@@ -1,10 +1,6 @@
 name: Mate S real Android source and graph probe
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - scripts/android_graph_probe.py
-      - .github/workflows/android-graph.yml
 permissions:
   contents: read
 concurrency:

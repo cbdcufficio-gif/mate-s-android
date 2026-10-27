@@ -62,7 +62,7 @@
       "id": "G0",
       "state": "in_progress",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "Capture and pin full resolved Android revisions with a short public probe; retain bounded diagnostics and deduplicate triggers before a deliberate warm build. Do not rerun the archived cold attempt."
+      "next": "Dispatch and inspect manifest lock probe; then wire locked manifest input and bounded build diagnostics before a deliberate warm build"
     },
     {
       "id": "G1",
@@ -138,5 +138,11 @@
       "jobs": 3
     }
   },
-  "operational_review": "docs/REVIEW-2026-10-27.md"
+  "operational_review": "docs/REVIEW-2026-10-27.md",
+  "manifest_lock_probe": {
+    "workflow": "android-manifest-lock.yml",
+    "status": "prepared",
+    "source_downloaded": false,
+    "build_started": false
+  }
 }

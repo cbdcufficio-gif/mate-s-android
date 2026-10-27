@@ -1,11 +1,6 @@
 name: Mate S public Carrera ramdisk
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - scripts/android_carrera_probe.py
-      - device/huawei/carrera/**
-      - .github/workflows/android-carrera.yml
 permissions:
   contents: write
 concurrency:

@@ -1,0 +1,30 @@
+name: Mate S public Android manifest lock only
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mates-manifest-lock
+  cancel-in-progress: false
+jobs:
+  lock:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Resolve public refs without source downloads or compilation
+        run: python3 scripts/android_manifest_lock.py
+      - name: Publish small public lock report
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          test -f out/manifest-lock/report.json
+          bytes=$(du -sb out/manifest-lock | cut -f1)
+          test "$bytes" -le 5242880
+          gh release create "carrera-manifest-lock-$GITHUB_RUN_ID" out/manifest-lock/* --target "$GITHUB_SHA" --prerelease --title "Carrera public source lock $GITHUB_RUN_ID" --notes "Public Git ref resolution only; inspect report status. No Android compilation or hardware verification."

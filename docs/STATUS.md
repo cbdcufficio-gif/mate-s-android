@@ -1,3 +1,16 @@
+# Probe manifest senza compilazione — 27 ottobre 2026
+
+Nuovo workflow manuale android-manifest-lock.yml: risolve i riferimenti pubblici
+con quattro processi Git concorrenti, senza clonare sorgenti né compilare.
+Conserva manifest completo con SHA per progetto, report e digest in una release
+pubblica piccola (massimo 5 MiB). Un report PUBLIC_MANIFEST_REFS_LOCKED prova
+solo la risoluzione dei riferimenti nell'intervallo del probe; non prova sync,
+compilazione, disponibilità futura o snapshot atomico upstream.
+I tre workflow grafo, ramdisk e sistema ora partono solo con workflow_dispatch,
+per evitare duplicati e build complete implicite durante le correzioni.
+83 test eseguiti: 82 passati, 1 skip. Prima di una build calda restano da
+integrare consumo del manifest bloccato e diagnostica limitata con dati Ninja.
+
 # Cache fredda salvata; riproducibilità prima del retry — 27 ottobre 2026
 
 Run 40474812777, job 122090305948, sorgente faf4d7c73c0b34fad83167935cf585928a0da508,

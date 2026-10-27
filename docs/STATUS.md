@@ -1,3 +1,5 @@
+Probe recupero misurato: [40599220835](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40599220835), sorgente`ef950f8`, nessuna compilazione.
+
 # Capacità misurata e recupero ospiti circoscritto — 28 ottobre 2026
 
 Probe40595739296 riuscito. Workspace,/mnt,/tmp,/opt hanno stesso device2049:

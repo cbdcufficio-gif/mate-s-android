@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - scripts/android_carrera_system_probe.py
+      - scripts/android_graph_probe.py
       - scripts/android_carrera_probe.py
       - scripts/android_webview_preflight.py
       - scripts/android_patches.py
@@ -13,6 +14,7 @@ on:
       - .github/workflows/android-carrera-system.yml
 permissions:
   contents: write
+  actions: read
 concurrency:
   group: mates-carrera-public-system
   cancel-in-progress: false
@@ -21,6 +23,15 @@ jobs:
     if: github.event.repository.private == false
     runs-on: ubuntu-22.04
     timeout-minutes: 350
+    env:
+      MATES_USE_CCACHE: '1'
+      CCACHE_EXEC: /usr/bin/ccache
+      CC_WRAPPER: /usr/bin/ccache
+      CXX_WRAPPER: /usr/bin/ccache
+      CCACHE_DIR: ${{ github.workspace }}/out/ccache
+      CCACHE_MAXSIZE: 3G
+      CCACHE_COMPRESS: 'true'
+      CCACHE_COMPILERCHECK: content
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -51,11 +62,44 @@ jobs:
           fi
           df -B1 .
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends repo python2 git-lfs bc bison flex gperf libncurses5 libxml2-utils xsltproc zip unzip rsync gcc-multilib g++-multilib libssl-dev liblz4-tool e2fsprogs
+          sudo apt-get install -y --no-install-recommends repo python2 git-lfs ccache bc bison flex gperf libncurses5 libxml2-utils xsltproc zip unzip rsync gcc-multilib g++-multilib libssl-dev liblz4-tool e2fsprogs
           git config --global user.name mates-source-probe
           git config --global user.email mates-source-probe@users.noreply.github.com
+      - name: Restore the single bounded public compiler cache
+        id: compiler-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: out/ccache
+          key: mates-q-carrera-public-ccache-v1
       - name: Build and verify the public Carrera system and ramdisk
-        run: python3 scripts/android_carrera_system_probe.py
+        run: |
+          ccache --max-size 3G
+          # Immutable warm cache: do not evict useful entries while compiling misses.
+          if [ '${{ steps.compiler-cache.outputs.cache-hit }}' = true ]; then
+            export CCACHE_READONLY=true
+          fi
+          python3 scripts/android_carrera_system_probe.py
+      - name: Check free cache allowance after an incomplete build
+        if: failure() && steps.compiler-cache.outputs.cache-hit != 'true'
+        id: cache-budget
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          ccache --show-stats
+          test -d out/ccache
+          bytes=$(du -sb out/ccache | cut -f1)
+          test "$bytes" -le 3300000000
+          used=$(gh api "repos/$GH_REPO/actions/cache/usage" --jq .active_caches_size_in_bytes)
+          test "$used" -le 6000000000
+          echo 'save=true' >> "$GITHUB_OUTPUT"
+      - name: Preserve compiler work even when the bounded build stops
+        if: failure() && steps.cache-budget.outputs.save == 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: out/ccache
+          key: mates-q-carrera-public-ccache-v1
       - name: Retain diagnostics in logs only
         if: always()
         run: |
@@ -65,6 +109,7 @@ jobs:
               cat "out/android-graph/$report.json" >> "$GITHUB_STEP_SUMMARY"
             fi
           done
+          if [ -d out/ccache ]; then ccache --show-stats; fi
           df -B1 .
           for path in out/android-graph/source/.repo out/android-graph/source/out out/android-graph/carrera-system-assets; do
             if [ -d "$path" ]; then du -sx -B1 -- "$path"; fi

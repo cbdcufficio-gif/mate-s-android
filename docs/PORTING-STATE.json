@@ -5,18 +5,17 @@
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
-    "status_at_direction_update": "in_progress",
+    "status_at_direction_update": "successor_prepared",
     "source_launch_api": 22,
     "system_build_budget_seconds": 18000,
     "workflow_timeout_minutes": 350,
-    "max_system_build_jobs": 3,
     "live_status_required": true,
-    "run_id": 40405482104,
-    "job_id": 121862019582,
-    "source_commit": "4691cf465ff85d7bb86211371bd78cb120437009",
-    "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
-    "public_only": true,
-    "reserve_bytes": 8589934592
+    "compiler_cache": {
+      "key": "mates-q-carrera-public-ccache-v1",
+      "max_bytes_decimal": 3000000000,
+      "cold_run_may_timeout": true,
+      "warm_retry_requires_confirmed_cache_save": true
+    }
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -41,9 +40,9 @@
   "gates": [
     {
       "id": "G0",
-      "state": "in_progress",
+      "state": "open",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "inspect successor 40405482104 resources and build outcome"
+      "next": "measure bounded compiler-cache population; inspect cache save/hits before any warm successor"
     },
     {
       "id": "G1",
@@ -95,24 +94,28 @@
     }
   ],
   "previous_ci": {
-    "run_id": 40346676795,
-    "job_id": 121655330530,
-    "source_commit": "20cd98e368a192e45bfa20c2f1cb4afe5b15ce39",
     "status_at_direction_update": "completed",
+    "source_launch_api": 22,
+    "system_build_budget_seconds": 18000,
+    "workflow_timeout_minutes": 350,
+    "max_system_build_jobs": 3,
     "live_status_required": true,
+    "run_id": 40405482104,
+    "job_id": 121862019582,
+    "source_commit": "4691cf465ff85d7bb86211371bd78cb120437009",
     "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
     "public_only": true,
-    "source_launch_api": 22,
-    "system_build_budget_seconds": 19200,
-    "workflow_timeout_minutes": 350,
     "reserve_bytes": 8589934592,
-    "conclusion": "cancelled",
-    "first_causal_error": "GitHub job timeout 350 minutes; system budget did not leave setup and verification headroom",
-    "free_bytes_at_stop": 17515741184,
-    "ninja_completed": 78895,
+    "conclusion": "failure",
+    "stop_reason": "TIME_BUDGET_REACHED",
+    "elapsed_seconds": 18000.4,
+    "free_bytes_at_stop": 15311339520,
+    "ninja_completed": 79285,
     "ninja_total": 80491,
-    "webview_lfs_verified": true,
-    "source_repo_bytes": 17066266624,
-    "source_out_bytes": 47774572544
+    "build_resources": {
+      "cpus": 4,
+      "memory_bytes": 16765411328,
+      "jobs": 3
+    }
   }
 }

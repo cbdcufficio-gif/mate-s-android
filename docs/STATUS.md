@@ -1,3 +1,33 @@
+# Limite tempo confermato; riuso compilazione — 27 ottobre 2026
+
+Run [40405482104](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40405482104),
+commit `4691cf4`, fermato da TIME_BUDGET_REACHED a 18000,4 s; 79285/80491 target,
+15311339520 byte liberi. Risorse misurate: 4 CPU, RAM 16765411328 byte,
+3 processi. WebView/ramdisk precedenti al sistema riusciti; nessun sistema/ext4/release.
+Il solo incremento 2 -> 3 processi non ha chiuso il limite; non si rialza il budget.
+
+Nuova correzione: ccache C/C++ da massimo 3 GB, un'unica chiave immutabile
+`mates-q-carrera-public-ccache-v1`, restore/save ufficiali fissati a commit.
+Soong usa CC_WRAPPER; Make usa USE_CCACHE/CCACHE_EXEC. Opt-in soltanto su runner
+pubblico monouso. Input/compiler restano parte delle chiavi interne di ccache;
+non si riusano direttamente immagini o output Android non verificati.
+Un primo tentativo freddo potrebbe ancora esaurire il tempo, ma conserva lavoro
+per un solo successore caldo, da autorizzare operativamente solo dopo aver
+verificato salvataggio, dimensioni e statistiche. Un hit usa cache in sola lettura
+per evitare espulsioni a catena durante i miss. Nessuna garanzia sul guadagno.
+
+[Quota GitHub](https://docs.github.com/en/actions/reference/workflows-and-actions/dependency-caching):
+10 GB cache gratuiti per repository, separati dagli artefatti. Al controllo:
+0 cache/0 byte. Non modificati limite o fatturazione. Prima di salvare: dimensione
+locale <=3300000000 byte e totale remoto <=6000000000 byte; una sola chiave,
+nessun artefatto Android grande. Su build riuscita la cache locale viene eliminata
+prima dell'espansione ext4, preservando la riserva 8 GiB. Su build fallita viene
+salvata esplicitamente se entro i limiti; niente salvataggio automatico success-only.
+
+Test locali: 81 eseguiti, 80 passati, 1 skip; opt-in cache coperto.
+Sintassi workflow e checksum verificati prima del push. Main `6e1cd70`, nessun
+successore concorrente rilevato. G0 resta aperto; nessuna operazione sul telefono.
+
 # Successore con budget corretto — 26 ottobre 2026
 
 Run [40405482104](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40405482104),

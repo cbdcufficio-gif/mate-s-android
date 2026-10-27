@@ -103,6 +103,14 @@ def main():
         if report['build']['returncode'] or report['build']['stop_reason']:
             report['status']='CARRERA_PUBLIC_SYSTEM_BUILD_FAILED'
         else:
+            # Compiler cache is expendable after a successful build. Recover its
+            # space before sparse expansion, keeping the ext4 reserve unchanged.
+            cache=ROOT.parent/'ccache'
+            if os.environ.get('MATES_USE_CCACHE')=='1' and cache.is_dir():
+                if cache.is_symlink() or Path(os.environ.get('CCACHE_DIR','')).resolve()!=cache.resolve():
+                    raise ValueError('Unexpected compiler cache path')
+                shutil.rmtree(cache)
+                report['compiler_cache_removed_before_ext4']=True
             rel=Path((ROOT/'carrera-product-path.txt').read_text().strip())
             if rel.is_absolute() or '..'in rel.parts:raise ValueError('Unsafe product path')
             product=(source/rel).resolve(strict=True);product.relative_to(source/'out')

@@ -19,7 +19,10 @@ def guarded(argv, cwd, log, seconds, reserve=20*1024**3):
         process = subprocess.Popen(argv, cwd=cwd, stdout=stream, stderr=subprocess.STDOUT,
                                    start_new_session=True,
                                    env={**os.environ, 'GIT_TERMINAL_PROMPT': '0',
-                                        'USE_CCACHE': '0', 'BUILD_NUMBER': 'mates-probe'})
+                                        'USE_CCACHE': '1' if (os.environ.get('MATES_USE_CCACHE') == '1'
+                                        and os.environ.get('GITHUB_ACTIONS') == 'true'
+                                        and os.environ.get('RUNNER_ENVIRONMENT') == 'github-hosted') else '0',
+                                        'BUILD_NUMBER': 'mates-probe'})
         while process.poll() is None:
             if shutil.disk_usage(cwd).free < reserve:
                 reason = 'DISK_RESERVE_REACHED'

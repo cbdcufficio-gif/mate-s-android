@@ -23,3 +23,14 @@ class GraphGuard(unittest.TestCase):
             self.assertIsNotNone(r['returncode'])
 
 if __name__=='__main__':unittest.main()
+
+class CompilerCacheOptIn(unittest.TestCase):
+    def test_cache_requires_explicit_disposable_runner_opt_in(self):
+        for hosted, enabled, expected in [('true','1','1'), ('true','0','0'), ('false','1','0')]:
+            with tempfile.TemporaryDirectory() as directory, patch.dict(os.environ, {
+                'GITHUB_ACTIONS':hosted,'RUNNER_ENVIRONMENT':'github-hosted','MATES_USE_CCACHE':enabled
+            }), patch('android_graph_probe.subprocess.Popen') as start:
+                start.return_value.poll.return_value = 0
+                start.return_value.returncode = 0
+                guarded(['unused'],directory,Path(directory)/'log',1,0)
+                self.assertEqual(start.call_args.kwargs['env']['USE_CCACHE'], expected)

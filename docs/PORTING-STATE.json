@@ -5,7 +5,7 @@
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
-    "status_at_direction_update": "queued",
+    "status_at_direction_update": "completed",
     "source_launch_api": 22,
     "system_build_budget_seconds": 18000,
     "workflow_timeout_minutes": 350,
@@ -18,8 +18,8 @@
       "save_verified": true,
       "archive_bytes": 2558560049,
       "reported_size_gb": 2.68,
-      "compilation_hits": 8555,
-      "compilation_misses": 34258,
+      "compilation_hits": 34965,
+      "compilation_misses": 7848,
       "uncacheable": 78,
       "cleanups": 24,
       "warm_retry_requires_resolved_manifest": true,
@@ -33,14 +33,19 @@
     "public_only": true,
     "reserve_bytes": 8589934592,
     "conclusion": "failure",
-    "stop_reason": "TIME_BUDGET_REACHED",
-    "elapsed_seconds": 18000.7,
-    "free_bytes_at_stop": 15484002304,
-    "ninja_completed": 78981,
+    "stop_reason": "DISK_RESERVE_REACHED",
+    "elapsed_seconds": 7330.7,
+    "free_bytes_at_stop": 8553492480,
+    "ninja_completed": 79972,
     "ninja_total": 80491,
     "previous_cold_run_id": 40474812777,
     "workflow": "android-carrera-system.yml",
-    "warm_attempt_number": 1
+    "warm_attempt_number": 1,
+    "job_id": 122321530088,
+    "measured_bytes": {
+      "repo": 17061343232,
+      "out": 53997498368
+    }
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -67,7 +72,7 @@
       "id": "G0",
       "state": "in_progress",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "One deliberate pinned warm system attempt; inspect cache hit/miss and bounded diagnostics before any further run"
+      "next": "Measure actual storage headroom and peak verification requirements before any new full build; no blind retry"
     },
     {
       "id": "G1",
@@ -192,5 +197,10 @@
     "retention_days": 7,
     "cleanup": "next diagnostic publication or monitor cleanup",
     "contains_android_images": false
+  },
+  "storage_headroom_probe": {
+    "workflow": "android-storage-headroom.yml",
+    "status": "prepared",
+    "compilation": false
   }
 }

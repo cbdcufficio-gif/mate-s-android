@@ -1,3 +1,29 @@
+# Tentativo caldo: cache efficace, arresto disco — 27 ottobre 2026
+
+40541710584 job122321530088, sorgente0f0789d: DISK_RESERVE_REACHED dopo7330,7s,
+79972/80491target,8553492480byte liberi; successivo df8534372352.
+Nessun errore compiler trovato nei log completi, nessun ext4/system/release
+verificato. Non è timeout. Cache:34965hit/42813 (81,67%),7848miss,
+78uncacheable,2,68GB readonly. Revisioni778selezionate confermate contro lock.
+Non confrontare i tempi come benchmark controllato col cold: vecchio manifest
+non recuperato, sorgenti non provati identici.
+
+Diagnostica release carrera-build-diagnostics-40541710584 scaricata e verificata
+su byte con SHA256SUMS: log sistema9939000byte e Ninja23458909byte non troncati.
+Ninja130199righe output: più output possono condividere lo stesso comando,
+non sommare durate senza deduplicare; niente critical path provato senza grafo.
+.repo17061343232byte; out53997498368byte. Restano misurati Julia1095401472,
+Miniconda1027280896,AzureCLI611782656byte e altri payload ospiti; toolcachePython
+1620873216 preservato finché la dipendenza runtime non è chiarita.
+Non rimuovere source/Git/intermedi né ridurre riserva8GiB.
+
+Prossimo passo: probe android-storage-headroom.yml replica soltanto pulizia
+ospiti già autorizzata, misura df/findmnt/deviceid e payload opzionali SENZA
+rimuoverli, senza sync né compilazione. Valutare margine effettivo e picco
+ext4/compressione prima di autorizzare altro sistema completo. Nessun retry
+completo lanciato. Log gh run view vuoti: API actions/jobs/ID/logs ha restituito
+correttamente104309byte; non interpretare vista vuota come log assenti.
+
 Unico tentativo caldo: [40541710584](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40541710584), sorgente `0f0789d`, workflow sistema pubblico. Nessun retry automatico dopo questo tentativo.
 
 # Sync bloccato verificato; unico tentativo caldo — 27 ottobre 2026

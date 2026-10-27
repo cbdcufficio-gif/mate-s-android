@@ -1,0 +1,60 @@
+name: Mate S measured storage headroom only
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: mates-storage-headroom
+  cancel-in-progress: false
+jobs:
+  measure:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Prepare disposable runner for public Android sources
+        run: |
+          test "$GITHUB_ACTIONS" = true
+          test "$RUNNER_ENVIRONMENT" = github-hosted
+          # Explicit allowlist of unused preinstalled SDKs on this disposable runner.
+          # Keep Python/Node runtimes, Android source Git metadata and all build outputs.
+          # Q Soong uses its prebuilts/jdk, not /usr/lib/jvm.
+          test -z "${OVERRIDE_ANDROID_JAVA_HOME:-}"
+          df -B1 .
+          for path in /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/share/powershell /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/share/swift /usr/local/.ghcup /opt/az /usr/local/share/chromium /opt/hostedtoolcache/Go /opt/hostedtoolcache/Ruby /opt/hostedtoolcache/PyPy /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk /opt/hostedtoolcache/go /usr/lib/jvm /usr/local/lib/node_modules /opt/google/chrome /opt/microsoft/msedge; do
+            if [ -e "$path" ]; then
+              sudo du -sx -B1 -- "$path"
+              sudo rm -rf -- "$path"
+            fi
+          done
+          df -B1 .
+          command -v python3 git
+          # This job builds on the host; no Docker image is needed.
+          if command -v docker >/dev/null && sudo docker info >/dev/null 2>&1; then
+            sudo docker system df
+            sudo docker image prune --all --force
+            sudo docker system df
+          fi
+          df -B1 .
+      - name: Measure remaining filesystems and optional unused host payloads
+        run: |
+          set -euo pipefail
+          df -B1
+          findmnt -o TARGET,SOURCE,FSTYPE,SIZE,AVAIL
+          python3 - <<'PYCODE'
+          import json,os,shutil
+          from pathlib import Path
+          report={}
+          for name in (os.environ['GITHUB_WORKSPACE'],'/mnt','/tmp','/opt'):
+              p=Path(name)
+              if p.exists():
+                  usage=shutil.disk_usage(p)
+                  report[name]={'device':p.stat().st_dev,'total':usage.total,'free':usage.free}
+          print(json.dumps(report,indent=2))
+          PYCODE
+          for path in /usr/local/julia* /usr/share/miniconda /usr/share/az_* /usr/local/aws-cli /usr/local/aws-sam-cli /opt/microsoft/powershell /usr/share/gradle-* /usr/share/sbt /usr/share/kotlinc /opt/hostedtoolcache/Python; do
+            if [ -e "$path" ]; then sudo du -sx -B1 -- "$path"; fi
+          done

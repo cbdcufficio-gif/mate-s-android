@@ -1,3 +1,19 @@
+# Capacità misurata e recupero ospiti circoscritto — 28 ottobre 2026
+
+Probe40595739296 riuscito. Workspace,/mnt,/tmp,/opt hanno stesso device2049:
+nessun filesystem disco aggiuntivo utilizzabile. Dopo pulizia esistente:
+128109096960byte liberi su155897610240. Non usare tmpfs RAM per fingere
+capacità disco gratuita: ridurrebbe la memoria disponibile alla compilazione.
+
+Payload ospiti nuovi misurati: Julia,Miniconda,AzureCLI,AWSCLI,AWSSAM,
+PowerShell,Gradle,sbt,kotlinc: somma3858657280byte (du, recupero df da verificare).
+ToolcachePython1620873216byte preservato con Python/Node e runtime runner.
+Nuovo probe di solo recupero rimuove esclusivamente i nove strumenti ospiti
+misurati sul runner monouso, poi verifica python3/git/gzip/tar e delta df.
+Nessun sorgente,Git,intermedio,cachebuild o telefono modificato.
+Il recupero non prova che tutto il picco finale rientri: riserva8GiB e verifiche
+ext4/compressione restano obbligatorie. Nessun sistema completo rilanciato.
+
 Probe capacità: [40595739296](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40595739296), sorgente`6c0d9e0`, nessuna compilazione.
 
 # Tentativo caldo: cache efficace, arresto disco — 27 ottobre 2026

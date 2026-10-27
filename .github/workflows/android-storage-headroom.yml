@@ -58,3 +58,22 @@ jobs:
           for path in /usr/local/julia* /usr/share/miniconda /usr/share/az_* /usr/local/aws-cli /usr/local/aws-sam-cli /opt/microsoft/powershell /usr/share/gradle-* /usr/share/sbt /usr/share/kotlinc /opt/hostedtoolcache/Python; do
             if [ -e "$path" ]; then sudo du -sx -B1 -- "$path"; fi
           done
+      - name: Reclaim only newly measured unused host tools and verify runtimes
+        run: |
+          set -euo pipefail
+          test "$GITHUB_ACTIONS" = true
+          test "$RUNNER_ENVIRONMENT" = github-hosted
+          before=$(df -B1 --output=avail . | tail -n 1)
+          for path in /usr/local/julia* /usr/share/miniconda /usr/share/az_* /usr/local/aws-cli /usr/local/aws-sam-cli /opt/microsoft/powershell /usr/share/gradle-* /usr/share/sbt /usr/share/kotlinc; do
+            if [ -e "$path" ]; then
+              sudo du -sx -B1 -- "$path"
+              sudo rm -rf -- "$path"
+            fi
+          done
+          command -v python3 git gzip tar
+          /usr/bin/python3 --version
+          git --version
+          after=$(df -B1 --output=avail . | tail -n 1)
+          echo "additional_reclaimed_bytes=$((after-before))"
+          echo "free_bytes_after_reclaim=$after"
+          df -B1 .

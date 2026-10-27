@@ -72,7 +72,7 @@
       "id": "G0",
       "state": "in_progress",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "Measure actual storage headroom and peak verification requirements before any new full build; no blind retry"
+      "next": "Measure actual reclaimed bytes from only identified unused host tools and preserve runtime checks; no full retry before storage budget review"
     },
     {
       "id": "G1",
@@ -200,9 +200,18 @@
   },
   "storage_headroom_probe": {
     "workflow": "android-storage-headroom.yml",
-    "status": "queued",
+    "status": "success",
     "compilation": false,
     "run_id": 40595739296,
-    "source_commit": "6c0d9e0b85d721b67e06e70111ee3dffcb8d3d02"
+    "source_commit": "6c0d9e0b85d721b67e06e70111ee3dffcb8d3d02",
+    "free_bytes": 128109096960,
+    "total_bytes": 155897610240,
+    "workspace_mnt_same_filesystem": true,
+    "measured_unused_host_bytes": 3858657280
+  },
+  "storage_reclaim_probe": {
+    "workflow": "android-storage-headroom.yml",
+    "status": "prepared",
+    "compilation": false
   }
 }

@@ -1,3 +1,11 @@
+# Successore con cache limitata — 27 ottobre 2026
+
+Run [40474812777](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40474812777),
+job `122090305948`, commit `faf4d7c73c0b34fad83167935cf585928a0da508`.
+Release attesa solo se riesce: `carrera-public-system-40474812777`.
+Annullato il grafo generico duplicato `40474812631`: il workflow completo lo
+comprende già. Stato e monitor ora seguono questo run e l'esito della cache.
+
 # Limite tempo confermato; riuso compilazione — 27 ottobre 2026
 
 Run [40405482104](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40405482104),

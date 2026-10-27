@@ -6,7 +6,7 @@ La cronologia delle prove precedenti è in [STATUS.md](STATUS.md).
 
 | Priorità | Blocco | Prossima prova che riduce l'incertezza |
 |---|---|---|
-| G0 | 40405482104 fermato a 300 minuti con 3 processi; WebView valido | Riuso ccache limitato a 3 GB, misurare salvataggio/hit prima di successore caldo; poi ext4/digest |
+| G0 | 40474812777 in corso con cache C/C++ inizialmente fredda | Cache <=3 GB: verificare salvataggio/statistiche prima di un solo tentativo caldo; poi ext4/digest |
 | G1 | Configurazione Q e overlay vendor finale incompleti | API22 applicata, da verificare nel prossimo run; ld.config, APEX, policy/capability kernel e closure dei soli servizi essenziali |
 | G2 | Nessuna boot Q Carrera verificata | Formato v0, coda stock, DT handoff, dimensioni intere e percorso di recupero |
 | G3 | Kernel diagnostico e init Q mai avviati | Nuovo kernel identificato, policy/mount/Binder e ADB autenticato con log |

@@ -5,7 +5,7 @@
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
-    "status_at_direction_update": "successor_prepared",
+    "status_at_direction_update": "in_progress",
     "source_launch_api": 22,
     "system_build_budget_seconds": 18000,
     "workflow_timeout_minutes": 350,
@@ -15,7 +15,13 @@
       "max_bytes_decimal": 3000000000,
       "cold_run_may_timeout": true,
       "warm_retry_requires_confirmed_cache_save": true
-    }
+    },
+    "run_id": 40474812777,
+    "job_id": 122090305948,
+    "source_commit": "faf4d7c73c0b34fad83167935cf585928a0da508",
+    "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
+    "public_only": true,
+    "reserve_bytes": 8589934592
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -40,9 +46,9 @@
   "gates": [
     {
       "id": "G0",
-      "state": "open",
+      "state": "in_progress",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "measure bounded compiler-cache population; inspect cache save/hits before any warm successor"
+      "next": "inspect run 40474812777 and cache statistics/save before any warm retry"
     },
     {
       "id": "G1",

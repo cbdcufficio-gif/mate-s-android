@@ -141,10 +141,17 @@
   "operational_review": "docs/REVIEW-2026-10-27.md",
   "manifest_lock_probe": {
     "workflow": "android-manifest-lock.yml",
-    "status": "in_progress",
+    "status": "corrected_pending_dispatch",
+    "source_downloaded": false,
+    "build_started": false
+  },
+  "previous_manifest_lock_probe": {
+    "workflow": "android-manifest-lock.yml",
+    "status": "failure",
     "source_downloaded": false,
     "build_started": false,
     "run_id": 40527024053,
-    "source_commit": "49ddd880718a9a55c26d1a5e919a9c24e1dc64de"
+    "source_commit": "49ddd880718a9a55c26d1a5e919a9c24e1dc64de",
+    "error": "Relative fetch URL duplicated LineageOS namespace"
   }
 }

@@ -1,3 +1,11 @@
+# Corretto URL relativo del probe manifest — 27 ottobre 2026
+
+40527024053 è fallito prima di scaricare sorgenti: project_count794,
+URL errato github.com/LineageOS/LineageOS/android_build. Il resolver usava
+la directory del manifest invece dell'URL repository come base relativa.
+Correzione project_url con test per fetch relativo e assoluto;
+84 test eseguiti,83 passati,1 skip. Nessuna build completa avviata.
+
 Run probe manifest: [40527024053](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40527024053), sorgente `49ddd88`. Nessuna build completa avviata.
 
 # Probe manifest senza compilazione — 27 ottobre 2026

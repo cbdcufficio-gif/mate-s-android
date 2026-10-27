@@ -13,6 +13,12 @@ import xml.etree.ElementTree as ET
 from remote_preflight import BASE, COMMIT, LIMIT, inspect_manifest
 
 
+def project_url(fetch, name):
+    # repo resolves fetch relative to the manifest repository URL, not a directory.
+    base=urllib.parse.urljoin('https://github.com/LineageOS/android',fetch.rstrip('/')+'/')
+    return base.rstrip('/')+'/'+name
+
+
 def resolve_ref(url, revision):
     if re.fullmatch(r'[0-9a-fA-F]{40}', revision):
         return revision.lower()
@@ -56,8 +62,7 @@ def main():
     nodes={node.get('path',node.attrib['name']):node for node in root.findall('project')}
     def lock(project):
         remote=inventory['remotes'][project['remote']]
-        base=urllib.parse.urljoin('https://github.com/LineageOS/android/',remote['fetch'])
-        url=base.rstrip('/')+'/'+project['name']
+        url=project_url(remote['fetch'],project['name'])
         if not url.startswith('https://') or urllib.parse.urlsplit(url).hostname not in ('github.com','android.googlesource.com','gitlab.com'):
             raise ValueError('Unreviewed public remote: '+url)
         sha=resolve_ref(url,project['revision'])

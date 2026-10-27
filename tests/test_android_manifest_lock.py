@@ -2,9 +2,13 @@ import sys
 from pathlib import Path
 import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from android_manifest_lock import select_revision
+from android_manifest_lock import select_revision, project_url
 
 class ManifestLockTests(unittest.TestCase):
+    def test_repo_relative_fetch(self):
+        self.assertEqual(project_url('..','LineageOS/android_build'),'https://github.com/LineageOS/android_build')
+        self.assertEqual(project_url('https://android.googlesource.com','platform/build'),'https://android.googlesource.com/platform/build')
+
     def test_branch_and_peeled_tag(self):
         a='a'*40;b='b'*40
         self.assertEqual(select_revision(a+'\trefs/heads/q\n','q'),a)

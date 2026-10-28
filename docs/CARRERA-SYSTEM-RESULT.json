@@ -834,5 +834,18 @@
     "passed": 93,
     "skipped": 1
   },
-  "next": "Validate strict layout detection and all module digests for legacy /lib or Q /system/lib layouts. Layout evidence is filesystem-only; legacy fstab/runtime mount integration remains G1."
+  "next": "Observe successor40631219746; require actual ext4 layout and all module byte hashes. Filesystem layout is not runtime legacy mount compatibility; G1 remains open.",
+  "successor": {
+    "run_id": 40631219746,
+    "job_id": 122627797117,
+    "source_commit": "e597659999b6d084ece1a751379078d3679c850b",
+    "status_at_update": "in_progress",
+    "validation_run_id": 40631205903,
+    "tests_run": 103,
+    "tests_passed": 102,
+    "tests_skipped": 1,
+    "targeted_real_ext4_tests_passed": 9,
+    "checksum_entries": 151,
+    "pinned_builder_fixture_verified": true
+  }
 }

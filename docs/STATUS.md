@@ -1,3 +1,23 @@
+# Verificatore layout validato; unico successore - 28 ottobre 2026
+
+Sistema [40631219746](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40631219746),
+job122627797117,sorgentee597659999b6d084ece1a751379078d3679c850b.
+Validazione [40631205903](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40631205903),
+job122627746771,stesso SHA:9test layout con immagini ext4 reali passati;
+6test fase/budget/cache passati; suite103test,102passati,1skip;151checksum.
+Il runner ha eseguito SetUpInDirAndFsConfig del build_image.py Q fissato,
+hash1fccbca74e1afe75e317e1c5a99213aaa8934d497b6409f9791039275a1cef0f:
+anche system_root_image=false produce root/system nella fixture.
+È prova della funzione builder su fixture, non ispezione dell'immagine persa.
+
+Successore singolo dopo suite/contratto/diagnostica94test verificata.
+Verifica nuova: identificazione ext4 tramite directory /system e /lib,
+mapping coerente per tutti i digest, rifiuto ambiguità/symlink; vendor obbligatorio.
+Nessun cambio BoardConfig/fstab o flag di boot; layout filesystem e mount
+runtime restano distinti. G0 aperto; corrispondenza legacy mount è blocco G1.
+Conservati8GiB,18000s totali,350min,processi,manifest,API22,WebView,ELF e policy.
+Non modificare input o avviare concorrenti mentre40631219746 è attivo.
+
 # Compilazione riuscita; verifica percorso ext4 fallita - 28 ottobre 2026
 
 40621277229 job122595659983 sorgente8f3a488: dipendenze4552,7s riuscite,

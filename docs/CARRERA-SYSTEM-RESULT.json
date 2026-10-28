@@ -1,44 +1,54 @@
 {
   "schema_version": 1,
   "status": "CARRERA_PUBLIC_SYSTEM_VERIFICATION_FAILED",
-  "run_id": 40631219746,
-  "job_id": 122627797117,
-  "source_commit": "e597659999b6d084ece1a751379078d3679c850b",
-  "review_run_id": 40649516811,
-  "review_job_id": 122686050336,
-  "review_commit": "258d9785fe95841117ba5a110c6d5a0da202c972",
-  "review_release": "https://github.com/cbdcufficio-gif/mate-s-android/releases/tag/carrera-diagnostics-review-40631219746",
+  "run_id": 40650068374,
+  "job_id": 122687822451,
+  "source_commit": "fecf5dca7981201b2717179981224446af0f273e",
+  "review_run_id": 40667912235,
+  "review_job_id": 122747030337,
+  "review_commit": "98cf56b42bef8ca8d8d4bd892b02ad555a962174",
+  "review_release": "https://github.com/cbdcufficio-gif/mate-s-android/releases/tag/carrera-diagnostics-review-40650068374",
   "diagnostic_digests_verified_on_bytes": true,
   "diagnostic_assets": [
     {
+      "name": "carrera-ext4-convert.log.gz",
+      "bytes": 95,
+      "sha256": "58f343ac16b077947e80e0b5d1f7696e1be3f26a3622ad76cb0d7849d6bb9a6c"
+    },
+    {
+      "name": "carrera-ext4-space.json.gz",
+      "bytes": 283,
+      "sha256": "fb353c87a99d9b8b414013a6e5b2a8f4bb40ef95ffb353ae8bca5c3a824be60b"
+    },
+    {
       "name": "carrera-report.json.gz",
-      "bytes": 895,
-      "sha256": "a462508d173aca2d54fdda08a5586c6d21ad6f1bc80e52e540e2f7817163a63b"
+      "bytes": 896,
+      "sha256": "8ac6e15c4199d328ca58906daaebb035d8a5ff37b8ed2d9c00868b67c7974c9e"
     },
     {
       "name": "carrera-system-prepare.log.gz",
-      "bytes": 1038844,
-      "sha256": "58869dbb2dc5fcbbe4459a226c83af49bf855b860d2c8cc9544ef3a94281b119"
+      "bytes": 1038087,
+      "sha256": "16162a9601ca2ae42b960b2ffd5e53965ed95402aec356835dddb859d477532f"
     },
     {
       "name": "carrera-system-report.json.gz",
-      "bytes": 2522,
-      "sha256": "eb114ae4e4ead1c82dc10d151e759627c0adf486b78f879b65e31f2539cf8c96"
+      "bytes": 2533,
+      "sha256": "dfb249fcafcd03d76ce7e8251fc043403d0f46e040ec02bd3469576043df2a7e"
     },
     {
       "name": "carrera-system.log.gz",
       "bytes": 8260,
-      "sha256": "9419028e194747472fdfc44f8ca4f9e408fa87b8a6b7f51b22f3fbaa7ba9ea6a"
+      "sha256": "11dd6d51a2ad09531b39aeef5963ac0b7ec4cdd99835c5eb70236a663f8cc8b2"
     },
     {
       "name": "carrera.log.gz",
-      "bytes": 196883,
-      "sha256": "cb26692be6ea799ad1ca58ba67df1f02ea03a2465892b1c4c5abe84de4a0099d"
+      "bytes": 196558,
+      "sha256": "efe23f403fee9bc59be0982d9cc205f13bf1c70aa75e6dab289536922817ec3b"
     },
     {
       "name": "ccache-before-cleanup.log.gz",
       "bytes": 390,
-      "sha256": "e1a3deb21f205a29e54425dbe1420ae14afb91a21adf39e67109950153ab9879"
+      "sha256": "6bcbbcef72ebb632f5bac22b97d541bbab33e0929730db7b9cedff0890697f97"
     },
     {
       "name": "ccache-environment.log.gz",
@@ -47,8 +57,8 @@
     },
     {
       "name": "graph.log.gz",
-      "bytes": 10599,
-      "sha256": "314b4087c4f3043907f5a279656cf1497112a66b0c385f7b99f34c7744a1c8cf"
+      "bytes": 10608,
+      "sha256": "4d2c4e6f1c498f8cff4fbb1758133490d818dc34e298200fd422353aa3aea011"
     },
     {
       "name": "init.log.gz",
@@ -57,18 +67,18 @@
     },
     {
       "name": "inventory.json",
-      "bytes": 2922,
-      "sha256": "04f4589f5a36b64dcde6ce4164be3b60365a75adae81188ae8c3f7baf1367b9e"
+      "bytes": 3300,
+      "sha256": "29c903a559b0f942d4f8371de05a01832bc92ea8ef29eb893136dd84824a4e4f"
     },
     {
       "name": "ninja-.ninja_log.gz",
-      "bytes": 3143413,
-      "sha256": "4ff71528fb6af8952ffad15379f1607603493df78a484ecd626dc848a384d2a2"
+      "bytes": 3095894,
+      "sha256": "50b77be8c7c9e35a4b078505a98184acb79991bbdb5da9f4543f265c31c072b0"
     },
     {
       "name": "report.json.gz",
-      "bytes": 487,
-      "sha256": "791ee620da956df6da15edd11ee5e1e4dfe20fc6b9165e2a694df268c9cf518f"
+      "bytes": 483,
+      "sha256": "d1d3a40ae0882ba8d8c47f766c60656bdae7b14fd906d7b3581badd6077012c3"
     },
     {
       "name": "resolved-manifest.xml.gz",
@@ -77,8 +87,8 @@
     },
     {
       "name": "SHA256SUMS",
-      "bytes": 1391,
-      "sha256": "17ed3d22385f606d7475e9991f72a16a19af9c5a4ad916fd738ed1b12f4fb356"
+      "bytes": 1578,
+      "sha256": "845807ad5b8d2702ea6a0834e17f4207dc388c0b0990754876c2c24c48101787"
     },
     {
       "name": "sync.log.gz",
@@ -103,19 +113,19 @@
         "name": "report.json",
         "input_bytes": 933,
         "truncated": false,
-        "sha256": "583f0ae7e21f10145ba8f0484f1f204941cfd86dcb2737c74b6aae16d67d670a"
+        "sha256": "a920b8c95aef3a746ac28e6051e405eee005e502c1e631cca145d92e2ed38424"
       },
       {
         "name": "carrera-report.json",
-        "input_bytes": 1836,
+        "input_bytes": 1835,
         "truncated": false,
-        "sha256": "1574c4d5343d1e20d55278eceffa2f4dc37474e4afa4014a4cd7250db6cffd8d"
+        "sha256": "83d4a9ee401ed7f494851c105781748d5d08abc57ae86ccbf5844e7bd3913007"
       },
       {
         "name": "carrera-system-report.json",
-        "input_bytes": 10902,
+        "input_bytes": 10948,
         "truncated": false,
-        "sha256": "f81fadebba0ba32735582c1a4e03d24ced5a2b04a8f3c9889ff2d5dcab5aec42"
+        "sha256": "96a4820cc1c931743b0a234a26adf89e454032ae35c7a1c52db2f9426a0034c9"
       },
       {
         "name": "resolved-manifest.xml",
@@ -127,13 +137,19 @@
         "name": "ccache-before-cleanup.log",
         "input_bytes": 925,
         "truncated": false,
-        "sha256": "a18b2a89c2cbe6ea111df3e0fca9ccdd9e80f2dfc8dee736df11ec4feaff2a09"
+        "sha256": "a9d8b9ac704d501582d2763e86b6596452db64ec25ee75e555f9d4bfde83332f"
       },
       {
         "name": "ccache-environment.log",
         "input_bytes": 1772,
         "truncated": false,
         "sha256": "a59264b324755e7c4476884de812445ea3e8623cc40e0457e1f09c3ad1cd5442"
+      },
+      {
+        "name": "carrera-ext4-space.json",
+        "input_bytes": 491,
+        "truncated": false,
+        "sha256": "c09a6d797b513f7a6aa9d53fd98fa003b07d1ec74a14a9c6dc9ad5db352e984d"
       },
       {
         "name": "init.log",
@@ -151,7 +167,7 @@
         "name": "graph.log",
         "input_bytes": 50843,
         "truncated": false,
-        "sha256": "0d512c32139e673203dd9782a1b897a8535178a5c9a17850645986b42f350924"
+        "sha256": "9d7ac9f896bd473de0909913c175592f9da66f0fc614689b83b02ea2d18b5855"
       },
       {
         "name": "webview-lfs-arm.log",
@@ -169,33 +185,38 @@
         "name": "carrera.log",
         "input_bytes": 1576931,
         "truncated": false,
-        "sha256": "e259139595bf4d77d62e05df4efc93fe18ed1a2cf375579fea2016be7cbf7fe2"
+        "sha256": "f5a02a0fd2bf54f88bc7d9400fee2983cfc2c038dd1e418d8333d6b9da6b2581"
       },
       {
         "name": "carrera-system-prepare.log",
         "input_bytes": 9987362,
         "truncated": false,
-        "sha256": "bc6ab096e6c2fe214a5b9729eaa8d749084a351c982638f1986df43f90d6b78c"
+        "sha256": "a0992e8cb3a4616bd5335f13088af33c33f2e1a10ab0b4984f313404690663df"
       },
       {
         "name": "carrera-system.log",
         "input_bytes": 38962,
         "truncated": false,
-        "sha256": "8e25704dd04c6282c8df3a3928b5df6f9c37890a63c02e3203ea1db71d17d425"
+        "sha256": "2aadf61ffacfc09b4c2856631f0fecfc7f1899d9fc569d98bbc005625061afa8"
+      },
+      {
+        "name": "carrera-ext4-convert.log",
+        "input_bytes": 79,
+        "truncated": false,
+        "sha256": "4730db9ef3afe7974f9895e3a37a0e0c026f7da25abedc451d15409c5579dcd4"
       },
       {
         "name": "ninja-.ninja_log",
-        "input_bytes": 23570142,
+        "input_bytes": 23564281,
         "truncated": false,
-        "sha256": "f42e87eb4042e148527c5895bd63a7c05930c0350a1775dcf42c2302f30af0b8"
+        "sha256": "6becbaf608b5488cdf05fddd4a7280d65fb50e7e36a8ad469fd7c2577d9550ad"
       }
     ],
     "max_input_per_file": 33554432,
     "max_total_bytes": 16777216,
     "retention_days": 7
   },
-  "first_causal_category": "verification_capacity_preflight",
-  "logical_expansion_shortfall_bytes": 139124736,
+  "first_causal_category": "verification_converter_invocation",
   "system_report": {
     "status": "CARRERA_PUBLIC_SYSTEM_VERIFICATION_FAILED",
     "product": "lineage_carrera_public-userdebug",
@@ -217,7 +238,7 @@
     ],
     "build_resources": {
       "cpus": 4,
-      "memory_bytes": 16765411328,
+      "memory_bytes": 16764379136,
       "jobs": 3
     },
     "build_phases": [
@@ -225,28 +246,28 @@
         "name": "installed_dependencies",
         "returncode": 0,
         "stop_reason": null,
-        "seconds": 7703,
-        "free_bytes": 11151302656
+        "seconds": 4543.9,
+        "free_bytes": 12080525312
       },
       {
         "name": "system_image",
         "returncode": 0,
         "stop_reason": null,
-        "seconds": 90.1,
-        "free_bytes": 11135164416
+        "seconds": 81.1,
+        "free_bytes": 12064382976
       }
     ],
     "compiler_cache_removed_before_system_image": true,
     "compiler_cache_reclaim": {
-      "free_bytes_before": 11151298560,
-      "free_bytes_after": 13842329600,
+      "free_bytes_before": 12080521216,
+      "free_bytes_after": 14771552256,
       "observed_free_delta_bytes": 2691031040
     },
     "build": {
       "returncode": 0,
       "stop_reason": null,
-      "seconds": 7799,
-      "free_bytes": 11135164416
+      "seconds": 4643.4,
+      "free_bytes": 12064382976
     },
     "legacy_vendor_link": {
       "path": "root/vendor",
@@ -254,7 +275,7 @@
     },
     "image": {
       "bytes": 1370173900,
-      "sha256": "1eea7f767617b881e585f2c5d1d3ab2f8ef27c8178cfeed5e9427f3af002b780",
+      "sha256": "43b27ac104dea9ed53eb0eff2ff2997cd6d3f91ce960b8eec751278a433453bb",
       "format": "android_sparse",
       "expanded_bytes": 2684354560,
       "chunks": 36,
@@ -578,8 +599,31 @@
         "callstack_mali_exports": []
       }
     ],
-    "error": "Insufficient free space to inspect system ext4 while retaining 8 GiB"
+    "error": "Sparse ext4 conversion failed: {'returncode': 255, 'stop_reason': None, 'seconds': 3.0, 'free_bytes': 12064366592}"
   },
+  "ext4_space": {
+    "logical_bytes": 2684354560,
+    "raw_and_fill_bytes": 1370173440,
+    "dont_care_bytes": 1314181120,
+    "chunk_types": {
+      "raw": 18,
+      "fill": 0,
+      "dont_care": 18,
+      "crc32": 0
+    },
+    "allocation_slack_bytes": 67411968,
+    "allocation_budget_bytes": 1437585408,
+    "reserve_bytes": 8589934592,
+    "host_fragment_bytes": 4096,
+    "free_bytes_before": 12064378880,
+    "conversion": {
+      "returncode": 255,
+      "stop_reason": null,
+      "seconds": 3,
+      "free_bytes": 12064366592
+    }
+  },
+  "ext4_convert_log": "Cannot open output file out/android-graph/carrera-ext4-7fkkv68c/system.raw.img\n",
   "source_lock": {
     "sha256": "b30f6d479b321cab00305b1c9a31450d0a8940138996e7e25cf27f7a0146f845",
     "locked_projects": 794
@@ -607,7 +651,7 @@
           "returncode": 0,
           "stop_reason": null,
           "seconds": 3,
-          "free_bytes": 64752836608
+          "free_bytes": 65681920000
         }
       },
       {
@@ -619,16 +663,16 @@
         "download": {
           "returncode": 0,
           "stop_reason": null,
-          "seconds": 12,
-          "free_bytes": 64231153664
+          "seconds": 6,
+          "free_bytes": 65160245248
         }
       }
     ],
     "build": {
       "returncode": 0,
       "stop_reason": null,
-      "seconds": 489.5,
-      "free_bytes": 62743953408
+      "seconds": 291.3,
+      "free_bytes": 63673036800
     },
     "ramdisk_staging_path": "out/target/product/carrera/ramdisk",
     "rootdir": [
@@ -661,10 +705,10 @@
     "duration_sum_is_not_critical_path": true,
     "longest_commands": [
       {
-        "start_ms": 5152319,
-        "end_ms": 5389620,
+        "start_ms": 2897723,
+        "end_ms": 3057016,
         "command_hash": "22ada9f6b914768c",
-        "duration_ms": 237301,
+        "duration_ms": 159293,
         "output_count": 8,
         "sample_outputs": [
           "out/soong/.intermediates/frameworks/base/api-stubs-docs/android_common/api-stubs-docs-stubs.srcjar",
@@ -673,22 +717,10 @@
         ]
       },
       {
-        "start_ms": 5193094,
-        "end_ms": 5420601,
-        "command_hash": "50ff6cdd7b0cc6c",
-        "duration_ms": 227507,
-        "output_count": 9,
-        "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/system-api-stubs-docs/android_common/api-versions.xml",
-          "out/soong/.intermediates/frameworks/base/system-api-stubs-docs/android_common/system-api-stubs-docs-stubs.srcjar",
-          "out/soong/.intermediates/frameworks/base/system-api-stubs-docs/android_common/system-api-stubs-docs_annotations.zip"
-        ]
-      },
-      {
-        "start_ms": 5158926,
-        "end_ms": 5385973,
+        "start_ms": 2901852,
+        "end_ms": 3055658,
         "command_hash": "7add0e039dc688b6",
-        "duration_ms": 227047,
+        "duration_ms": 153806,
         "output_count": 6,
         "sample_outputs": [
           "out/soong/.intermediates/frameworks/base/hiddenapi-lists-docs/android_common/api-versions.xml",
@@ -697,10 +729,22 @@
         ]
       },
       {
-        "start_ms": 5385978,
-        "end_ms": 5580678,
+        "start_ms": 2922951,
+        "end_ms": 3076207,
+        "command_hash": "50ff6cdd7b0cc6c",
+        "duration_ms": 153256,
+        "output_count": 9,
+        "sample_outputs": [
+          "out/soong/.intermediates/frameworks/base/system-api-stubs-docs/android_common/api-versions.xml",
+          "out/soong/.intermediates/frameworks/base/system-api-stubs-docs/android_common/system-api-stubs-docs-stubs.srcjar",
+          "out/soong/.intermediates/frameworks/base/system-api-stubs-docs/android_common/system-api-stubs-docs_annotations.zip"
+        ]
+      },
+      {
+        "start_ms": 3055678,
+        "end_ms": 3176888,
         "command_hash": "1b0f0945ca3c2464",
-        "duration_ms": 194700,
+        "duration_ms": 121210,
         "output_count": 5,
         "sample_outputs": [
           "out/soong/.intermediates/frameworks/base/test-api-stubs-docs/android_common/api-versions.xml",
@@ -709,50 +753,20 @@
         ]
       },
       {
-        "start_ms": 3460024,
-        "end_ms": 3593992,
-        "command_hash": "ea621301fda3af54",
-        "duration_ms": 133968,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/soong/.intermediates/art/runtime/libart/android_arm_armv8-a_cortex-a53_core_shared_com.android.runtime.release/unstripped/libart.so"
-        ]
-      },
-      {
-        "start_ms": 3452158,
-        "end_ms": 3583624,
-        "command_hash": "4a812a4ec05e8d8e",
-        "duration_ms": 131466,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/soong/.intermediates/art/runtime/libart/android_arm64_armv8-a_cortex-a53_core_shared_com.android.runtime.release/unstripped/libart.so"
-        ]
-      },
-      {
-        "start_ms": 197627,
-        "end_ms": 324569,
-        "command_hash": "6db35b9dda0d42d0",
-        "duration_ms": 126942,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/target/product/carrera/obj/BOOTANIMATION/bootanimation.zip"
-        ]
-      },
-      {
-        "start_ms": 6845975,
-        "end_ms": 6970371,
+        "start_ms": 3975668,
+        "end_ms": 4067270,
         "command_hash": "ca98d3050729d279",
-        "duration_ms": 124396,
+        "duration_ms": 91602,
         "output_count": 1,
         "sample_outputs": [
           "out/target/common/obj/APPS/Settings_intermediates/dex/classes.dex"
         ]
       },
       {
-        "start_ms": 6270957,
-        "end_ms": 6394063,
+        "start_ms": 3608868,
+        "end_ms": 3691625,
         "command_hash": "84ad5104955972e7",
-        "duration_ms": 123106,
+        "duration_ms": 82757,
         "output_count": 3,
         "sample_outputs": [
           "out/target/common/obj/APPS/messaging_intermediates/dex/classes.dex",
@@ -761,64 +775,94 @@
         ]
       },
       {
-        "start_ms": 3978602,
-        "end_ms": 4091834,
-        "command_hash": "544b8a7dda140bc5",
-        "duration_ms": 113232,
+        "start_ms": 1860106,
+        "end_ms": 1939749,
+        "command_hash": "ea621301fda3af54",
+        "duration_ms": 79643,
         "output_count": 1,
         "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_arm64_armv8-a_cortex-a53_core_shared/unstripped/libhwui.so"
+          "out/soong/.intermediates/art/runtime/libart/android_arm_armv8-a_cortex-a53_core_shared_com.android.runtime.release/unstripped/libart.so"
         ]
       },
       {
-        "start_ms": 3980241,
-        "end_ms": 4093201,
+        "start_ms": 1855950,
+        "end_ms": 1933737,
+        "command_hash": "4a812a4ec05e8d8e",
+        "duration_ms": 77787,
+        "output_count": 1,
+        "sample_outputs": [
+          "out/soong/.intermediates/art/runtime/libart/android_arm64_armv8-a_cortex-a53_core_shared_com.android.runtime.release/unstripped/libart.so"
+        ]
+      },
+      {
+        "start_ms": 107460,
+        "end_ms": 181701,
+        "command_hash": "6db35b9dda0d42d0",
+        "duration_ms": 74241,
+        "output_count": 1,
+        "sample_outputs": [
+          "out/target/product/carrera/obj/BOOTANIMATION/bootanimation.zip"
+        ]
+      },
+      {
+        "start_ms": 2180717,
+        "end_ms": 2251312,
         "command_hash": "3c43970562072f44",
-        "duration_ms": 112960,
+        "duration_ms": 70595,
         "output_count": 1,
         "sample_outputs": [
           "out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_arm_armv8-a_cortex-a53_core_shared/unstripped/libhwui.so"
         ]
       },
       {
-        "start_ms": 6733291,
-        "end_ms": 6845075,
+        "start_ms": 2180619,
+        "end_ms": 2251101,
+        "command_hash": "544b8a7dda140bc5",
+        "duration_ms": 70482,
+        "output_count": 1,
+        "sample_outputs": [
+          "out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_arm64_armv8-a_cortex-a53_core_shared/unstripped/libhwui.so"
+        ]
+      },
+      {
+        "start_ms": 3904770,
+        "end_ms": 3974981,
         "command_hash": "89de2823c4ea3f65",
-        "duration_ms": 111784,
+        "duration_ms": 70211,
         "output_count": 1,
         "sample_outputs": [
           "out/target/common/obj/APPS/Settings_intermediates/classes-full-debug.jar"
         ]
       },
       {
-        "start_ms": 6639560,
-        "end_ms": 6744753,
+        "start_ms": 3824695,
+        "end_ms": 3894830,
         "command_hash": "bcdc8743c33a7280",
-        "duration_ms": 105193,
+        "duration_ms": 70135,
         "output_count": 1,
         "sample_outputs": [
           "out/soong/.intermediates/frameworks/base/services/services/android_common/dex/services.jar"
         ]
       },
       {
-        "start_ms": 5088455,
-        "end_ms": 5193046,
-        "command_hash": "f73092b89ceda271",
-        "duration_ms": 104591,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/framework/android_common/dex/framework.jar"
-        ]
-      },
-      {
-        "start_ms": 7202571,
-        "end_ms": 7304974,
+        "start_ms": 4209535,
+        "end_ms": 4279618,
         "command_hash": "2a39929afdc672c2",
-        "duration_ms": 102403,
+        "duration_ms": 70083,
         "output_count": 2,
         "sample_outputs": [
           "out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI/android_common/dex/SystemUI.jar",
           "out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI/android_common/proguard_dictionary"
+        ]
+      },
+      {
+        "start_ms": 2855072,
+        "end_ms": 2922867,
+        "command_hash": "f73092b89ceda271",
+        "duration_ms": 67795,
+        "output_count": 1,
+        "sample_outputs": [
+          "out/soong/.intermediates/frameworks/base/framework/android_common/dex/framework.jar"
         ]
       }
     ]
@@ -828,28 +872,11 @@
   "hardware_tested": false,
   "system_image_rootdir_contents_verified": false,
   "launch_api_source": 22,
-  "image_digest_evidence": "computed by build runner; system image not published or independently rehashed",
+  "image_digest_evidence": "computed on build runner; image not published or independently rehashed",
   "review_tests": {
-    "run": 103,
-    "passed": 102,
-    "skipped": 1
+    "run": 110,
+    "passed": 107,
+    "skipped": 3
   },
-  "next": "Observe40650068374 without changing inputs; actual chunk budget, st_blocks, df, layout and all module hashes remain to verify.",
-  "successor": {
-    "run_id": 40650068374,
-    "job_id": 122687822451,
-    "source_commit": "fecf5dca7981201b2717179981224446af0f273e",
-    "status_at_update": "in_progress",
-    "validation_run_id": 40650004176,
-    "tests_run": 110,
-    "tests_passed": 109,
-    "tests_skipped": 1,
-    "checksum_entries": 152,
-    "reference_sparse_measurement": {
-      "logical_bytes": 134230016,
-      "allocated_bytes": 12288,
-      "budget_bytes": 67153920
-    },
-    "reference_measurement_scope": "fixture only; Carrera conversion has not run yet"
-  }
+  "next": "Correct output path resolution and validate a real sparse ext4 with production relative ROOT and different child cwd against old and fixed verifier before one source successor."
 }

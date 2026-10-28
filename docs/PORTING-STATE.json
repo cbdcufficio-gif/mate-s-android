@@ -9,7 +9,7 @@
     "job_id": 122687822451,
     "workflow": "android-carrera-system.yml",
     "source_commit": "fecf5dca7981201b2717179981224446af0f273e",
-    "status_at_direction_update": "in_progress",
+    "status_at_direction_update": "completed",
     "live_status_required": true,
     "reported_owner": "Codex cloud monitor; inspect current main, successors and concurrent writers",
     "public_only": true,
@@ -29,7 +29,70 @@
     "predecessor_run_id": 40631219746,
     "validation_run_id": 40650004176,
     "repair": "Validated sparse RAW/FILL physical budget plus slack; unchanged simg2img under8GiB guard with measured allocation",
-    "sparse_budget_attempt": 1
+    "sparse_budget_attempt": 1,
+    "conclusion": "failure",
+    "failure_category": "verification_converter_invocation",
+    "error": "Sparse ext4 conversion failed: {'returncode': 255, 'stop_reason': None, 'seconds': 3.0, 'free_bytes': 12064366592}",
+    "build": {
+      "returncode": 0,
+      "stop_reason": null,
+      "seconds": 4643.4,
+      "free_bytes": 12064382976
+    },
+    "build_phases": [
+      {
+        "name": "installed_dependencies",
+        "returncode": 0,
+        "stop_reason": null,
+        "seconds": 4543.9,
+        "free_bytes": 12080525312
+      },
+      {
+        "name": "system_image",
+        "returncode": 0,
+        "stop_reason": null,
+        "seconds": 81.1,
+        "free_bytes": 12064382976
+      }
+    ],
+    "compiler_cache_reclaim": {
+      "free_bytes_before": 12080521216,
+      "free_bytes_after": 14771552256,
+      "observed_free_delta_bytes": 2691031040
+    },
+    "image": {
+      "bytes": 1370173900,
+      "sha256": "43b27ac104dea9ed53eb0eff2ff2997cd6d3f91ce960b8eec751278a433453bb",
+      "format": "android_sparse",
+      "expanded_bytes": 2684354560,
+      "chunks": 36,
+      "sparse_major": 1,
+      "sparse_minor": 0,
+      "fits_carrera_system_partition": true
+    },
+    "ext4_space": {
+      "logical_bytes": 2684354560,
+      "raw_and_fill_bytes": 1370173440,
+      "dont_care_bytes": 1314181120,
+      "chunk_types": {
+        "raw": 18,
+        "fill": 0,
+        "dont_care": 18,
+        "crc32": 0
+      },
+      "allocation_slack_bytes": 67411968,
+      "allocation_budget_bytes": 1437585408,
+      "reserve_bytes": 8589934592,
+      "host_fragment_bytes": 4096,
+      "free_bytes_before": 12064378880,
+      "conversion": {
+        "returncode": 255,
+        "stop_reason": null,
+        "seconds": 3,
+        "free_bytes": 12064366592
+      }
+    },
+    "ext4_convert_log": "Cannot open output file out/android-graph/carrera-ext4-7fkkv68c/system.raw.img\n"
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -54,9 +117,9 @@
   "gates": [
     {
       "id": "G0",
-      "state": "in_progress",
+      "state": "open",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "Observe40650068374; inspect actual sparse allocation report, ext4 layout and14module hashes before any G0 success claim"
+      "next": "Validate production cwd regression against old and fixed verifier, full suite and checksums, then at most one source successor"
     },
     {
       "id": "G1",
@@ -235,16 +298,18 @@
     "runtimes_verified": true
   },
   "diagnostic_review": {
-    "run_id": 40649516811,
-    "job_id": 122686050336,
-    "source_commit": "258d9785fe95841117ba5a110c6d5a0da202c972",
+    "run_id": 40667912235,
+    "job_id": 122747030337,
+    "source_commit": "98cf56b42bef8ca8d8d4bd892b02ad555a962174",
     "status": "success",
     "bytes_verified": true,
     "truncated_files": 0,
-    "total_asset_bytes": 4444436,
-    "tests_run": 103,
-    "tests_passed": 102,
-    "tests_skipped": 1
+    "asset_count": 19,
+    "total_asset_bytes": 4396795,
+    "tests_run": 110,
+    "tests_passed": 107,
+    "tests_skipped": 3,
+    "skip_note": "review runner lacks optional sparse reference tools; full repair validation installs them"
   },
   "phase_split_correction": {
     "status": "build_succeeded_verifier_failed",
@@ -390,7 +455,7 @@
     "job_id": 122535270691
   },
   "sparse_allocation_correction": {
-    "status": "runner_validated_successor_in_progress",
+    "status": "budget_passed_converter_path_failed",
     "reserve_bytes": 8589934592,
     "method": "Validate every sparse chunk; budget all RAW/FILL writes and 64MiB plus allocation rounding; DONT_CARE uses pinned simg2img lseek holes",
     "converter_unchanged": true,
@@ -424,6 +489,34 @@
       "checksum_entries_verified": 152,
       "pinned_converter_contract_verified": true
     },
-    "successor_run_id": 40650068374
+    "successor_run_id": 40650068374,
+    "target_chunk_budget": {
+      "logical_bytes": 2684354560,
+      "raw_and_fill_bytes": 1370173440,
+      "dont_care_bytes": 1314181120,
+      "chunk_types": {
+        "raw": 18,
+        "fill": 0,
+        "dont_care": 18,
+        "crc32": 0
+      },
+      "allocation_slack_bytes": 67411968,
+      "allocation_budget_bytes": 1437585408,
+      "reserve_bytes": 8589934592,
+      "host_fragment_bytes": 4096,
+      "free_bytes_before": 12064378880,
+      "conversion": {
+        "returncode": 255,
+        "stop_reason": null,
+        "seconds": 3,
+        "free_bytes": 12064366592
+      }
+    }
+  },
+  "converter_path_correction": {
+    "status": "pending_runner_validation",
+    "cause": "ROOT is relative to caller, but guarded conversion changes cwd to absolute Android source; relative output path cannot be opened",
+    "fix": "Resolve source/image and temporary conversion directory before child invocation; preserve converter and all space guards",
+    "regression": "Real sparse ext4 using production relative ROOT and distinct absolute child cwd; must reproduce failure in previous verifier and pass fixed verifier"
   }
 }

@@ -6,7 +6,7 @@ La cronologia delle prove precedenti è in [STATUS.md](STATUS.md).
 
 | Priorità | Blocco | Prossima prova che riduce l'incertezza |
 |---|---|---|
-| G0 | 40631219746 compila immagine; preflight espansione logica manca139124736byte; conversione/layout non raggiunti | Budget sparse validato su reference/ext4 reali:110test109pass1skip; unico40650068374 attivo; verificare misure reali,layout e digest con8GiB invariati |
+| G0 | 40650068374 compila immagine e supera budget; converter non apre output relativo da cwdsource | Risolvere i percorsi e provare vecchio/fisso con ROOT relativo e vera ext4; poi un solo successore, guardie invariate |
 | G1 | Configurazione Q, corrispondenza layout immagine/mount legacy e overlay vendor finale incompleti | API22 applicata, da verificare nel prossimo run; ld.config, APEX, policy/capability kernel e closure dei soli servizi essenziali |
 | G2 | Nessuna boot Q Carrera verificata | Formato v0, coda stock, DT handoff, dimensioni intere e percorso di recupero |
 | G3 | Kernel diagnostico e init Q mai avviati | Nuovo kernel identificato, policy/mount/Binder e ADB autenticato con log |

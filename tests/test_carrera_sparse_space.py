@@ -105,4 +105,46 @@ class SparseAllocationBudget(unittest.TestCase):
         self.assertLessEqual(report['expansion_space']['actual_allocated_bytes'],
                              report['expansion_space']['allocation_budget_bytes'])
 
+    @unittest.skipUnless(all(shutil.which(t) for t in ('mke2fs','debugfs','img2simg','simg2img')),'requires ext4 and sparse tools')
+    def test_relative_report_root_with_different_android_child_cwd(self):
+        # Production topology: ROOT is relative, while conversion cwd is source/.
+        previous=Path.cwd()
+        with tempfile.TemporaryDirectory() as workspace:
+            try:
+                os.chdir(workspace)
+                root=Path('out/android-graph')
+                android=root/'source'
+                tree=root/'fixture'
+                modules=[]
+                for name in ('system/lib/libpublic.so','system/vendor/lib64/libpublic.so'):
+                    path=tree/name
+                    path.parent.mkdir(parents=True,exist_ok=True)
+                    path.write_bytes(name.encode())
+                    modules.append({'path':name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
+                original=root/'original.img'
+                with original.open('wb') as stream:stream.truncate(128*1024**2)
+                subprocess.run(['mke2fs','-q','-F','-t','ext4','-d',str(tree),str(original)],
+                               check=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+                image=android/'out/target/product/carrera/system.img'
+                image.parent.mkdir(parents=True)
+                subprocess.run(['img2simg',str(original),str(image)],check=True)
+                binary=android/'out/host/linux-x86/bin/simg2img'
+                binary.parent.mkdir(parents=True)
+                os.symlink(shutil.which('simg2img'),binary)
+                with patch.object(probe,'ROOT',root):
+                    report=probe.verify_modules_in_system_image(android.resolve(),image.resolve(),modules)
+                self.assertEqual(report['modules_verified'],2)
+                self.assertEqual(report['layout_evidence']['layout'],'q-root-with-system')
+                space=report['expansion_space']
+                self.assertEqual(space['conversion']['returncode'],0)
+                self.assertEqual(space['converter_cwd'],str(android.resolve()))
+                self.assertEqual(space['converter_input'],str(image.resolve()))
+                self.assertTrue(Path(space['converter_output']).is_absolute())
+                self.assertTrue((root/'carrera-ext4-space.json').is_file())
+                self.assertGreaterEqual(space['free_bytes_after'],8*1024**3)
+                print('RELATIVE_ROOT_DIFFERENT_CWD_REAL_EXT4_VERIFIED',report['modules_verified'])
+            finally:
+                os.chdir(previous)
+
+
 if __name__=='__main__':unittest.main()

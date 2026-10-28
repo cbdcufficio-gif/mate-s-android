@@ -1,3 +1,31 @@
+# Converter: errore percorso relativo identificato - 28 ottobre 2026
+
+40650068374 job122687822451,sorgentefecf5dc: dipendenze4543,9s e immagine81,1s
+riuscite,totale4643,4s. Nessun guard tempo/disco. Budget fisico reale dai chunk:
+1370173440byte RAW/FILL,1314181120DONT_CARE,18RAW+18DONT_CARE;
+1437585408byte con margine. Precheck superato con12064378880byte liberi.
+
+Prima causa: simg2img ritorna255 in3s,stderr verificato:
+"Cannot open output file out/android-graph/carrera-ext4-7fkkv68c/system.raw.img".
+ROOT è relativo alla directory del repository, ma guarded avvia il processo
+dentro source/; il percorso output relativo viene quindi risolto nel posto
+sbagliato. È una regressione introdotta nell'invocazione guarded; i test
+precedenti usavano ROOT assoluto e non la topologia effettiva della CI.
+Non è disco,compiler o un modulo mancante dimostrato; nessuna conversione
+raw completata né rilevazione del layout reale. G0 resta aperto.
+
+Review40667912235 job122747030337,sorgente98cf56b:19asset4396795byte
+verificati sui byte;nessun troncamento.110test107pass3skip (tool sparse
+opzionali assenti nella review; la validazione mirata li installa).
+Prove:release carrera-diagnostics-review-40650068374 e risultato strutturato.
+
+Correzione minima: risolvere source,input e directory temporanea prima
+dell'avvio del figlio; registrare cwd/input/output nella diagnostica spazio.
+Budget,converter Android,8GiB,180s e tutti i controlli restano invariati.
+Nuova regressione con vera ext4 sparse,ROOT relativo e cwdsource diverso:
+deve fallire sul verificatore precedente e passare su quello corretto,
+oltre a suite completa,contratti pinned e checksum. Solo allora un successore.
+
 # Budget sparse misurato; unico successore - 28 ottobre 2026
 
 Sistema [40650068374](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40650068374),

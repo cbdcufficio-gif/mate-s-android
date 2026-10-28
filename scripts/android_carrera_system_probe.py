@@ -136,11 +136,14 @@ def inspect_system_image_layout(debugfs, raw):
 
 
 def verify_modules_in_system_image(source,image,modules):
+    # Child conversion runs inside the Android source tree, not the caller cwd.
+    source=Path(source).resolve(strict=True)
+    image=Path(image).resolve(strict=True)
     debugfs=shutil.which('debugfs')
     if not debugfs:
         raise ValueError('debugfs is required to inspect the Carrera system ext4 image')
     metadata=image_metadata(image)
-    with tempfile.TemporaryDirectory(prefix='carrera-ext4-',dir=ROOT) as temp:
+    with tempfile.TemporaryDirectory(prefix='carrera-ext4-',dir=ROOT.resolve()) as temp:
         raw=image
         space=None
         if metadata['format']=='android_sparse':
@@ -154,6 +157,10 @@ def verify_modules_in_system_image(source,image,modules):
             if not simg2img.is_file():
                 raise ValueError('Android simg2img host tool is missing')
             raw=Path(temp)/'system.raw.img'
+            space['converter_cwd']=str(source)
+            space['converter_input']=str(image)
+            space['converter_output']=str(raw)
+            space_path.write_text(json.dumps(space,indent=2)+'\n')
             conversion=guarded([str(simg2img),str(image),str(raw)],source,
                                ROOT/'carrera-ext4-convert.log',seconds=180,reserve=8*1024**3)
             space['conversion']=conversion

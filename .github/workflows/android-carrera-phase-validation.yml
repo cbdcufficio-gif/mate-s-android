@@ -1,4 +1,4 @@
-name: Carrera sparse allocation validation
+name: Carrera converter path validation
 on:
   workflow_dispatch:
   push:
@@ -103,6 +103,32 @@ jobs:
                   assert 'return out->ops->skip(out, len);' in text
           print('PINNED_ANDROID_SIMG2IMG_HOLE_CONTRACT_VERIFIED')
           PY
+      - name: Prove the production-topology regression catches the previous bug
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, importlib.util, json, pathlib, subprocess, sys, unittest
+          sys.path.insert(0,str(pathlib.Path('scripts').resolve()))
+          obj=json.loads(subprocess.check_output(['gh','api',
+              'repos/cbdcufficio-gif/mate-s-android/contents/scripts/android_carrera_system_probe.py?ref=fecf5dca7981201b2717179981224446af0f273e'],text=True))
+          data=base64.b64decode(obj['content'])
+          assert hashlib.sha256(data).hexdigest()=='3f6e4f38db23da4ba1f7695aa0bb496ee80318abd0648a366489f26a94020dcd'
+          old=type(sys)('previous_verifier')
+          exec(compile(data.decode(),'<previous public verifier>','exec'),old.__dict__)
+          spec=importlib.util.spec_from_file_location('regression_tests','tests/test_carrera_sparse_space.py')
+          tests=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(tests)
+          tests.probe=old
+          case=tests.SparseAllocationBudget('test_relative_report_root_with_different_android_child_cwd')
+          result=unittest.TestResult()
+          case.run(result)
+          assert result.testsRun==1 and not result.skipped
+          assert len(result.errors)==1 and not result.failures
+          assert 'Sparse ext4 conversion failed' in result.errors[0][1]
+          print('OLD_VERIFIER_RELATIVE_ROOT_FAILURE_REPRODUCED')
+          print('The same real ext4 regression passed against the fixed verifier in the preceding suite')
+          PY
       - name: Dispatch at most one deliberate system successor after validation
         env:
           GH_TOKEN: ${{ github.token }}
@@ -124,14 +150,14 @@ jobs:
           if any(r['head_sha']==sha for r in runs):
               print('NO_DISPATCH: this source already has a system attempt')
               raise SystemExit(0)
-          review=api('actions/runs/40649516811')
+          review=api('actions/runs/40667912235')
           assert review['status']=='completed' and review['conclusion']=='success'
-          assert review['head_sha']=='258d9785fe95841117ba5a110c6d5a0da202c972'
-          old=api('actions/runs/40631219746')
+          assert review['head_sha']=='98cf56b42bef8ca8d8d4bd892b02ad555a962174'
+          old=api('actions/runs/40650068374')
           assert old['status']=='completed' and old['conclusion']=='failure'
-          assert old['head_sha']=='e597659999b6d084ece1a751379078d3679c850b'
+          assert old['head_sha']=='fecf5dca7981201b2717179981224446af0f273e'
           subprocess.run(['gh','api','--method','POST',
                           'repos/'+repo+'/actions/workflows/android-carrera-system.yml/dispatches',
                           '-f','ref=main'],check=True)
-          print('SINGLE_SPARSE_BUDGET_SUCCESSOR_DISPATCHED source='+sha)
+          print('SINGLE_CONVERTER_PATH_SUCCESSOR_DISPATCHED source='+sha)
           PY

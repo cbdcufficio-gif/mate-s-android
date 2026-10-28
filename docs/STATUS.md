@@ -1,3 +1,25 @@
+# Regressione cwd riprodotta e corretta; unico successore - 28 ottobre 2026
+
+Sistema [40668596565](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40668596565),
+job122749372885,sorgentefcd5fb737f69c2bd169e3bb0fd8b9642d166fa37.
+Validazione [40668447530](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40668447530),
+job122748854031,stessoSHA:8test sparse/cwd,9layout,6fasi passati;
+suite111test110pass1skip;152checksum e contratti upstream verificati.
+
+La nuova regressione usa ROOT relativo e source/input assoluti con cwdfiglio
+diverso,come in produzione: vera ext4 sparse e digest dei due moduli fixture
+verificati. Il runner ha poi caricato il verificatore precedente fecf5dc
+con hash3f6e4f38db23da4ba1f7695aa0bb496ee80318abd0648a366489f26a94020dcd,
+eseguito la STESSA prova e riprodotto il fallimento atteso del converter.
+Non è soltanto un mock del comando o un test che passa sul nuovo codice.
+
+Solo dopo tutte le verifiche è stato dispatchato un sistema,senza concorrenti.
+Normalizzati percorsi source/input/tempdir;registrati cwd/input/output.
+Converter,8GiB,budget18000s/180s,timeout350min,processi,cache,lock e guardie
+invariati. Il run reale deve ancora convertire e verificare14digest:
+G0 aperto,nessuna immagine/ROM/boot hardware attestata.
+Durante40668596565 nessun cambio input o build concorrente.
+
 # Converter: errore percorso relativo identificato - 28 ottobre 2026
 
 40650068374 job122687822451,sorgentefecf5dc: dipendenze4543,9s e immagine81,1s

@@ -5,6 +5,109 @@
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
+    "run_id": 40668596565,
+    "job_id": 122749372885,
+    "workflow": "android-carrera-system.yml",
+    "source_commit": "fcd5fb737f69c2bd169e3bb0fd8b9642d166fa37",
+    "status_at_direction_update": "in_progress",
+    "live_status_required": true,
+    "reported_owner": "Codex cloud monitor; inspect main, successors and writers before intervention",
+    "public_only": true,
+    "source_launch_api": 22,
+    "system_build_budget_seconds": 18000,
+    "workflow_timeout_minutes": 350,
+    "reserve_bytes": 8589934592,
+    "minimum_free_after_setup_and_cache": 128000000000,
+    "compiler_cache": {
+      "key": "mates-q-carrera-public-ccache-v1",
+      "max_bytes_decimal": 3000000000,
+      "exact_restore_required": true,
+      "readonly_warm_cache": true,
+      "remote_archive_bytes": 2558560049,
+      "statistics_zeroed_per_attempt": true
+    },
+    "predecessor_run_id": 40650068374,
+    "validation_run_id": 40668447530,
+    "repair": "Absolute converter input/output/tempdir across caller and Android child working directories; space guards unchanged",
+    "converter_path_attempt": 1
+  },
+  "launch_api_correction": {
+    "actual_launch_api": 22,
+    "acquired_stock_api": 23,
+    "deferred_patch": "docs/deferred/carrera-launch-api22.patch",
+    "applied_to_current_product": true,
+    "apply_before": "applied after archiving failed API23 run 40231781220; next build will use API22",
+    "local_validation": {
+      "tracked_tests_run": 76,
+      "passed": 75,
+      "skipped": 1,
+      "full_android_build": false
+    }
+  },
+  "evidence_limits": {
+    "system_module_bytes": "verified by CI ext4 check only after successful run",
+    "vendor_symlink": "current verifier checks product/root staging, not system ext4 nor runtime",
+    "rootdir_runtime": "not verified",
+    "kernel_diagnostic": "compiled, not booted",
+    "stock_twrp": "separate kernel; its successful operation does not prove Q"
+  },
+  "gates": [
+    {
+      "id": "G0",
+      "state": "in_progress",
+      "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
+      "next": "Observe40668596565 without input changes; require actual conversion, allocation, ext4 layout and14module digests plus release verification"
+    },
+    {
+      "id": "G1",
+      "state": "open",
+      "depends_on": [
+        "G0"
+      ],
+      "deliverable": "coherent launch API, resolved linker/APEX/policy/kernel capabilities and minimal private overlay plan"
+    },
+    {
+      "id": "G2",
+      "state": "open",
+      "depends_on": [
+        "G1"
+      ],
+      "deliverable": "Carrera boot packaging, DT handoff, image budgets and recoverable test plan"
+    },
+    {
+      "id": "G3",
+      "state": "unverified",
+      "depends_on": [
+        "G2"
+      ],
+      "deliverable": "new kernel, Q init/policy/mount/Binder and authenticated ADB hardware evidence"
+    },
+    {
+      "id": "G4",
+      "state": "unverified",
+      "depends_on": [
+        "G3"
+      ],
+      "deliverable": "graphics buffers/fences/UI/input and charging/thermal safeguards"
+    },
+    {
+      "id": "G5",
+      "state": "unverified",
+      "depends_on": [
+        "G4"
+      ],
+      "deliverable": "required hardware, telephony, media, security and user app matrix"
+    },
+    {
+      "id": "G6",
+      "state": "open",
+      "depends_on": [
+        "G5"
+      ],
+      "deliverable": "stability, matching installer, digests and recovery evidence"
+    }
+  ],
+  "previous_ci": {
     "run_id": 40650068374,
     "job_id": 122687822451,
     "workflow": "android-carrera-system.yml",
@@ -93,150 +196,6 @@
       }
     },
     "ext4_convert_log": "Cannot open output file out/android-graph/carrera-ext4-7fkkv68c/system.raw.img\n"
-  },
-  "launch_api_correction": {
-    "actual_launch_api": 22,
-    "acquired_stock_api": 23,
-    "deferred_patch": "docs/deferred/carrera-launch-api22.patch",
-    "applied_to_current_product": true,
-    "apply_before": "applied after archiving failed API23 run 40231781220; next build will use API22",
-    "local_validation": {
-      "tracked_tests_run": 76,
-      "passed": 75,
-      "skipped": 1,
-      "full_android_build": false
-    }
-  },
-  "evidence_limits": {
-    "system_module_bytes": "verified by CI ext4 check only after successful run",
-    "vendor_symlink": "current verifier checks product/root staging, not system ext4 nor runtime",
-    "rootdir_runtime": "not verified",
-    "kernel_diagnostic": "compiled, not booted",
-    "stock_twrp": "separate kernel; its successful operation does not prove Q"
-  },
-  "gates": [
-    {
-      "id": "G0",
-      "state": "open",
-      "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "Validate production cwd regression against old and fixed verifier, full suite and checksums, then at most one source successor"
-    },
-    {
-      "id": "G1",
-      "state": "open",
-      "depends_on": [
-        "G0"
-      ],
-      "deliverable": "coherent launch API, resolved linker/APEX/policy/kernel capabilities and minimal private overlay plan"
-    },
-    {
-      "id": "G2",
-      "state": "open",
-      "depends_on": [
-        "G1"
-      ],
-      "deliverable": "Carrera boot packaging, DT handoff, image budgets and recoverable test plan"
-    },
-    {
-      "id": "G3",
-      "state": "unverified",
-      "depends_on": [
-        "G2"
-      ],
-      "deliverable": "new kernel, Q init/policy/mount/Binder and authenticated ADB hardware evidence"
-    },
-    {
-      "id": "G4",
-      "state": "unverified",
-      "depends_on": [
-        "G3"
-      ],
-      "deliverable": "graphics buffers/fences/UI/input and charging/thermal safeguards"
-    },
-    {
-      "id": "G5",
-      "state": "unverified",
-      "depends_on": [
-        "G4"
-      ],
-      "deliverable": "required hardware, telephony, media, security and user app matrix"
-    },
-    {
-      "id": "G6",
-      "state": "open",
-      "depends_on": [
-        "G5"
-      ],
-      "deliverable": "stability, matching installer, digests and recovery evidence"
-    }
-  ],
-  "previous_ci": {
-    "run_id": 40631219746,
-    "job_id": 122627797117,
-    "workflow": "android-carrera-system.yml",
-    "source_commit": "e597659999b6d084ece1a751379078d3679c850b",
-    "status_at_direction_update": "completed",
-    "live_status_required": true,
-    "reported_owner": "Codex cloud monitor; inspect current main, successors and other writers before intervention",
-    "public_only": true,
-    "source_launch_api": 22,
-    "system_build_budget_seconds": 18000,
-    "workflow_timeout_minutes": 350,
-    "reserve_bytes": 8589934592,
-    "minimum_free_after_setup_and_cache": 128000000000,
-    "compiler_cache": {
-      "key": "mates-q-carrera-public-ccache-v1",
-      "max_bytes_decimal": 3000000000,
-      "exact_restore_required": true,
-      "readonly_warm_cache": true,
-      "remote_archive_bytes": 2558560049,
-      "statistics_zeroed_per_attempt": true
-    },
-    "predecessor_run_id": 40621277229,
-    "validation_run_id": 40631205903,
-    "repair": "Strict ext4 layout identification with one consistent module mapping; all byte hashes and vendor requirement retained",
-    "layout_verifier_attempt": 1,
-    "conclusion": "failure",
-    "failure_category": "verification_capacity_preflight",
-    "error": "Insufficient free space to inspect system ext4 while retaining 8 GiB",
-    "build": {
-      "returncode": 0,
-      "stop_reason": null,
-      "seconds": 7799,
-      "free_bytes": 11135164416
-    },
-    "build_phases": [
-      {
-        "name": "installed_dependencies",
-        "returncode": 0,
-        "stop_reason": null,
-        "seconds": 7703,
-        "free_bytes": 11151302656
-      },
-      {
-        "name": "system_image",
-        "returncode": 0,
-        "stop_reason": null,
-        "seconds": 90.1,
-        "free_bytes": 11135164416
-      }
-    ],
-    "compiler_cache_reclaim": {
-      "free_bytes_before": 11151298560,
-      "free_bytes_after": 13842329600,
-      "observed_free_delta_bytes": 2691031040
-    },
-    "image": {
-      "bytes": 1370173900,
-      "sha256": "1eea7f767617b881e585f2c5d1d3ab2f8ef27c8178cfeed5e9427f3af002b780",
-      "format": "android_sparse",
-      "expanded_bytes": 2684354560,
-      "chunks": 36,
-      "sparse_major": 1,
-      "sparse_minor": 0,
-      "fits_carrera_system_partition": true
-    },
-    "logical_expansion_shortfall_bytes": 139124736
   },
   "operational_review": "docs/REVIEW-2026-10-27.md",
   "manifest_lock_probe": {
@@ -514,9 +473,25 @@
     }
   },
   "converter_path_correction": {
-    "status": "pending_runner_validation",
+    "status": "runner_validated_successor_in_progress",
     "cause": "ROOT is relative to caller, but guarded conversion changes cwd to absolute Android source; relative output path cannot be opened",
     "fix": "Resolve source/image and temporary conversion directory before child invocation; preserve converter and all space guards",
-    "regression": "Real sparse ext4 using production relative ROOT and distinct absolute child cwd; must reproduce failure in previous verifier and pass fixed verifier"
+    "regression": "Real sparse ext4 using production relative ROOT and distinct absolute child cwd; must reproduce failure in previous verifier and pass fixed verifier",
+    "source_commit": "fcd5fb737f69c2bd169e3bb0fd8b9642d166fa37",
+    "validation_run_id": 40668447530,
+    "validation_job_id": 122748854031,
+    "tests": {
+      "targeted_sparse_and_cwd_run": 8,
+      "targeted_sparse_and_cwd_passed": 8,
+      "targeted_layout_passed": 9,
+      "targeted_phase_passed": 6,
+      "total_run": 111,
+      "passed": 110,
+      "skipped": 1,
+      "checksum_entries_verified": 152,
+      "previous_verifier_failure_reproduced": true,
+      "fixed_verifier_real_ext4_passed": true
+    },
+    "successor_run_id": 40668596565
   }
 }

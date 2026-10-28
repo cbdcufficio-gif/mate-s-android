@@ -878,5 +878,18 @@
     "passed": 107,
     "skipped": 3
   },
-  "next": "Correct output path resolution and validate a real sparse ext4 with production relative ROOT and different child cwd against old and fixed verifier before one source successor."
+  "next": "Observe40668596565; real Carrera raw conversion, layout, all module bytes and release still unverified. Fixture success does not close G0.",
+  "successor": {
+    "run_id": 40668596565,
+    "job_id": 122749372885,
+    "source_commit": "fcd5fb737f69c2bd169e3bb0fd8b9642d166fa37",
+    "status_at_update": "in_progress",
+    "validation_run_id": 40668447530,
+    "tests_run": 111,
+    "tests_passed": 110,
+    "tests_skipped": 1,
+    "checksum_entries": 152,
+    "previous_verifier_failure_reproduced": true,
+    "fixed_verifier_production_topology_fixture_passed": true
+  }
 }

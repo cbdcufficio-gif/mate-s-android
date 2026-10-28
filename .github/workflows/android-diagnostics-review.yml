@@ -8,7 +8,7 @@ permissions:
   contents: write
   actions: read
 concurrency:
-  group: carrera-diagnostics-review-40602929112
+  group: carrera-diagnostics-review-40621277229
   cancel-in-progress: false
 jobs:
   review:
@@ -29,8 +29,8 @@ jobs:
           python3 - <<'PY'
           import collections, gzip, hashlib, json, os, pathlib, re, subprocess
           repo = os.environ['GITHUB_REPOSITORY']
-          run = 40602929112
-          source = 'c42ebaf2b72ad3889d13f30381fc8b60447f594a'
+          run = 40621277229
+          source = '8f3a4886b54a2ac1fbff66621546e54739b82493'
           tag = 'carrera-build-diagnostics-' + str(run)
           def api(path):
               return json.loads(subprocess.check_output(['gh', 'api', 'repos/'+repo+'/'+path], text=True))
@@ -45,9 +45,9 @@ jobs:
                      'ccache-before-cleanup.log.gz', 'ccache-environment.log.gz',
                      'ninja-.ninja_log.gz', 'ninja-soong-.ninja_log.gz'}
           allowed.update(p+'.log.gz' for p in ('init','sync','graph','webview-lfs-arm',
-                                              'webview-lfs-arm64','carrera','carrera-system'))
+                                              'webview-lfs-arm64','carrera','carrera-system-prepare','carrera-system'))
           assert all(a['name'] in allowed for a in release['assets'])
-          root = pathlib.Path('out/diagnostics-40602929112')
+          root = pathlib.Path('out/diagnostics-40621277229')
           root.mkdir(parents=True, exist_ok=False)
           subprocess.run(['gh','release','download',tag,'--repo',repo,'--dir',str(root)], check=True)
           assert sum(p.stat().st_size for p in root.iterdir()) <= 16*1024**2
@@ -126,4 +126,4 @@ jobs:
           (dest/'README.txt').write_text(summary)
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as stream: stream.write(summary)
           PY
-          gh release create carrera-diagnostics-review-40602929112 out/diagnostics-review/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease --title "Carrera verified diagnostics 40602929112" --notes-file out/diagnostics-review/README.txt
+          gh release create carrera-diagnostics-review-40621277229 out/diagnostics-review/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease --title "Carrera verified diagnostics 40621277229" --notes-file out/diagnostics-review/README.txt

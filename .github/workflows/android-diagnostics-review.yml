@@ -8,7 +8,7 @@ permissions:
   contents: write
   actions: read
 concurrency:
-  group: carrera-diagnostics-review-40650068374
+  group: carrera-diagnostics-review-40668596565
   cancel-in-progress: false
 jobs:
   review:
@@ -29,8 +29,8 @@ jobs:
           python3 - <<'PY'
           import collections, gzip, hashlib, json, os, pathlib, re, subprocess
           repo = os.environ['GITHUB_REPOSITORY']
-          run = 40650068374
-          source = 'fecf5dca7981201b2717179981224446af0f273e'
+          run = 40668596565
+          source = 'fcd5fb737f69c2bd169e3bb0fd8b9642d166fa37'
           tag = 'carrera-build-diagnostics-' + str(run)
           def api(path):
               return json.loads(subprocess.check_output(['gh', 'api', 'repos/'+repo+'/'+path], text=True))
@@ -47,7 +47,7 @@ jobs:
           allowed.update(p+'.log.gz' for p in ('init','sync','graph','webview-lfs-arm',
                                               'webview-lfs-arm64','carrera','carrera-system-prepare','carrera-system','carrera-ext4-convert'))
           assert all(a['name'] in allowed for a in release['assets'])
-          root = pathlib.Path('out/diagnostics-40650068374')
+          root = pathlib.Path('out/diagnostics-40668596565')
           root.mkdir(parents=True, exist_ok=False)
           subprocess.run(['gh','release','download',tag,'--repo',repo,'--dir',str(root)], check=True)
           assert sum(p.stat().st_size for p in root.iterdir()) <= 16*1024**2
@@ -128,4 +128,4 @@ jobs:
           (dest/'README.txt').write_text(summary)
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as stream: stream.write(summary)
           PY
-          gh release create carrera-diagnostics-review-40650068374 out/diagnostics-review/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease --title "Carrera verified diagnostics 40650068374" --notes-file out/diagnostics-review/README.txt
+          gh release create carrera-diagnostics-review-40668596565 out/diagnostics-review/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease --title "Carrera verified diagnostics 40668596565" --notes-file out/diagnostics-review/README.txt

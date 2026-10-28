@@ -9,7 +9,7 @@
     "job_id": 122844429122,
     "workflow": "android-carrera-system.yml",
     "source_commit": "6bd26d624218507b49008158c8fab0272f29bf56",
-    "status_at_direction_update": "in_progress",
+    "status_at_direction_update": "completed",
     "live_status_required": true,
     "reported_owner": "Codex cloud monitor; inspect main, successors and writers before intervention",
     "public_only": true,
@@ -29,7 +29,11 @@
     "predecessor_run_id": 40668596565,
     "validation_run_id": 40696346541,
     "repair": "Permit @ in strict HIDL module path allowlist; all14 real names verified on ext4 fixtures; old @ rejection reproduced",
-    "hidl_path_attempt": 1
+    "hidl_path_attempt": 1,
+    "conclusion": "success",
+    "evidence_review_run_id": 40724596747,
+    "evidence_review_source": "d5f708441acc8587670aa47ba047fd772318ad4c",
+    "review_release": "https://github.com/cbdcufficio-gif/mate-s-android/releases/tag/carrera-public-system-review-40696459171"
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -45,26 +49,29 @@
     }
   },
   "evidence_limits": {
-    "system_module_bytes": "verified by CI ext4 check only after successful run",
+    "system_module_bytes": "14 real modules independently re-extracted from release ext4 and SHA256 checked on public runner",
     "vendor_symlink": "current verifier checks product/root staging, not system ext4 nor runtime",
-    "rootdir_runtime": "not verified",
+    "rootdir_runtime": "not verified; system_image_rootdir_contents_verified remains false",
     "kernel_diagnostic": "compiled, not booted",
     "stock_twrp": "separate kernel; its successful operation does not prove Q"
   },
   "gates": [
     {
       "id": "G0",
-      "state": "in_progress",
+      "state": "verified_public_base",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "Observe40696459171 without input changes; require14 real ext4 module digests, ramdisk/manifest/API22 and complete release before G0"
+      "next": "G1 static mount/linker/APEX/kernel-policy contracts; no further generic G0 rebuild",
+      "evidence_run": 40724596747
     },
     {
       "id": "G1",
-      "state": "open",
+      "state": "in_progress",
       "depends_on": [
         "G0"
       ],
-      "deliverable": "coherent launch API, resolved linker/APEX/policy/kernel capabilities and minimal private overlay plan"
+      "deliverable": "coherent launch API, resolved linker/APEX/policy/kernel capabilities and minimal private overlay plan",
+      "evidence": "docs/G1-PUBLIC-CONFIG-RESULT.json",
+      "next": "Resolve Q root-with-system and first-stage mount contract, then effective linker/APEX and kernel-policy compatibility"
     },
     {
       "id": "G2",
@@ -516,5 +523,8 @@
     "validation_run_id": 40696346541,
     "validation_job_id": 122844019900,
     "successor_run_id": 40696459171
-  }
+  },
+  "g0_result": "docs/CARRERA-SYSTEM-RESULT.json",
+  "g1_public_configuration": "docs/G1-PUBLIC-CONFIG-RESULT.json",
+  "automation_handoff": "G0 monitor complete; public G1 inputs captured; no hardware or complete ROM claimed"
 }

@@ -1,14 +1,52 @@
 {
   "schema_version": 1,
-  "status": "CARRERA_PUBLIC_SYSTEM_VERIFICATION_FAILED",
-  "run_id": 40668596565,
-  "job_id": 122749372885,
-  "source_commit": "fcd5fb737f69c2bd169e3bb0fd8b9642d166fa37",
-  "review_run_id": 40696012312,
-  "review_job_id": 122842846531,
-  "review_commit": "991c9db67b7bdaed678eb1b21d9f3503a37813ab",
-  "review_release": "https://github.com/cbdcufficio-gif/mate-s-android/releases/tag/carrera-diagnostics-review-40668596565",
-  "diagnostic_digests_verified_on_bytes": true,
+  "status": "PUBLIC_CARRERA_SYSTEM_AND_RAMDISK_BUILT",
+  "run_id": 40696459171,
+  "job_ids": [
+    122844429122
+  ],
+  "source_commit": "6bd26d624218507b49008158c8fab0272f29bf56",
+  "release": "https://github.com/cbdcufficio-gif/mate-s-android/releases/tag/carrera-public-system-40696459171",
+  "review_run_id": 40724596747,
+  "review_commit": "d5f708441acc8587670aa47ba047fd772318ad4c",
+  "release_digests_verified_on_bytes": true,
+  "assets": [
+    {
+      "name": "carrera-public-system.img.gz",
+      "bytes": 656496649,
+      "sha256": "a440fa74953546f27a2dba8bb56dc9e7ea1ea96c043601bb481e349ac6185fe3"
+    },
+    {
+      "name": "carrera-system-report.json",
+      "bytes": 16733,
+      "sha256": "bb92aca5a611326830a1d2e11dab2335afc5a17ad8f3b0b5d97ba3012996312c"
+    },
+    {
+      "name": "public-graphics-modules.tar.gz",
+      "bytes": 266360,
+      "sha256": "14e1d23014eee092aa88b99fb19d4b344a8334b905820ce957cd5476a4d0c298"
+    },
+    {
+      "name": "ramdisk.img",
+      "bytes": 802915,
+      "sha256": "6379c931e66f326acfa4fdea4d8388aa7da9bf62895aba755b4fdddb62cf6a4a"
+    },
+    {
+      "name": "README.txt",
+      "bytes": 385,
+      "sha256": "01ccc36dc20c4584b1365e6a43e970c6b4b1b802584242b321b6065c6d4c09b8"
+    },
+    {
+      "name": "resolved-manifest.xml",
+      "bytes": 128149,
+      "sha256": "66b87af3ec633c927b53922ac6fb53f7f0b0104d88d373324d1bd062282f2e2a"
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 528,
+      "sha256": "3b64c80c7ef24eb40e0b640297a05c1c23fc72c8e78bba66e8def415841621a7"
+    }
+  ],
   "diagnostic_assets": [
     {
       "name": "carrera-ext4-convert.log.gz",
@@ -17,38 +55,38 @@
     },
     {
       "name": "carrera-ext4-space.json.gz",
-      "bytes": 423,
-      "sha256": "8b1d75abc09d3683eeed7bb269512e0cf736081423566e6b4cc03620ff3d6e8a"
+      "bytes": 422,
+      "sha256": "2a1a728090ac2ef13dd9733126278d1ffcb9dbfaa265a8eef567545d8f2a1a8d"
     },
     {
       "name": "carrera-report.json.gz",
-      "bytes": 895,
-      "sha256": "d224b5635c3d6a2e33bde6e68c741ffd1277ad7995b5255c16769c4eed023e7b"
+      "bytes": 904,
+      "sha256": "46234c9676f731715db9778167bae80b4b70b4dff5c32524608cba5b34fdae3d"
     },
     {
       "name": "carrera-system-prepare.log.gz",
-      "bytes": 1037950,
-      "sha256": "e385d7fcc493f4892f0e5e3ec340719b48903b7fe3e30f646eb92f61c3ff9c96"
+      "bytes": 1038323,
+      "sha256": "f1e82d95a1c2cd89ba9e3625bf22083ab5d23048605ad05848e5d4b929b9c791"
     },
     {
       "name": "carrera-system-report.json.gz",
-      "bytes": 2492,
-      "sha256": "afad1218946c950b09dff76fb86d451d976f89d952ac82e35f04c656d9dbc421"
+      "bytes": 4074,
+      "sha256": "75739bfe57e47574578ae555f760448dd48990f26a3c59c5885d04c97668da8a"
     },
     {
       "name": "carrera-system.log.gz",
       "bytes": 8260,
-      "sha256": "f779053625dbce7f0a33b89d9479a5f577b837cae366131ab1133c999a71b9bb"
+      "sha256": "3b2c4b4e612742a990ba548bc286838243e8b83f140b6aa122b34f53cd3d916b"
     },
     {
       "name": "carrera.log.gz",
-      "bytes": 196834,
-      "sha256": "948d1877da7198342a0e877a1b57f3cdbe96add73ffdb92a3f6e90492b2bc8ed"
+      "bytes": 197239,
+      "sha256": "99ebbb88fc9cbc15b0ec87a5a6042fcd38ba210fec9d7fa93a7c3388412d69f1"
     },
     {
       "name": "ccache-before-cleanup.log.gz",
-      "bytes": 390,
-      "sha256": "3630d17061dec17f1dacd81b051fceb8af12ef8c1cd970dfee60587b442d90bd"
+      "bytes": 392,
+      "sha256": "52b6a6c5a8dd8f4e13dd805ac90a331fc1c39b967ccc5198049b7aca27bf5da4"
     },
     {
       "name": "ccache-environment.log.gz",
@@ -57,8 +95,8 @@
     },
     {
       "name": "graph.log.gz",
-      "bytes": 10603,
-      "sha256": "2fd622d28e01ac8cf7dea9938541e8b5bc94c1813704a47630d76db8ff58d3f0"
+      "bytes": 10599,
+      "sha256": "715e12e9a59c1b196a90054f3e666fc3270a0f3c7ec94f4d4e828f5119ea18ad"
     },
     {
       "name": "init.log.gz",
@@ -68,17 +106,17 @@
     {
       "name": "inventory.json",
       "bytes": 3299,
-      "sha256": "678e3b6c497c8fc13e454aa14b01811780367cd934399b3a9fbc93fa9c848d01"
+      "sha256": "f00f7c7795777f407614db6882f2252efd0d5bce29bf3373e3e16a6b41ef0538"
     },
     {
       "name": "ninja-.ninja_log.gz",
-      "bytes": 3141947,
-      "sha256": "b807cca9695b728671340939e638ce2111f6f510b6e7de2c5bf8c5bacbb69749"
+      "bytes": 3145253,
+      "sha256": "3106ed4158f7a28d53337b04e94e95baaeb34097a87e5a2063a610628e1b50c2"
     },
     {
       "name": "report.json.gz",
-      "bytes": 487,
-      "sha256": "dd7b41b13b240a4d8e252d91fee93b4e7be6abe981e5e5585bcc51ace9ab3b49"
+      "bytes": 485,
+      "sha256": "26370518b8ebde658d8435e4a8f640211a2a134bb2f6232a917e2a169425579f"
     },
     {
       "name": "resolved-manifest.xml.gz",
@@ -88,7 +126,7 @@
     {
       "name": "SHA256SUMS",
       "bytes": 1578,
-      "sha256": "9d1010894f7b701fb7e21e8b3155cc7191df0afd2360a6277ff5615b61887733"
+      "sha256": "46760cb4b032061a382cd23e633fb1d59b7edcee3723382b885a63ac95e3051e"
     },
     {
       "name": "sync.log.gz",
@@ -113,19 +151,19 @@
         "name": "report.json",
         "input_bytes": 933,
         "truncated": false,
-        "sha256": "0881ea5b1efeb707c1d4544c7dde432d12644545d93492a11d0032416f223adf"
+        "sha256": "3615bb799a56bd04c8985c93524f7aff82ae922822e94827233f894849488217"
       },
       {
         "name": "carrera-report.json",
-        "input_bytes": 1835,
+        "input_bytes": 1837,
         "truncated": false,
-        "sha256": "bdbd93792b462c8d09805108981834cc3c550665c49d525c87743f73bac02dff"
+        "sha256": "024ed8deed99c39eb636b469431118552c74307fa2db614490475ec43044d2d3"
       },
       {
         "name": "carrera-system-report.json",
-        "input_bytes": 10876,
+        "input_bytes": 16733,
         "truncated": false,
-        "sha256": "d87a1f60d73e188c77fcb2201925ebd8f4457791530a8ed128d4ebe24be6a328"
+        "sha256": "bb92aca5a611326830a1d2e11dab2335afc5a17ad8f3b0b5d97ba3012996312c"
       },
       {
         "name": "resolved-manifest.xml",
@@ -137,7 +175,7 @@
         "name": "ccache-before-cleanup.log",
         "input_bytes": 925,
         "truncated": false,
-        "sha256": "1198f75a44afa56477d787f736e0545cbfbdf60a3131a840abeb251bf4c99e8c"
+        "sha256": "a7cf2b8a0cf04d539684a6d3da311939888736a42f4e1dcfb9cdb4823e01fee3"
       },
       {
         "name": "ccache-environment.log",
@@ -149,7 +187,7 @@
         "name": "carrera-ext4-space.json",
         "input_bytes": 920,
         "truncated": false,
-        "sha256": "250e09f6f178692334ece42313d79a0c3a729cc24df09514c67949dfae24c5e1"
+        "sha256": "fa9a9936d8091825b929f4e305522a2fce52e783bdadc685dff45074c53c8dfa"
       },
       {
         "name": "init.log",
@@ -167,7 +205,7 @@
         "name": "graph.log",
         "input_bytes": 50843,
         "truncated": false,
-        "sha256": "8c24d202c42fa7063bf29bdac68253edb1ceb9560600b72488a9f06e95eba3b0"
+        "sha256": "de19c6098f7492c3512da9dfa62911cddfc16bdd6cf8e87b6594be2257a2b14d"
       },
       {
         "name": "webview-lfs-arm.log",
@@ -185,19 +223,19 @@
         "name": "carrera.log",
         "input_bytes": 1576931,
         "truncated": false,
-        "sha256": "d267ca9ff65d32f31ee2e262887b1e396287bd14514f75474a6b7f667ba46130"
+        "sha256": "3908b6c7649b605d00ca45c777013d190673bf028407107d62a4f7b1a271372e"
       },
       {
         "name": "carrera-system-prepare.log",
         "input_bytes": 9987362,
         "truncated": false,
-        "sha256": "5dee24b23c9d154b5cf671dd7e950b109bbc1cbf76deade45c2b1d61622c7b9f"
+        "sha256": "c4593fa3b13e03f284f6dd1b30e360443353a4814c9868f41e28b3d03ba3dcb3"
       },
       {
         "name": "carrera-system.log",
         "input_bytes": 38962,
         "truncated": false,
-        "sha256": "86911bcec433f09c2f68947ec275e7755cc4ffd8dd7582ba3356a77856d68908"
+        "sha256": "9359634b343995af123675d5d01c91779734398cd63d377ce0944c5c37ca0055"
       },
       {
         "name": "carrera-ext4-convert.log",
@@ -207,17 +245,24 @@
       },
       {
         "name": "ninja-.ninja_log",
-        "input_bytes": 23569144,
+        "input_bytes": 23570304,
         "truncated": false,
-        "sha256": "ec45211cdba9a8d4e0af8f2e9d3937e5ce82af8a8c3f59eaad5c435c173a29a8"
+        "sha256": "6f93789e3e35b54e59887e62b2c95001bb3e800c444d3cb43634917d798d7f61"
       }
     ],
     "max_input_per_file": 33554432,
     "max_total_bytes": 16777216,
     "retention_days": 7
   },
+  "manifest_lock_sha256": "b30f6d479b321cab00305b1c9a31450d0a8940138996e7e25cf27f7a0146f845",
+  "sync_verification": {
+    "status": "SYNCED_REVISIONS_MATCH_LOCK",
+    "selected_projects": 778,
+    "locked_projects": 794
+  },
+  "launch_api_verified_from_image": 22,
   "system_report": {
-    "status": "CARRERA_PUBLIC_SYSTEM_VERIFICATION_FAILED",
+    "status": "PUBLIC_CARRERA_SYSTEM_AND_RAMDISK_BUILT",
     "product": "lineage_carrera_public-userdebug",
     "rom_built": false,
     "hardware_tested": false,
@@ -237,7 +282,7 @@
     ],
     "build_resources": {
       "cpus": 4,
-      "memory_bytes": 16765407232,
+      "memory_bytes": 16765411328,
       "jobs": 3
     },
     "build_phases": [
@@ -245,28 +290,28 @@
         "name": "installed_dependencies",
         "returncode": 0,
         "stop_reason": null,
-        "seconds": 7564.8,
-        "free_bytes": 11136782336
+        "seconds": 8081.4,
+        "free_bytes": 11151224832
       },
       {
         "name": "system_image",
         "returncode": 0,
         "stop_reason": null,
-        "seconds": 87.1,
-        "free_bytes": 11120631808
+        "seconds": 93.1,
+        "free_bytes": 11135078400
       }
     ],
     "compiler_cache_removed_before_system_image": true,
     "compiler_cache_reclaim": {
-      "free_bytes_before": 11136778240,
-      "free_bytes_after": 13827809280,
+      "free_bytes_before": 11151220736,
+      "free_bytes_after": 13842251776,
       "observed_free_delta_bytes": 2691031040
     },
     "build": {
       "returncode": 0,
       "stop_reason": null,
-      "seconds": 7657.4,
-      "free_bytes": 11120631808
+      "seconds": 8181.2,
+      "free_bytes": 11135078400
     },
     "legacy_vendor_link": {
       "path": "root/vendor",
@@ -274,7 +319,7 @@
     },
     "image": {
       "bytes": 1370173900,
-      "sha256": "d4301d29c1d594a8a449011b1674ccbab8a649744d4ac5e9143b9e8704b01904",
+      "sha256": "958449d16f3eb567626e8c5715bbf916728abc446d04ab65cf3e1e3ece00a54f",
       "format": "android_sparse",
       "expanded_bytes": 2684354560,
       "chunks": 36,
@@ -598,7 +643,125 @@
         "callstack_mali_exports": []
       }
     ],
-    "error": "Unexpected character in public module path"
+    "system_image_modules": {
+      "filesystem": "ext4",
+      "format": "android_sparse",
+      "modules_verified": 14,
+      "layout_evidence": {
+        "layout": "q-root-with-system",
+        "directory_types": {
+          "/system": "directory",
+          "/lib": "absent"
+        },
+        "root_listing": "debugfs 1.46.5 (30-Dec-2021)\n/2/040755/0/0/.//\n/2/040755/0/0/..//\n/11/040700/0/0/lost+found//\n/12/040755/0/0/acct//\n/13/040755/0/0/apex//\n/14/120644/0/0/bin/11/\n/15/120644/0/0/bugreports/50/\n/16/120644/0/0/cache/11/\n/17/120644/0/0/charger/19/\n/18/040555/0/0/config//\n/19/120644/0/0/d/17/\n/20/040771/1000/1000/data//\n/21/040755/0/0/debug_ramdisk//\n/22/100600/0/0/default.prop/1568/\n/23/040755/0/0/dev//\n/24/120644/0/0/etc/11/\n/25/100640/0/2000/fstab.hi3635/960/\n/26/120750/0/2000/init/16/\n/27/100750/0/2000/init.environ.rc/1698/\n/28/100750/0/2000/init.hi3635.rc/321/\n/29/100750/0/2000/init.rc/34136/\n/30/100750/0/2000/init.usb.configfs.rc/7690/\n/31/100750/0/2000/init.usb.rc/5649/\n/32/100750/0/2000/init.zygote32.rc/563/\n/33/100750/0/2000/init.zygote64_32.rc/981/\n/34/040755/0/1000/mnt//\n/35/040755/0/0/odm//\n/46/040755/0/0/oem//\n/47/040755/0/0/proc//\n/48/120644/0/0/product/15/\n/49/120644/0/0/product_services/24/\n/50/040755/0/0/res//\n/55/040750/0/2000/sbin//\n/56/120644/0/0/sdcard/21/\n/57/100644/0/0/sepolicy/459237/\n/58/040751/0/1028/storage//\n/59/040755/0/0/sys//\n/60/040755/0/0/system//\n/3975/100644/0/0/ueventd.hi3635.rc/399/\n/3976/100644/0/0/ueventd.rc/2608/\n/3977/120644/0/0/vendor/14/\n/3978/100644/0/0/vendor_service_contexts/0/\n\n",
+        "runtime_mounts_verified": false
+      },
+      "expansion_space": {
+        "logical_bytes": 2684354560,
+        "raw_and_fill_bytes": 1370173440,
+        "dont_care_bytes": 1314181120,
+        "chunk_types": {
+          "raw": 18,
+          "fill": 0,
+          "dont_care": 18,
+          "crc32": 0
+        },
+        "allocation_slack_bytes": 67411968,
+        "allocation_budget_bytes": 1437585408,
+        "reserve_bytes": 8589934592,
+        "host_fragment_bytes": 4096,
+        "free_bytes_before": 11135074304,
+        "converter_cwd": "/home/runner/work/mate-s-android/mate-s-android/out/android-graph/source",
+        "converter_input": "/home/runner/work/mate-s-android/mate-s-android/out/android-graph/source/out/target/product/carrera/system.img",
+        "converter_output": "/home/runner/work/mate-s-android/mate-s-android/out/android-graph/carrera-ext4-nksitk3q/system.raw.img",
+        "conversion": {
+          "returncode": 0,
+          "stop_reason": null,
+          "seconds": 3.0,
+          "free_bytes": 9764888576
+        },
+        "actual_allocated_bytes": 1370177536,
+        "free_bytes_after": 9764888576
+      },
+      "modules": [
+        {
+          "path": "/system/lib/libutilscallstack.so",
+          "sha256": "ea9b305bdb907714ffd65e091d3815c6a298a00ccd5457730d2dbdf59289360d"
+        },
+        {
+          "path": "/system/lib64/libutilscallstack.so",
+          "sha256": "d3a93f8c0b2c68a53a895277d31856b10141079bd1d661da93fcdb03df7f5305"
+        },
+        {
+          "path": "/system/vendor/bin/hw/android.hardware.graphics.allocator@2.0-service",
+          "sha256": "b58d62ac4ece721b4a86fb0ff7fff778161b670bc716084da384d77969ba590d"
+        },
+        {
+          "path": "/system/vendor/bin/hw/android.hardware.graphics.composer@2.1-service",
+          "sha256": "f0b8a0466209c527ad91905a75332f25b2402af161dcbe62d5029c4c4f532b9b"
+        },
+        {
+          "path": "/system/vendor/lib/hw/android.hardware.graphics.allocator@2.0-impl.so",
+          "sha256": "9516e606b88814f8ef53d543f1098dfaddebe0cd40493147184f129d47990d1c"
+        },
+        {
+          "path": "/system/vendor/lib/hw/android.hardware.graphics.composer@2.1-impl.so",
+          "sha256": "d3b2e49b7af27e569f296b6feca36a8db454ad4bd3db07f7e44414b529695d18"
+        },
+        {
+          "path": "/system/vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl.so",
+          "sha256": "cf27c9ccd70b9cde29fc18a6636b5f7b5bdd4c618894068fbbcf2d6ba35ef9f7"
+        },
+        {
+          "path": "/system/vendor/lib/libhwc2on1adapter.so",
+          "sha256": "0bde262757037a02b390894459d64140226734774bc69a5791a08ab296cb6696"
+        },
+        {
+          "path": "/system/vendor/lib/libhwc2onfbadapter.so",
+          "sha256": "c564afb961c5777038fcff3c16dc95cf4deaa15907cfaebc3e7be58e6675cc53"
+        },
+        {
+          "path": "/system/vendor/lib64/hw/android.hardware.graphics.allocator@2.0-impl.so",
+          "sha256": "265385ca2093a66631e2b3f16a8fc5bc348a22befed87f750dc8ae6bcb99cea6"
+        },
+        {
+          "path": "/system/vendor/lib64/hw/android.hardware.graphics.composer@2.1-impl.so",
+          "sha256": "a380e048daafcd019b45937123e669185542dd6e1403f22a04103007d93ad08e"
+        },
+        {
+          "path": "/system/vendor/lib64/hw/android.hardware.graphics.mapper@2.0-impl.so",
+          "sha256": "cb3d9025c0ac112978734b2e23fc1e0536dadbef0129c8111e59c02fdec134ea"
+        },
+        {
+          "path": "/system/vendor/lib64/libhwc2on1adapter.so",
+          "sha256": "fc87b3115e684700478c089b1f97017d6aa69abe8dad963a51c062a95ba79730"
+        },
+        {
+          "path": "/system/vendor/lib64/libhwc2onfbadapter.so",
+          "sha256": "ebf9edef73e34fc7dd475cd58ba0aaedcff04e409f5f98bfa042c4970c8e09bc"
+        }
+      ]
+    },
+    "rootdir_staging": [
+      {
+        "name": "fstab.hi3635",
+        "sha256": "f0b006e6dcad99e092a3fbea9e6a91bc1686c7402d6664624b391e6751d0ac2b"
+      },
+      {
+        "name": "init.hi3635.rc",
+        "sha256": "e0439247332f854d2cafa729572c5cdbe0f4ef90c3dd181b559843ea889a3ccc"
+      },
+      {
+        "name": "ueventd.hi3635.rc",
+        "sha256": "5a04bd83457664cd8959db03944051376b17d963b7edc24770388f5edf845241"
+      }
+    ],
+    "ramdisk_sha256": "6379c931e66f326acfa4fdea4d8388aa7da9bf62895aba755b4fdddb62cf6a4a",
+    "resolved_manifest_sha256": "66b87af3ec633c927b53922ac6fb53f7f0b0104d88d373324d1bd062282f2e2a",
+    "compressed_image": {
+      "bytes": 656496649,
+      "sha256": "a440fa74953546f27a2dba8bb56dc9e7ea1ea96c043601bb481e349ac6185fe3"
+    }
   },
   "ramdisk_report": {
     "status": "CARRERA_PUBLIC_RAMDISK_BUILT",
@@ -617,8 +780,8 @@
         "download": {
           "returncode": 0,
           "stop_reason": null,
-          "seconds": 3,
-          "free_bytes": 64738308096
+          "seconds": 6.0,
+          "free_bytes": 64751509504
         }
       },
       {
@@ -630,16 +793,16 @@
         "download": {
           "returncode": 0,
           "stop_reason": null,
-          "seconds": 6,
-          "free_bytes": 64216633344
+          "seconds": 135.1,
+          "free_bytes": 64231145472
         }
       }
     ],
     "build": {
       "returncode": 0,
       "stop_reason": null,
-      "seconds": 468.5,
-      "free_bytes": 62729424896
+      "seconds": 501.5,
+      "free_bytes": 62743945216
     },
     "ramdisk_staging_path": "out/target/product/carrera/ramdisk",
     "rootdir": [
@@ -668,26 +831,26 @@
       "init": {
         "returncode": 0,
         "stop_reason": null,
-        "seconds": 3,
-        "free_bytes": 129095524352
+        "seconds": 3.0,
+        "free_bytes": 129095442432
       },
       "sync": {
         "returncode": 0,
         "stop_reason": null,
-        "seconds": 447.5,
-        "free_bytes": 67437813760
+        "seconds": 474.5,
+        "free_bytes": 67451002880
       },
       "graph": {
         "returncode": 0,
         "stop_reason": null,
-        "seconds": 141.1,
-        "free_bytes": 64934580224
+        "seconds": 150.2,
+        "free_bytes": 64947781632
       }
     },
     "rom_built": false,
     "proprietary_files_uploaded": false,
     "purpose": "Real generic Android build graph, not Carrera ROM",
-    "initial_free_bytes": 129116356608,
+    "initial_free_bytes": 129116262400,
     "source_lock": {
       "sha256": "b30f6d479b321cab00305b1c9a31450d0a8940138996e7e25cf27f7a0146f845",
       "locked_projects": 794
@@ -698,212 +861,76 @@
       "locked_projects": 794
     }
   },
-  "ext4_space": {
-    "logical_bytes": 2684354560,
-    "raw_and_fill_bytes": 1370173440,
-    "dont_care_bytes": 1314181120,
-    "chunk_types": {
-      "raw": 18,
-      "fill": 0,
-      "dont_care": 18,
-      "crc32": 0
+  "independent_ext4_module_digests": [
+    {
+      "path": "/system/lib/libutilscallstack.so",
+      "sha256": "ea9b305bdb907714ffd65e091d3815c6a298a00ccd5457730d2dbdf59289360d"
     },
-    "allocation_slack_bytes": 67411968,
-    "allocation_budget_bytes": 1437585408,
-    "reserve_bytes": 8589934592,
-    "host_fragment_bytes": 4096,
-    "free_bytes_before": 11120627712,
-    "converter_cwd": "/home/runner/work/mate-s-android/mate-s-android/out/android-graph/source",
-    "converter_input": "/home/runner/work/mate-s-android/mate-s-android/out/android-graph/source/out/target/product/carrera/system.img",
-    "converter_output": "/home/runner/work/mate-s-android/mate-s-android/out/android-graph/carrera-ext4-kshj22b8/system.raw.img",
-    "conversion": {
-      "returncode": 0,
-      "stop_reason": null,
-      "seconds": 3,
-      "free_bytes": 9750441984
+    {
+      "path": "/system/lib64/libutilscallstack.so",
+      "sha256": "d3a93f8c0b2c68a53a895277d31856b10141079bd1d661da93fcdb03df7f5305"
     },
-    "actual_allocated_bytes": 1370177536,
-    "free_bytes_after": 9750441984
+    {
+      "path": "/system/vendor/bin/hw/android.hardware.graphics.allocator@2.0-service",
+      "sha256": "b58d62ac4ece721b4a86fb0ff7fff778161b670bc716084da384d77969ba590d"
+    },
+    {
+      "path": "/system/vendor/bin/hw/android.hardware.graphics.composer@2.1-service",
+      "sha256": "f0b8a0466209c527ad91905a75332f25b2402af161dcbe62d5029c4c4f532b9b"
+    },
+    {
+      "path": "/system/vendor/lib/hw/android.hardware.graphics.allocator@2.0-impl.so",
+      "sha256": "9516e606b88814f8ef53d543f1098dfaddebe0cd40493147184f129d47990d1c"
+    },
+    {
+      "path": "/system/vendor/lib/hw/android.hardware.graphics.composer@2.1-impl.so",
+      "sha256": "d3b2e49b7af27e569f296b6feca36a8db454ad4bd3db07f7e44414b529695d18"
+    },
+    {
+      "path": "/system/vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl.so",
+      "sha256": "cf27c9ccd70b9cde29fc18a6636b5f7b5bdd4c618894068fbbcf2d6ba35ef9f7"
+    },
+    {
+      "path": "/system/vendor/lib/libhwc2on1adapter.so",
+      "sha256": "0bde262757037a02b390894459d64140226734774bc69a5791a08ab296cb6696"
+    },
+    {
+      "path": "/system/vendor/lib/libhwc2onfbadapter.so",
+      "sha256": "c564afb961c5777038fcff3c16dc95cf4deaa15907cfaebc3e7be58e6675cc53"
+    },
+    {
+      "path": "/system/vendor/lib64/hw/android.hardware.graphics.allocator@2.0-impl.so",
+      "sha256": "265385ca2093a66631e2b3f16a8fc5bc348a22befed87f750dc8ae6bcb99cea6"
+    },
+    {
+      "path": "/system/vendor/lib64/hw/android.hardware.graphics.composer@2.1-impl.so",
+      "sha256": "a380e048daafcd019b45937123e669185542dd6e1403f22a04103007d93ad08e"
+    },
+    {
+      "path": "/system/vendor/lib64/hw/android.hardware.graphics.mapper@2.0-impl.so",
+      "sha256": "cb3d9025c0ac112978734b2e23fc1e0536dadbef0129c8111e59c02fdec134ea"
+    },
+    {
+      "path": "/system/vendor/lib64/libhwc2on1adapter.so",
+      "sha256": "fc87b3115e684700478c089b1f97017d6aa69abe8dad963a51c062a95ba79730"
+    },
+    {
+      "path": "/system/vendor/lib64/libhwc2onfbadapter.so",
+      "sha256": "ebf9edef73e34fc7dd475cd58ba0aaedcff04e409f5f98bfa042c4970c8e09bc"
+    }
+  ],
+  "system_image_rootdir_contents_verified": false,
+  "vendor_symlink_scope": "Original build staging only; root listing is static evidence, not runtime",
+  "tests": {
+    "run": 113,
+    "passed": 112,
+    "skipped": 1
   },
-  "ext4_convert_log": "",
-  "ninja": {
-    "rows": 131004,
-    "unique_command_executions": 99126,
-    "dedup_key": [
-      "start_ms",
-      "end_ms",
-      "command_hash"
-    ],
-    "duration_sum_is_not_critical_path": true,
-    "longest_commands": [
-      {
-        "start_ms": 5094091,
-        "end_ms": 5319178,
-        "command_hash": "22ada9f6b914768c",
-        "duration_ms": 225087,
-        "output_count": 8,
-        "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/api-stubs-docs/android_common/api-stubs-docs-stubs.srcjar",
-          "out/soong/.intermediates/frameworks/base/api-stubs-docs/android_common/api-stubs-docs_annotations.zip",
-          "out/soong/.intermediates/frameworks/base/api-stubs-docs/android_common/api-stubs-docs_api.txt"
-        ]
-      },
-      {
-        "start_ms": 5133991,
-        "end_ms": 5357482,
-        "command_hash": "50ff6cdd7b0cc6c",
-        "duration_ms": 223491,
-        "output_count": 9,
-        "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/system-api-stubs-docs/android_common/api-versions.xml",
-          "out/soong/.intermediates/frameworks/base/system-api-stubs-docs/android_common/system-api-stubs-docs-stubs.srcjar",
-          "out/soong/.intermediates/frameworks/base/system-api-stubs-docs/android_common/system-api-stubs-docs_annotations.zip"
-        ]
-      },
-      {
-        "start_ms": 5099622,
-        "end_ms": 5315219,
-        "command_hash": "7add0e039dc688b6",
-        "duration_ms": 215597,
-        "output_count": 6,
-        "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/hiddenapi-lists-docs/android_common/api-versions.xml",
-          "out/soong/.intermediates/frameworks/base/hiddenapi-lists-docs/android_common/hiddenapi-lists-docs-stubs.srcjar",
-          "out/soong/.intermediates/frameworks/base/hiddenapi-lists-docs/android_common/hiddenapi-lists-docs_annotations.zip"
-        ]
-      },
-      {
-        "start_ms": 5315224,
-        "end_ms": 5494971,
-        "command_hash": "1b0f0945ca3c2464",
-        "duration_ms": 179747,
-        "output_count": 5,
-        "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/test-api-stubs-docs/android_common/api-versions.xml",
-          "out/soong/.intermediates/frameworks/base/test-api-stubs-docs/android_common/test-api-stubs-docs-stubs.srcjar",
-          "out/soong/.intermediates/frameworks/base/test-api-stubs-docs/android_common/test-api-stubs-docs_annotations.zip"
-        ]
-      },
-      {
-        "start_ms": 192023,
-        "end_ms": 325023,
-        "command_hash": "6db35b9dda0d42d0",
-        "duration_ms": 133000,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/target/product/carrera/obj/BOOTANIMATION/bootanimation.zip"
-        ]
-      },
-      {
-        "start_ms": 6730293,
-        "end_ms": 6858564,
-        "command_hash": "ca98d3050729d279",
-        "duration_ms": 128271,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/target/common/obj/APPS/Settings_intermediates/dex/classes.dex"
-        ]
-      },
-      {
-        "start_ms": 3427521,
-        "end_ms": 3555088,
-        "command_hash": "4a812a4ec05e8d8e",
-        "duration_ms": 127567,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/soong/.intermediates/art/runtime/libart/android_arm64_armv8-a_cortex-a53_core_shared_com.android.runtime.release/unstripped/libart.so"
-        ]
-      },
-      {
-        "start_ms": 3434614,
-        "end_ms": 3561679,
-        "command_hash": "ea621301fda3af54",
-        "duration_ms": 127065,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/soong/.intermediates/art/runtime/libart/android_arm_armv8-a_cortex-a53_core_shared_com.android.runtime.release/unstripped/libart.so"
-        ]
-      },
-      {
-        "start_ms": 6174142,
-        "end_ms": 6293305,
-        "command_hash": "84ad5104955972e7",
-        "duration_ms": 119163,
-        "output_count": 3,
-        "sample_outputs": [
-          "out/target/common/obj/APPS/messaging_intermediates/dex/classes.dex",
-          "out/target/common/obj/APPS/messaging_intermediates/proguard_configuration",
-          "out/target/common/obj/APPS/messaging_intermediates/proguard_dictionary"
-        ]
-      },
-      {
-        "start_ms": 3932307,
-        "end_ms": 4043290,
-        "command_hash": "3c43970562072f44",
-        "duration_ms": 110983,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_arm_armv8-a_cortex-a53_core_shared/unstripped/libhwui.so"
-        ]
-      },
-      {
-        "start_ms": 6619378,
-        "end_ms": 6729361,
-        "command_hash": "89de2823c4ea3f65",
-        "duration_ms": 109983,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/target/common/obj/APPS/Settings_intermediates/classes-full-debug.jar"
-        ]
-      },
-      {
-        "start_ms": 3930218,
-        "end_ms": 4039944,
-        "command_hash": "544b8a7dda140bc5",
-        "duration_ms": 109726,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_arm64_armv8-a_cortex-a53_core_shared/unstripped/libhwui.so"
-        ]
-      },
-      {
-        "start_ms": 6532906,
-        "end_ms": 6635383,
-        "command_hash": "bcdc8743c33a7280",
-        "duration_ms": 102477,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/services/services/android_common/dex/services.jar"
-        ]
-      },
-      {
-        "start_ms": 5034381,
-        "end_ms": 5133913,
-        "command_hash": "f73092b89ceda271",
-        "duration_ms": 99532,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/framework/android_common/dex/framework.jar"
-        ]
-      },
-      {
-        "start_ms": 7084808,
-        "end_ms": 7179910,
-        "command_hash": "2a39929afdc672c2",
-        "duration_ms": 95102,
-        "output_count": 2,
-        "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI/android_common/dex/SystemUI.jar",
-          "out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI/android_common/proguard_dictionary"
-        ]
-      }
-    ]
-  },
-  "failure_category": "verification_hidl_filename_guard",
-  "first_cause": "Unexpected character in public module path",
-  "analysis": "Conversion completed within physical allocation budget and 8GiB reserve. Path guard excludes @ used in standard public HIDL service/implementation names; fixtures previously used only libpublic.so. No compiler or publication failure identified.",
-  "image_digest_scope": "Calculated by build runner, retained in verified diagnostic report; image itself is not published or independently byte-verified.",
-  "g0_closed": false,
   "rom_built": false,
-  "hardware_tested": false
+  "hardware_tested": false,
+  "review_release": "https://github.com/cbdcufficio-gif/mate-s-android/releases/tag/carrera-public-system-review-40696459171",
+  "finalization_run_id": 40724938937,
+  "finalization_commit": "6fd9edd082cad2a0949f46461e168d649f7c57fc",
+  "review_evidence_sha256": "a32f5aed2944e805d2c63bd4f3fece8aefa1a71282a2cf162a1e36c11760d97a",
+  "g1_evidence_sha256": "bf48a2fe0b551bcc1ed0e04b46d15fa57b622ef4d81b634c9c669dd11e8f0e72"
 }

@@ -6,8 +6,8 @@ La cronologia delle prove precedenti è in [STATUS.md](STATUS.md).
 
 | Priorità | Blocco | Prossima prova che riduce l'incertezza |
 |---|---|---|
-| G0 | 40668596565 convertito; guard @ HIDL corretto e validato | 113test112pass1skip e vecchio/fisso su ext4; unico40696459171 attivo, attendere14digest reali e release |
-| G1 | Configurazione Q, corrispondenza layout immagine/mount legacy e overlay vendor finale incompleti | API22 applicata, da verificare nel prossimo run; ld.config, APEX, policy/capability kernel e closure dei soli servizi essenziali |
+| G0 | Chiuso: base pubblica verificata sui byte, non ROM | Sistema40696459171; review40724596747; CARRERA-SYSTEM-RESULT.json |
+| G1 | Layout q-root-with-system contro mount legacy /system; kernel/policy e overlay incompleti | G1-PUBLIC-CONFIG-RESULT.json: fixture first-stage/switch-root, linker/APEX effettivi, closure essenziale |
 | G2 | Nessuna boot Q Carrera verificata | Formato v0, coda stock, DT handoff, dimensioni intere e percorso di recupero |
 | G3 | Kernel diagnostico e init Q mai avviati | Nuovo kernel identificato, policy/mount/Binder e ADB autenticato con log |
 | G4 | Buffer/ION/fence, ABI C++, EGL/HWC, display e touch non provati in Q | Prove incrementali di caricamento, allocazione, rendering e resume |

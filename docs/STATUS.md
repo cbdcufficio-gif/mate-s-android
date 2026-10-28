@@ -1,3 +1,19 @@
+# G0 verificato; primi input effettivi G1 — 28 ottobre 2026
+
+Sistema [40696459171](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40696459171), job 122844429122, sorgente `6bd26d624218507b49008158c8fab0272f29bf56`: successo.
+Review indipendente [40724596747](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40724596747), commit `d5f708441acc8587670aa47ba047fd772318ad4c`, runner pubblico ubuntu-22.04, senza sync o rebuild Android.
+
+Verificati sui byte tutti i sette asset della release, SHA256SUMS e digest server, gzip e immagine sparse, manifest (794 progetti fissati, 778 selezionati), API22 da build.prop, ramdisk cpio e tre file rootdir. Tutti i 14 moduli reali estratti nuovamente da ext4 hanno digest identici al report e all'archivio moduli. Diagnostica entro 16 MiB, inventory e checksum verificati, zero file troncati.
+Suite sulla review: 113 test, 112 passati, 1 saltati; checksum repository verificati.
+
+Marker `PUBLIC_CARRERA_SYSTEM_AND_RAMDISK_BUILT` confermato. G0 chiude solo la base pubblica. `system_image_rootdir_contents_verified=false` rimane invariato; symlink vendor verificato nello staging della build, nessuna prova mount/runtime, boot o ROM.
+
+G1: catturati dall'immagine reale linker, proprietà, APEX, init/fstab e inventory ramdisk in [G1-PUBLIC-CONFIG-RESULT.json](G1-PUBLIC-CONFIG-RESULT.json). Il filesystem è `q-root-with-system`; la fstab minima monta ancora la partizione su /system senza first_stage_mount. Un montaggio legacy di questa immagine su /system collocherebbe i contenuti di piattaforma sotto /system/system: va risolto il contratto first-stage/switch-root prima del boot. Non è un guasto hardware osservato.
+
+Prossima azione concreta: fixture Q first-stage/init con il layout reale, selezione mount/switch-root motivata dal sorgente fissato, poi APEX/linker e policy rispetto alla configurazione kernel effettiva. Niente nuovo ciclo G0, blob privati o prova telefono; G2 resta successivo.
+
+---
+
 # Verificatore HIDL validato; unico successore — 28 ottobre 2026
 
 Validazione [40696346541](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40696346541),

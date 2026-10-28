@@ -1,0 +1,35 @@
+name: Carrera public G0 byte verification and G1 capture
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/android-public-system-review.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: carrera-public-system-review-40696459171
+  cancel-in-progress: false
+jobs:
+  review:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          ref: ${{ github.sha }}
+      - name: Install read-only ext4 and sparse inspection tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends e2fsprogs android-sdk-libsparse-utils
+      - name: Verify public release bytes and capture effective G1 configuration
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/review_public_system.py
+      - name: Publish small evidence only; no Android build or hardware access
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create carrera-public-system-review-40696459171 out/public-system-review/evidence/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease --title "Carrera G0 byte verification and G1 static inputs" --notes-file out/public-system-review/evidence/README.txt

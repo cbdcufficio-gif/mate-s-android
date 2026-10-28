@@ -1,3 +1,23 @@
+# Correzione fasi validata; unico successore - 28 ottobre 2026
+
+Sistema [40621277229](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40621277229),
+job122595659983,sorgente8f3a4886b54a2ac1fbff66621546e54739b82493.
+Validazione [40621257975](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40621257975),
+job122595590897, stesso SHA:6test dedicati passati; suite94test,93passati,1skip;
+150checksum verificati. Il runner ha verificato hash e contratto Makefile Q
+fissato: installed-file-list dipende da FULL_SYSTEMIMAGE_DEPS. Solo dopo tutte
+le verifiche è stato dispatchato un sistema; nessun altro sistema attivo
+e nessun tentativo precedente sullo stesso SHA al controllo.
+
+Fase1 termina dipendenze installate e moduli; salva statistiche, poi elimina
+solo cache locale valida e misura delta df. Fase2 usa systemimage normale,
+non snod. Guard8GiB, budget complessivo18000s,timeout350min e processi invariati.
+Cache remota,manifest794/selezione778,API22,WebView e guardie invariati.
+Nuovo log carrera-system-prepare.log incluso nella diagnostica limitata.
+Il recupero/consumo finale va ancora misurato: nessuna garanzia di successo.
+Durante questo run nessuna modifica agli input o build concorrente.
+G0 aperto; nessuna ext4/system/ROM/boot hardware attestata.
+
 # Guardia disco finale e diagnostica verificata - 28 ottobre 2026
 
 Run40602929112 job122535270691 sorgente c42ebaf: DISK_RESERVE_REACHED

@@ -5,51 +5,32 @@
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
-    "status_at_direction_update": "completed",
+    "run_id": 40621277229,
+    "job_id": 122595659983,
+    "workflow": "android-carrera-system.yml",
+    "source_commit": "8f3a4886b54a2ac1fbff66621546e54739b82493",
+    "status_at_direction_update": "in_progress",
+    "live_status_required": true,
+    "reported_owner": "Codex cloud monitor; check main and successor runs before intervention",
+    "public_only": true,
     "source_launch_api": 22,
     "system_build_budget_seconds": 18000,
     "workflow_timeout_minutes": 350,
-    "live_status_required": true,
+    "reserve_bytes": 8589934592,
+    "minimum_free_after_setup_and_cache": 128000000000,
     "compiler_cache": {
       "key": "mates-q-carrera-public-ccache-v1",
       "max_bytes_decimal": 3000000000,
-      "cold_run_may_timeout": true,
-      "warm_retry_requires_confirmed_cache_save": true,
-      "save_verified": true,
-      "archive_bytes": 2558560049,
-      "reported_size_gb": 2.68,
-      "compilation_hits": 34965,
-      "compilation_misses": 7848,
-      "uncacheable": 78,
-      "cleanups": 24,
-      "warm_retry_requires_resolved_manifest": true,
       "exact_restore_required": true,
+      "readonly_warm_cache": true,
       "remote_archive_bytes": 2558560049,
       "statistics_zeroed_per_attempt": true,
-      "statistics_evidence": "ccache-before-cleanup.log verified on bytes by review40620671708"
+      "last_verified_statistics_run_id": 40602929112
     },
-    "run_id": 40602929112,
-    "source_commit": "c42ebaf2b72ad3889d13f30381fc8b60447f594a",
-    "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
-    "public_only": true,
-    "reserve_bytes": 8589934592,
-    "previous_cold_run_id": 40474812777,
-    "workflow": "android-carrera-system.yml",
-    "warm_attempt_number": 1,
-    "measured_bytes": {
-      "repo": 17061695488,
-      "out": 58307645440
-    },
-    "minimum_free_after_setup_and_cache": 128000000000,
-    "capacity_correction": "Measured removal of nine unused host tools; no source/Git/intermediate removal",
-    "capacity_corrected_attempt": 1,
-    "conclusion": "failure",
-    "stop_reason": "DISK_RESERVE_REACHED",
-    "elapsed_seconds": 7556.4,
-    "free_bytes_at_stop": 8379416576,
-    "ninja_completed": 80489,
-    "ninja_total": 80491,
-    "job_id": 122535270691
+    "capacity_correction": "Installed-file-list dependencies complete before local expendable compiler cache is removed; normal systemimage keeps dependency and disk guards",
+    "phase_split_attempt": 1,
+    "predecessor_run_id": 40602929112,
+    "validation_run_id": 40621257975
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -74,9 +55,9 @@
   "gates": [
     {
       "id": "G0",
-      "state": "open",
+      "state": "in_progress",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "Validate phase split on runner, then one measured correction attempt; no retry of old inputs"
+      "next": "Observe40621277229; inspect phase prepare and image separately, actual cache reclaim and peak; no concurrent or automatic retry"
     },
     {
       "id": "G1",
@@ -148,27 +129,31 @@
       "warm_retry_requires_resolved_manifest": true,
       "exact_restore_required": true,
       "remote_archive_bytes": 2558560049,
-      "statistics_zeroed_per_attempt": true
+      "statistics_zeroed_per_attempt": true,
+      "statistics_evidence": "ccache-before-cleanup.log verified on bytes by review40620671708"
     },
-    "run_id": 40541710584,
-    "source_commit": "0f0789debadd0580df022b0d3a969339ee7bfe45",
+    "run_id": 40602929112,
+    "source_commit": "c42ebaf2b72ad3889d13f30381fc8b60447f594a",
     "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
     "public_only": true,
     "reserve_bytes": 8589934592,
-    "conclusion": "failure",
-    "stop_reason": "DISK_RESERVE_REACHED",
-    "elapsed_seconds": 7330.7,
-    "free_bytes_at_stop": 8553492480,
-    "ninja_completed": 79972,
-    "ninja_total": 80491,
     "previous_cold_run_id": 40474812777,
     "workflow": "android-carrera-system.yml",
     "warm_attempt_number": 1,
-    "job_id": 122321530088,
     "measured_bytes": {
-      "repo": 17061343232,
-      "out": 53997498368
-    }
+      "repo": 17061695488,
+      "out": 58307645440
+    },
+    "minimum_free_after_setup_and_cache": 128000000000,
+    "capacity_correction": "Measured removal of nine unused host tools; no source/Git/intermediate removal",
+    "capacity_corrected_attempt": 1,
+    "conclusion": "failure",
+    "stop_reason": "DISK_RESERVE_REACHED",
+    "elapsed_seconds": 7556.4,
+    "free_bytes_at_stop": 8379416576,
+    "ninja_completed": 80489,
+    "ninja_total": 80491,
+    "job_id": 122535270691
   },
   "operational_review": "docs/REVIEW-2026-10-27.md",
   "manifest_lock_probe": {
@@ -242,7 +227,7 @@
     "tests_skipped": 1
   },
   "phase_split_correction": {
-    "status": "pending_runner_validation",
+    "status": "runner_validated_successor_in_progress",
     "validation_workflow": "android-carrera-phase-validation.yml",
     "upstream_build_revision": "71a47798ac090b81c6b7db0b5c470f1fa3e604cd",
     "upstream_makefile_sha256": "3579ea7fc8b120fd9ce25f6a0f1ce78b88822d3823250e9adf32825d04ee655e",
@@ -251,6 +236,61 @@
     "cache_removal": "after installed dependencies succeed and statistics persist; before normal image dependency build",
     "total_budget_seconds": 18000,
     "reserve_bytes": 8589934592,
-    "automatic_dispatch": "at most one source attempt after tests, checksum and pinned-source contract pass; skip if main changes or system run exists"
+    "automatic_dispatch": "at most one source attempt after tests, checksum and pinned-source contract pass; skip if main changes or system run exists",
+    "validation_run_id": 40621257975,
+    "validation_job_id": 122595590897,
+    "tests": {
+      "targeted_run": 6,
+      "targeted_passed": 6,
+      "total_run": 94,
+      "passed": 93,
+      "skipped": 1,
+      "checksum_entries_verified": 150,
+      "pinned_upstream_contract_verified": true
+    },
+    "successor_run_id": 40621277229
+  },
+  "earlier_disk_ci": {
+    "status_at_direction_update": "completed",
+    "source_launch_api": 22,
+    "system_build_budget_seconds": 18000,
+    "workflow_timeout_minutes": 350,
+    "live_status_required": true,
+    "compiler_cache": {
+      "key": "mates-q-carrera-public-ccache-v1",
+      "max_bytes_decimal": 3000000000,
+      "cold_run_may_timeout": true,
+      "warm_retry_requires_confirmed_cache_save": true,
+      "save_verified": true,
+      "archive_bytes": 2558560049,
+      "reported_size_gb": 2.68,
+      "compilation_hits": 34965,
+      "compilation_misses": 7848,
+      "uncacheable": 78,
+      "cleanups": 24,
+      "warm_retry_requires_resolved_manifest": true,
+      "exact_restore_required": true,
+      "remote_archive_bytes": 2558560049,
+      "statistics_zeroed_per_attempt": true
+    },
+    "run_id": 40541710584,
+    "source_commit": "0f0789debadd0580df022b0d3a969339ee7bfe45",
+    "reported_owner": "Codex heartbeat; check concurrent agents before intervention",
+    "public_only": true,
+    "reserve_bytes": 8589934592,
+    "conclusion": "failure",
+    "stop_reason": "DISK_RESERVE_REACHED",
+    "elapsed_seconds": 7330.7,
+    "free_bytes_at_stop": 8553492480,
+    "ninja_completed": 79972,
+    "ninja_total": 80491,
+    "previous_cold_run_id": 40474812777,
+    "workflow": "android-carrera-system.yml",
+    "warm_attempt_number": 1,
+    "job_id": 122321530088,
+    "measured_bytes": {
+      "repo": 17061343232,
+      "out": 53997498368
+    }
   }
 }

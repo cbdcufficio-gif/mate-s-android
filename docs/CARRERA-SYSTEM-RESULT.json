@@ -451,5 +451,17 @@
     "passed": 87,
     "skipped": 1
   },
-  "next": "Validate installed-file-list phase boundary and release only the expendable local compiler cache before normal systemimage; one shared 18000s budget, unchanged 8GiB reserve. No success inferred."
+  "next": "Observe successor40621277229 without changing inputs; inspect phase-level results, measured cache reclaim and eventual system/ext4/release before closing G0.",
+  "successor": {
+    "run_id": 40621277229,
+    "job_id": 122595659983,
+    "source_commit": "8f3a4886b54a2ac1fbff66621546e54739b82493",
+    "status_at_update": "in_progress",
+    "validation_run_id": 40621257975,
+    "tests_run": 94,
+    "tests_passed": 93,
+    "tests_skipped": 1,
+    "checksum_entries": 150,
+    "pinned_makefile_contract_verified": true
+  }
 }

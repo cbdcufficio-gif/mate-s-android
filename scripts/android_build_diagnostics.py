@@ -17,7 +17,7 @@ def collect(root, destination):
     destination.mkdir(parents=True,exist_ok=False)
     names=['report.json','carrera-report.json','carrera-system-report.json','resolved-manifest.xml',
            'ccache-before-cleanup.log','ccache-environment.log']
-    names += [p+'.log' for p in ('init','sync','graph','webview-lfs-arm','webview-lfs-arm64','carrera','carrera-system')]
+    names += [p+'.log' for p in ('init','sync','graph','webview-lfs-arm','webview-lfs-arm64','carrera','carrera-system-prepare','carrera-system')]
     files=[(root/name,name) for name in names]
     files += [(root/'source/out'/p,'ninja-'+p.replace('/','-')) for p in ('.ninja_log','soong/.ninja_log')]
     inventory=[]

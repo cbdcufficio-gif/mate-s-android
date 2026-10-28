@@ -10,6 +10,7 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+import time
 from android_graph_probe import ROOT,guarded
 from android_modules_probe import MODULES,REQUIRED,inventory
 from android_patches import apply_patches
@@ -80,6 +81,57 @@ def verify_modules_in_system_image(source,image,modules):
             'modules':extracted}
 
 
+def build_system_phases(source, jobs, report, budget=18000):
+    """Finish installed dependencies before releasing cache for image assembly.
+
+    Q core/Makefile makes installed-file-list depend on FULL_SYSTEMIMAGE_DEPS.
+    The second phase retains normal systemimage dependencies (never snod).
+    Both phases share one wall-clock budget and the unchanged 8 GiB reserve.
+    """
+    started=time.monotonic()
+    report['build_phases']=[]
+    prefix='set -eo pipefail; source build/envsetup.sh; lunch lineage_carrera_public-userdebug; '
+    def persist():
+        (ROOT/'carrera-system-report.json').write_text(json.dumps(report,indent=2)+'\n')
+    def phase(name, targets, log):
+        remaining=budget-(time.monotonic()-started)
+        if remaining<=0:
+            result={'returncode':-15,'stop_reason':'TIME_BUDGET_REACHED',
+                    'seconds':0,'free_bytes':shutil.disk_usage(ROOT).free}
+        else:
+            result=guarded(['bash','-c',prefix+f'm -j{jobs} '+targets], source,
+                           ROOT/log, seconds=remaining, reserve=8*1024**3)
+        report['build_phases'].append({'name':name,**result})
+        persist()
+        return result
+    prepared=phase('installed_dependencies',
+                   ' '.join(MODULES)+' installed-file-list simg2img',
+                   'carrera-system-prepare.log')
+    if os.environ.get('MATES_USE_CCACHE')=='1':
+        with (ROOT/'ccache-before-cleanup.log').open('w') as stats:
+            captured=subprocess.run(['ccache','--show-stats','--verbose'],stdout=stats,
+                                    stderr=subprocess.STDOUT,check=False,timeout=30)
+        if captured.returncode:
+            raise ValueError('Compiler cache statistics could not be saved')
+    if prepared['returncode'] or prepared['stop_reason']:
+        return {**prepared,'seconds':round(time.monotonic()-started,1)}
+    if os.environ.get('MATES_USE_CCACHE')=='1':
+        cache=ROOT.parent/'ccache'
+        if cache.is_symlink() or not cache.is_dir() or Path(os.environ.get('CCACHE_DIR','')).resolve()!=cache.resolve():
+            raise ValueError('Unexpected compiler cache path')
+        before=shutil.disk_usage(ROOT).free
+        shutil.rmtree(cache)
+        after=shutil.disk_usage(ROOT).free
+        report['compiler_cache_removed_before_system_image']=True
+        report['compiler_cache_reclaim']={'free_bytes_before':before,'free_bytes_after':after,
+                                          'observed_free_delta_bytes':after-before}
+        persist()
+    built=phase('system_image',
+                ' '.join(MODULES)+' systemimage simg2img',
+                'carrera-system.log')
+    return {**built,'seconds':round(time.monotonic()-started,1)}
+
+
 def main():
     if os.environ.get('GITHUB_ACTIONS')!='true' or os.environ.get('RUNNER_ENVIRONMENT')!='github-hosted':
         raise SystemExit('Disposable public runner only; no local Android sync')
@@ -96,24 +148,11 @@ def main():
         memory=os.sysconf('SC_PHYS_PAGES')*os.sysconf('SC_PAGE_SIZE')
         jobs=system_build_jobs(cpus,memory)
         report['build_resources']={'cpus':cpus,'memory_bytes':memory,'jobs':jobs}
-        command=('set -eo pipefail; source build/envsetup.sh; lunch lineage_carrera_public-userdebug; '
-                 f'm -j{jobs} '+' '.join(MODULES)+' systemimage simg2img')
         report_path.write_text(json.dumps(report,indent=2)+'\n')
-        report['build']=guarded(['bash','-c',command],source,ROOT/'carrera-system.log',seconds=18000,reserve=8*1024**3)
-        if os.environ.get('MATES_USE_CCACHE')=='1':
-            with (ROOT/'ccache-before-cleanup.log').open('w') as stats:
-                subprocess.run(['ccache','--show-stats','--verbose'],stdout=stats,stderr=subprocess.STDOUT,check=False,timeout=30)
+        report['build']=build_system_phases(source,jobs,report)
         if report['build']['returncode'] or report['build']['stop_reason']:
             report['status']='CARRERA_PUBLIC_SYSTEM_BUILD_FAILED'
         else:
-            # Compiler cache is expendable after a successful build. Recover its
-            # space before sparse expansion, keeping the ext4 reserve unchanged.
-            cache=ROOT.parent/'ccache'
-            if os.environ.get('MATES_USE_CCACHE')=='1' and cache.is_dir():
-                if cache.is_symlink() or Path(os.environ.get('CCACHE_DIR','')).resolve()!=cache.resolve():
-                    raise ValueError('Unexpected compiler cache path')
-                shutil.rmtree(cache)
-                report['compiler_cache_removed_before_ext4']=True
             rel=Path((ROOT/'carrera-product-path.txt').read_text().strip())
             if rel.is_absolute() or '..'in rel.parts:raise ValueError('Unsafe product path')
             product=(source/rel).resolve(strict=True);product.relative_to(source/'out')

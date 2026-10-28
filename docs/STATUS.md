@@ -1,3 +1,38 @@
+# Guardia disco finale e diagnostica verificata - 28 ottobre 2026
+
+Run40602929112 job122535270691 sorgente c42ebaf: DISK_RESERVE_REACHED
+dopo7556,4s,80489/80491target,8379416576byte liberi (dfsuccessivo8379293696).
+Non timeout: nessun errore compiler/FAILED nel log sistema completo verificato.
+.repo17061695488byte;out58307645440byte. La correzione ospiti ha portato
+129100615680byte iniziali, ma non ha coperto il picco finale.
+
+Review [40620671708](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40620671708)
+sorgente3eb9af6: tutti gli asset diagnostici verificati sui byte contro
+SHA256SUMS e digest server. Inventory: zero troncamenti; log sistema9987420byte,
+Ninja23568807byte.130996righe ->99119esecuzioni deduplicate per
+(start,end,commandhash); non è un critical path né percentuale ROM.
+Prove e manifest in docs/CARRERA-SYSTEM-RESULT.json e release
+carrera-diagnostics-review-40602929112. Test runner:88eseguiti,87passati,1skip.
+Lock794/selezione778 confermati; WebView ARM/ARM64 e ramdisk riusciti.
+Nessuna ext4/system/release sistema verificata: G0 resta aperto.
+
+Correzione circoscritta proposta: core/Makefile Q fissato71a47798 espone
+installed-file-list -> FULL_SYSTEMIMAGE_DEPS, cioè tutte le dipendenze installate
+e i tool immagine. Il probe termina questa fase prima di eliminare SOLO la
+cache compilatore locale expendable (2,68GB riportati); salva prima statistiche
+e misura delta df. Poi usa normale systemimage, con dipendenze, mai snod.
+Nessun source/Git/intermedio eliminato; cache remota e chiave restano invariati.
+Preparazione+immagine condividono18000s; riserva8GiB,processi,timeout350min,
+lock,API22,WebView,/vendor,ELF,policy e dimensioni invariati.
+
+Workflow piccolo di validazione: suite e test fase/budget/cache, checksum e
+contratto sorgente Q verificati su runner standard. Solo dopo successo può
+dispatchare UN successore del workflow sistema manuale; non parte se main
+cambia, un sistema è attivo o lo stesso SHA ha già un tentativo.
+Il recupero prima dell'immagine è motivato da cache misurata e confine
+upstream, non garantisce che il picco rientri. Se fallisce ancora, usare le
+nuove misure delle due fasi; nessun ciclo automatico di retry.
+
 Sistema con capacità corretta: [40602929112](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40602929112), sorgente`c42ebaf`.
 
 # Correzione capacità verificata — 28 ottobre 2026

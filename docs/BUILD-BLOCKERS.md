@@ -6,7 +6,7 @@ La cronologia delle prove precedenti è in [STATUS.md](STATUS.md).
 
 | Priorità | Blocco | Prossima prova che riduce l'incertezza |
 |---|---|---|
-| G0 | Tentativo caldo fermato dalla riserva disco, cache81,67%hit | Misure capacità/filesystem e picchi di verifica prima di un altro run; preservare8GiB |
+| G0 | 40602929112 fermato dal disco a80489/80491,8379416576byte; diagnostica integra verificata | Validare installed-file-list e liberazione cache locale prima di systemimage, budget totale18000s e8GiB invariati; un solo successore dopo test |
 | G1 | Configurazione Q e overlay vendor finale incompleti | API22 applicata, da verificare nel prossimo run; ld.config, APEX, policy/capability kernel e closure dei soli servizi essenziali |
 | G2 | Nessuna boot Q Carrera verificata | Formato v0, coda stock, DT handoff, dimensioni intere e percorso di recupero |
 | G3 | Kernel diagnostico e init Q mai avviati | Nuovo kernel identificato, policy/mount/Binder e ADB autenticato con log |

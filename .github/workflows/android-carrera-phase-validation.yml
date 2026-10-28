@@ -1,0 +1,75 @@
+name: Carrera image-phase validation
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/android-carrera-phase-validation.yml'
+      - 'tests/test_carrera_system_phases.py'
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: carrera-image-phase-validation
+  cancel-in-progress: false
+jobs:
+  validate:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Test phase ordering, shared budget, cache guards and full suite
+        run: |
+          python3 -m unittest discover -s tests -p test_carrera_system_phases.py -v
+          python3 -m unittest discover tests
+          sha256sum -c SHA256SUMS
+      - name: Verify dependency target against pinned Q build source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, json, pathlib, subprocess
+          lock=pathlib.Path('configs/android-resolved-manifest.xml').read_bytes()
+          assert hashlib.sha256(lock).hexdigest()=='b30f6d479b321cab00305b1c9a31450d0a8940138996e7e25cf27f7a0146f845'
+          result=json.loads(subprocess.check_output(['gh','api','repos/LineageOS/android_build/contents/core/Makefile?ref=71a47798ac090b81c6b7db0b5c470f1fa3e604cd'],text=True))
+          data=base64.b64decode(result['content'])
+          assert hashlib.sha256(data).hexdigest()=='3579ea7fc8b120fd9ce25f6a0f1ce78b88822d3823250e9adf32825d04ee655e'
+          text=data.decode()
+          assert '$(INSTALLED_FILES_FILE): $(FULL_SYSTEMIMAGE_DEPS) $(FILESLIST)' in text
+          assert 'installed-file-list: $(INSTALLED_FILES_FILE)' in text
+          assert '$(BUILT_SYSTEMIMAGE): $(FULL_SYSTEMIMAGE_DEPS) $(INSTALLED_FILES_FILE) $(BUILD_IMAGE_SRCS)' in text
+          assert 'TARGET_NO_KERNEL := true' in pathlib.Path('device/huawei/carrera/BoardConfig.mk').read_text()
+          print('PINNED_Q_INSTALLED_DEPENDENCIES_CONTRACT_VERIFIED')
+          PY
+      - name: Dispatch at most one deliberate system successor after validation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          sha=os.environ['GITHUB_SHA']
+          def api(path):
+              return json.loads(subprocess.check_output(['gh','api','repos/'+repo+'/'+path],text=True))
+          head=api('git/ref/heads/main')['object']['sha']
+          if head!=sha:
+              print('NO_DISPATCH: main changed; coordinator must inspect new writer')
+              raise SystemExit(0)
+          runs=api('actions/workflows/android-carrera-system.yml/runs?per_page=100')['workflow_runs']
+          if any(r['status']!='completed' for r in runs):
+              print('NO_DISPATCH: a system run is active')
+              raise SystemExit(0)
+          if any(r['head_sha']==sha for r in runs):
+              print('NO_DISPATCH: this source already has a system attempt')
+              raise SystemExit(0)
+          old=api('actions/runs/40602929112')
+          assert old['status']=='completed' and old['conclusion']=='failure'
+          assert old['head_sha']=='c42ebaf2b72ad3889d13f30381fc8b60447f594a'
+          subprocess.run(['gh','api','--method','POST',
+                          'repos/'+repo+'/actions/workflows/android-carrera-system.yml/dispatches',
+                          '-f','ref=main'],check=True)
+          print('SINGLE_PHASE_SPLIT_SYSTEM_SUCCESSOR_DISPATCHED source='+sha)
+          PY

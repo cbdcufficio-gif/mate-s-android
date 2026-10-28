@@ -5,7 +5,7 @@
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
-    "status_at_direction_update": "queued",
+    "status_at_direction_update": "completed",
     "source_launch_api": 22,
     "system_build_budget_seconds": 18000,
     "workflow_timeout_minutes": 350,
@@ -25,7 +25,8 @@
       "warm_retry_requires_resolved_manifest": true,
       "exact_restore_required": true,
       "remote_archive_bytes": 2558560049,
-      "statistics_zeroed_per_attempt": true
+      "statistics_zeroed_per_attempt": true,
+      "statistics_evidence": "ccache-before-cleanup.log verified on bytes by review40620671708"
     },
     "run_id": 40602929112,
     "source_commit": "c42ebaf2b72ad3889d13f30381fc8b60447f594a",
@@ -36,12 +37,19 @@
     "workflow": "android-carrera-system.yml",
     "warm_attempt_number": 1,
     "measured_bytes": {
-      "repo": 17061343232,
-      "out": 53997498368
+      "repo": 17061695488,
+      "out": 58307645440
     },
     "minimum_free_after_setup_and_cache": 128000000000,
     "capacity_correction": "Measured removal of nine unused host tools; no source/Git/intermediate removal",
-    "capacity_corrected_attempt": 1
+    "capacity_corrected_attempt": 1,
+    "conclusion": "failure",
+    "stop_reason": "DISK_RESERVE_REACHED",
+    "elapsed_seconds": 7556.4,
+    "free_bytes_at_stop": 8379416576,
+    "ninja_completed": 80489,
+    "ninja_total": 80491,
+    "job_id": 122535270691
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -66,9 +74,9 @@
   "gates": [
     {
       "id": "G0",
-      "state": "in_progress",
+      "state": "open",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "One deliberate build with measured host-space correction; guard8GiB and ext4 limits unchanged"
+      "next": "Validate phase split on runner, then one measured correction attempt; no retry of old inputs"
     },
     {
       "id": "G1",
@@ -220,5 +228,29 @@
     "additional_reclaimed_bytes": 3858665472,
     "free_bytes_after_reclaim": 131967766528,
     "runtimes_verified": true
+  },
+  "diagnostic_review": {
+    "run_id": 40620671708,
+    "source_commit": "3eb9af6427674550b17205d303e854fb55fe0b3c",
+    "status": "success",
+    "bytes_verified": true,
+    "truncated_files": 0,
+    "ninja_rows": 130996,
+    "ninja_unique_command_executions": 99119,
+    "tests_run": 88,
+    "tests_passed": 87,
+    "tests_skipped": 1
+  },
+  "phase_split_correction": {
+    "status": "pending_runner_validation",
+    "validation_workflow": "android-carrera-phase-validation.yml",
+    "upstream_build_revision": "71a47798ac090b81c6b7db0b5c470f1fa3e604cd",
+    "upstream_makefile_sha256": "3579ea7fc8b120fd9ce25f6a0f1ce78b88822d3823250e9adf32825d04ee655e",
+    "prepare_target": "installed-file-list",
+    "image_target": "systemimage",
+    "cache_removal": "after installed dependencies succeed and statistics persist; before normal image dependency build",
+    "total_budget_seconds": 18000,
+    "reserve_bytes": 8589934592,
+    "automatic_dispatch": "at most one source attempt after tests, checksum and pinned-source contract pass; skip if main changes or system run exists"
   }
 }

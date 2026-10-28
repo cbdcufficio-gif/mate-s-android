@@ -8,7 +8,7 @@ permissions:
   contents: write
   actions: read
 concurrency:
-  group: carrera-diagnostics-review-40631219746
+  group: carrera-diagnostics-review-40650068374
   cancel-in-progress: false
 jobs:
   review:
@@ -29,8 +29,8 @@ jobs:
           python3 - <<'PY'
           import collections, gzip, hashlib, json, os, pathlib, re, subprocess
           repo = os.environ['GITHUB_REPOSITORY']
-          run = 40631219746
-          source = 'e597659999b6d084ece1a751379078d3679c850b'
+          run = 40650068374
+          source = 'fecf5dca7981201b2717179981224446af0f273e'
           tag = 'carrera-build-diagnostics-' + str(run)
           def api(path):
               return json.loads(subprocess.check_output(['gh', 'api', 'repos/'+repo+'/'+path], text=True))
@@ -42,12 +42,12 @@ jobs:
           assert sum(a['size'] for a in release['assets']) <= 16*1024**2
           allowed = {'inventory.json', 'SHA256SUMS', 'report.json.gz', 'carrera-report.json.gz',
                      'carrera-system-report.json.gz', 'resolved-manifest.xml.gz',
-                     'ccache-before-cleanup.log.gz', 'ccache-environment.log.gz',
+                     'ccache-before-cleanup.log.gz', 'ccache-environment.log.gz', 'carrera-ext4-space.json.gz',
                      'ninja-.ninja_log.gz', 'ninja-soong-.ninja_log.gz'}
           allowed.update(p+'.log.gz' for p in ('init','sync','graph','webview-lfs-arm',
-                                              'webview-lfs-arm64','carrera','carrera-system-prepare','carrera-system'))
+                                              'webview-lfs-arm64','carrera','carrera-system-prepare','carrera-system','carrera-ext4-convert'))
           assert all(a['name'] in allowed for a in release['assets'])
-          root = pathlib.Path('out/diagnostics-40631219746')
+          root = pathlib.Path('out/diagnostics-40650068374')
           root.mkdir(parents=True, exist_ok=False)
           subprocess.run(['gh','release','download',tag,'--repo',repo,'--dir',str(root)], check=True)
           assert sum(p.stat().st_size for p in root.iterdir()) <= 16*1024**2
@@ -110,6 +110,8 @@ jobs:
                                             'duration_ms':k[1]-k[0],
                                             'output_count':len(commands[k]),
                                             'sample_outputs':sorted(commands[k])[:3]} for k in longest]},
+              'ext4_space':json.loads(decoded.get('carrera-ext4-space.json',b'null')),
+              'ext4_convert_log':decoded.get('carrera-ext4-convert.log',b'').decode(errors='replace'),
               'system_log_causal_candidates':errors[:30],
               'system_log_candidate_count':len(errors), 'system_log_tail':log.splitlines()[-15:],
               'full_build_retry_started':False, 'rom_built':False, 'hardware_tested':False
@@ -126,4 +128,4 @@ jobs:
           (dest/'README.txt').write_text(summary)
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as stream: stream.write(summary)
           PY
-          gh release create carrera-diagnostics-review-40631219746 out/diagnostics-review/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease --title "Carrera verified diagnostics 40631219746" --notes-file out/diagnostics-review/README.txt
+          gh release create carrera-diagnostics-review-40650068374 out/diagnostics-review/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease --title "Carrera verified diagnostics 40650068374" --notes-file out/diagnostics-review/README.txt

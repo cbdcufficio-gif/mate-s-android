@@ -1,0 +1,31 @@
+name: Publish verified Carrera G0 handoff
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/android-public-system-finalize.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: carrera-public-system-finalize
+  cancel-in-progress: false
+jobs:
+  finalize:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          ref: ${{ github.sha }}
+      - name: Syntax and checksum verification of publication tools
+        run: |
+          python3 -m py_compile scripts/finalize_public_system.py scripts/review_public_system.py
+          python3 -m unittest discover tests
+          sha256sum -c SHA256SUMS
+      - name: Publish verified evidence and checksum handoff with writer protection
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/finalize_public_system.py

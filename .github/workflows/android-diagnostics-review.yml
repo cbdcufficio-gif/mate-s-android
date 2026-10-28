@@ -1,0 +1,129 @@
+name: Carrera bounded diagnostics review
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/android-diagnostics-review.yml']
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: carrera-diagnostics-review-40602929112
+  cancel-in-progress: false
+jobs:
+  review:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Validate repository tools without Android sync or compilation
+        run: python3 -m unittest discover tests
+      - name: Verify diagnostic bytes and inspect command timings
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import collections, gzip, hashlib, json, os, pathlib, re, subprocess
+          repo = os.environ['GITHUB_REPOSITORY']
+          run = 40602929112
+          source = 'c42ebaf2b72ad3889d13f30381fc8b60447f594a'
+          tag = 'carrera-build-diagnostics-' + str(run)
+          def api(path):
+              return json.loads(subprocess.check_output(['gh', 'api', 'repos/'+repo+'/'+path], text=True))
+          ci = api('actions/runs/'+str(run))
+          assert ci['status'] == 'completed' and ci['head_sha'] == source
+          release = api('releases/tags/'+tag)
+          assert release['target_commitish'] == source
+          assert 'MATES_PUBLIC_DIAGNOSTICS_V1' in release['body']
+          assert sum(a['size'] for a in release['assets']) <= 16*1024**2
+          allowed = {'inventory.json', 'SHA256SUMS', 'report.json.gz', 'carrera-report.json.gz',
+                     'carrera-system-report.json.gz', 'resolved-manifest.xml.gz',
+                     'ccache-before-cleanup.log.gz', 'ccache-environment.log.gz',
+                     'ninja-.ninja_log.gz', 'ninja-soong-.ninja_log.gz'}
+          allowed.update(p+'.log.gz' for p in ('init','sync','graph','webview-lfs-arm',
+                                              'webview-lfs-arm64','carrera','carrera-system'))
+          assert all(a['name'] in allowed for a in release['assets'])
+          root = pathlib.Path('out/diagnostics-40602929112')
+          root.mkdir(parents=True, exist_ok=False)
+          subprocess.run(['gh','release','download',tag,'--repo',repo,'--dir',str(root)], check=True)
+          assert sum(p.stat().st_size for p in root.iterdir()) <= 16*1024**2
+          sums = {}
+          for line in (root/'SHA256SUMS').read_text().splitlines():
+              digest, name = line.split('  ', 1)
+              assert re.fullmatch('[0-9a-f]{64}', digest) and name in allowed
+              assert name not in sums
+              sums[name] = digest
+              assert hashlib.sha256((root/name).read_bytes()).hexdigest() == digest, name
+          assert set(sums) == {a['name'] for a in release['assets']} - {'SHA256SUMS'}
+          verified = []
+          for asset in release['assets']:
+              file = root/asset['name']
+              digest = hashlib.sha256(file.read_bytes()).hexdigest()
+              assert file.stat().st_size == asset['size']
+              if asset.get('digest'):
+                  assert asset['digest'] == 'sha256:'+digest
+              verified.append({'name':file.name,'bytes':file.stat().st_size,'sha256':digest})
+          inventory = json.loads((root/'inventory.json').read_text())
+          assert inventory['marker'] == 'MATES_PUBLIC_DIAGNOSTICS_V1'
+          decoded = {}
+          for item in inventory['files']:
+              assert item['name']+'.gz' in sums
+              with gzip.open(root/(item['name']+'.gz'), 'rb') as stream:
+                  data = stream.read(32*1024**2 + 1024)
+                  assert not stream.read(1), 'Decompression bound exceeded'
+              assert hashlib.sha256(data).hexdigest() == item['sha256']
+              if not item['truncated']:
+                  assert len(data) == item['input_bytes']
+              decoded[item['name']] = data
+          system = json.loads(decoded['carrera-system-report.json'])
+          ramdisk = json.loads(decoded['carrera-report.json'])
+          graph = json.loads(decoded['report.json'])
+          commands = collections.defaultdict(set)
+          rows = 0
+          for name, data in decoded.items():
+              if not name.startswith('ninja-'): continue
+              for line in data.decode().splitlines():
+                  fields = line.split('\t')
+                  if len(fields) != 5 or not fields[0].isdigit() or not fields[1].isdigit(): continue
+                  start,end = map(int,fields[:2])
+                  commands[(start,end,fields[4])].add(fields[3])
+                  rows += 1
+          longest = sorted(commands, key=lambda k:k[1]-k[0], reverse=True)[:15]
+          log = decoded.get('carrera-system.log',b'').decode(errors='replace')
+          errors = [line for line in log.splitlines() if re.search(r'(^FAILED:|error:|ninja: build stopped|DISK_RESERVE_REACHED|TIME_BUDGET_REACHED)',line)]
+          report = {
+              'status':'PUBLIC_DIAGNOSTIC_BYTES_VERIFIED',
+              'review_commit':os.environ['GITHUB_SHA'], 'review_run':os.environ['GITHUB_RUN_ID'],
+              'source_run':run, 'source_commit':source, 'source_conclusion':ci['conclusion'],
+              'diagnostic_release':release['html_url'], 'digests_verified_on_bytes':True,
+              'assets':verified, 'inventory':inventory, 'system_report':system,
+              'ramdisk_report':ramdisk, 'graph_report':graph,
+              'ccache_before_cleanup':decoded.get('ccache-before-cleanup.log',b'').decode(errors='replace'),
+              'ninja':{'rows':rows,'unique_command_executions':len(commands),
+                       'dedup_key':['start_ms','end_ms','command_hash'],
+                       'duration_sum_is_not_critical_path':True,
+                       'longest_commands':[{'start_ms':k[0],'end_ms':k[1],'command_hash':k[2],
+                                            'duration_ms':k[1]-k[0],
+                                            'output_count':len(commands[k]),
+                                            'sample_outputs':sorted(commands[k])[:3]} for k in longest]},
+              'system_log_causal_candidates':errors[:30],
+              'system_log_candidate_count':len(errors), 'system_log_tail':log.splitlines()[-15:],
+              'full_build_retry_started':False, 'rom_built':False, 'hardware_tested':False
+          }
+          dest = pathlib.Path('out/diagnostics-review')
+          dest.mkdir()
+          path = dest/'diagnostics-review.json'
+          path.write_text(json.dumps(report,indent=2)+'\n')
+          assert path.stat().st_size < 1024**2
+          (dest/'SHA256SUMS').write_text(hashlib.sha256(path.read_bytes()).hexdigest()+'  '+path.name+'\n')
+          print(path.read_text())
+          summary = ('Verified public diagnostic bytes for run '+str(run)+
+                     '. No Android sync, system retry or hardware access. This is a failure analysis, not G0.\n')
+          (dest/'README.txt').write_text(summary)
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as stream: stream.write(summary)
+          PY
+          gh release create carrera-diagnostics-review-40602929112 out/diagnostics-review/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease --title "Carrera verified diagnostics 40602929112" --notes-file out/diagnostics-review/README.txt

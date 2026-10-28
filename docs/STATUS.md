@@ -1,3 +1,27 @@
+# Verificatore HIDL validato; unico successore — 28 ottobre 2026
+
+Validazione [40696346541](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40696346541),
+job122844019900,commit6bd26d624218507b49008158c8fab0272f29bf56:
+8test sparse/cwd,11layout,6fasi passati;suite113test112pass1skip;
+152checksum e contratti pinned verificati.
+Tutti14nomi pubblici confrontati con la diagnostica verificata,poi estratti
+e verificati tramite digest da vere ext4 fixture in entrambi i layout.
+Il verificatore precedente fcd5fb7,hash111d68f03a2e83189be2f57e708bac7aecb80fa9783bebbcc3f9f442409df01a,
+riproduce lo stesso errore @ in entrambi;il corretto passa e rifiuta digest
+HIDL alterati e percorsi con whitespace/delimitatori/traversal.
+Payload delle fixture sintetici pubblici:non sono moduli reali Carrera.
+
+Unico sistema successore [40696459171](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40696459171),
+job122844429122,stessoSHA,in_progress alla preparazione runner.
+Nessun input modificato,nessun concorrente avviato. La modifica documentale
+successiva non altera lo SHA già fissato dal workflow.8GiB,18000s,350min,
+processi,cache,manifest,API22,WebView,ELF e policy invariati.
+
+Prossima azione:verificare14digest sull'immagine reale,ramdisk,API22,lock,
+dimensioni e release completa;solo allora chiudereG0. Layout/mount e
+system_image_rootdir_contents_verified=false restano limiti G1.
+Nessun boot né ROM attestato. Monitor ancora necessario per questo run.
+
 # HIDL filenames rejected after successful conversion — 28 ottobre 2026
 
 Run [40668596565](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40668596565),

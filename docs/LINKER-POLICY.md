@@ -1,3 +1,15 @@
+# Linker effettivo catturato — 28 ottobre 2026
+
+La review40724596747 ha estratto /system/etc/ld.config.txt dalla release reale:
+è il ramo legacy con namespace.default.isolated=false, ricerca system/product/vendor/odm
+e namespace APEX separati. SHA256:
+281c997610443078b3d266e6e87207d457e08652053e6f93db56827dd5988a7d.
+Le vecchie indicazioni sotto sulla mancanza del file generato sono storiche.
+Questo risolve la selezione statica, non ABI, closure, mount o caricamento dei blob.
+Prove e prossima azione: [G1-STATIC-REVIEW.md](G1-STATIC-REVIEW.md).
+
+---
+
 # Politica linker Q per Carrera: condizione ancora da verificare
 
 Verificati nel commit system_core 6d27634866be5b646a8cea1f9abeae902fd831e5:

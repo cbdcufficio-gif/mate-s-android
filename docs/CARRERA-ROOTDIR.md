@@ -1,3 +1,16 @@
+# Aggiornamento G1 — 28 ottobre 2026
+
+La release reale G0 è stata verificata sui byte. La precedente interpretazione
+di /system come filesystem legacy separato, descritta nella cronologia sotto,
+non coincide con il layout q-root-with-system prodotto dal builder Q.
+Il cpio contiene il primo init ma non init.rc; system manca di first_stage_mount.
+Occorre una prova first-stage/switch-root prima di usare questa fstab per boot.
+Nessuna modifica produttiva o prova hardware è implicita.
+Vedere [G1-STATIC-REVIEW.md](G1-STATIC-REVIEW.md) e
+[G1-PUBLIC-CONFIG-RESULT.json](G1-PUBLIC-CONFIG-RESULT.json).
+
+---
+
 # Integrazione rootdir Carrera
 
 ## Sequenza di montaggio Android Q — 23 ottobre 2026

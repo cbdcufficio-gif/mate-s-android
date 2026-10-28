@@ -834,5 +834,22 @@
     "passed": 102,
     "skipped": 1
   },
-  "next": "Validate sparse physical allocation budget and pinned unchanged simg2img hole behavior before one successor. No actual raw conversion or module verification happened in this run."
+  "next": "Observe40650068374 without changing inputs; actual chunk budget, st_blocks, df, layout and all module hashes remain to verify.",
+  "successor": {
+    "run_id": 40650068374,
+    "job_id": 122687822451,
+    "source_commit": "fecf5dca7981201b2717179981224446af0f273e",
+    "status_at_update": "in_progress",
+    "validation_run_id": 40650004176,
+    "tests_run": 110,
+    "tests_passed": 109,
+    "tests_skipped": 1,
+    "checksum_entries": 152,
+    "reference_sparse_measurement": {
+      "logical_bytes": 134230016,
+      "allocated_bytes": 12288,
+      "budget_bytes": 67153920
+    },
+    "reference_measurement_scope": "fixture only; Carrera conversion has not run yet"
+  }
 }

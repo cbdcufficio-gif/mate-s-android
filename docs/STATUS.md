@@ -1,3 +1,25 @@
+# Budget sparse misurato; unico successore - 28 ottobre 2026
+
+Sistema [40650068374](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40650068374),
+job122687822451,sorgentefecf5dca7981201b2717179981224446af0f273e.
+Validazione [40650004176](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40650004176),
+job122687607404,stessoSHA:7test sparse,9layout ext4,6fasi passati;
+suite110test109pass1skip;152checksum. Contratti converter Q fissato verificati.
+
+Misura fixture reference:134230016byte logici,12288byte allocati,
+budget67153920byte (include64MiB e rounding). Confronto hash di TUTTI i byte,
+incluse hole e FILL. Anche vera ext4 sparse convertita e moduli verificati.
+Questa misura è sulla fixture,non sull'immagine Carrera. Il parser valuta
+RAW/FILL/DONT_CARE del file Carrera effettivo prima di allocare; il
+convertitore Android non cambia,restano guard8GiB e controlli df/st_blocks.
+Un solo sistema dispatchato dopo suite,source contract e diagnostica verificata.
+Nessun nuovo retry per semplice tempo/disco; guardie,budget,cache,lock invariati.
+
+Prossimo risultato atteso: carrera-ext4-space.json con budget/allocazione
+reali,layout ext4 e14digest moduli,poi release. Nessuna prova reale ancora
+per questi passaggi;G0 resta aperto e mount/runtime restano G1.
+Durante40650068374 non modificare input o lanciare concorrenti.
+
 # Immagine compilata; preflight espansione troppo conservativo - 28 ottobre 2026
 
 40631219746 job122627797117,sorgentee597659: dipendenze7703s e immagine90,1s

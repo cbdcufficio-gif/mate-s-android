@@ -6,7 +6,7 @@ La cronologia delle prove precedenti è in [STATUS.md](STATUS.md).
 
 | Priorità | Blocco | Prossima prova che riduce l'incertezza |
 |---|---|---|
-| G0 | 40621277229 compila immagine; verifica ext4 fallisce cercando /lib/libutilscallstack.so | Validato su ext4 reali:103test102pass1skip; unico successore40631219746 attivo, da verificare tutti i digest e vendor sull'immagine reale |
+| G0 | 40631219746 compila immagine; preflight espansione logica manca139124736byte; conversione/layout non raggiunti | Validare budget fisico RAW/FILL e hole DONT_CARE con converter invariato; riserva8GiB e controlli byte invariati; un solo successore dopo misure |
 | G1 | Configurazione Q, corrispondenza layout immagine/mount legacy e overlay vendor finale incompleti | API22 applicata, da verificare nel prossimo run; ld.config, APEX, policy/capability kernel e closure dei soli servizi essenziali |
 | G2 | Nessuna boot Q Carrera verificata | Formato v0, coda stock, DT handoff, dimensioni intere e percorso di recupero |
 | G3 | Kernel diagnostico e init Q mai avviati | Nuovo kernel identificato, policy/mount/Binder e ADB autenticato con log |

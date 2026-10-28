@@ -1,3 +1,35 @@
+# Immagine compilata; preflight espansione troppo conservativo - 28 ottobre 2026
+
+40631219746 job122627797117,sorgentee597659: dipendenze7703s e immagine90,1s
+riuscite,totale7799s;nessun guard tempo/disco durante compilazione.
+Cache reclaim2691031040byte. Dopo immagine11135164416byte liberi.
+La verifica si ferma PRIMA di simg2img: chiedeva2684354560+8589934592byte,
+shortfall139124736byte. Non è un modulo mancante provato o errore compiler:
+il nuovo rilevamento layout non è stato raggiunto. G0 resta aperto.
+
+Review40649516811 job122686050336,sorgente258d978:17asset4444436byte
+verificati sui byte,nessun troncamento;103test102pass1skip.
+Prove:release carrera-diagnostics-review-40631219746 e risultato strutturato.
+Immagine1370173900byte sparse,2684354560logici;digest calcolato sul runner
+1eea7f767617b881e585f2c5d1d3ab2f8ef27c8178cfeed5e9427f3af002b780.
+Non pubblicata né verificata indipendentemente.
+
+Il simg2img Q fissato usa output normale: DONT_CARE -> lseek, chiusura ->
+ftruncate; RAW e FILL vengono scritti. La lunghezza logica non coincide
+quindi sempre con i blocchi ospiti allocati. Correzione proposta: validare
+tutti i chunk e totali, contare INTERAMENTE RAW/FILL (anche FILLzero),
+budget fisico +64MiB e arrotondamenti, quindi conversione con lo STESSO
+simg2img Android e guard8GiB/180s. fsync,st_blocks e df finali verificati;
+report carrera-ext4-space.json e log conversione nella diagnostica limitata.
+Non si assume il risparmio: il parser decide sul file effettivo prima di
+convertire; se il budget non rientra si ferma. Nessuna sorgente/Git/intermedio
+rimosso,nessuna riserva ridotta,nessuna nuova cache o variazione processi/budget.
+
+Prima di un unico successore: misure su converter di riferimento, confronto
+byte completo su fixture con hole/FILL/RAW, ext4 sparse reale con moduli e
+hash, test input malformati/limite partizione,suite completa,checksum e
+hash/contratto del sorgente converter Q fissato. Nessun retry identico.
+
 # Verificatore layout validato; unico successore - 28 ottobre 2026
 
 Sistema [40631219746](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40631219746),

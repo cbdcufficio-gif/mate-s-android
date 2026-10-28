@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import shutil
 import subprocess
+import struct
 import sys
 import tarfile
 import tempfile
@@ -46,6 +47,65 @@ def verify_legacy_vendor_link(product):
     return {'path':'root/vendor','target':target}
 
 
+def sparse_expansion_budget(image):
+    """Bound RAW/FILL writes; pinned simg2img seeks over DONT_CARE holes."""
+    size=image.stat().st_size
+    with image.open('rb') as stream:
+        header=stream.read(28)
+        if len(header)!=28:
+            raise ValueError('Truncated Android sparse header')
+        magic,major,minor,file_header,chunk_header,block_size,total_blocks,chunks,checksum=struct.unpack('<IHHHHIIII',header)
+        if magic!=0xed26ff3a or major!=1 or file_header<28 or chunk_header<12 or not block_size or block_size%4:
+            raise ValueError('Unsupported Android sparse geometry')
+        expanded=block_size*total_blocks
+        if expanded>2684354560 or file_header>size:
+            raise ValueError('Sparse output exceeds Carrera system geometry')
+        stream.seek(file_header)
+        output_blocks=0
+        allocated=0
+        kinds={'raw':0,'fill':0,'dont_care':0,'crc32':0}
+        for index in range(chunks):
+            start=stream.tell()
+            data=stream.read(chunk_header)
+            if len(data)!=chunk_header:
+                raise ValueError('Truncated Android sparse chunk header')
+            kind,reserved,blocks,total_size=struct.unpack('<HHII',data[:12])
+            length=blocks*block_size
+            if kind==0xcac1:
+                expected=chunk_header+length
+                allocated+=length
+                kinds['raw']+=1
+            elif kind==0xcac2:
+                expected=chunk_header+4
+                allocated+=length  # Count even zero FILL: simg2img writes it.
+                kinds['fill']+=1
+            elif kind==0xcac3:
+                expected=chunk_header
+                kinds['dont_care']+=1
+            elif kind==0xcac4 and blocks==0:
+                expected=chunk_header+4
+                kinds['crc32']+=1
+            else:
+                raise ValueError('Unsupported Android sparse chunk type')
+            if total_size!=expected or start+total_size>size:
+                raise ValueError('Truncated or inconsistent Android sparse chunk')
+            output_blocks+=blocks
+            if output_blocks>total_blocks:
+                raise ValueError('Android sparse output block count exceeded')
+            stream.seek(start+total_size)
+        if output_blocks!=total_blocks or stream.tell()!=size:
+            raise ValueError('Android sparse chunk totals or file length differ')
+    fragment=os.statvfs(ROOT).f_frsize
+    if fragment<=0 or fragment>1024**2:
+        raise ValueError('Unsupported host filesystem allocation unit')
+    # Account for extent rounding/metadata and delayed-allocation slack.
+    slack=64*1024**2+2*max(fragment,4096)*(chunks+1)
+    return {'logical_bytes':expanded,'raw_and_fill_bytes':allocated,
+            'dont_care_bytes':expanded-allocated,'chunk_types':kinds,
+            'allocation_slack_bytes':slack,'allocation_budget_bytes':allocated+slack,
+            'reserve_bytes':8*1024**3,'host_fragment_bytes':fragment}
+
+
 def inspect_system_image_layout(debugfs, raw):
     """Identify the filesystem layout; this does not certify runtime mounts."""
     observed={}
@@ -82,15 +142,33 @@ def verify_modules_in_system_image(source,image,modules):
     metadata=image_metadata(image)
     with tempfile.TemporaryDirectory(prefix='carrera-ext4-',dir=ROOT) as temp:
         raw=image
+        space=None
         if metadata['format']=='android_sparse':
-            expanded=metadata['expanded_bytes']
-            if shutil.disk_usage(ROOT).free < expanded+8*1024**3:
-                raise ValueError('Insufficient free space to inspect system ext4 while retaining 8 GiB')
+            space=sparse_expansion_budget(image)
+            space['free_bytes_before']=shutil.disk_usage(ROOT).free
+            space_path=ROOT/'carrera-ext4-space.json'
+            space_path.write_text(json.dumps(space,indent=2)+'\n')
+            if space['free_bytes_before'] < space['allocation_budget_bytes']+8*1024**3:
+                raise ValueError('Insufficient physical space to inspect sparse ext4 while retaining 8 GiB')
             simg2img=source/'out/host/linux-x86/bin/simg2img'
             if not simg2img.is_file():
                 raise ValueError('Android simg2img host tool is missing')
             raw=Path(temp)/'system.raw.img'
-            subprocess.run([str(simg2img),str(image),str(raw)],check=True,timeout=180)
+            conversion=guarded([str(simg2img),str(image),str(raw)],source,
+                               ROOT/'carrera-ext4-convert.log',seconds=180,reserve=8*1024**3)
+            space['conversion']=conversion
+            if conversion['returncode'] or conversion['stop_reason']:
+                space_path.write_text(json.dumps(space,indent=2)+'\n')
+                raise ValueError('Sparse ext4 conversion failed: '+str(conversion))
+            with raw.open('rb') as stream:
+                os.fsync(stream.fileno())
+            space['actual_allocated_bytes']=raw.stat().st_blocks*512
+            space['free_bytes_after']=shutil.disk_usage(ROOT).free
+            space_path.write_text(json.dumps(space,indent=2)+'\n')
+            if raw.stat().st_size!=space['logical_bytes'] or space['actual_allocated_bytes']>space['allocation_budget_bytes']:
+                raise ValueError('Sparse ext4 allocation exceeded its validated budget')
+            if space['free_bytes_after']<8*1024**3:
+                raise ValueError('Sparse ext4 conversion did not retain 8 GiB')
         with raw.open('rb') as stream:
             stream.seek(1024+56)
             if stream.read(2)!=b'\x53\xef':
@@ -114,7 +192,7 @@ def verify_modules_in_system_image(source,image,modules):
     if not extracted or not any(item['path'].startswith(vendor_prefix) for item in extracted):
         raise ValueError('No public vendor module verified inside system ext4')
     return {'filesystem':'ext4','format':metadata['format'],'modules_verified':len(extracted),
-            'layout_evidence':layout_evidence,'modules':extracted}
+            'layout_evidence':layout_evidence,'expansion_space':space,'modules':extracted}
 
 
 def build_system_phases(source, jobs, report, budget=18000):

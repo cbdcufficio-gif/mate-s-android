@@ -9,7 +9,7 @@
     "job_id": 122627797117,
     "workflow": "android-carrera-system.yml",
     "source_commit": "e597659999b6d084ece1a751379078d3679c850b",
-    "status_at_direction_update": "in_progress",
+    "status_at_direction_update": "completed",
     "live_status_required": true,
     "reported_owner": "Codex cloud monitor; inspect current main, successors and other writers before intervention",
     "public_only": true,
@@ -29,7 +29,48 @@
     "predecessor_run_id": 40621277229,
     "validation_run_id": 40631205903,
     "repair": "Strict ext4 layout identification with one consistent module mapping; all byte hashes and vendor requirement retained",
-    "layout_verifier_attempt": 1
+    "layout_verifier_attempt": 1,
+    "conclusion": "failure",
+    "failure_category": "verification_capacity_preflight",
+    "error": "Insufficient free space to inspect system ext4 while retaining 8 GiB",
+    "build": {
+      "returncode": 0,
+      "stop_reason": null,
+      "seconds": 7799,
+      "free_bytes": 11135164416
+    },
+    "build_phases": [
+      {
+        "name": "installed_dependencies",
+        "returncode": 0,
+        "stop_reason": null,
+        "seconds": 7703,
+        "free_bytes": 11151302656
+      },
+      {
+        "name": "system_image",
+        "returncode": 0,
+        "stop_reason": null,
+        "seconds": 90.1,
+        "free_bytes": 11135164416
+      }
+    ],
+    "compiler_cache_reclaim": {
+      "free_bytes_before": 11151298560,
+      "free_bytes_after": 13842329600,
+      "observed_free_delta_bytes": 2691031040
+    },
+    "image": {
+      "bytes": 1370173900,
+      "sha256": "1eea7f767617b881e585f2c5d1d3ab2f8ef27c8178cfeed5e9427f3af002b780",
+      "format": "android_sparse",
+      "expanded_bytes": 2684354560,
+      "chunks": 36,
+      "sparse_major": 1,
+      "sparse_minor": 0,
+      "fits_carrera_system_partition": true
+    },
+    "logical_expansion_shortfall_bytes": 139124736
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -54,9 +95,9 @@
   "gates": [
     {
       "id": "G0",
-      "state": "in_progress",
+      "state": "open",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "Observe40631219746 without input changes; require actual ext4 layout/module digest evidence, complete release and provenance before G0"
+      "next": "Validate physical sparse expansion budget without reducing 8GiB reserve, then one measured successor; no retry of unchanged inputs"
     },
     {
       "id": "G1",
@@ -235,16 +276,15 @@
     "runtimes_verified": true
   },
   "diagnostic_review": {
-    "run_id": 40630929577,
-    "job_id": 122626866940,
-    "source_commit": "4ffa5863df53b6191fcbdf5185a5c728a3d55fa1",
+    "run_id": 40649516811,
+    "job_id": 122686050336,
+    "source_commit": "258d9785fe95841117ba5a110c6d5a0da202c972",
     "status": "success",
     "bytes_verified": true,
     "truncated_files": 0,
-    "ninja_rows": 131004,
-    "ninja_unique_command_executions": 99126,
-    "tests_run": 94,
-    "tests_passed": 93,
+    "total_asset_bytes": 4444436,
+    "tests_run": 103,
+    "tests_passed": 102,
     "tests_skipped": 1
   },
   "phase_split_correction": {
@@ -316,7 +356,7 @@
     }
   },
   "layout_verifier_correction": {
-    "status": "runner_validated_successor_in_progress",
+    "status": "not_reached_expansion_preflight_failed",
     "layouts": [
       "legacy-system-root",
       "q-root-with-system"
@@ -389,5 +429,21 @@
     "ninja_completed": 80489,
     "ninja_total": 80491,
     "job_id": 122535270691
+  },
+  "sparse_allocation_correction": {
+    "status": "pending_runner_validation",
+    "reserve_bytes": 8589934592,
+    "method": "Validate every sparse chunk; budget all RAW/FILL writes and 64MiB plus allocation rounding; DONT_CARE uses pinned simg2img lseek holes",
+    "converter_unchanged": true,
+    "pinned_system_core": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+    "simg2img_sha256": "5065e89f078949924034d05bb3aa285697e5d6509eafb3a7bd07e862b242cfc1",
+    "output_file_sha256": "26a367d5bd9e371751b6b4a5c11cecc10e1c142ce50be240ce299a0870c9bf4b",
+    "conversion_guard_seconds": 180,
+    "checks": "8GiB runtime guard, fsync, actual st_blocks within budget, logical size and post-conversion free space",
+    "diagnostics_added": [
+      "carrera-ext4-space.json",
+      "carrera-ext4-convert.log"
+    ],
+    "full_retry_requires": "targeted reference converter measurement, real sparse ext4 module byte verification, full suite, source contract and checksums"
   }
 }

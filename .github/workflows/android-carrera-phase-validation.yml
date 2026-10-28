@@ -1,4 +1,4 @@
-name: Carrera ext4 layout validation
+name: Carrera sparse allocation validation
 on:
   workflow_dispatch:
   push:
@@ -7,6 +7,7 @@ on:
       - '.github/workflows/android-carrera-phase-validation.yml'
       - 'tests/test_carrera_system_phases.py'
       - 'tests/test_carrera_system_layout.py'
+      - 'tests/test_carrera_sparse_space.py'
 permissions:
   contents: read
   actions: write
@@ -22,9 +23,15 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
+      - name: Install small public sparse reference tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends android-sdk-libsparse-utils
+          command -v simg2img img2simg mke2fs debugfs
       - name: Test phase ordering, shared budget, cache guards and full suite
         run: |
           command -v mke2fs debugfs
+          python3 -m unittest discover -s tests -p test_carrera_sparse_space.py -v
           python3 -m unittest discover -s tests -p test_carrera_system_layout.py -v
           python3 -m unittest discover -s tests -p test_carrera_system_phases.py -v
           python3 -m unittest discover tests
@@ -74,6 +81,28 @@ jobs:
               print('PINNED_Q_NESTED_SYSTEM_STAGING_REPRODUCED_ON_FIXTURE')
               print('This fixture proves builder layout, not hardware mount compatibility')
           PY
+      - name: Verify pinned Android raw-output hole contract
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, json, subprocess
+          for path,digest in (
+              ('libsparse/simg2img.cpp','5065e89f078949924034d05bb3aa285697e5d6509eafb3a7bd07e862b242cfc1'),
+              ('libsparse/output_file.cpp','26a367d5bd9e371751b6b4a5c11cecc10e1c142ce50be240ce299a0870c9bf4b')):
+              obj=json.loads(subprocess.check_output(['gh','api',
+                  'repos/LineageOS/android_system_core/contents/'+path+'?ref=6d27634866be5b646a8cea1f9abeae902fd831e5'],text=True))
+              data=base64.b64decode(obj['content'])
+              assert hashlib.sha256(data).hexdigest()==digest
+              text=data.decode()
+              if path.endswith('simg2img.cpp'):
+                  assert 'sparse_file_write(s, out, false, false, false)' in text
+              else:
+                  assert 'ret = lseek64(outn->fd, cnt, SEEK_CUR);' in text
+                  assert 'ret = ftruncate64(outn->fd, len);' in text
+                  assert 'return out->ops->skip(out, len);' in text
+          print('PINNED_ANDROID_SIMG2IMG_HOLE_CONTRACT_VERIFIED')
+          PY
       - name: Dispatch at most one deliberate system successor after validation
         env:
           GH_TOKEN: ${{ github.token }}
@@ -95,14 +124,14 @@ jobs:
           if any(r['head_sha']==sha for r in runs):
               print('NO_DISPATCH: this source already has a system attempt')
               raise SystemExit(0)
-          review=api('actions/runs/40630929577')
+          review=api('actions/runs/40649516811')
           assert review['status']=='completed' and review['conclusion']=='success'
-          assert review['head_sha']=='4ffa5863df53b6191fcbdf5185a5c728a3d55fa1'
-          old=api('actions/runs/40621277229')
+          assert review['head_sha']=='258d9785fe95841117ba5a110c6d5a0da202c972'
+          old=api('actions/runs/40631219746')
           assert old['status']=='completed' and old['conclusion']=='failure'
-          assert old['head_sha']=='8f3a4886b54a2ac1fbff66621546e54739b82493'
+          assert old['head_sha']=='e597659999b6d084ece1a751379078d3679c850b'
           subprocess.run(['gh','api','--method','POST',
                           'repos/'+repo+'/actions/workflows/android-carrera-system.yml/dispatches',
                           '-f','ref=main'],check=True)
-          print('SINGLE_LAYOUT_VERIFIER_SUCCESSOR_DISPATCHED source='+sha)
+          print('SINGLE_SPARSE_BUDGET_SUCCESSOR_DISPATCHED source='+sha)
           PY

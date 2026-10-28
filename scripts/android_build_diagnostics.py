@@ -16,8 +16,8 @@ MAX_TOTAL=16*1024**2
 def collect(root, destination):
     destination.mkdir(parents=True,exist_ok=False)
     names=['report.json','carrera-report.json','carrera-system-report.json','resolved-manifest.xml',
-           'ccache-before-cleanup.log','ccache-environment.log']
-    names += [p+'.log' for p in ('init','sync','graph','webview-lfs-arm','webview-lfs-arm64','carrera','carrera-system-prepare','carrera-system')]
+           'ccache-before-cleanup.log','ccache-environment.log','carrera-ext4-space.json']
+    names += [p+'.log' for p in ('init','sync','graph','webview-lfs-arm','webview-lfs-arm64','carrera','carrera-system-prepare','carrera-system','carrera-ext4-convert')]
     files=[(root/name,name) for name in names]
     files += [(root/'source/out'/p,'ninja-'+p.replace('/','-')) for p in ('.ninja_log','soong/.ninja_log')]
     inventory=[]

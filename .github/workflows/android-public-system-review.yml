@@ -1,4 +1,4 @@
-name: Carrera public G0 byte verification and G1 capture
+name: Carrera G0 bytes and G1 capture (Q vendor launch API)
 on:
   workflow_dispatch:
   push:

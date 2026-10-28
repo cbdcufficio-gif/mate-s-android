@@ -157,7 +157,10 @@ def main():
         checked.append({'path':path,'sha256':digest})
     props = dump('/system/build.prop').decode()
     propmap = dict(line.split('=',1) for line in props.splitlines() if line and not line.startswith('#') and '=' in line)
-    assert propmap['ro.product.first_api_level'] == '22'
+    # Pinned Q core/Makefile removes first_api_level from system build.prop and installs it in vendor.
+    vendor_props = dump('/system/vendor/build.prop').decode()
+    vendormap = dict(line.split('=',1) for line in vendor_props.splitlines() if line and not line.startswith('#') and '=' in line)
+    assert vendormap['ro.product.first_api_level'] == '22'
     configs = {}
     for path in ('/init.rc','/init.environ.rc','/init.hi3635.rc','/fstab.hi3635','/default.prop',
                  '/system/etc/ld.config.txt','/system/etc/ld.config.vndk_lite.txt','/system/etc/ld.config.legacy.txt',
@@ -169,7 +172,7 @@ def main():
     apex = ls('/system/apex')
     g1 = {'status':'PUBLIC_G1_STATIC_INPUTS_CAPTURED','source_run':RUN,'source_commit':SOURCE,
           'review_run':os.environ['GITHUB_RUN_ID'],'review_commit':os.environ['GITHUB_SHA'],
-          'build_properties':propmap,'configs':configs,'apex_listing':apex,
+          'build_properties':propmap,'vendor_build_properties':vendormap,'launch_api_property_path':'/system/vendor/build.prop','configs':configs,'apex_listing':apex,
           'root_listing':ls('/'),'system_etc_listing':ls('/system/etc'),
           'ramdisk_entries':list(entries.values()),
           'limitations':['Static public artifacts only; no Huawei overlay','No kernel capability or policy compatibility established',

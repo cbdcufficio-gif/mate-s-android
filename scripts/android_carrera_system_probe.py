@@ -23,13 +23,17 @@ def system_build_jobs(cpus, memory_bytes):
     return 3 if cpus >= 4 and memory_bytes >= 12*1024**3 else 2
 
 
-def system_image_path(staged_path):
+def system_image_path(staged_path, layout='legacy-system-root'):
     relative=Path(staged_path)
     if relative.is_absolute() or '..' in relative.parts or not relative.parts or relative.parts[0]!='system':
         raise ValueError('Unsafe or unexpected module path in system staging')
     if any(not re.fullmatch(r'[A-Za-z0-9_.+-]+',part) for part in relative.parts):
         raise ValueError('Unexpected character in public module path')
-    return '/'+str(relative.relative_to('system'))
+    if layout=='legacy-system-root':
+        return '/'+str(relative.relative_to('system'))
+    if layout=='q-root-with-system':
+        return '/'+str(relative)
+    raise ValueError('Unsupported system image layout')
 
 
 def verify_legacy_vendor_link(product):
@@ -40,6 +44,35 @@ def verify_legacy_vendor_link(product):
     if target!='/system/vendor':
         raise ValueError('Unexpected legacy /vendor symlink target: '+target)
     return {'path':'root/vendor','target':target}
+
+
+def inspect_system_image_layout(debugfs, raw):
+    """Identify the filesystem layout; this does not certify runtime mounts."""
+    observed={}
+    for path in ('/system','/lib'):
+        result=subprocess.run([debugfs,'-R','stat '+path,str(raw)],stdout=subprocess.PIPE,
+                              stderr=subprocess.STDOUT,text=True,timeout=60)
+        if result.returncode:
+            raise ValueError('Cannot inspect system ext4 directory: '+path)
+        match=re.search(r'Type:\s+([A-Za-z]+)',result.stdout)
+        if match:
+            observed[path]=match.group(1)
+        elif 'File not found' in result.stdout:
+            observed[path]='absent'
+        else:
+            raise ValueError('Unrecognized system ext4 directory metadata: '+path)
+    if observed=={'/system':'directory','/lib':'absent'}:
+        layout='q-root-with-system'
+    elif observed=={'/system':'absent','/lib':'directory'}:
+        layout='legacy-system-root'
+    else:
+        raise ValueError('Ambiguous or unsupported system ext4 layout: '+str(observed))
+    listing=subprocess.run([debugfs,'-R','ls -p /',str(raw)],stdout=subprocess.PIPE,
+                           stderr=subprocess.STDOUT,text=True,timeout=60)
+    if listing.returncode:
+        raise ValueError('Cannot inventory system ext4 root')
+    return {'layout':layout,'directory_types':observed,
+            'root_listing':listing.stdout[:8192],'runtime_mounts_verified':False}
 
 
 def verify_modules_in_system_image(source,image,modules):
@@ -62,9 +95,11 @@ def verify_modules_in_system_image(source,image,modules):
             stream.seek(1024+56)
             if stream.read(2)!=b'\x53\xef':
                 raise ValueError('System image is not an ext4 filesystem')
+        layout_evidence=inspect_system_image_layout(debugfs,raw)
+        layout=layout_evidence['layout']
         extracted=[]
         for index,item in enumerate(modules):
-            image_path=system_image_path(item['path'])
+            image_path=system_image_path(item['path'],layout)
             destination=Path(temp)/f'module-{index}.bin'
             command=f'dump {image_path} {destination}'
             result=subprocess.run([debugfs,'-R',command,str(raw)],stdout=subprocess.PIPE,
@@ -75,10 +110,11 @@ def verify_modules_in_system_image(source,image,modules):
             if digest!=item['sha256']:
                 raise ValueError('Public module hash differs inside system ext4: '+image_path)
             extracted.append({'path':image_path,'sha256':digest})
-    if not extracted or not any(item['path'].startswith('/vendor/') for item in extracted):
+    vendor_prefix=system_image_path('system/vendor',layout)+'/'
+    if not extracted or not any(item['path'].startswith(vendor_prefix) for item in extracted):
         raise ValueError('No public vendor module verified inside system ext4')
     return {'filesystem':'ext4','format':metadata['format'],'modules_verified':len(extracted),
-            'modules':extracted}
+            'layout_evidence':layout_evidence,'modules':extracted}
 
 
 def build_system_phases(source, jobs, report, budget=18000):

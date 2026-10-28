@@ -1,38 +1,44 @@
 {
   "schema_version": 1,
-  "status": "CARRERA_PUBLIC_SYSTEM_BUILD_FAILED",
-  "run_id": 40602929112,
-  "job_id": 122535270691,
-  "source_commit": "c42ebaf2b72ad3889d13f30381fc8b60447f594a",
-  "review_run_id": 40620671708,
-  "review_commit": "3eb9af6427674550b17205d303e854fb55fe0b3c",
-  "review_release": "https://github.com/cbdcufficio-gif/mate-s-android/releases/tag/carrera-diagnostics-review-40602929112",
+  "status": "CARRERA_PUBLIC_SYSTEM_VERIFICATION_FAILED",
+  "run_id": 40621277229,
+  "job_id": 122595659983,
+  "source_commit": "8f3a4886b54a2ac1fbff66621546e54739b82493",
+  "review_run_id": 40630929577,
+  "review_job_id": 122626866940,
+  "review_commit": "4ffa5863df53b6191fcbdf5185a5c728a3d55fa1",
+  "review_release": "https://github.com/cbdcufficio-gif/mate-s-android/releases/tag/carrera-diagnostics-review-40621277229",
   "diagnostic_digests_verified_on_bytes": true,
   "diagnostic_assets": [
     {
       "name": "carrera-report.json.gz",
-      "bytes": 896,
-      "sha256": "a4445a269a720092845e1b0d3585a2deaded357f3fe3898d27a315b5cf7c6ffa"
+      "bytes": 899,
+      "sha256": "00fea6d92a594cdf02a26c1b74220def5e2ef0d78f2df57f9ce76f737fa64d68"
+    },
+    {
+      "name": "carrera-system-prepare.log.gz",
+      "bytes": 1038850,
+      "sha256": "ad867f689396fc52ea0d94f35c173d51f8a9e4e45703d1d6f95d00be28f1355b"
     },
     {
       "name": "carrera-system-report.json.gz",
-      "bytes": 664,
-      "sha256": "4a868e91b6a005842d1cab725038adb98620a51ac2059e980324816b79d4b100"
+      "bytes": 2495,
+      "sha256": "58845c6bdc9a0631ca2b3af79b4b17e74d7e2ad470a4370256150a92563bff66"
     },
     {
       "name": "carrera-system.log.gz",
-      "bytes": 1039361,
-      "sha256": "7af43bf3920c4bb7451a667e4f82d3a7ccb89097c002f14b2bdb31bcd6bdc77b"
+      "bytes": 8259,
+      "sha256": "f6f8e67af02500580c5d4a1f9c8de6f561892bcadcf78ed9c159884c603661af"
     },
     {
       "name": "carrera.log.gz",
-      "bytes": 197025,
-      "sha256": "cd45187055cde76a8d44a79965721fd04b2d8420038eae35325ee20ab900941a"
+      "bytes": 197030,
+      "sha256": "3480b4972a1c88d1cdb1de110bf4da222042c1454ddcae739964c7cc258c15c6"
     },
     {
       "name": "ccache-before-cleanup.log.gz",
       "bytes": 390,
-      "sha256": "59a1c8b42385db31dd5d50d35c9798b499d115f2a543cdbbb949c380f45c0cdb"
+      "sha256": "70f4c82e53e76a0b0a777ab5d85a16096f1320e5b9f81676b8834b00b6cc5b16"
     },
     {
       "name": "ccache-environment.log.gz",
@@ -41,8 +47,8 @@
     },
     {
       "name": "graph.log.gz",
-      "bytes": 10593,
-      "sha256": "4a248341fe5803f138f590e41fd20c3b4932d98dee1b0a5c190a36747cb289b8"
+      "bytes": 10589,
+      "sha256": "f9598cc4e2b42b622a5020c9b3cdca013900e2930bcb1fa2ba217ce22c7568c5"
     },
     {
       "name": "init.log.gz",
@@ -51,18 +57,18 @@
     },
     {
       "name": "inventory.json",
-      "bytes": 2727,
-      "sha256": "dfe5a093c7ab22bb66004dd75f412fde57ea496e8192d6193fb1fa87b3bc6eaf"
+      "bytes": 2922,
+      "sha256": "486c96d415991d9d9fdebda146aece44decede4a21be23e37aeda3cf05671bf4"
     },
     {
       "name": "ninja-.ninja_log.gz",
-      "bytes": 3142187,
-      "sha256": "1934e577141ef48c6c2ba81ea9cb909d87bc6f78e58667ccf7585ec5e77b29ef"
+      "bytes": 3072968,
+      "sha256": "b9ab520df4dc9c6f73cc187ca517f5d5ca0ae4bede5714b819c4c1702cccc386"
     },
     {
       "name": "report.json.gz",
-      "bytes": 488,
-      "sha256": "aa85952db2d0c988b6d3cd8a9528aae73fa17999ecd94da5c114fecec6d4afaa"
+      "bytes": 486,
+      "sha256": "7b20eb2b076c7d0afa1ae77d8d09ad524f6c7c5772c65ddc22f4d99321f7a0e1"
     },
     {
       "name": "resolved-manifest.xml.gz",
@@ -71,8 +77,8 @@
     },
     {
       "name": "SHA256SUMS",
-      "bytes": 1295,
-      "sha256": "3ebdb5f23295e664934b2ed64aea64525f5b8a25a45056662e00c6cad21476ec"
+      "bytes": 1391,
+      "sha256": "27157e286c0d1265f1f8b8ed2f596b48e486ee338fab60f279f813b1150fe66e"
     },
     {
       "name": "sync.log.gz",
@@ -97,19 +103,19 @@
         "name": "report.json",
         "input_bytes": 933,
         "truncated": false,
-        "sha256": "9154aa7f588f92e629bf4aa373e86b1f1eb8f90bb4c84951dfdbccb3f78fa235"
+        "sha256": "f4c83b55715be43a2beb02f71d8948df2bbdcd2576512849254be9bdee041678"
       },
       {
         "name": "carrera-report.json",
         "input_bytes": 1835,
         "truncated": false,
-        "sha256": "129cfc389f47328b13a891910060776fadc88c59b1476f781e3dc28d7310d7b6"
+        "sha256": "5659a1c06d81254b5d5fef502984af130685d8175f87fb1f7d57a03d78b4a51f"
       },
       {
         "name": "carrera-system-report.json",
-        "input_bytes": 1070,
+        "input_bytes": 10902,
         "truncated": false,
-        "sha256": "1c3d3201ac48dd0b4eee21ba0febaa6d0146fd032305b5a8ba8319f4b4ac74f0"
+        "sha256": "c22482264ffc2c7452b904a0f2c1c5c47876d8cebc6990e43dc6200e322f82ed"
       },
       {
         "name": "resolved-manifest.xml",
@@ -121,7 +127,7 @@
         "name": "ccache-before-cleanup.log",
         "input_bytes": 925,
         "truncated": false,
-        "sha256": "b98bb852be18a045b04d60444543d6e02092c6aa46266bd85a1c47996369311c"
+        "sha256": "9825a0e18bfaf765ce0f4c00a260e9778af98f55a802be639494bf9f0d556a0d"
       },
       {
         "name": "ccache-environment.log",
@@ -145,7 +151,7 @@
         "name": "graph.log",
         "input_bytes": 50843,
         "truncated": false,
-        "sha256": "33a9677054256570e2e8c33c541d55348c77d2832bdbef5054b0cb40ea87e601"
+        "sha256": "0f71637f63f88bf3e8325276ff18d31e47d6122b6c08019433b4058275daeb3d"
       },
       {
         "name": "webview-lfs-arm.log",
@@ -163,40 +169,416 @@
         "name": "carrera.log",
         "input_bytes": 1576931,
         "truncated": false,
-        "sha256": "bb8dafa51c7d333fb983aebdfc5da1d4d5ecf420ed78ba3c41816cf58077fcdc"
+        "sha256": "4aa4ca7ed30044ea8a970b31dd33c6457b63593f9cd953ff0b886f662eb84eb3"
+      },
+      {
+        "name": "carrera-system-prepare.log",
+        "input_bytes": 9987362,
+        "truncated": false,
+        "sha256": "27b15a59c34cba49ffee6e91f8efe2b0f59850cc2a95943b21d73d3eb5cba5d2"
       },
       {
         "name": "carrera-system.log",
-        "input_bytes": 9987420,
+        "input_bytes": 38962,
         "truncated": false,
-        "sha256": "f0bd81f20782c9a8a4515ec5bd9048b0f0fc8c80932428f72ebe16a1dc2301c6"
+        "sha256": "9b63c4c5554eded0e3ecf72cdeef9e6567157c375d781c2b46eb2cc5a9d7a7eb"
       },
       {
         "name": "ninja-.ninja_log",
-        "input_bytes": 23568807,
+        "input_bytes": 23556901,
         "truncated": false,
-        "sha256": "5856ebc92d0dfe108ebd5cea50847368502c5fb455498fc5fbb040e3e48a5a4e"
+        "sha256": "4bbd6c712c9f1a1870e938f6521ef1f461387c4c31ea6442f485e499e128f2ba"
       }
     ],
     "max_input_per_file": 33554432,
     "max_total_bytes": 16777216,
     "retention_days": 7
   },
-  "first_causal_category": "disk_guard",
-  "build": {
-    "returncode": -15,
-    "stop_reason": "DISK_RESERVE_REACHED",
-    "seconds": 7556.4,
-    "free_bytes": 8379416576
+  "first_causal_category": "verification",
+  "system_report": {
+    "status": "CARRERA_PUBLIC_SYSTEM_VERIFICATION_FAILED",
+    "product": "lineage_carrera_public-userdebug",
+    "rom_built": false,
+    "hardware_tested": false,
+    "proprietary_huawei_inputs": false,
+    "system_image_rootdir_contents_verified": false,
+    "source_patches": [
+      {
+        "repository": "LineageOS/android_hardware_interfaces",
+        "revision": "02951860e9c95f19384fa07522925537d8c17a18",
+        "path": "graphics/composer/2.1/utils/hwc2on1adapter/HWC2On1Adapter.cpp",
+        "patch": "patches/android/0001-hwc1-null-callbacks.patch",
+        "before_sha256": "acfb7fed21e792aa8eac20b3bf0da72ba34ddf0b352b0fd746df7a10070575dc",
+        "after_sha256": "5fad4cb5473df76ad1bc6865940f4613b69864460de218ead6035e053303a056",
+        "patch_sha256": "caa23965e68cc47da070bfca5e127fe032bbc3fd7147b3226ca8c58873ce4a6c",
+        "status": "APPLIED"
+      }
+    ],
+    "build_resources": {
+      "cpus": 4,
+      "memory_bytes": 16765390848,
+      "jobs": 3
+    },
+    "build_phases": [
+      {
+        "name": "installed_dependencies",
+        "returncode": 0,
+        "stop_reason": null,
+        "seconds": 4552.7,
+        "free_bytes": 11867701248
+      },
+      {
+        "name": "system_image",
+        "returncode": 0,
+        "stop_reason": null,
+        "seconds": 69.1,
+        "free_bytes": 11851046912
+      }
+    ],
+    "compiler_cache_removed_before_system_image": true,
+    "compiler_cache_reclaim": {
+      "free_bytes_before": 11867697152,
+      "free_bytes_after": 14558220288,
+      "observed_free_delta_bytes": 2690523136
+    },
+    "build": {
+      "returncode": 0,
+      "stop_reason": null,
+      "seconds": 4629.5,
+      "free_bytes": 11851046912
+    },
+    "legacy_vendor_link": {
+      "path": "root/vendor",
+      "target": "/system/vendor"
+    },
+    "image": {
+      "bytes": 1370173900,
+      "sha256": "266b3a2f5fd8b4f960628cf688cd8653ad5980af7bcf17f4a064d9cec87894b9",
+      "format": "android_sparse",
+      "expanded_bytes": 2684354560,
+      "chunks": 36,
+      "sparse_major": 1,
+      "sparse_minor": 0,
+      "fits_carrera_system_partition": true
+    },
+    "installed_public_modules": [
+      {
+        "path": "system/lib/libutilscallstack.so",
+        "bytes": 24276,
+        "sha256": "ea9b305bdb907714ffd65e091d3815c6a298a00ccd5457730d2dbdf59289360d",
+        "bits": 32,
+        "machine": 40,
+        "needed": [
+          "libcutils.so",
+          "liblog.so",
+          "libutils.so",
+          "libbacktrace.so",
+          "libprocessgroup.so",
+          "libvndksupport.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": "libutilscallstack.so",
+        "callstack_mali_exports": [
+          "_ZN7android9CallStackC1EPKci",
+          "_ZN7android9CallStackD1Ev"
+        ]
+      },
+      {
+        "path": "system/lib64/libutilscallstack.so",
+        "bytes": 28520,
+        "sha256": "d3a93f8c0b2c68a53a895277d31856b10141079bd1d661da93fcdb03df7f5305",
+        "bits": 64,
+        "machine": 183,
+        "needed": [
+          "libcutils.so",
+          "liblog.so",
+          "libutils.so",
+          "libbacktrace.so",
+          "libprocessgroup.so",
+          "libvndksupport.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": "libutilscallstack.so",
+        "callstack_mali_exports": [
+          "_ZN7android9CallStackC1EPKci",
+          "_ZN7android9CallStackD1Ev"
+        ]
+      },
+      {
+        "path": "system/vendor/bin/hw/android.hardware.graphics.allocator@2.0-service",
+        "bytes": 11584,
+        "sha256": "b58d62ac4ece721b4a86fb0ff7fff778161b670bc716084da384d77969ba590d",
+        "bits": 64,
+        "machine": 183,
+        "needed": [
+          "android.hardware.graphics.allocator@2.0.so",
+          "libhidlbase.so",
+          "libhidltransport.so",
+          "liblog.so",
+          "libutils.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": null,
+        "callstack_mali_exports": []
+      },
+      {
+        "path": "system/vendor/bin/hw/android.hardware.graphics.composer@2.1-service",
+        "bytes": 11664,
+        "sha256": "f0b8a0466209c527ad91905a75332f25b2402af161dcbe62d5029c4c4f532b9b",
+        "bits": 64,
+        "machine": 183,
+        "needed": [
+          "android.hardware.graphics.composer@2.1.so",
+          "libbinder.so",
+          "libhidlbase.so",
+          "libhidltransport.so",
+          "liblog.so",
+          "libsync.so",
+          "libutils.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": null,
+        "callstack_mali_exports": []
+      },
+      {
+        "path": "system/vendor/lib/hw/android.hardware.graphics.allocator@2.0-impl.so",
+        "bytes": 24580,
+        "sha256": "9516e606b88814f8ef53d543f1098dfaddebe0cd40493147184f129d47990d1c",
+        "bits": 32,
+        "machine": 40,
+        "needed": [
+          "android.hardware.graphics.allocator@2.0.so",
+          "libbase.so",
+          "libcutils.so",
+          "libhardware.so",
+          "libhidlbase.so",
+          "libhidltransport.so",
+          "liblog.so",
+          "libutils.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": "android.hardware.graphics.allocator@2.0-impl.so",
+        "callstack_mali_exports": []
+      },
+      {
+        "path": "system/vendor/lib/hw/android.hardware.graphics.composer@2.1-impl.so",
+        "bytes": 79440,
+        "sha256": "d3b2e49b7af27e569f296b6feca36a8db454ad4bd3db07f7e44414b529695d18",
+        "bits": 32,
+        "machine": 40,
+        "needed": [
+          "android.hardware.graphics.composer@2.1.so",
+          "android.hardware.graphics.mapper@2.0.so",
+          "android.hardware.graphics.mapper@3.0.so",
+          "libbase.so",
+          "libcutils.so",
+          "libfmq.so",
+          "libhardware.so",
+          "libhidlbase.so",
+          "libhidltransport.so",
+          "liblog.so",
+          "libsync.so",
+          "libutils.so",
+          "libhwc2on1adapter.so",
+          "libhwc2onfbadapter.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": "android.hardware.graphics.composer@2.1-impl.so",
+        "callstack_mali_exports": []
+      },
+      {
+        "path": "system/vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl.so",
+        "bytes": 29724,
+        "sha256": "cf27c9ccd70b9cde29fc18a6636b5f7b5bdd4c618894068fbbcf2d6ba35ef9f7",
+        "bits": 32,
+        "machine": 40,
+        "needed": [
+          "android.hardware.graphics.mapper@2.0.so",
+          "libbase.so",
+          "libcutils.so",
+          "libhardware.so",
+          "libhidlbase.so",
+          "libhidltransport.so",
+          "liblog.so",
+          "libsync.so",
+          "libutils.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": "android.hardware.graphics.mapper@2.0-impl.so",
+        "callstack_mali_exports": []
+      },
+      {
+        "path": "system/vendor/lib/libhwc2on1adapter.so",
+        "bytes": 115304,
+        "sha256": "0bde262757037a02b390894459d64140226734774bc69a5791a08ab296cb6696",
+        "bits": 32,
+        "machine": 40,
+        "needed": [
+          "libutils.so",
+          "libcutils.so",
+          "liblog.so",
+          "libhardware.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": "libhwc2on1adapter.so",
+        "callstack_mali_exports": []
+      },
+      {
+        "path": "system/vendor/lib/libhwc2onfbadapter.so",
+        "bytes": 29000,
+        "sha256": "c564afb961c5777038fcff3c16dc95cf4deaa15907cfaebc3e7be58e6675cc53",
+        "bits": 32,
+        "machine": 40,
+        "needed": [
+          "liblog.so",
+          "libsync.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": "libhwc2onfbadapter.so",
+        "callstack_mali_exports": []
+      },
+      {
+        "path": "system/vendor/lib64/hw/android.hardware.graphics.allocator@2.0-impl.so",
+        "bytes": 24904,
+        "sha256": "265385ca2093a66631e2b3f16a8fc5bc348a22befed87f750dc8ae6bcb99cea6",
+        "bits": 64,
+        "machine": 183,
+        "needed": [
+          "android.hardware.graphics.allocator@2.0.so",
+          "libbase.so",
+          "libcutils.so",
+          "libhardware.so",
+          "libhidlbase.so",
+          "libhidltransport.so",
+          "liblog.so",
+          "libutils.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": "android.hardware.graphics.allocator@2.0-impl.so",
+        "callstack_mali_exports": []
+      },
+      {
+        "path": "system/vendor/lib64/hw/android.hardware.graphics.composer@2.1-impl.so",
+        "bytes": 104272,
+        "sha256": "a380e048daafcd019b45937123e669185542dd6e1403f22a04103007d93ad08e",
+        "bits": 64,
+        "machine": 183,
+        "needed": [
+          "android.hardware.graphics.composer@2.1.so",
+          "android.hardware.graphics.mapper@2.0.so",
+          "android.hardware.graphics.mapper@3.0.so",
+          "libbase.so",
+          "libcutils.so",
+          "libfmq.so",
+          "libhardware.so",
+          "libhidlbase.so",
+          "libhidltransport.so",
+          "liblog.so",
+          "libsync.so",
+          "libutils.so",
+          "libhwc2on1adapter.so",
+          "libhwc2onfbadapter.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": "android.hardware.graphics.composer@2.1-impl.so",
+        "callstack_mali_exports": []
+      },
+      {
+        "path": "system/vendor/lib64/hw/android.hardware.graphics.mapper@2.0-impl.so",
+        "bytes": 34432,
+        "sha256": "cb3d9025c0ac112978734b2e23fc1e0536dadbef0129c8111e59c02fdec134ea",
+        "bits": 64,
+        "machine": 183,
+        "needed": [
+          "android.hardware.graphics.mapper@2.0.so",
+          "libbase.so",
+          "libcutils.so",
+          "libhardware.so",
+          "libhidlbase.so",
+          "libhidltransport.so",
+          "liblog.so",
+          "libsync.so",
+          "libutils.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": "android.hardware.graphics.mapper@2.0-impl.so",
+        "callstack_mali_exports": []
+      },
+      {
+        "path": "system/vendor/lib64/libhwc2on1adapter.so",
+        "bytes": 159976,
+        "sha256": "fc87b3115e684700478c089b1f97017d6aa69abe8dad963a51c062a95ba79730",
+        "bits": 64,
+        "machine": 183,
+        "needed": [
+          "libutils.so",
+          "libcutils.so",
+          "liblog.so",
+          "libhardware.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": "libhwc2on1adapter.so",
+        "callstack_mali_exports": []
+      },
+      {
+        "path": "system/vendor/lib64/libhwc2onfbadapter.so",
+        "bytes": 32784,
+        "sha256": "ebf9edef73e34fc7dd475cd58ba0aaedcff04e409f5f98bfa042c4970c8e09bc",
+        "bits": 64,
+        "machine": 183,
+        "needed": [
+          "liblog.so",
+          "libsync.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ],
+        "soname": "libhwc2onfbadapter.so",
+        "callstack_mali_exports": []
+      }
+    ],
+    "error": "Public module is missing from system ext4: /lib/libutilscallstack.so"
   },
-  "ninja_last_completed": 80489,
-  "ninja_total": 80491,
-  "compiler_error_matches_in_complete_system_log": 0,
-  "system_verified": false,
-  "rom_built": false,
-  "hardware_tested": false,
-  "system_image_rootdir_contents_verified": false,
-  "launch_api_source": 22,
   "source_lock": {
     "sha256": "b30f6d479b321cab00305b1c9a31450d0a8940138996e7e25cf27f7a0146f845",
     "locked_projects": 794
@@ -223,8 +605,8 @@
         "download": {
           "returncode": 0,
           "stop_reason": null,
-          "seconds": 6,
-          "free_bytes": 64720953344
+          "seconds": 3,
+          "free_bytes": 65469050880
         }
       },
       {
@@ -237,15 +619,15 @@
           "returncode": 0,
           "stop_reason": null,
           "seconds": 6,
-          "free_bytes": 64199278592
+          "free_bytes": 64947376128
         }
       }
     ],
     "build": {
       "returncode": 0,
       "stop_reason": null,
-      "seconds": 477.5,
-      "free_bytes": 62713368576
+      "seconds": 288.3,
+      "free_bytes": 63460171776
     },
     "ramdisk_staging_path": "out/target/product/carrera/ramdisk",
     "rootdir": [
@@ -267,14 +649,9 @@
     "ramdisk_sha256": "6379c931e66f326acfa4fdea4d8388aa7da9bf62895aba755b4fdddb62cf6a4a",
     "resolved_manifest_sha256": "66b87af3ec633c927b53922ac6fb53f7f0b0104d88d373324d1bd062282f2e2a"
   },
-  "measured_bytes": {
-    "repo": 17061695488,
-    "out": 58307645440,
-    "post_stop_free": 8379293696
-  },
   "ninja_analysis": {
-    "rows": 130996,
-    "unique_command_executions": 99119,
+    "rows": 131004,
+    "unique_command_executions": 99126,
     "dedup_key": [
       "start_ms",
       "end_ms",
@@ -283,10 +660,10 @@
     "duration_sum_is_not_critical_path": true,
     "longest_commands": [
       {
-        "start_ms": 5085877,
-        "end_ms": 5315367,
+        "start_ms": 2946179,
+        "end_ms": 3099906,
         "command_hash": "22ada9f6b914768c",
-        "duration_ms": 229490,
+        "duration_ms": 153727,
         "output_count": 8,
         "sample_outputs": [
           "out/soong/.intermediates/frameworks/base/api-stubs-docs/android_common/api-stubs-docs-stubs.srcjar",
@@ -295,22 +672,10 @@
         ]
       },
       {
-        "start_ms": 5092763,
-        "end_ms": 5319060,
-        "command_hash": "7add0e039dc688b6",
-        "duration_ms": 226297,
-        "output_count": 6,
-        "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/hiddenapi-lists-docs/android_common/api-versions.xml",
-          "out/soong/.intermediates/frameworks/base/hiddenapi-lists-docs/android_common/hiddenapi-lists-docs-stubs.srcjar",
-          "out/soong/.intermediates/frameworks/base/hiddenapi-lists-docs/android_common/hiddenapi-lists-docs_annotations.zip"
-        ]
-      },
-      {
-        "start_ms": 5134721,
-        "end_ms": 5357580,
+        "start_ms": 2963354,
+        "end_ms": 3112841,
         "command_hash": "50ff6cdd7b0cc6c",
-        "duration_ms": 222859,
+        "duration_ms": 149487,
         "output_count": 9,
         "sample_outputs": [
           "out/soong/.intermediates/frameworks/base/system-api-stubs-docs/android_common/api-versions.xml",
@@ -319,10 +684,22 @@
         ]
       },
       {
-        "start_ms": 6884409,
-        "end_ms": 7106937,
+        "start_ms": 2949735,
+        "end_ms": 3099053,
+        "command_hash": "7add0e039dc688b6",
+        "duration_ms": 149318,
+        "output_count": 6,
+        "sample_outputs": [
+          "out/soong/.intermediates/frameworks/base/hiddenapi-lists-docs/android_common/api-versions.xml",
+          "out/soong/.intermediates/frameworks/base/hiddenapi-lists-docs/android_common/hiddenapi-lists-docs-stubs.srcjar",
+          "out/soong/.intermediates/frameworks/base/hiddenapi-lists-docs/android_common/hiddenapi-lists-docs_annotations.zip"
+        ]
+      },
+      {
+        "start_ms": 3099095,
+        "end_ms": 3201946,
         "command_hash": "1b0f0945ca3c2464",
-        "duration_ms": 222528,
+        "duration_ms": 102851,
         "output_count": 5,
         "sample_outputs": [
           "out/soong/.intermediates/frameworks/base/test-api-stubs-docs/android_common/api-versions.xml",
@@ -331,50 +708,40 @@
         ]
       },
       {
-        "start_ms": 6626099,
-        "end_ms": 6760323,
-        "command_hash": "ca98d3050729d279",
-        "duration_ms": 134224,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/target/common/obj/APPS/Settings_intermediates/dex/classes.dex"
-        ]
-      },
-      {
-        "start_ms": 196471,
-        "end_ms": 324664,
-        "command_hash": "6db35b9dda0d42d0",
-        "duration_ms": 128193,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/target/product/carrera/obj/BOOTANIMATION/bootanimation.zip"
-        ]
-      },
-      {
-        "start_ms": 3439711,
-        "end_ms": 3563508,
-        "command_hash": "ea621301fda3af54",
-        "duration_ms": 123797,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/soong/.intermediates/art/runtime/libart/android_arm_armv8-a_cortex-a53_core_shared_com.android.runtime.release/unstripped/libart.so"
-        ]
-      },
-      {
-        "start_ms": 3433512,
-        "end_ms": 3556197,
+        "start_ms": 1833649,
+        "end_ms": 1921257,
         "command_hash": "4a812a4ec05e8d8e",
-        "duration_ms": 122685,
+        "duration_ms": 87608,
         "output_count": 1,
         "sample_outputs": [
           "out/soong/.intermediates/art/runtime/libart/android_arm64_armv8-a_cortex-a53_core_shared_com.android.runtime.release/unstripped/libart.so"
         ]
       },
       {
-        "start_ms": 6066930,
-        "end_ms": 6184827,
+        "start_ms": 1836787,
+        "end_ms": 1924169,
+        "command_hash": "ea621301fda3af54",
+        "duration_ms": 87382,
+        "output_count": 1,
+        "sample_outputs": [
+          "out/soong/.intermediates/art/runtime/libart/android_arm_armv8-a_cortex-a53_core_shared_com.android.runtime.release/unstripped/libart.so"
+        ]
+      },
+      {
+        "start_ms": 4015613,
+        "end_ms": 4101473,
+        "command_hash": "ca98d3050729d279",
+        "duration_ms": 85860,
+        "output_count": 1,
+        "sample_outputs": [
+          "out/target/common/obj/APPS/Settings_intermediates/dex/classes.dex"
+        ]
+      },
+      {
+        "start_ms": 3646428,
+        "end_ms": 3731115,
         "command_hash": "84ad5104955972e7",
-        "duration_ms": 117897,
+        "duration_ms": 84687,
         "output_count": 3,
         "sample_outputs": [
           "out/target/common/obj/APPS/messaging_intermediates/dex/classes.dex",
@@ -383,85 +750,89 @@
         ]
       },
       {
-        "start_ms": 6512564,
-        "end_ms": 6625219,
-        "command_hash": "89de2823c4ea3f65",
-        "duration_ms": 112655,
-        "output_count": 1,
-        "sample_outputs": [
-          "out/target/common/obj/APPS/Settings_intermediates/classes-full-debug.jar"
-        ]
-      },
-      {
-        "start_ms": 3928493,
-        "end_ms": 4037905,
+        "start_ms": 2167764,
+        "end_ms": 2242983,
         "command_hash": "3c43970562072f44",
-        "duration_ms": 109412,
+        "duration_ms": 75219,
         "output_count": 1,
         "sample_outputs": [
           "out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_arm_armv8-a_cortex-a53_core_shared/unstripped/libhwui.so"
         ]
       },
       {
-        "start_ms": 3928057,
-        "end_ms": 4037075,
+        "start_ms": 2167211,
+        "end_ms": 2241009,
         "command_hash": "544b8a7dda140bc5",
-        "duration_ms": 109018,
+        "duration_ms": 73798,
         "output_count": 1,
         "sample_outputs": [
           "out/soong/.intermediates/frameworks/base/libs/hwui/libhwui/android_arm64_armv8-a_cortex-a53_core_shared/unstripped/libhwui.so"
         ]
       },
       {
-        "start_ms": 5028533,
-        "end_ms": 5134673,
-        "command_hash": "f73092b89ceda271",
-        "duration_ms": 106140,
-        "output_count": 1,
+        "start_ms": 4235195,
+        "end_ms": 4308201,
+        "command_hash": "2a39929afdc672c2",
+        "duration_ms": 73006,
+        "output_count": 2,
         "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/framework/android_common/dex/framework.jar"
+          "out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI/android_common/dex/SystemUI.jar",
+          "out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI/android_common/proguard_dictionary"
         ]
       },
       {
-        "start_ms": 6420894,
-        "end_ms": 6523284,
+        "start_ms": 3944273,
+        "end_ms": 4015152,
+        "command_hash": "89de2823c4ea3f65",
+        "duration_ms": 70879,
+        "output_count": 1,
+        "sample_outputs": [
+          "out/target/common/obj/APPS/Settings_intermediates/classes-full-debug.jar"
+        ]
+      },
+      {
+        "start_ms": 3886092,
+        "end_ms": 3954795,
         "command_hash": "bcdc8743c33a7280",
-        "duration_ms": 102390,
+        "duration_ms": 68703,
         "output_count": 1,
         "sample_outputs": [
           "out/soong/.intermediates/frameworks/base/services/services/android_common/dex/services.jar"
         ]
       },
       {
-        "start_ms": 6958015,
-        "end_ms": 7053802,
-        "command_hash": "2a39929afdc672c2",
-        "duration_ms": 95787,
-        "output_count": 2,
+        "start_ms": 2894829,
+        "end_ms": 2963319,
+        "command_hash": "f73092b89ceda271",
+        "duration_ms": 68490,
+        "output_count": 1,
         "sample_outputs": [
-          "out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI/android_common/dex/SystemUI.jar",
-          "out/soong/.intermediates/frameworks/base/packages/SystemUI/SystemUI/android_common/proguard_dictionary"
+          "out/soong/.intermediates/frameworks/base/framework/android_common/dex/framework.jar"
+        ]
+      },
+      {
+        "start_ms": 107364,
+        "end_ms": 165651,
+        "command_hash": "6db35b9dda0d42d0",
+        "duration_ms": 58287,
+        "output_count": 1,
+        "sample_outputs": [
+          "out/target/product/carrera/obj/BOOTANIMATION/bootanimation.zip"
         ]
       }
     ]
   },
-  "tests": {
-    "run_id": 40620671708,
-    "run": 88,
-    "passed": 87,
+  "compiler_cache_before_cleanup": "Summary:\n  Cache directory:            /home/runner/work/mate-s-android/mate-s-android/out/ccache\n  Primary config:             /home/runner/work/mate-s-android/mate-s-android/out/ccache/ccache.conf\n  Secondary config:           /etc/ccache.conf\n  Stats updated:              Wed Oct 28 03:29:19 2026\n  Hits:                       34965 / 42813 (81.67 %)\n    Direct:                   31669 / 42814 (73.97 %)\n    Preprocessed:              3296 / 11144 (29.58 %)\n  Misses:                      7848\n    Direct:                   11145\n    Preprocessed:              7848\n  Uncacheable:                   78\nPrimary storage:\n  Hits:                       68520 / 87509 (78.30 %)\n  Misses:                     18989\n  Cache size (GB):             2.68 /  3.00 (89.48 %)\n  Files:                      60499\nUncacheable:\n  Called for linking:            53\n  Called for preprocessing:      24\n  Unsupported code directive:     1\n",
+  "system_verified": false,
+  "rom_built": false,
+  "hardware_tested": false,
+  "system_image_rootdir_contents_verified": false,
+  "launch_api_source": 22,
+  "image_digest_evidence": "computed on build runner before failed ext4 module verification; image not published or independently rehashed",
+  "review_tests": {
+    "run": 94,
+    "passed": 93,
     "skipped": 1
   },
-  "next": "Observe successor40621277229 without changing inputs; inspect phase-level results, measured cache reclaim and eventual system/ext4/release before closing G0.",
-  "successor": {
-    "run_id": 40621277229,
-    "job_id": 122595659983,
-    "source_commit": "8f3a4886b54a2ac1fbff66621546e54739b82493",
-    "status_at_update": "in_progress",
-    "validation_run_id": 40621257975,
-    "tests_run": 94,
-    "tests_passed": 93,
-    "tests_skipped": 1,
-    "checksum_entries": 150,
-    "pinned_makefile_contract_verified": true
-  }
+  "next": "Validate strict layout detection and all module digests for legacy /lib or Q /system/lib layouts. Layout evidence is filesystem-only; legacy fstab/runtime mount integration remains G1."
 }

@@ -1,4 +1,4 @@
-name: Carrera image-phase validation
+name: Carrera ext4 layout validation
 on:
   workflow_dispatch:
   push:
@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/android-carrera-phase-validation.yml'
       - 'tests/test_carrera_system_phases.py'
+      - 'tests/test_carrera_system_layout.py'
 permissions:
   contents: read
   actions: write
@@ -23,6 +24,8 @@ jobs:
           persist-credentials: false
       - name: Test phase ordering, shared budget, cache guards and full suite
         run: |
+          command -v mke2fs debugfs
+          python3 -m unittest discover -s tests -p test_carrera_system_layout.py -v
           python3 -m unittest discover -s tests -p test_carrera_system_phases.py -v
           python3 -m unittest discover tests
           sha256sum -c SHA256SUMS
@@ -43,6 +46,33 @@ jobs:
           assert '$(BUILT_SYSTEMIMAGE): $(FULL_SYSTEMIMAGE_DEPS) $(INSTALLED_FILES_FILE) $(BUILD_IMAGE_SRCS)' in text
           assert 'TARGET_NO_KERNEL := true' in pathlib.Path('device/huawei/carrera/BoardConfig.mk').read_text()
           print('PINNED_Q_INSTALLED_DEPENDENCIES_CONTRACT_VERIFIED')
+          PY
+      - name: Execute pinned Q staging function on public fixture
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import ast, base64, hashlib, json, os, pathlib, shutil, subprocess, tempfile
+          from types import SimpleNamespace
+          result=json.loads(subprocess.check_output(['gh','api','repos/LineageOS/android_build/contents/tools/releasetools/build_image.py?ref=71a47798ac090b81c6b7db0b5c470f1fa3e604cd'],text=True))
+          data=base64.b64decode(result['content'])
+          assert hashlib.sha256(data).hexdigest()=='1fccbca74e1afe75e317e1c5a99213aaa8934d497b6409f9791039275a1cef0f'
+          tree=ast.parse(data.decode())
+          function=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='SetUpInDirAndFsConfig')
+          with tempfile.TemporaryDirectory() as directory:
+              base=pathlib.Path(directory)
+              origin=base/'input'
+              (origin/'lib').mkdir(parents=True)
+              (origin/'lib/libpublic.so').write_bytes(b'public fixture')
+              context={'os':os,'shutil':shutil,'common':SimpleNamespace(MakeTempDir=lambda:tempfile.mkdtemp(dir=base))}
+              exec(compile(ast.Module(body=[function],type_ignores=[]),'<pinned Q staging>','exec'),context)
+              props={'mount_point':'system','system_root_image':'false'}
+              staged,config=context['SetUpInDirAndFsConfig'](str(origin),props)
+              assert (pathlib.Path(staged)/'system/lib/libpublic.so').read_bytes()==b'public fixture'
+              assert not (pathlib.Path(staged)/'lib').exists()
+              assert props['mount_point']=='/'
+              print('PINNED_Q_NESTED_SYSTEM_STAGING_REPRODUCED_ON_FIXTURE')
+              print('This fixture proves builder layout, not hardware mount compatibility')
           PY
       - name: Dispatch at most one deliberate system successor after validation
         env:
@@ -65,11 +95,14 @@ jobs:
           if any(r['head_sha']==sha for r in runs):
               print('NO_DISPATCH: this source already has a system attempt')
               raise SystemExit(0)
-          old=api('actions/runs/40602929112')
+          review=api('actions/runs/40630929577')
+          assert review['status']=='completed' and review['conclusion']=='success'
+          assert review['head_sha']=='4ffa5863df53b6191fcbdf5185a5c728a3d55fa1'
+          old=api('actions/runs/40621277229')
           assert old['status']=='completed' and old['conclusion']=='failure'
-          assert old['head_sha']=='c42ebaf2b72ad3889d13f30381fc8b60447f594a'
+          assert old['head_sha']=='8f3a4886b54a2ac1fbff66621546e54739b82493'
           subprocess.run(['gh','api','--method','POST',
                           'repos/'+repo+'/actions/workflows/android-carrera-system.yml/dispatches',
                           '-f','ref=main'],check=True)
-          print('SINGLE_PHASE_SPLIT_SYSTEM_SUCCESSOR_DISPATCHED source='+sha)
+          print('SINGLE_LAYOUT_VERIFIER_SUCCESSOR_DISPATCHED source='+sha)
           PY

@@ -9,7 +9,7 @@
     "job_id": 122595659983,
     "workflow": "android-carrera-system.yml",
     "source_commit": "8f3a4886b54a2ac1fbff66621546e54739b82493",
-    "status_at_direction_update": "in_progress",
+    "status_at_direction_update": "completed",
     "live_status_required": true,
     "reported_owner": "Codex cloud monitor; check main and successor runs before intervention",
     "public_only": true,
@@ -30,7 +30,47 @@
     "capacity_correction": "Installed-file-list dependencies complete before local expendable compiler cache is removed; normal systemimage keeps dependency and disk guards",
     "phase_split_attempt": 1,
     "predecessor_run_id": 40602929112,
-    "validation_run_id": 40621257975
+    "validation_run_id": 40621257975,
+    "conclusion": "failure",
+    "failure_category": "verification",
+    "error": "Public module is missing from system ext4: /lib/libutilscallstack.so",
+    "build": {
+      "returncode": 0,
+      "stop_reason": null,
+      "seconds": 4629.5,
+      "free_bytes": 11851046912
+    },
+    "build_phases": [
+      {
+        "name": "installed_dependencies",
+        "returncode": 0,
+        "stop_reason": null,
+        "seconds": 4552.7,
+        "free_bytes": 11867701248
+      },
+      {
+        "name": "system_image",
+        "returncode": 0,
+        "stop_reason": null,
+        "seconds": 69.1,
+        "free_bytes": 11851046912
+      }
+    ],
+    "compiler_cache_reclaim": {
+      "free_bytes_before": 11867697152,
+      "free_bytes_after": 14558220288,
+      "observed_free_delta_bytes": 2690523136
+    },
+    "image": {
+      "bytes": 1370173900,
+      "sha256": "266b3a2f5fd8b4f960628cf688cd8653ad5980af7bcf17f4a064d9cec87894b9",
+      "format": "android_sparse",
+      "expanded_bytes": 2684354560,
+      "chunks": 36,
+      "sparse_major": 1,
+      "sparse_minor": 0,
+      "fits_carrera_system_partition": true
+    }
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -55,9 +95,9 @@
   "gates": [
     {
       "id": "G0",
-      "state": "in_progress",
+      "state": "open",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "Observe40621277229; inspect phase prepare and image separately, actual cache reclaim and peak; no concurrent or automatic retry"
+      "next": "Validate strict filesystem layout identification with real ext4 fixtures, then one normal system successor; do not infer runtime layout compatibility"
     },
     {
       "id": "G1",
@@ -215,19 +255,20 @@
     "runtimes_verified": true
   },
   "diagnostic_review": {
-    "run_id": 40620671708,
-    "source_commit": "3eb9af6427674550b17205d303e854fb55fe0b3c",
+    "run_id": 40630929577,
+    "job_id": 122626866940,
+    "source_commit": "4ffa5863df53b6191fcbdf5185a5c728a3d55fa1",
     "status": "success",
     "bytes_verified": true,
     "truncated_files": 0,
-    "ninja_rows": 130996,
-    "ninja_unique_command_executions": 99119,
-    "tests_run": 88,
-    "tests_passed": 87,
+    "ninja_rows": 131004,
+    "ninja_unique_command_executions": 99126,
+    "tests_run": 94,
+    "tests_passed": 93,
     "tests_skipped": 1
   },
   "phase_split_correction": {
-    "status": "runner_validated_successor_in_progress",
+    "status": "build_succeeded_verifier_failed",
     "validation_workflow": "android-carrera-phase-validation.yml",
     "upstream_build_revision": "71a47798ac090b81c6b7db0b5c470f1fa3e604cd",
     "upstream_makefile_sha256": "3579ea7fc8b120fd9ce25f6a0f1ce78b88822d3823250e9adf32825d04ee655e",
@@ -248,7 +289,8 @@
       "checksum_entries_verified": 150,
       "pinned_upstream_contract_verified": true
     },
-    "successor_run_id": 40621277229
+    "successor_run_id": 40621277229,
+    "observed_cache_reclaim_bytes": 2690523136
   },
   "earlier_disk_ci": {
     "status_at_direction_update": "completed",
@@ -292,5 +334,18 @@
       "repo": 17061343232,
       "out": 53997498368
     }
+  },
+  "layout_verifier_correction": {
+    "status": "pending_runner_validation",
+    "layouts": [
+      "legacy-system-root",
+      "q-root-with-system"
+    ],
+    "selection": "strict ext4 /system and /lib directory metadata, one layout for all module digests; reject ambiguous or symlink roots",
+    "upstream_build_revision": "71a47798ac090b81c6b7db0b5c470f1fa3e604cd",
+    "upstream_build_image_sha256": "1fccbca74e1afe75e317e1c5a99213aaa8934d497b6409f9791039275a1cef0f",
+    "test_evidence_required": "real ext4 fixtures, full suite, pinned builder staging fixture",
+    "runtime_mounts_verified": false,
+    "system_image_rootdir_contents_verified": false
   }
 }

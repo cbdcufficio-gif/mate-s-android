@@ -1,3 +1,36 @@
+# Compilazione riuscita; verifica percorso ext4 fallita - 28 ottobre 2026
+
+40621277229 job122595659983 sorgente8f3a488: dipendenze4552,7s riuscite,
+immagine69,1s riuscita; totale4629,5s senza stop disco/tempo.
+Cache locale rimossa dopo le dipendenze:11867697152 ->14558220288byte liberi,
+delta2690523136. Dopo immagine11851046912byte: guard8GiB preservato.
+Immagine sparse1370173900byte,espansa2684354560;digest calcolato dal runner
+266b3a2f5fd8b4f960628cf688cd8653ad5980af7bcf17f4a064d9cec87894b9.
+Non pubblicata: non è una verifica indipendente sui byte dell'immagine.
+
+Prima causa finale: CARRERA_PUBLIC_SYSTEM_VERIFICATION_FAILED,
+"Public module is missing from system ext4: /lib/libutilscallstack.so".
+Non è errore compilatore o pubblicazione. G0 resta aperto: nessuna ext4
+completamente verificata,nessuna ROM/boot. Review40630929577 sorgente4ffa586,
+job122626866940: diagnostica verificata sui byte,17asset4374109byte,
+zero troncamenti. Suite94test93pass1skip. Ninja131004righe99126esecuzioni
+deduplicate; non critical path. Prove:release carrera-diagnostics-review-40621277229.
+
+Il builder Q fissato71a47798 contiene SetUpInDirAndFsConfig, che crea un
+root temporaneo con system/ anche con system_root_image=false. Il vecchio
+verificatore assumeva sempre /lib e /vendor. La correzione identifica PRIMA
+il layout ext4 tramite tipi /system e /lib; controlla tutti i digest con un
+unico mapping coerente (/lib o /system/lib), rifiuta layout ambigui/symlink,
+conserva controllo vendor e guardie. Non cerca percorsi alternativi per far
+passare singoli moduli. Registra root listing e runtime_mounts_verified=false.
+Non modifica BoardConfig,fstab,root staging o semantica runtime: tale
+corrispondenza rimane lavoro G1. system_image_rootdir_contents_verified=false.
+
+Prima del singolo successore: fixture ext4 reali per entrambi layout,
+digest errati/file mancanti/ambiguità/symlink/vendor, suite completa,
+checksum e riproduzione su fixture della funzione builder Q con hash fissato.
+Nessun ulteriore retry per disco/tempo; cache e budget condiviso invariati.
+
 # Correzione fasi validata; unico successore - 28 ottobre 2026
 
 Sistema [40621277229](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40621277229),

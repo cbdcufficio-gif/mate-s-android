@@ -9,7 +9,7 @@
     "job_id": 122749372885,
     "workflow": "android-carrera-system.yml",
     "source_commit": "fcd5fb737f69c2bd169e3bb0fd8b9642d166fa37",
-    "status_at_direction_update": "in_progress",
+    "status_at_direction_update": "completed",
     "live_status_required": true,
     "reported_owner": "Codex cloud monitor; inspect main, successors and writers before intervention",
     "public_only": true,
@@ -29,7 +29,43 @@
     "predecessor_run_id": 40650068374,
     "validation_run_id": 40668447530,
     "repair": "Absolute converter input/output/tempdir across caller and Android child working directories; space guards unchanged",
-    "converter_path_attempt": 1
+    "converter_path_attempt": 1,
+    "conclusion": "failure",
+    "failure_category": "verification_hidl_filename_guard",
+    "error": "Unexpected character in public module path",
+    "build": {
+      "returncode": 0,
+      "stop_reason": null,
+      "seconds": 7657.4,
+      "free_bytes": 11120631808
+    },
+    "ext4_space": {
+      "logical_bytes": 2684354560,
+      "raw_and_fill_bytes": 1370173440,
+      "dont_care_bytes": 1314181120,
+      "chunk_types": {
+        "raw": 18,
+        "fill": 0,
+        "dont_care": 18,
+        "crc32": 0
+      },
+      "allocation_slack_bytes": 67411968,
+      "allocation_budget_bytes": 1437585408,
+      "reserve_bytes": 8589934592,
+      "host_fragment_bytes": 4096,
+      "free_bytes_before": 11120627712,
+      "converter_cwd": "/home/runner/work/mate-s-android/mate-s-android/out/android-graph/source",
+      "converter_input": "/home/runner/work/mate-s-android/mate-s-android/out/android-graph/source/out/target/product/carrera/system.img",
+      "converter_output": "/home/runner/work/mate-s-android/mate-s-android/out/android-graph/carrera-ext4-kshj22b8/system.raw.img",
+      "conversion": {
+        "returncode": 0,
+        "stop_reason": null,
+        "seconds": 3,
+        "free_bytes": 9750441984
+      },
+      "actual_allocated_bytes": 1370177536,
+      "free_bytes_after": 9750441984
+    }
   },
   "launch_api_correction": {
     "actual_launch_api": 22,
@@ -56,7 +92,7 @@
       "id": "G0",
       "state": "in_progress",
       "deliverable": "public system and ramdisk provenance, contents, sizes, digests",
-      "next": "Observe40668596565 without input changes; require actual conversion, allocation, ext4 layout and14module digests plus release verification"
+      "next": "Validate HIDL @ path correction against all14 production filenames on real ext4, old-code failure and fixed success, full runner suite/checksums; one deliberate successor only"
     },
     {
       "id": "G1",
@@ -414,7 +450,7 @@
     "job_id": 122535270691
   },
   "sparse_allocation_correction": {
-    "status": "budget_passed_converter_path_failed",
+    "status": "real_conversion_and_allocation_verified",
     "reserve_bytes": 8589934592,
     "method": "Validate every sparse chunk; budget all RAW/FILL writes and 64MiB plus allocation rounding; DONT_CARE uses pinned simg2img lseek holes",
     "converter_unchanged": true,
@@ -473,7 +509,7 @@
     }
   },
   "converter_path_correction": {
-    "status": "runner_validated_successor_in_progress",
+    "status": "real_conversion_succeeded_hidl_path_guard_failed",
     "cause": "ROOT is relative to caller, but guarded conversion changes cwd to absolute Android source; relative output path cannot be opened",
     "fix": "Resolve source/image and temporary conversion directory before child invocation; preserve converter and all space guards",
     "regression": "Real sparse ext4 using production relative ROOT and distinct absolute child cwd; must reproduce failure in previous verifier and pass fixed verifier",
@@ -492,6 +528,40 @@
       "previous_verifier_failure_reproduced": true,
       "fixed_verifier_real_ext4_passed": true
     },
-    "successor_run_id": 40668596565
+    "successor_run_id": 40668596565,
+    "real_conversion": {
+      "logical_bytes": 2684354560,
+      "raw_and_fill_bytes": 1370173440,
+      "dont_care_bytes": 1314181120,
+      "chunk_types": {
+        "raw": 18,
+        "fill": 0,
+        "dont_care": 18,
+        "crc32": 0
+      },
+      "allocation_slack_bytes": 67411968,
+      "allocation_budget_bytes": 1437585408,
+      "reserve_bytes": 8589934592,
+      "host_fragment_bytes": 4096,
+      "free_bytes_before": 11120627712,
+      "converter_cwd": "/home/runner/work/mate-s-android/mate-s-android/out/android-graph/source",
+      "converter_input": "/home/runner/work/mate-s-android/mate-s-android/out/android-graph/source/out/target/product/carrera/system.img",
+      "converter_output": "/home/runner/work/mate-s-android/mate-s-android/out/android-graph/carrera-ext4-kshj22b8/system.raw.img",
+      "conversion": {
+        "returncode": 0,
+        "stop_reason": null,
+        "seconds": 3,
+        "free_bytes": 9750441984
+      },
+      "actual_allocated_bytes": 1370177536,
+      "free_bytes_after": 9750441984
+    }
+  },
+  "hidl_path_correction": {
+    "status": "awaiting_runner_validation",
+    "cause": "Conversion completed within physical allocation budget and 8GiB reserve. Path guard excludes @ used in standard public HIDL service/implementation names; fixtures previously used only libpublic.so. No compiler or publication failure identified.",
+    "fix": "Permit @ within strict debugfs-safe path component allowlist; retain traversal, whitespace, command delimiter, digest, vendor and layout guards",
+    "review_run_id": 40696012312,
+    "tests": "Two real ext4 layouts with all14 actual public filenames, HIDL digest mismatch and unsafe path rejection; old verifier must fail; full suite before dispatch"
   }
 }

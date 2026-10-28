@@ -6,7 +6,7 @@ La cronologia delle prove precedenti è in [STATUS.md](STATUS.md).
 
 | Priorità | Blocco | Prossima prova che riduce l'incertezza |
 |---|---|---|
-| G0 | 40650068374 compila immagine e supera budget; converter non apre output relativo da cwdsource | Vecchio/fisso provati su stessa vera ext4:111test110pass1skip; unico40668596565 attivo, verifica reale ancora richiesta |
+| G0 | 40668596565 compila e converte entro riserva; guard percorsi rifiuta @ nei nomi HIDL | Consentire @ con allowlist stretta; tutti14nomi reali su ext4, vecchio/fisso, suite runner e un solo successore |
 | G1 | Configurazione Q, corrispondenza layout immagine/mount legacy e overlay vendor finale incompleti | API22 applicata, da verificare nel prossimo run; ld.config, APEX, policy/capability kernel e closure dei soli servizi essenziali |
 | G2 | Nessuna boot Q Carrera verificata | Formato v0, coda stock, DT handoff, dimensioni intere e percorso di recupero |
 | G3 | Kernel diagnostico e init Q mai avviati | Nuovo kernel identificato, policy/mount/Binder e ADB autenticato con log |

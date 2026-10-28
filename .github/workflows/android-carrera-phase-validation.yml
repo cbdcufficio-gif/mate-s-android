@@ -1,4 +1,4 @@
-name: Carrera converter path validation
+name: Carrera HIDL path validation
 on:
   workflow_dispatch:
   push:
@@ -129,6 +129,49 @@ jobs:
           print('OLD_VERIFIER_RELATIVE_ROOT_FAILURE_REPRODUCED')
           print('The same real ext4 regression passed against the fixed verifier in the preceding suite')
           PY
+      - name: Verify causal evidence and reproduce the rejected HIDL filenames
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, importlib.util, json, pathlib, subprocess, sys, unittest
+          sys.path.insert(0,str(pathlib.Path('scripts').resolve()))
+          dest=pathlib.Path('out/hidl-evidence')
+          dest.mkdir(parents=True)
+          subprocess.run(['gh','release','download','carrera-diagnostics-review-40668596565',
+                          '--repo', 'cbdcufficio-gif/mate-s-android', '--pattern','diagnostics-review.json',
+                          '--pattern','SHA256SUMS','--dir',str(dest)],check=True)
+          data=(dest/'diagnostics-review.json').read_bytes()
+          expected=(dest/'SHA256SUMS').read_text().split('  ',1)[0]
+          assert hashlib.sha256(data).hexdigest()==expected
+          evidence=json.loads(data)
+          assert evidence['digests_verified_on_bytes']
+          assert evidence['source_run']==40668596565
+          assert evidence['source_commit']=='fcd5fb737f69c2bd169e3bb0fd8b9642d166fa37'
+          assert not any(x['truncated'] for x in evidence['inventory']['files'])
+          assert evidence['system_report']['error']=='Unexpected character in public module path'
+          assert evidence['ext4_space']['conversion']['returncode']==0
+          assert evidence['ext4_space']['free_bytes_after']>=8*1024**3
+          spec=importlib.util.spec_from_file_location('hidl_tests','tests/test_carrera_system_layout.py')
+          tests=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(tests)
+          assert tests.PUBLIC_MODULE_PATHS==[x['path'] for x in evidence['system_report']['installed_public_modules']]
+          obj=json.loads(subprocess.check_output(['gh','api',
+              'repos/cbdcufficio-gif/mate-s-android/contents/scripts/android_carrera_system_probe.py?ref=fcd5fb737f69c2bd169e3bb0fd8b9642d166fa37'],text=True))
+          old_data=base64.b64decode(obj['content'])
+          assert hashlib.sha256(old_data).hexdigest()=='111d68f03a2e83189be2f57e708bac7aecb80fa9783bebbcc3f9f442409df01a'
+          old=type(sys)('previous_hidl_verifier')
+          exec(compile(old_data.decode(),'<previous HIDL verifier>','exec'),old.__dict__)
+          tests.probe=old
+          case=tests.SystemFilesystemLayouts('test_all_production_module_names_in_real_ext4_both_layouts')
+          result=unittest.TestResult()
+          case.run(result)
+          assert result.testsRun==1 and not result.skipped and not result.failures
+          assert len(result.errors)==2, result.errors
+          assert all('Unexpected character in public module path' in x[1] for x in result.errors)
+          print('OLD_VERIFIER_HIDL_AT_FAILURE_REPRODUCED_BOTH_REAL_EXT4_LAYOUTS')
+          print('All14 actual public filenames matched verified diagnostics; fixed verifier passed above')
+          PY
       - name: Dispatch at most one deliberate system successor after validation
         env:
           GH_TOKEN: ${{ github.token }}
@@ -150,14 +193,14 @@ jobs:
           if any(r['head_sha']==sha for r in runs):
               print('NO_DISPATCH: this source already has a system attempt')
               raise SystemExit(0)
-          review=api('actions/runs/40667912235')
+          review=api('actions/runs/40696012312')
           assert review['status']=='completed' and review['conclusion']=='success'
-          assert review['head_sha']=='98cf56b42bef8ca8d8d4bd892b02ad555a962174'
-          old=api('actions/runs/40650068374')
+          assert review['head_sha']=='991c9db67b7bdaed678eb1b21d9f3503a37813ab'
+          old=api('actions/runs/40668596565')
           assert old['status']=='completed' and old['conclusion']=='failure'
-          assert old['head_sha']=='fecf5dca7981201b2717179981224446af0f273e'
+          assert old['head_sha']=='fcd5fb737f69c2bd169e3bb0fd8b9642d166fa37'
           subprocess.run(['gh','api','--method','POST',
                           'repos/'+repo+'/actions/workflows/android-carrera-system.yml/dispatches',
                           '-f','ref=main'],check=True)
-          print('SINGLE_CONVERTER_PATH_SUCCESSOR_DISPATCHED source='+sha)
+          print('SINGLE_HIDL_PATH_SUCCESSOR_DISPATCHED source='+sha)
           PY

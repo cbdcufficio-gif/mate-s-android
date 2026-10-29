@@ -1,3 +1,20 @@
+## 29 ottobre — revisione di direzione dopo verifica genheaders
+
+Run40915718066/job123595277461:136/136 passati, zero skip/errori/failure.
+Le fixture host dimostrano contratti di singole funzioni; nessuna modifica
+integrata al kernel Huawei o prova enforcing è stata effettuata. Classe51 è
+legata solo all'ordine sintetico con process2 aggiunto in coda.
+
+Revisione: ripetere piccoli test isolati con una CI per ciascuno può consumare
+runner senza sciogliere il blocco d'integrazione. Prossimo lavoro: candidato
+SELinux circoscritto su copia del kernel fissato, riusando le fixture esistenti,
+con capability reload e bit ABI, mapping process2, cap_bprm_set_creds, percorso
+exec e verifica restrittiva mount. Raggruppare test affini in una sola verifica;
+aggiungere un test isolato solo se risponde a una domanda causale nuova.
+Non dichiarare compatibilità senza compilazione e prove target autorizzate.
+Gli altri blocchi socket, USB autenticata e packaging restano aperti. Nessuna
+build Android completa né retry basato solo sui successi delle fixture.
+
 ## 29 ottobre — generazione costanti process2
 
 Run40910755291:135/135 passati, zero skip/errori/failure,8.085secondi.

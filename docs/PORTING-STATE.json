@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "bounded_G1_exec_helper_fixture_completed",
+    "status": "complete_fixture_validation_prepared",
     "active_runs": [],
-    "next_action": "Verify mount helper prerequisites and explicit/automatic exec caller with fixtures before Huawei SELinux backport",
+    "next_action": "Run complete-public-tests.yml once, inspect zero-skip result then resume G1 exec/mount contracts",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {

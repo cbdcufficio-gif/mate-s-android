@@ -1,0 +1,25 @@
+name: Complete public fixtures without skipped tests
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: carrera-g1-contracts
+  cancel-in-progress: false
+jobs:
+  fixtures:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Install bounded public fixture dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends gcc g++ make e2fsprogs android-sdk-libsparse-utils patchelf gcc-arm-linux-gnueabihf gcc-aarch64-linux-gnu
+      - name: Verify checksums and require zero skips
+        run: |
+          sha256sum -c SHA256SUMS
+          python3 scripts/run_complete_tests.py

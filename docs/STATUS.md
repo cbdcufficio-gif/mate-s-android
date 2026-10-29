@@ -1,3 +1,11 @@
+## 29 ottobre — candidato socket estesi
+
+Seconda patch sperimentale sopra NNP/nosuid,25 famiglie Huawei e classi
+SCTP/ICMP; verifiche host e sorgenti/patch passate localmente. NON applicata
+alla build. Preserva netlink Huawei; segnala cambio SOCK_SEQPACKET_INET e
+macro permessi Huawei diversi dall'upstream. CI completa in attesa; mapping
+policy reale e compilazione oggetto combinato rimangono da verificare.
+
 ## 29 ottobre — oggetto SELinux sperimentale compilato
 
 Run40934729173/job123662140263, sorgente453115c: successo,138 test

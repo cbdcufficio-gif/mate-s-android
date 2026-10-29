@@ -29,5 +29,26 @@ def main():
         b=harness.index('\nstatic int run_case(',a)
         if functions(source)!=harness[a:b].rstrip():
             raise ValueError('Tested candidate hooks do not match actual applied patch')
-        print('Pinned source checksums, patch application, and exact candidate hook correspondence passed; no kernel build or runtime test.')
+        socketmeta=json.loads((ROOT/'docs/G1-SELINUX-SOCKET-CANDIDATE-SOURCES.json').read_text())
+        if hashlib.sha256(PATCH.read_bytes()).hexdigest()!=socketmeta['base_nnp_patch_sha256']:
+            raise ValueError('Socket candidate base patch mismatch')
+        dependencies=[(BASE+'include/linux/socket.h',socketmeta['huawei_socket_header_sha256']),
+          ('https://raw.githubusercontent.com/torvalds/linux/'+socketmeta['upstream_commit']+'/security/selinux/hooks.c',socketmeta['upstream_hooks_sha256']),
+          ('https://raw.githubusercontent.com/torvalds/linux/'+socketmeta['upstream_commit']+'/security/selinux/include/classmap.h',socketmeta['upstream_classmap_sha256'])]
+        for url,digest in dependencies:
+            with urllib.request.urlopen(url,timeout=30) as response:data=response.read(2*1024*1024+1)
+            if len(data)>2*1024*1024 or hashlib.sha256(data).hexdigest()!=digest:
+                raise ValueError('Pinned socket source digest mismatch')
+        socketpatch=ROOT/'patches/experimental/selinux-extended-sockets-candidate.patch'
+        subprocess.run(['git','apply','--check',str(socketpatch)],cwd=p,check=True)
+        subprocess.run(['git','apply',str(socketpatch)],cwd=p,check=True)
+        source=(p/'security/selinux/hooks.c').read_text()
+        start=source.index('static inline int default_protocol_stream(')
+        end=source.index('\nstatic int selinux_genfs_get_sid(',start)
+        harness=(ROOT/'tests/fixtures/selinux_huawei_socket_candidate_harness.c').read_text()
+        hstart=harness.index('static inline int default_protocol_stream(')
+        hend=harness.index('\nint main(void)',hstart)
+        if source[start:end].rstrip()!=harness[hstart:hend].rstrip():
+            raise ValueError('Tested socket hook does not match applied patch')
+        print('Pinned source checksums, patch applications, and exact candidate hook correspondence passed; no kernel build or runtime test.')
 if __name__=='__main__':main()

@@ -265,3 +265,26 @@ finale non vuoto. La verifica reale avverrà nel solo run successivo.
 Il warning 100755/100644 riguarda il mode del diff della copia sintetica;
 git apply non ha fallito, ma va riallineato prima di eventuale uso produttivo.
 Non abbassare guardie o classificare il fallimento come errore del backport.
+
+## Candidato socket estesi — 29 ottobre
+
+Seconda patch di studio, applicabile solo dopo la candidata NNP/nosuid:
+patches/experimental/selinux-extended-sockets-candidate.patch. Derivata dalla
+semantica upstream da69a530, conserva il ramo netlink Huawei esistente e
+introduce 25 famiglie PF definite nel suo socket.h, classi SCTP e ICMP,
+loader bit2 e nome selinuxfs. PF_IB, PF_MPLS, PF_KCM e PF_QIPCRTR non sono
+definiti nel sorgente Huawei fissato e restano assenti; PF_MAX è controllato.
+Il classmap usa COMMON_SOCK_PERMS Huawei (include recv_msg/send_msg), diverso
+dal macro upstream: questo conserva gli indici delle operazioni Huawei, ma
+il mapping verso la policy G0 e la gestione dei permessi sconosciuti vanno
+verificati; la fixture sintetica non dimostra compatibilità enforcing.
+
+La funzione modificata è compilata come fixture host; copre capability
+spenta/accesa per tutte le25 famiglie, SCTP/ICMP, Unix, netlink e packet.
+Segue upstream per SOCK_SEQPACKET_INET: anche a capability spenta un protocollo
+TCP predefinito viene classificato TCP anziché RAWIP come nell'originale Huawei.
+Questa differenza è intenzionale nella proposta, va valutata con policy reale.
+Lo script controlla SHA dei sorgenti upstream/Huawei, applica entrambe le patch
+in una cartella temporanea e confronta esattamente la funzione testata.
+Nessuna patch è inserita nella build; nessun kernel o socket reale è stato
+eseguito. Restano compilazione oggetto combinato, mapping policy e AVC.

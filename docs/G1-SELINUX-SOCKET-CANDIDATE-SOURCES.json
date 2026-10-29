@@ -1,0 +1,15 @@
+{
+  "upstream_commit": "da69a5306ab92e07224da54aafee8b1dccf024f6",
+  "upstream_hooks_sha256": "c638b37d2ef6c6cda36df4a22fa951527e2d16e73d41a163df04acf7cc31817f",
+  "upstream_classmap_sha256": "6a2c8131eb36b4bb01439a4ac1173691ab796a4ec752ac9a9824d01b203078a3",
+  "huawei_socket_header_sha256": "6e618ff6cb000d830bc972ef1c0526152ef5e79c5abddc37cb760210b4fb240f",
+  "base_nnp_patch_sha256": "cc6a21af1662a548c059c3cdda764f7360ed7d2665bc4bba576193849980c2a2",
+  "supported_families": 25,
+  "not_defined_in_huawei": [
+    "PF_IB",
+    "PF_MPLS",
+    "PF_KCM",
+    "PF_QIPCRTR"
+  ],
+  "candidate_applied_to_kernel_build": false
+}

@@ -1,0 +1,90 @@
+#include <algorithm>
+#include <cassert>
+#include <cctype>
+#include <fstream>
+#include <iostream>
+#include <set>
+#include <sstream>
+#include <string>
+#include <vector>
+struct Sink { template<class T> Sink& operator<<(const T&) { return *this; } };
+#define LOG(x) Sink()
+#define PLOG(x) Sink()
+namespace android { namespace base {
+bool StartsWith(const std::string& x, const std::string& p) { return x.rfind(p,0)==0; }
+}}
+using android::base::StartsWith;
+struct Flags { bool first_stage_mount=false; };
+struct FstabEntry { std::string blk_device, mount_point; Flags fs_mgr_flags; };
+using Fstab=std::vector<FstabEntry>;
+Fstab file_fstab, dt_fstab;
+bool dt_present=false;
+bool ReadFstabFromDt(Fstab* f) { if (!dt_present) return false; *f=dt_fstab; return true; }
+bool ReadDefaultFstab(Fstab* f) { *f=file_fstab; return !f->empty(); }
+std::vector<std::string> switches;
+void SwitchRoot(const std::string& s) { switches.push_back(s); }
+bool fs_mgr_verity_is_check_at_most_once(const FstabEntry&) { return false; }
+struct FirstStageMount {
+ Fstab fstab_;
+ bool mount_ok=true, gsi_not_on_userdata_=false;
+ std::vector<std::string> mounted;
+ explicit FirstStageMount(Fstab f):fstab_(std::move(f)){}
+ bool MountPartition(const Fstab::iterator& p, bool) { mounted.push_back(p->mount_point); return mount_ok; }
+ void UseGsiIfPresent() { assert(false); }
+ bool TrySwitchSystemAsRoot();
+};
+struct Uevent { std::string path, partition_name, device_name; };
+struct DeviceHandler {
+ std::set<std::string> boot_devices_={"hi_mci.0"};
+ bool platform_present=true;
+ bool FindPlatformDevice(const std::string&, std::string* d) const {
+   if (!platform_present) return false;
+   *d="/devices/platform/hi_mci.0"; return true;
+ }
+ bool FindPciDevicePrefix(const std::string&, std::string*) const { return false; }
+ bool FindVbdDevicePrefix(const std::string&, std::string*) const { return false; }
+ bool FindDmDevicePartition(const std::string&, std::string*) const { return false; }
+ std::vector<std::string> GetBlockDeviceSymlinks(const Uevent&) const;
+};
+void SanitizePartitionName(std::string* s) {
+ assert(std::all_of(s->begin(),s->end(),[](char c){return std::isalnum(c)||c=='_'||c=='-';}));
+}
+__UPSTREAM_FUNCTIONS__
+Fstab read_rows(const std::string& path) {
+ std::ifstream in(path); assert(in.good()); Fstab f;
+ std::string line;
+ while(std::getline(in,line)) {
+  if(line.empty()||line[0]=='#')continue;
+  std::istringstream row(line); std::string dev,mp,type,opts,flags,extra;
+  assert(bool(row>>dev>>mp>>type>>opts>>flags)); assert(!(row>>extra));
+  FstabEntry e; e.blk_device=dev; e.mount_point=mp;
+  std::istringstream fs(flags); std::string flag;
+  while(std::getline(fs,flag,','))if(flag=="first_stage_mount")e.fs_mgr_flags.first_stage_mount=true;
+  f.push_back(e);
+ }
+ return f;
+}
+int main(int argc,char** argv) {
+ assert(argc==3);
+ file_fstab=read_rows(argv[1]);
+ assert(ReadFirstStageFstab().empty());
+ FirstStageMount old(ReadFirstStageFstab()); assert(old.TrySwitchSystemAsRoot());
+ assert(old.mounted.empty()&&switches.empty());
+ file_fstab=read_rows(argv[2]);
+ auto selected=ReadFirstStageFstab();
+ assert(selected.size()==1&&selected[0].mount_point=="/system");
+ FirstStageMount good(selected); assert(good.TrySwitchSystemAsRoot());
+ assert(good.mounted==std::vector<std::string>{"/system"});
+ assert(switches==std::vector<std::string>{"/system"});
+ switches.clear(); FirstStageMount fail(selected); fail.mount_ok=false;
+ assert(!fail.TrySwitchSystemAsRoot()); assert(switches.empty());
+ dt_present=true; dt_fstab={{"dt-device","/vendor",{false}}};
+ auto dt=ReadFirstStageFstab(); assert(dt.size()==1&&dt[0].mount_point=="/vendor");
+ dt_present=false;
+ assert(ExtraBootDevices(file_fstab)==std::set<std::string>{"hi_mci.0"});
+ DeviceHandler h; Uevent e{"/devices/platform/hi_mci.0/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0p10","system","mmcblk0p10"};
+ auto links=h.GetBlockDeviceSymlinks(e);
+ assert(std::find(links.begin(),links.end(),selected[0].blk_device)!=links.end());
+ h.platform_present=false; assert(h.GetBlockDeviceSymlinks(e).empty());
+ std::cout<<"PINNED_Q_FIRST_STAGE_FIXTURE_PASS\n";
+}

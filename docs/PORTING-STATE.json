@@ -610,7 +610,13 @@
   "active_work": {
     "owner": "Codex /root",
     "status": "G1_mount_fixture_CI_pending",
-    "active_runs": [],
+    "active_runs": [
+      {
+        "run_id": 40880252797,
+        "workflow": "complete-public-tests.yml",
+        "source_commit": "12adf5ce784cd4ec74cf31bec7cc4199b7d3df6c"
+      }
+    ],
     "next_action": "Check latest complete-public-tests.yml for mount fixture; then derive Huawei mount helper prerequisites and test exec caller",
     "full_android_rebuild_started": false
   },

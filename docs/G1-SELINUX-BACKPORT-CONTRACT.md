@@ -1,3 +1,12 @@
+## 30 ottobre — controlli socket e prova oggetto combinato
+
+Run40948653774/job123710583660:139/139 passati, zero skip/errori/failure;
+API GitHub autenticata ha verificato SHA e applicabilità delle due patch e
+corrispondenza dei corpi testati. Nessuna prova kernel o policy runtime socket.
+Revisione: l'oggetto precedente includeva solo NNP, pertanto un unico probe
+oggetto SELinux con entrambe le patch è il prossimo controllo di integrazione;
+non costruire Image o Android. Policy G0 e AVC ancora da verificare.
+
 ## 29 ottobre — source check e limite HTTP 429
 
 Run40944079145:139/139 test host passati, zero skip; il controllo successivo

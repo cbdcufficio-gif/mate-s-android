@@ -37,6 +37,11 @@ def main():
         if sha((kernel/name).read_bytes())!=digest:raise ValueError('Candidate base digest mismatch: '+name)
     command(['git','-C',str(kernel),'apply','--check',str(candidate)])
     command(['git','-C',str(kernel),'apply',str(candidate)])
+    socket_candidate=ROOT/'patches/experimental/selinux-extended-sockets-candidate.patch'
+    socket_meta=json.loads((ROOT/'docs/G1-SELINUX-SOCKET-CANDIDATE-SOURCES.json').read_text())
+    if sha(candidate.read_bytes())!=socket_meta['base_nnp_patch_sha256']:raise ValueError('Socket candidate base mismatch')
+    command(['git','-C',str(kernel),'apply','--check',str(socket_candidate)])
+    command(['git','-C',str(kernel),'apply',str(socket_candidate)])
     changed=subprocess.check_output(['git','-C',str(kernel),'diff','--name-only'],text=True).splitlines()
     # The existing touch guard verified the only pre-candidate changes; enforce exact patch paths independently.
     patchpaths=subprocess.check_output(['git','-C',str(kernel),'diff','--name-only','--','security/selinux'],text=True).splitlines()
@@ -53,6 +58,6 @@ def main():
     obj=build/'security/selinux/selinux.o'
     if not obj.is_file() or not obj.stat().st_size:raise ValueError('SELinux object missing')
     if (build/'arch/arm64/boot/Image').exists():raise ValueError('Unexpected kernel image produced')
-    report={'status':'EXPERIMENTAL_SELINUX_OBJECT_COMPILED','kernel_revision':repos['kernel-hi3635']['commit'],'compiler_revision':repos['gcc49']['commit'],'compiler_sha256':sha(gcc.read_bytes()),'patch_sha256':sha(candidate.read_bytes()),'config_sha256':sha(config.read_bytes()),'selinux_object_sha256':sha(obj.read_bytes()),'selinux_object_size':obj.stat().st_size,'kernel_image_built':False,'policy_runtime_verified':False,'hardware_boot_verified':False,'full_source_paths_changed':changed,'note':'Object compilation alone does not verify policy load, security semantics, linking, boot or hardware.'}
+    report={'status':'EXPERIMENTAL_SELINUX_OBJECT_COMPILED','kernel_revision':repos['kernel-hi3635']['commit'],'compiler_revision':repos['gcc49']['commit'],'compiler_sha256':sha(gcc.read_bytes()),'patch_sha256':sha(candidate.read_bytes()),'socket_patch_sha256':sha(socket_candidate.read_bytes()),'config_sha256':sha(config.read_bytes()),'selinux_object_sha256':sha(obj.read_bytes()),'selinux_object_size':obj.stat().st_size,'kernel_image_built':False,'policy_runtime_verified':False,'hardware_boot_verified':False,'full_source_paths_changed':changed,'note':'Object compilation alone does not verify policy load, security semantics, linking, boot or hardware.'}
     print(json.dumps(report,indent=2),flush=True)
 if __name__=='__main__':main()

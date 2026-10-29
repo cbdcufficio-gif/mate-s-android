@@ -23,6 +23,8 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 TARGET_COPY_OUT_VENDOR := system/vendor
 # Deliberately leave BOARD_VNDK_VERSION unset: stock is a pre-Treble device.
 TARGET_USERIMAGES_USE_EXT4 := true
+# Existing Carrera cache partition: stage a directory before mounting the read-only root.
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2684354560
 BOARD_BOOTIMAGE_PARTITION_SIZE := 25165824
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432

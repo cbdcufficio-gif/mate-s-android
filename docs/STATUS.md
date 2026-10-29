@@ -1,3 +1,29 @@
+# G1 root/cache e bootstrap — 29 ottobre 2026
+
+Run40869967507 riuscito, sorgented3cc0e8. Piccoli asset verificati su byte.
+G0 /cache è realmente symlink/data/cache; staging Q candidato directory,
+funzione __mount invariata con stub e rootext4ro del runner verificati.
+Applicata solo BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE:=ext4: nessuna geometria,
+cache/userdatafstab o firmware modificati. Non richiedere cache.img/droid finché
+geometria cache non verificata nel relativo target; non servono agli attuali
+systemimage/installed-file-list. Fixture non equivale a grafo Kati completo.
+
+Censiti64ELF e339dipendenze con candidati omogenei per bitness/machine,6APEX
+flattened con manifest e runtime.release→com.android.runtime. ro.apex.updatable
+non è dichiarata nei file acquisiti: default del codice e attivazione ancora
+aperti. Version info e namespace acquisiti; loader runtime non certificato.
+Policy G0 SHA e450f2631168a9653694ce84f9882d86dbc6b9d16ff57b6049d5870102cdbe9f:
+4policycap effettive incluse extended_socket_class/nnp_nosuid_transition.
+Suite runner121eseguiti120passati1skip. Primo run40869680141 aveva rilevato
+percorso ELF relativo non normalizzato, corretto con guardie preservate.
+
+Fixture USB8casi su corpi Q invariati passata. Nuova fixture ordine trigger
+cattura che il fallback Q generico abilita gadget prima di startadbd: adattamento
+Carrera/readiness resta aperto, proprietà non applicate. Contratto privato chiave
+in docs/G1-USB-PRIVATE-PROVISIONING.md; nessuna chiave acquisita/pubblicata.
+ADB host read-only funziona: TWRP2.8.7.0, kernelrecovery3.10.74, Hi3635/Carrera,
+FunctionFS e aliasadb. Nessun bootQ o modifica del telefono.
+
 # Revisione delle prossime fasi — 29 ottobre 2026
 
 Baseline dacba577; G1 run40861056829 già completato, 117 test/116 passati/1 skip.

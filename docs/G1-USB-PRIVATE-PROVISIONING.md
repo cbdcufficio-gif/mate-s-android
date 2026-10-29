@@ -38,3 +38,11 @@ Label/AVC e permessi vanno verificati sul kernel candidato enforcing. USB,
 autenticazione e init devono fallire in modo osservabile e senza scrivere dati.
 Questi test hardware restano separatamente autorizzati; nessun risultato runtime
 è implicato dalle fixture host o dall'attuale TWRP permissive.
+
+## Divergenza osservata nel fallback generico Q
+
+Il file init.usb.rc Q fissato abilita android_usb prima di start adbd e non
+attende sys.usb.ffs.ready nell'azione adb/configfs=0. La fixture cattura questo
+ordine reale; il candidato Carrera deve attendere mount/alias e readiness,
+senza assumere che il fallback generico lo faccia già. L'override specifico
+non è installato e rimane un blocco prima del candidato hardware.

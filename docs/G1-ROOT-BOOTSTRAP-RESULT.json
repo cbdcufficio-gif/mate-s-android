@@ -1,0 +1,118 @@
+{
+  "status": "PUBLIC_G1_BOOTSTRAP_CONTRACTS_CAPTURED",
+  "run_id": 40869967507,
+  "source_commit": "d3cc0e88668c657d4c1d9a89d300356f22f97214",
+  "release": "https://github.com/cbdcufficio-gif/mate-s-android/releases/tag/carrera-g1-bootstrap-40869967507",
+  "digests_verified_on_bytes": true,
+  "cache": {
+    "actual_g0_type": "symlink",
+    "actual_g0_target": "/data/cache",
+    "candidate_type": "directory",
+    "staging_source_sha256": "55868098036c85826850e95e8a62eea5912b5fa9a095b39dda64a7ca4c2502d0",
+    "mount_source_sha256": "6e42159dffd82b570c924923c6841f98b3366800041d29ffbf83b1e48f1df0ee",
+    "source_function_fixture": "passed with syscall stubs",
+    "host_readonly_fixture": "HOST_READONLY_CACHE_FIXTURE_PASSED",
+    "candidate_board_flag": "BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4",
+    "candidate_not_rebuilt": true,
+    "build_contract": {
+      "source_sha256": {
+        "core/Makefile": "3579ea7fc8b120fd9ce25f6a0f1ce78b88822d3823250e9adf32825d04ee655e",
+        "core/board_config.mk": "80cd356aa25090d3d8260ce722a1a25d291d6c56565295d58c5ad578fb6b14c4"
+      },
+      "cache_image_enabled_by_default_with_flag": true,
+      "cache_image_geometry_not_declared": true,
+      "cache_image_build_not_requested": true,
+      "limitation": "Only systemimage/installed-file-list current goals reviewed; cache.img/droid packaging requires separately verified Carrera geometry, no full Kati graph executed"
+    }
+  },
+  "apex": [
+    {
+      "directory": "com.android.conscrypt",
+      "name": "com.android.conscrypt",
+      "version": 299900000,
+      "sha256": "3fb5afc28008dd6fb96233dba479bd19ff50027064f0278d80f0a77b142c8766"
+    },
+    {
+      "directory": "com.android.media",
+      "name": "com.android.media",
+      "version": 290000000,
+      "sha256": "6a4de5c119c7ca1bd8a5dd3289d8b8fd71a4acf84653362261f4f1168d130764"
+    },
+    {
+      "directory": "com.android.media.swcodec",
+      "name": "com.android.media.swcodec",
+      "version": 290000000,
+      "sha256": "3fa158dcdd6293a3087d17b6d6deef3735e3c6ab0eb12a16183639f72823e535"
+    },
+    {
+      "directory": "com.android.resolv",
+      "name": "com.android.resolv",
+      "version": 290000000,
+      "sha256": "9ab5e4012ff7a0be8cff9fa49babaf46e3a99be15bb04e9e8927f65226013afc"
+    },
+    {
+      "directory": "com.android.runtime.release",
+      "name": "com.android.runtime",
+      "version": 1,
+      "sha256": "e3980a7e51b32d0673a26fd105adf0ca55d783b39739c21439499b713829e8b9"
+    },
+    {
+      "directory": "com.android.tzdata",
+      "name": "com.android.tzdata",
+      "version": 290000000,
+      "sha256": "601517dde15ec61146a0f9bc4546f30c6c5dd18dbc50b0142f27d8c73e829f48"
+    }
+  ],
+  "properties": {
+    "ro.product.first_api_level": "22",
+    "ro.adb.secure": "1",
+    "persist.sys.usb.config": "none"
+  },
+  "elf_count": 64,
+  "elf_needed_edges_with_candidates": 339,
+  "unresolved_contracts": [
+    {
+      "property": "ro.apex.updatable",
+      "observed": null,
+      "reason": "Absent/non-false property; source default and effective runtime need validation"
+    }
+  ],
+  "policy_sha256": "e450f2631168a9653694ce84f9882d86dbc6b9d16ff57b6049d5870102cdbe9f",
+  "tests": {
+    "run": 121,
+    "passed": 120,
+    "skipped": 1
+  },
+  "usb_fixture": {
+    "status": "PINNED_Q_USB_COMPAT_FIXTURE_PASSED",
+    "sources": {
+      "usb.cpp": "1f499785af1ab2a96f31336deb59780ae9eebc8a10829cf10731255a90b23e78",
+      "usb_legacy.cpp": "01459ea97ac01c36bf79740df18b862abd51e0eebd7b352272b751f2ff81fdc5",
+      "usb_ffs.cpp": "9f7729592be30c086ec537680a53946f10799a088ea2947ccd82b4d1e8b56728"
+    },
+    "cases": [
+      "default nonblocking path",
+      "explicit legacy path",
+      "persistent property overrides read-only property",
+      "sync read/write selected without AIO initialization",
+      "default AIO path",
+      "v2 descriptor succeeds",
+      "v2 failure then v1 succeeds",
+      "both descriptor versions fail"
+    ],
+    "properties_applied": false,
+    "hardware_usb_verified": false,
+    "limitations": [
+      "Property/thread/endpoint/descriptor syscall interfaces stubbed",
+      "No USB request transferred, no target kernel or complete init-trigger execution"
+    ]
+  },
+  "runtime_mounts_verified": false,
+  "hardware_boot_verified": false,
+  "limitations": [
+    "Immutable G0 retains previous fstab/cache staging",
+    "Host readonly ext4 is Linux runner, not Huawei",
+    "ELF candidate paths do not certify loader namespace, symbol-version acceptance or runtime",
+    "No target APEX activation, policy enforcement or USB proof"
+  ]
+}

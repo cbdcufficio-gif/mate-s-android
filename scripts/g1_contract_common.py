@@ -16,7 +16,9 @@ def guard():
     if any(r['status'] in ('queued','in_progress','waiting','pending','requested') and r['name']=='Mate S public Carrera system and ramdisk' for r in runs):raise ValueError('System build already active')
 def source(path):
     rows=json.loads((ROOT/'docs/REVIEW-2026-10-29-SOURCES.json').read_text())['files']
-    row=next(x for x in rows if x['repository']=='LineageOS/android_system_core' and x['path']==path)
+    if path=='rootdir/init.usb.rc':
+        row={'repository':'LineageOS/android_system_core','revision':CORE,'sha256':'4dde3aa1f087c79abdc960af50897a60ae794e742c6f1086e1c7a3d252eee2c6'}
+    else:row=next(x for x in rows if x['repository']=='LineageOS/android_system_core' and x['path']==path)
     url=f'https://raw.githubusercontent.com/{row["repository"]}/{row["revision"]}/{path}'
     with urllib.request.urlopen(url,timeout=45) as response:data=response.read(1024**2+1)
     if len(data)>1024**2 or sha(data)!=row['sha256']:raise ValueError('Pinned source digest mismatch: '+path)

@@ -538,7 +538,7 @@
     {
       "priority": 1,
       "id": "root-cache-bootstrap",
-      "action": "Verify actual /cache symlink target, pinned staging and read-only mountpoint handling; essential ELF/APEX closure on immutable G0",
+      "action": "Cache directory correction source-tested/applied; root/bootstrap G1 report captured. Review actual policy against effective kernel config next; runtime linker/APEX remains open",
       "full_android_build": false
     },
     {
@@ -562,8 +562,21 @@
   ],
   "local_adb_access": {
     "user_authorized_read_commands": true,
-    "attempt": "adb devices -l",
-    "result": "sandbox_server_socket_operation_not_permitted_before_enumeration",
-    "hardware_evidence_acquired": false
+    "result": "host_escalated_readonly_access_succeeded",
+    "mode": "recovery",
+    "kernel": "3.10.74-gfa6dc6d",
+    "hardware": "hi3635",
+    "product_device": "carrera",
+    "recovery_version": "2.8.7.0",
+    "usb_functionfs_observed": true,
+    "usb_alias": "adb",
+    "target_android_q_verified": false
+  },
+  "g1_root_bootstrap": {
+    "result": "docs/G1-ROOT-BOOTSTRAP-RESULT.json",
+    "run_id": 40869967507,
+    "status": "PUBLIC_G1_BOOTSTRAP_CONTRACTS_CAPTURED",
+    "board_cache_ext4_applied": true,
+    "candidate_rebuilt": false
   }
 }

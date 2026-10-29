@@ -609,15 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_exec_caller_fixture_CI_pending",
-    "active_runs": [
-      {
-        "run_id": 40896541565,
-        "workflow": "complete-public-tests.yml",
-        "source_commit": "4d6f216d0d74e79bdb91a88a7d43fad1d67d16db"
-      }
-    ],
-    "next_action": "Check latest complete-public-tests run; preserve Huawei cap_bprm_set_creds in candidate and test policycap reload/process2",
+    "status": "G1_policycap_reload_CI_pending",
+    "active_runs": [],
+    "next_action": "Check complete suite for policycap reload; then verify process2 mapping and Huawei integration prerequisites",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -628,16 +622,16 @@
     "kernel_enforcement_verified": false
   },
   "complete_public_tests": {
-    "run_id": 40880252797,
-    "job_id": 123469548860,
-    "source_commit": "12adf5ce784cd4ec74cf31bec7cc4199b7d3df6c",
+    "run_id": 40896541565,
+    "job_id": 123527089817,
+    "source_commit": "4d6f216d0d74e79bdb91a88a7d43fad1d67d16db",
     "status": "success",
-    "run": 132,
-    "passed": 132,
+    "run": 133,
+    "passed": 133,
     "skipped": 0,
     "failures": 0,
     "errors": 0,
-    "seconds": 8.212
+    "seconds": 8.199
   },
   "autonomous_routine": {
     "automation_id": "carrera-g1-avanzamento-verificato",
@@ -658,9 +652,22 @@
     "tests_skipped": 0
   },
   "g1_selinux_exec_caller_fixture": {
-    "status": "HOST_FIXTURE_PASSED_CI_PENDING",
+    "status": "COMPLETE_PUBLIC_SUITE_PASSED",
     "matrix_cases": 32,
     "additional_cases": 7,
+    "kernel_patch_applied": false,
+    "run_id": 40896541565,
+    "tests_run": 133,
+    "tests_passed": 133,
+    "tests_skipped": 0
+  },
+  "g1_selinux_policycap_reload_fixture": {
+    "status": "HOST_FIXTURE_PASSED_CI_PENDING",
+    "state_pairs_per_loader": 65536,
+    "loaders": [
+      "huawei",
+      "upstream"
+    ],
     "kernel_patch_applied": false
   }
 }

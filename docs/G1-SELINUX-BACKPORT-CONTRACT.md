@@ -143,3 +143,25 @@ quell'integrazione. Il backport dovrà mantenere il controllo capability e i
 suoi errori, l'accesso inode/audit della versione Huawei e l'ordine del reset.
 Nessuna patch kernel applicata. Prossimo: fixture del percorso Huawei
 capability/exec e adattamento mount, poi policycap caricamento/reload/process2.
+
+## Loader capability e reload — 29 ottobre
+
+Acquisiti e compilati invariati gli enum e security_load_policycaps() Huawei
+ed upstream, con digest nel registro sorgenti. La fixture esegue per ciascun
+loader tutte le 65.536 coppie before/after di un bitmap sintetico a8bit.
+Verifica indici0/1 Huawei, indici0..5 upstream, azzeramento delle capability
+rimosse e assenza di alias tra bit2/bit5 e posizioni intermedie. I bit6/7 non
+modificano i valori noti. Le interfacce ebitmap/logging sono simulate; questo
+non esercita parsing del formato binario, sincronizzazione, AVC o selinuxfs.
+
+Il sorgente Huawei già invoca il loader sia nel caricamento iniziale (prima
+di ss_initialized) sia nel reload, dopo installazione di newpolicydb sotto
+policy_rwlock. L'adattamento deve conservare entrambi i punti e assegnare i
+nuovi flag a ogni caricamento, incluso il valore zero. Non aggiungere loader
+paralleli o state sticky. Il loader upstream importa anche alwaysnetwork e
+cgroupseclabel: la fixture ne controlla gli indici, non autorizza a dichiararne
+gli hook supportati nel backport Huawei.
+
+Rimangono: bit parser/selinuxfs effettivi, mapping process2 e permessi numerici,
+integrazione exec con cap_bprm_set_creds preservato, mount helper compatibile
+e poi socket classes. Nessuna patch kernel produttiva ancora applicata.

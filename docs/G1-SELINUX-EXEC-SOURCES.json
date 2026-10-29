@@ -20,5 +20,9 @@
     "huawei-include-linux-mount.h": "9a1da6df7f86a3fece7db606f60bc7cfcd741dc6524daeebe8a49059bd7f9501",
     "huawei-fs-namespace.c": "e0474848bcab2bd4e1c7bfdc8e3ec5c5e2c155f1dfcb353efb4d91214ddcb67c"
   },
-  "exec_caller_function_sha256": "a7b94fb8e4ce374b173b1b3f52c5e117fe33bffee991e3e3d209cad1b95a25c3"
+  "exec_caller_function_sha256": "a7b94fb8e4ce374b173b1b3f52c5e117fe33bffee991e3e3d209cad1b95a25c3",
+  "huawei_policycaps_function_sha256": "d39750301f9c2edf14edb29d63705062b45cccd3f4b9474ddf759e1199021725",
+  "huawei_policycap_enum_sha256": "a91a8b10d2a843282caaa1b5eadeaa09da6260aaadc75898219350df09bb2399",
+  "upstream_policycaps_function_sha256": "8b647fe246d5a0027ce5175dc710c6a8406d3d2c434cf3a2bb37b7f0f1c54344",
+  "upstream_policycap_enum_sha256": "a6dc5ba545d60100fae036e0b009d9dfd64dcdcfbe69e1303955841a1766851c"
 }

@@ -1,3 +1,11 @@
+## 29 ottobre — exec verificato e loader capability
+
+Run40896541565:133/133 passati, zero skip/errori/failure,8.199secondi.
+Nuova fixture: loader/enum originali Huawei e upstream,65.536 coppie bitmap
+per ciascuno per verificare reload e cancellazione capability. Test locale
+passato, CI da verificare. Nessun parsing policy reale o backport applicato.
+Prossimo: mapping process2 e prerequisiti integrazione Huawei/mount.
+
 ## 29 ottobre — verifica CI del contratto mount conclusa
 
 Run40880252797, job123469548860, sorgente12adf5c: SUCCESSO.

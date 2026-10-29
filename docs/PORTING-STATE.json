@@ -610,7 +610,13 @@
   "active_work": {
     "owner": "Codex /root",
     "status": "G1_mapping_fixture_CI_pending",
-    "active_runs": [],
+    "active_runs": [
+      {
+        "run_id": 40910755291,
+        "workflow": "complete-public-tests.yml",
+        "source_commit": "bac011f7e84e6c6b4ccb383d6e099d930ff6f30c"
+      }
+    ],
     "next_action": "Check complete-public-tests run, then verify generated process2 constants and prepare integrated Huawei candidate",
     "full_android_rebuild_started": false
   },

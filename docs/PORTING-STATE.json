@@ -610,7 +610,13 @@
   "active_work": {
     "owner": "Codex /root",
     "status": "G1_policycap_reload_CI_pending",
-    "active_runs": [],
+    "active_runs": [
+      {
+        "run_id": 40897013630,
+        "workflow": "complete-public-tests.yml",
+        "source_commit": "7215316cd216f6a478e5c199cb0dd61bfb6db141"
+      }
+    ],
     "next_action": "Check complete suite for policycap reload; then verify process2 mapping and Huawei integration prerequisites",
     "full_android_rebuild_started": false
   },

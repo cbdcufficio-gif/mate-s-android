@@ -610,7 +610,13 @@
   "active_work": {
     "owner": "Codex /root",
     "status": "G1_integrated_selinux_candidate_CI_pending",
-    "active_runs": [],
+    "active_runs": [
+      {
+        "run_id": 40925533945,
+        "workflow": "complete-public-tests.yml",
+        "source_commit": "d88dbe2abb581cf6c37fceb8128073719e519d99"
+      }
+    ],
     "next_action": "Check complete public suite and pinned patch application; then inspect remaining SELinux/socket contracts and validate candidate kernel build",
     "full_android_rebuild_started": false
   },

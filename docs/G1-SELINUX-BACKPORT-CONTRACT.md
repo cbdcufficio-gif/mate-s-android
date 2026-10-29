@@ -67,3 +67,40 @@ configurata, hook e regole policy effettivamente usate: priorità a file mmap
 e transizioni/init. Verificare handling di unknown classes/permissions senza
 cambiarlo per aggirare i controlli. Non importare ciecamente44classi o tutti
 i watch hook moderni; non trattare le5classi userspace come hook mancanti.
+
+## Fixture exec riproducibile — 29 ottobre 2026
+
+`tests/test_selinux_exec_contract.py` compila il corpo **invariato** di
+`check_nnp_nosuid` da af63f419, conservato con attribuzione GPL in
+`tests/fixtures/selinux_nnp_nosuid.c`. I digest dei sei sorgenti letti e del
+corpo sono in `G1-SELINUX-EXEC-SOURCES.json`. La fixture non entra nel kernel.
+
+Sono esercitate 128 combinazioni: NNP, nosuid, SID uguale/diverso, capability
+assente/presente, quattro maschere di autorizzazione e bounded SID sì/no.
+Si verificano risultato, maschera richiesta, numero di chiamate AVC/bounded e
+precedenza degli errno. Con entrambe le restrizioni occorrono entrambi i
+permessi process2; un solo permesso non basta, salvo il fallback bounded.
+La capability assente non consulta process2, ma conserva il fallback bounded.
+Una negazione AVC non implica necessariamente il rifiuto finale: la verifica
+bounded può consentire la transizione. SID invariato evita entrambi i controlli.
+
+**Differenza Huawei verificata nel sorgente fissato:** in
+`selinux_bprm_set_creds`, exec_sid esplicito con NNP viene rifiutato subito;
+negli altri casi NNP o MNT_NOSUID ripristinano il SID precedente. La funzione
+`security_bounded_transition` esiste già in Huawei services.c, ma quel percorso
+exec non la chiama. Non occorre quindi inventare un parser bounded nuovo:
+va verificato e collegato il servizio esistente con i contratti appropriati.
+
+Nel chiamante upstream, un errore del controllo per exec_sid esplicito termina
+exec; per una transizione automatica ripristina il vecchio SID e prosegue con
+FILE__EXECUTE_NO_TRANS. Poi rimangono TRANSITION, ENTRYPOINT e gli altri controlli.
+La fixture attuale prova solo il helper; il chiamante completo, i suoi errori e
+questi permessi restano da esercitare prima di una patch Huawei.
+
+**Limite e prossima prova:** AVC, bounded SID e mount sono interfacce simulate;
+nessuna policy è caricata né alcun AVC reale prodotto. In particolare
+`mnt_may_suid()` upstream non va sostituito automaticamente dal solo bit
+MNT_NOSUID Huawei: verificare le restrizioni di mount/user namespace nel codice
+fissato e nella configurazione generata. Servono inoltre caricamento/reload del
+bit5, mapping process2 e fixture del chiamante esplicito/automatico. La patch
+kernel e una nuova compilazione Android restano non applicate.

@@ -1,0 +1,14 @@
+{
+  "upstream_revision": "af63f4193f9fbbbac50fc766417d74735afd87ef",
+  "huawei_revision": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+  "function_sha256": "1f71cd6d214acb512c3cabccbf9bcf481399b850d194a603f4ac83fc41f0d43e",
+  "source_sha256": {
+    "upstream-security.h": "cfb10db8d3c7e65109ff4ece1c1e9d732c0ea6a74edd6415797eb2badb73b2f2",
+    "upstream-services.c": "4ddeda31cbb4553b79ca299ceb860b703c1398400c8ef9335c9c4bfa5bac3341",
+    "upstream-hooks.c": "2542d2e9b187f22b221f47558357838558f908871d1dbb2906b267b82c5f0d07",
+    "huawei-security.h": "c6df864b487f68c6e6af8da2eaf9d2c63d183f10d9e5ad76efca1204b41f1662",
+    "huawei-services.c": "7c831a8003358e1cda5a8fc31f0675aada87fe7dba6ef6d4ebd9f3930524f694",
+    "huawei-hooks.c": "706fb85c34bc44a292d8b66cf1eddb3cb15d11266b62e6fc88bf4f5e3eade0d4"
+  },
+  "kernel_patch_applied": false
+}

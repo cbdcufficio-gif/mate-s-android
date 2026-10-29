@@ -609,9 +609,16 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "bounded_G1_implementation_completed",
+    "status": "bounded_G1_exec_helper_fixture_completed",
     "active_runs": [],
-    "next_action": "Design SELinux semantic backports and Carrera-specific USB init with discriminating tests before candidate rebuild",
+    "next_action": "Verify mount helper prerequisites and explicit/automatic exec caller with fixtures before Huawei SELinux backport",
     "full_android_rebuild_started": false
+  },
+  "g1_selinux_exec_fixture": {
+    "status": "PINNED_UPSTREAM_HELPER_HOST_FIXTURE_PASSED",
+    "decision_cases": 128,
+    "source_registry": "docs/G1-SELINUX-EXEC-SOURCES.json",
+    "kernel_patch_applied": false,
+    "kernel_enforcement_verified": false
   }
 }

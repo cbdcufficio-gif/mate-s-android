@@ -1,3 +1,11 @@
+## Aggiornamento SELinux exec — 29 ottobre 2026
+
+Il helper upstream NNP/nosuid supera 128 casi host, incluso fallback bounded
+successivo a rifiuto AVC. Huawei possiede già security_bounded_transition ma
+non lo usa nel percorso exec osservato. Restano bloccanti l'integrazione del
+chiamante, il contratto mount, bit5/reload/process2 e prove enforcing.
+Nessuna patch kernel applicata; dettagli in G1-SELINUX-BACKPORT-CONTRACT.md.
+
 # Blocchi prioritari verso la ROM Carrera
 
 Direzione vigente: [PORTING-DIRECTION.md](PORTING-DIRECTION.md).

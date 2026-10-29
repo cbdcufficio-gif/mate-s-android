@@ -1,3 +1,14 @@
+## 2026-10-29 — contratto SELinux exec, helper upstream
+
+Fixture C del helper upstream invariato check_nnp_nosuid: 128 combinazioni
+passate, incluse maschere congiunte NNP/nosuid, fallback bounded dopo rifiuto
+AVC e precedenza EPERM/EACCES. Sei sorgenti pubblici fissati registrati con SHA.
+Test pertinenti: 2 eseguiti, 2 passati. Suite locale: 131 eseguiti,
+117 passati, 14 saltati per dipendenze/privilegi opzionali locali; nessuna nuova
+validazione CI implicita. Precedente CI resta 129/128/1. G1 ancora aperto.
+Nessuna patch kernel, build Android completa o operazione telefono eseguita.
+Prossimo passo: contratto mount e chiamante exec completo, poi policycap reload.
+
 # G1 review finale dei contratti catturati — 29 ottobre 2026
 
 Run40871087407 riuscito su283cd3b; dati piccoli verificati con SHA256SUMS.

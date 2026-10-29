@@ -610,7 +610,13 @@
   "active_work": {
     "owner": "Codex /root",
     "status": "G1_exec_caller_fixture_CI_pending",
-    "active_runs": [],
+    "active_runs": [
+      {
+        "run_id": 40896541565,
+        "workflow": "complete-public-tests.yml",
+        "source_commit": "4d6f216d0d74e79bdb91a88a7d43fad1d67d16db"
+      }
+    ],
     "next_action": "Check latest complete-public-tests run; preserve Huawei cap_bprm_set_creds in candidate and test policycap reload/process2",
     "full_android_rebuild_started": false
   },

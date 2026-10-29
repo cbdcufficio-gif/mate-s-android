@@ -1,3 +1,10 @@
+## 29 ottobre — correzione target SELinux
+
+Run40930048482:138 test passati, zero skip; compilazione non avviata perché
+il target composto selinux.o non ha file selinux.c. Makefile Huawei usa la
+regola directory %/: il probe la impiega e verifica l'oggetto prodotto.
+Successore unico da eseguire; nessun Image, caricamento policy o boot.
+
 ## 29 ottobre — candidato integrato, prova oggetto
 
 Run40925533945:138/138 passati, zero skip/errori/failure; digest sorgenti,

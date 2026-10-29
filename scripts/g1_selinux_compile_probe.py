@@ -49,7 +49,7 @@ def main():
     for key,value in fragment.items():
         if actual.get(key,'n')!=value:raise ValueError('Diagnostic fragment changed: '+key)
     if actual.get('CONFIG_HUAWEI_TS_FW_UPDATE','n')!='n' or actual.get('CONFIG_USER_NS','n')!='n':raise ValueError('Required config guard changed')
-    command(base+['-j2','security/selinux/selinux.o'],900)
+    command(base+['-j2','security/selinux/'],900)
     obj=build/'security/selinux/selinux.o'
     if not obj.is_file() or not obj.stat().st_size:raise ValueError('SELinux object missing')
     if (build/'arch/arm64/boot/Image').exists():raise ValueError('Unexpected kernel image produced')

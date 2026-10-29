@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_selinux_object_probe_prepared",
+    "status": "G1_selinux_object_target_fixed",
     "active_runs": [],
-    "next_action": "Run one bounded SELinux object compilation using pinned kernel, toolchain and experimental candidate; classify first failure; no Image",
+    "next_action": "Run one bounded successor using kernel directory target; classify first compiler error or record object digest",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -699,11 +699,11 @@
     "tests_skipped": 0
   },
   "g1_direction_review": {
-    "basis": "138/138 host and pinned-source checks, candidate patch still not built into kernel",
-    "facts": "Patch application and tested hooks verified, no kernel compilation or policy runtime",
-    "risk": "Repeating source-level host fixtures cannot expose old kernel compiler/integration errors",
-    "decision": "Compile only candidate SELinux object once on a public standard runner before further backport work",
-    "alternatives": "Full Image or Android build deferred until object and other contracts justify them",
+    "basis": "Object probe failed before compilation because composite object lacks same-name .c",
+    "facts": "Pinned top-level Makefile has %.o: %.c and %/ directory rules; host suite138/138 passed",
+    "risk": "Blind retry would repeat the invalid target and waste public runner time",
+    "decision": "Use existing Kbuild directory rule and verify the composite object exists; one successor",
+    "alternatives": "Full kernel Image or Android build remains deferred",
     "full_android_build_automatic": false
   },
   "g1_selinux_integrated_candidate": {
@@ -722,5 +722,16 @@
     "tests_run": 138,
     "tests_passed": 138,
     "tests_skipped": 0
+  },
+  "g1_selinux_object_previous_run": {
+    "run_id": 40930048482,
+    "job_id": 123645770988,
+    "source_commit": "baceb1d855d1f15d097508768f9a127c5231c5e3",
+    "conclusion": "failure",
+    "first_error": "No rule to make target security/selinux/selinux.o",
+    "classification": "probe_make_target",
+    "kernel_source_compiled": false,
+    "suite_passed": 138,
+    "suite_skipped": 0
   }
 }

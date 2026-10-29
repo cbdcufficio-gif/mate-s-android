@@ -252,3 +252,16 @@ il primo errore del compilatore: eventuali correzioni vanno testate senza
 abbassare guardie o cancellare test. La compilazione oggetto riuscita rimane
 una prova parziale; estensione socket e mapping di tutte le altre classi,
 policy reale e test enforcing restano aperti.
+
+## Correzione del target di compilazione — 29 ottobre
+
+Run40930048482: suite host138/138 senza skip, checkout/config/patch validi;
+nessun sorgente SELinux compilato. Primo errore: `No rule to make target
+security/selinux/selinux.o`. Nel Makefile Huawei fissato la regola singola
+`%.o: %.c` richiede un file omonimo; selinux.o è un oggetto composto definito
+da security/selinux/Makefile. La regola `%/` esegue invece Kbuild sulla
+directory: il probe usa ora `security/selinux/` e richiede comunque l'oggetto
+finale non vuoto. La verifica reale avverrà nel solo run successivo.
+Il warning 100755/100644 riguarda il mode del diff della copia sintetica;
+git apply non ha fallito, ma va riallineato prima di eventuale uso produttivo.
+Non abbassare guardie o classificare il fallimento come errore del backport.

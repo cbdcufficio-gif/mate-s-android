@@ -1,3 +1,10 @@
+## 29 ottobre — verifica CI del contratto mount conclusa
+
+Run40880252797, job123469548860, sorgente12adf5c: SUCCESSO.
+Log riletti tramite connettore GitHub:132/132 passati, zero skip/errori/failure,
+8.212secondi. Nessun retry o build completa. Prossimo: contratto API mount
+Huawei e chiamante exec esplicito/automatico; backport ancora non applicato.
+
 ## 29 ottobre — suite completa senza skip
 
 Run40875509984 concluso success: 131/131 passati, 0 saltati, errori e failure0.

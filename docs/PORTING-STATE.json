@@ -609,15 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_mount_fixture_CI_pending",
-    "active_runs": [
-      {
-        "run_id": 40880252797,
-        "workflow": "complete-public-tests.yml",
-        "source_commit": "12adf5ce784cd4ec74cf31bec7cc4199b7d3df6c"
-      }
-    ],
-    "next_action": "Check latest complete-public-tests.yml for mount fixture; then derive Huawei mount helper prerequisites and test exec caller",
+    "status": "G1_mount_fixture_CI_verified",
+    "active_runs": [],
+    "next_action": "Derive Huawei mount helper prerequisites and test explicit/automatic exec caller before SELinux kernel backport",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -628,16 +622,16 @@
     "kernel_enforcement_verified": false
   },
   "complete_public_tests": {
-    "run_id": 40875509984,
-    "job_id": 123453188711,
-    "source_commit": "6f681448cc7d7157b47ea783e848f4cc7c0cb348",
+    "run_id": 40880252797,
+    "job_id": 123469548860,
+    "source_commit": "12adf5ce784cd4ec74cf31bec7cc4199b7d3df6c",
     "status": "success",
-    "run": 131,
-    "passed": 131,
+    "run": 132,
+    "passed": 132,
     "skipped": 0,
     "failures": 0,
     "errors": 0,
-    "seconds": 8.841
+    "seconds": 8.212
   },
   "autonomous_routine": {
     "automation_id": "carrera-g1-avanzamento-verificato",
@@ -647,9 +641,14 @@
     "full_android_build_automatic": false
   },
   "g1_selinux_mount_fixture": {
-    "status": "HOST_FIXTURE_PASSED_CI_PENDING",
+    "status": "COMPLETE_PUBLIC_SUITE_PASSED",
     "cases": 8,
     "kernel_patch_applied": false,
-    "source": "tests/fixtures/selinux_mnt_may_suid.c"
+    "source": "tests/fixtures/selinux_mnt_may_suid.c",
+    "run_id": 40880252797,
+    "job_id": 123469548860,
+    "tests_run": 132,
+    "tests_passed": 132,
+    "tests_skipped": 0
   }
 }

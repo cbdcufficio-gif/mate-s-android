@@ -609,15 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_integrated_selinux_candidate_CI_pending",
-    "active_runs": [
-      {
-        "run_id": 40925533945,
-        "workflow": "complete-public-tests.yml",
-        "source_commit": "d88dbe2abb581cf6c37fceb8128073719e519d99"
-      }
-    ],
-    "next_action": "Check complete public suite and pinned patch application; then inspect remaining SELinux/socket contracts and validate candidate kernel build",
+    "status": "G1_selinux_object_probe_prepared",
+    "active_runs": [],
+    "next_action": "Run one bounded SELinux object compilation using pinned kernel, toolchain and experimental candidate; classify first failure; no Image",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -628,16 +622,16 @@
     "kernel_enforcement_verified": false
   },
   "complete_public_tests": {
-    "run_id": 40915718066,
-    "job_id": 123595277461,
-    "source_commit": "fd0f3f183de029e8c96639767acde12e24768201",
+    "run_id": 40925533945,
+    "job_id": 123629913608,
+    "source_commit": "d88dbe2abb581cf6c37fceb8128073719e519d99",
     "status": "success",
-    "run": 136,
-    "passed": 136,
+    "run": 138,
+    "passed": 138,
     "skipped": 0,
     "failures": 0,
     "errors": 0,
-    "seconds": 8.252
+    "seconds": 8.432
   },
   "autonomous_routine": {
     "automation_id": "carrera-g1-avanzamento-verificato",
@@ -705,15 +699,15 @@
     "tests_skipped": 0
   },
   "g1_direction_review": {
-    "basis": "G0 public system; host fixtures for Huawei/upstream exec, mount, mapping, loader and generated process2 constants; CI136/136",
-    "facts": "No integrated Huawei kernel change or target enforcement has been tested; generated process2 class51 is candidate-order specific",
-    "risk": "Repeated host-only fixture cycles can consume CI while leaving integration and hardware path unresolved",
-    "decision": "Group the existing fixtures into a single bounded integrated Huawei candidate experiment; include kernel build/check only when source and safeguards justify it",
-    "alternatives": "Further isolated fixture or whole Android rebuild only for a specific unanswered causal question",
+    "basis": "138/138 host and pinned-source checks, candidate patch still not built into kernel",
+    "facts": "Patch application and tested hooks verified, no kernel compilation or policy runtime",
+    "risk": "Repeating source-level host fixtures cannot expose old kernel compiler/integration errors",
+    "decision": "Compile only candidate SELinux object once on a public standard runner before further backport work",
+    "alternatives": "Full Image or Android build deferred until object and other contracts justify them",
     "full_android_build_automatic": false
   },
   "g1_selinux_integrated_candidate": {
-    "status": "EXPERIMENTAL_CANDIDATE_HOST_CHECKED_CI_PENDING",
+    "status": "HOST_AND_PINNED_SOURCE_SUITE_PASSED",
     "patch": "patches/experimental/selinux-nnp-nosuid-candidate.patch",
     "automatically_applied": false,
     "kernel_compiled": false,
@@ -722,6 +716,11 @@
       "extended_socket_class",
       "CONFIG_USER_NS full semantics",
       "other missing classes/hooks"
-    ]
+    ],
+    "run_id": 40925533945,
+    "job_id": 123629913608,
+    "tests_run": 138,
+    "tests_passed": 138,
+    "tests_skipped": 0
   }
 }

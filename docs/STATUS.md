@@ -1,3 +1,12 @@
+## 29 ottobre — candidato integrato, prova oggetto
+
+Run40925533945:138/138 passati, zero skip/errori/failure; digest sorgenti,
+applicazione patch e corrispondenza corpi fixture verificati. Revisione:
+ulteriori fixture isolate non rivelano errori di compilazione kernel. Preparato
+probe manuale che compila solo SELinux.o con sorgenti/toolchain fissati, guardie
+touch e suite completa. Non genera Image né prova policy o hardware. Socket
+estesi e gli altri blocchi SELinux restano aperti.
+
 ## 29 ottobre — candidato integrato SELinux sperimentale
 
 Patch di studio NNP/nosuid su cinque file Huawei fissati; non inserita nella

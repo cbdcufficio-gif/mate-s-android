@@ -234,3 +234,21 @@ pubblici, applicabilità della patch e identità byte-per-byte dei corpi testati
 La suite remota deve confermare questi controlli. Il candidato non copre il
 parsing reale, selinuxfs runtime, socket, file mmap, tutte le permessi mancanti,
 la compilazione del kernel o prove enforcing. Non è pronto per boot o flash.
+
+## Verifica di compilazione circoscritta — 29 ottobre
+
+I controlli host del candidato NNP/nosuid sono passati nel run40925533945:
+138 test, zero skip/errori/failure; patch applicabile ai cinque sorgenti fissati
+e corpi hooks identici a quelli delle fixture. Non dimostrano compilabilità o
+interazione kernel. Per ridurre il rischio di ripetere verifiche isolate,
+il prossimo esperimento compila unicamente security/selinux/selinux.o con
+kernel Huawei e compilatore ARM64 fissati, configurazione olddefconfig e guardie
+touch originali, patch sperimentale e suite completa senza skip su runner
+pubblico. Il workflow è manuale e non installa il candidato nel progetto.
+
+Il probe verifica revisione/digest, percorsi di patch e CONFIG_USER_NS=n;
+non costruisce Image, non carica policy e non prova boot. Se fallisce va letto
+il primo errore del compilatore: eventuali correzioni vanno testate senza
+abbassare guardie o cancellare test. La compilazione oggetto riuscita rimane
+una prova parziale; estensione socket e mapping di tutte le altre classi,
+policy reale e test enforcing restano aperti.

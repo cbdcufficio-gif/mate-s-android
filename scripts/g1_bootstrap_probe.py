@@ -10,7 +10,7 @@ class Image:
     def __init__(self,raw,out):self.raw=raw;self.out=out;self.counter=0;self.nodes={};self.extracted={}
     def command(self,cmd):return subprocess.check_output(['debugfs','-R',cmd,str(self.raw)],stderr=subprocess.STDOUT,text=True,timeout=60)
     def stat(self,path):
-        if not re.fullmatch(r'/[A-Za-z0-9_./+@-]*',path) or '..' in path.split('/'):raise ValueError('Unsafe guest path')
+        if not re.fullmatch(r'/[A-Za-z0-9_./+@-]*',path) or '..' in path.split('/'):raise ValueError('Unsafe guest path: '+path)
         if path in self.nodes:return self.nodes[path]
         text=self.command('stat '+path);m=re.search(r'Type:\s+(\w+)',text)
         self.nodes[path]={'type':m[1] if m else None,'text':text}
@@ -36,6 +36,7 @@ class Image:
         if m:return m[1]
         file=self.read(path);return file.read_bytes().decode().rstrip('\x00')
     def canonical(self,path,apex):
+        path=posixpath.normpath(path)
         chain=[]
         for _ in range(24):
             for name,directory in apex.items():
@@ -146,7 +147,12 @@ def main():
         if interpreter and interpreter not in seen:queue.append(interpreter)
         paths=[]
         for value in (dynamic.get('runpath'),dynamic.get('rpath')):
-            if value:paths+=value.replace('$ORIGIN',posixpath.dirname(guest)).replace('${ORIGIN}',posixpath.dirname(guest)).split(':')
+            if value:
+                expanded=value.replace('${ORIGIN}',posixpath.dirname(guest)).replace('$ORIGIN',posixpath.dirname(guest)).replace('${LIB}','lib64' if elf.bits==64 else 'lib').replace('$LIB','lib64' if elf.bits==64 else 'lib')
+                for directory in expanded.split(':'):
+                    if '$' in directory or not directory.startswith('/'):
+                        blockers.append({'consumer':guest,'path':directory,'reason':'Unsupported ELF search token or relative path'})
+                    else:paths.append(posixpath.normpath(directory))
         if '/bootstrap/' in guest:paths+=[posixpath.dirname(guest),'/system/'+('lib64' if elf.bits==64 else 'lib')+'/bootstrap']
         if guest.startswith('/apex/com.android.runtime/'):
             paths+=['/apex/com.android.runtime/'+('lib64' if elf.bits==64 else 'lib')]

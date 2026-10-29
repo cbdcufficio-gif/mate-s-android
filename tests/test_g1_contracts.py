@@ -18,6 +18,7 @@ class G1Contracts(unittest.TestCase):
         with patch.object(image,'link',side_effect=lambda p:'/b' if p=='/a' else '/a' if p=='/b' else None):
             with self.assertRaises(ValueError):image.canonical('/a',{})
         with patch.object(image,'link',return_value=None):
+            self.assertEqual(image.canonical('/system/bin/../lib64/libc.so',{})[0],'/system/lib64/libc.so')
             self.assertEqual(image.canonical('/apex/com.android.runtime/lib64/libc.so',{'com.android.runtime':'com.android.runtime.release'})[0],'/system/apex/com.android.runtime.release/lib64/libc.so')
     def test_ci_guard_rejects_local(self):
         with patch.dict('os.environ',{},clear=True):

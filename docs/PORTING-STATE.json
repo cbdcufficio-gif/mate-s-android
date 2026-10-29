@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "direction": "docs/PORTING-DIRECTION.md",
-  "last_reviewed_commit": "2ed1f61f4bd7b79971a901ac11ad755b41277e0a",
+  "last_reviewed_commit": "dacba577ab48ba929adb319861f5fadc4513a5da",
   "rom_complete": false,
   "android_q_hardware_boot_verified": false,
   "current_ci": {
@@ -71,7 +71,8 @@
       ],
       "deliverable": "coherent launch API, resolved linker/APEX/policy/kernel capabilities and minimal private overlay plan",
       "evidence": "docs/G1-FIRST-STAGE-RESULT.json",
-      "next": "Essential ELF/APEX and kernel-policy; confirm DT/cmdline privately; rebuild after G1 closure"
+      "next": "Root/cache + bootstrap ELF/APEX; effective kernel-policy; authenticated USB before UI. Deliberate verification rebuild may precede G1 closure.",
+      "review": "docs/REVIEW-2026-10-29.md"
     },
     {
       "id": "G2",
@@ -177,7 +178,7 @@
       "free_bytes_after": 9750441984
     }
   },
-  "operational_review": "docs/REVIEW-2026-10-27.md",
+  "operational_review": "docs/REVIEW-2026-10-29.md",
   "manifest_lock_probe": {
     "workflow": "android-manifest-lock.yml",
     "status": "success",
@@ -532,5 +533,37 @@
     "run_id": 40861056829,
     "status": "PUBLIC_G1_FIRST_STAGE_SOURCE_FIXTURE_PASSED",
     "hardware_boot_verified": false
+  },
+  "next_public_actions": [
+    {
+      "priority": 1,
+      "id": "root-cache-bootstrap",
+      "action": "Verify actual /cache symlink target, pinned staging and read-only mountpoint handling; essential ELF/APEX closure on immutable G0",
+      "full_android_build": false
+    },
+    {
+      "priority": 2,
+      "id": "kernel-policy-contract",
+      "action": "Persist effective olddefconfig and compare actual Q policycaps/classes with Huawei SELinux hooks; scoped backports only when proven necessary",
+      "full_android_build": false
+    },
+    {
+      "priority": 3,
+      "id": "authenticated-usb",
+      "action": "Test Q legacy FunctionFS sync/V1 fallbacks and init ordering; design private /adb_keys provisioning in effective post-switch root",
+      "full_android_build": false
+    },
+    {
+      "priority": 4,
+      "id": "deliberate-candidate-build",
+      "action": "Build once a bounded set of source-tested contracts justifies it; verification build may be required before G1 closes",
+      "full_android_build": "only_when_justified"
+    }
+  ],
+  "local_adb_access": {
+    "user_authorized_read_commands": true,
+    "attempt": "adb devices -l",
+    "result": "sandbox_server_socket_operation_not_permitted_before_enumeration",
+    "hardware_evidence_acquired": false
   }
 }

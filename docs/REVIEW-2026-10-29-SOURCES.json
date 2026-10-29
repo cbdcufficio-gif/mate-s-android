@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "baseline_commit": "dacba577ab48ba929adb319861f5fadc4513a5da",
+  "scope": "Public source inspection only; no target kernel/runtime/device verification",
+  "files": [
+    {
+      "repository": "LineageOS/android_system_core",
+      "revision": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+      "path": "rootdir/Android.mk",
+      "git_blob_sha": "24b39991aa6923e45ed0a2f37270f34234eeebfa",
+      "sha256": "55868098036c85826850e95e8a62eea5912b5fa9a095b39dda64a7ca4c2502d0",
+      "finding": "cache root staging directory versus symlink",
+      "url": "https://github.com/LineageOS/android_system_core/blob/6d27634866be5b646a8cea1f9abeae902fd831e5/rootdir/Android.mk"
+    },
+    {
+      "repository": "LineageOS/android_system_core",
+      "revision": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+      "path": "fs_mgr/fs_mgr.cpp",
+      "git_blob_sha": "f2d34c7113d77edb21d114d955d15038646bbf30",
+      "sha256": "6e42159dffd82b570c924923c6841f98b3366800041d29ffbf83b1e48f1df0ee",
+      "finding": "mount helper unlinks symlink; read-only root risk",
+      "url": "https://github.com/LineageOS/android_system_core/blob/6d27634866be5b646a8cea1f9abeae902fd831e5/fs_mgr/fs_mgr.cpp"
+    },
+    {
+      "repository": "LineageOS/android_system_core",
+      "revision": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+      "path": "init/mount_namespace.cpp",
+      "git_blob_sha": "5305dc7ef9489b0a1328914516e9a2447d5cd974",
+      "sha256": "8bbc7633fb38a328172366e0a9327cc266588434b90ed18c77f313341d80e1e6",
+      "finding": "flattened APEX avoids separate bootstrap/default unshare",
+      "url": "https://github.com/LineageOS/android_system_core/blob/6d27634866be5b646a8cea1f9abeae902fd831e5/init/mount_namespace.cpp"
+    },
+    {
+      "repository": "LineageOS/android_system_core",
+      "revision": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+      "path": "adb/daemon/usb.cpp",
+      "git_blob_sha": "1abae87c599f8e8594a123b875f267bbcca35645",
+      "sha256": "1f499785af1ab2a96f31336deb59780ae9eebc8a10829cf10731255a90b23e78",
+      "finding": "Q nonblocking FunctionFS property",
+      "url": "https://github.com/LineageOS/android_system_core/blob/6d27634866be5b646a8cea1f9abeae902fd831e5/adb/daemon/usb.cpp"
+    },
+    {
+      "repository": "LineageOS/android_system_core",
+      "revision": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+      "path": "adb/daemon/usb_legacy.cpp",
+      "git_blob_sha": "fe80e7d5962a0e70953a023909eace62dfb6feca",
+      "sha256": "01459ea97ac01c36bf79740df18b862abd51e0eebd7b352272b751f2ff81fdc5",
+      "finding": "sys.usb.ffs.aio_compat synchronous path",
+      "url": "https://github.com/LineageOS/android_system_core/blob/6d27634866be5b646a8cea1f9abeae902fd831e5/adb/daemon/usb_legacy.cpp"
+    },
+    {
+      "repository": "LineageOS/android_system_core",
+      "revision": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+      "path": "adb/daemon/usb_ffs.cpp",
+      "git_blob_sha": "07b4ba8980897157df00dd3fe36ca7881bfe07ed",
+      "sha256": "9f7729592be30c086ec537680a53946f10799a088ea2947ccd82b4d1e8b56728",
+      "finding": "descriptor v2 to v1 fallback",
+      "url": "https://github.com/LineageOS/android_system_core/blob/6d27634866be5b646a8cea1f9abeae902fd831e5/adb/daemon/usb_ffs.cpp"
+    },
+    {
+      "repository": "LineageOS/android_system_core",
+      "revision": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+      "path": "adb/daemon/auth.cpp",
+      "git_blob_sha": "a18afa4ea38dee3ed19bd813e37f9c1ab2450f8b",
+      "sha256": "669b5431e59f4072ec16fa196fd4d1f19f514bf7ee530c6309ab3953573724d8",
+      "finding": "ADB root and userdata authorized-key paths",
+      "url": "https://github.com/LineageOS/android_system_core/blob/6d27634866be5b646a8cea1f9abeae902fd831e5/adb/daemon/auth.cpp"
+    },
+    {
+      "repository": "LineageOS/android_system_core",
+      "revision": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+      "path": "rootdir/init.usb.rc",
+      "git_blob_sha": "b6cba901e56366d31b2c28c2dd0b2b43c443120a",
+      "sha256": "4dde3aa1f087c79abdc960af50897a60ae794e742c6f1086e1c7a3d252eee2c6",
+      "finding": "legacy android_usb gadget triggers available",
+      "url": "https://github.com/LineageOS/android_system_core/blob/6d27634866be5b646a8cea1f9abeae902fd831e5/rootdir/init.usb.rc"
+    },
+    {
+      "repository": "hi3635-dev/android_kernel_huawei_liszt",
+      "revision": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+      "path": "drivers/usb/gadget/android.c",
+      "git_blob_sha": "57a36ef93319f9855e52e4822f49d287e6e15286",
+      "sha256": "851ae022dcf162b2449d3a9c115456db60514a3101c4a18b57ef5301fa8c2c3d",
+      "finding": "USB_G_ANDROID includes FunctionFS independently of standalone option",
+      "url": "https://github.com/hi3635-dev/android_kernel_huawei_liszt/blob/3fe1625bed89c034996842c1af696ba9bc50d8a9/drivers/usb/gadget/android.c"
+    },
+    {
+      "repository": "hi3635-dev/android_kernel_huawei_liszt",
+      "revision": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+      "path": "drivers/usb/gadget/f_fs.c",
+      "git_blob_sha": "c36f660dcc2e67a6a614c9b37ae6b7d249495a2a",
+      "sha256": "220024748f2f28e4f63f2e1ad8f26b71a269047b639fdbbe8a2d3d740350b788",
+      "finding": "old FunctionFS source; AIO operations not present in inspected file",
+      "url": "https://github.com/hi3635-dev/android_kernel_huawei_liszt/blob/3fe1625bed89c034996842c1af696ba9bc50d8a9/drivers/usb/gadget/f_fs.c"
+    },
+    {
+      "repository": "hi3635-dev/android_kernel_huawei_liszt",
+      "revision": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+      "path": "include/uapi/linux/seccomp.h",
+      "git_blob_sha": "0f238a43ff1e7e5ebd8bd746a055fa910c10b51d",
+      "sha256": "056c8b349fa4c5b9fc3645809b0b3d968c94ba2f503ead30174346978a3df025",
+      "finding": "TSYNC UAPI present",
+      "url": "https://github.com/hi3635-dev/android_kernel_huawei_liszt/blob/3fe1625bed89c034996842c1af696ba9bc50d8a9/include/uapi/linux/seccomp.h"
+    },
+    {
+      "repository": "hi3635-dev/android_kernel_huawei_liszt",
+      "revision": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+      "path": "kernel/seccomp.c",
+      "git_blob_sha": "f860aac5014c29fcaa03719114ced60b2c621701",
+      "sha256": "e8a78a11081573d9f638d791fbf462e72bbad5d12ad101b91fcea5e74aec606a",
+      "finding": "TSYNC implementation present",
+      "url": "https://github.com/hi3635-dev/android_kernel_huawei_liszt/blob/3fe1625bed89c034996842c1af696ba9bc50d8a9/kernel/seccomp.c"
+    },
+    {
+      "repository": "hi3635-dev/android_kernel_huawei_liszt",
+      "revision": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+      "path": "include/uapi/asm-generic/unistd.h",
+      "git_blob_sha": "022cf2f1a328e64eb2afa812c2d1d9724e7e9e1c",
+      "sha256": "247595b14973fc80c7c8e16917897d8dd0fe5d4315c4b2baea84e4fde351f2c8",
+      "finding": "seccomp syscall table present",
+      "url": "https://github.com/hi3635-dev/android_kernel_huawei_liszt/blob/3fe1625bed89c034996842c1af696ba9bc50d8a9/include/uapi/asm-generic/unistd.h"
+    },
+    {
+      "repository": "hi3635-dev/android_kernel_huawei_liszt",
+      "revision": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+      "path": "kernel/nsproxy.c",
+      "git_blob_sha": "364ceab15f0cc09816fdd1b36b78814b06227991",
+      "sha256": "8c86ec2929931bff10aed7d2131a13afeb3ff66f0381dd31c9b50a06ab5e9aae",
+      "finding": "mount namespace copy and unshare source present",
+      "url": "https://github.com/hi3635-dev/android_kernel_huawei_liszt/blob/3fe1625bed89c034996842c1af696ba9bc50d8a9/kernel/nsproxy.c"
+    },
+    {
+      "repository": "hi3635-dev/android_kernel_huawei_liszt",
+      "revision": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+      "path": "security/selinux/include/security.h",
+      "git_blob_sha": "c290ec31a75c8e6cde3546fd5b54795e5c30ccc5",
+      "sha256": "c6df864b487f68c6e6af8da2eaf9d2c63d183f10d9e5ad76efca1204b41f1662",
+      "finding": "kernel policycaps only netpeer and openperm",
+      "url": "https://github.com/hi3635-dev/android_kernel_huawei_liszt/blob/3fe1625bed89c034996842c1af696ba9bc50d8a9/security/selinux/include/security.h"
+    },
+    {
+      "repository": "hi3635-dev/android_kernel_huawei_liszt",
+      "revision": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+      "path": "security/selinux/ss/services.c",
+      "git_blob_sha": "cf905cdce93f2edb61332fd4b175189f4428a2cd",
+      "sha256": "7c831a8003358e1cda5a8fc31f0675aada87fe7dba6ef6d4ebd9f3930524f694",
+      "finding": "only netpeer/openperm activated",
+      "url": "https://github.com/hi3635-dev/android_kernel_huawei_liszt/blob/3fe1625bed89c034996842c1af696ba9bc50d8a9/security/selinux/ss/services.c"
+    },
+    {
+      "repository": "hi3635-dev/android_kernel_huawei_liszt",
+      "revision": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+      "path": "security/selinux/hooks.c",
+      "git_blob_sha": "6d1955f4269ee7797bba32fad0e7c1bec9c82ac6",
+      "sha256": "706fb85c34bc44a292d8b66cf1eddb3cb15d11266b62e6fc88bf4f5e3eade0d4",
+      "finding": "legacy no_new_privs transition behavior",
+      "url": "https://github.com/hi3635-dev/android_kernel_huawei_liszt/blob/3fe1625bed89c034996842c1af696ba9bc50d8a9/security/selinux/hooks.c"
+    },
+    {
+      "repository": "LineageOS/android_system_sepolicy",
+      "revision": "b052c214f3ca11d2bbe09b6d34e0ce693fdc8d92",
+      "path": "private/policy_capabilities",
+      "git_blob_sha": "9290e3ab36427e73a0ce8593de26f87551410a45",
+      "sha256": "8a063a3d29a09b7a939dd142b84889c33208bc22c352c78c5479b5fcea462b03",
+      "finding": "Q extended_socket_class and nnp_nosuid_transition required",
+      "url": "https://github.com/LineageOS/android_system_sepolicy/blob/b052c214f3ca11d2bbe09b6d34e0ce693fdc8d92/private/policy_capabilities"
+    },
+    {
+      "repository": "hi3635-dev/android_device_huawei_liszt",
+      "revision": "f4e36642c2e83d9327ee78e62746b7abb41c1b09",
+      "path": "rootdir/etc/init.hi3635.usb.rc",
+      "git_blob_sha": "463d983e26b1c0a36c20b213a16a71add6868fac",
+      "sha256": "1276b0d6bd04c006cbe0b645a8df150fed07b9435952d9af8c7794c6efe4c8a4",
+      "finding": "closest-SoC FunctionFS/aliases donor",
+      "url": "https://github.com/hi3635-dev/android_device_huawei_liszt/blob/f4e36642c2e83d9327ee78e62746b7abb41c1b09/rootdir/etc/init.hi3635.usb.rc"
+    },
+    {
+      "repository": "hi3635-dev/android_device_huawei_liszt",
+      "revision": "f4e36642c2e83d9327ee78e62746b7abb41c1b09",
+      "path": "BoardConfig.mk",
+      "git_blob_sha": "99f135c52e5875fac56f78bf1f93aa6826f44190",
+      "sha256": "96f52ad7f688744ebbb38be4a243f410374a10d307adc29a96bba8c0628d7ba8",
+      "finding": "donor capabilities and nonportable geometry/permissive flags",
+      "url": "https://github.com/hi3635-dev/android_device_huawei_liszt/blob/f4e36642c2e83d9327ee78e62746b7abb41c1b09/BoardConfig.mk"
+    },
+    {
+      "repository": "Huawei-Dev/android_device_huawei_hi6250-common",
+      "revision": "c66af9becee4a9d0153f4a01ed5ff84ed2bf82b8",
+      "path": "libhwcomposer/hwcomposer.cpp",
+      "git_blob_sha": "b5fbdb692afe6b3f96fc4dbca5e21d69c920bb13",
+      "sha256": "321e87f6e74a8a84bbf742b2d116d6afcaa9bed17cee1973b14422b2e7b40502",
+      "finding": "source HWC1 EGL/framebuffer composition alternative",
+      "url": "https://github.com/Huawei-Dev/android_device_huawei_hi6250-common/blob/c66af9becee4a9d0153f4a01ed5ff84ed2bf82b8/libhwcomposer/hwcomposer.cpp"
+    },
+    {
+      "repository": "huawei-dev-kirin/android_device_huawei_carrera",
+      "revision": "aec3f54f68e7a31f98dd914cedf973a36b6793da",
+      "path": "BoardConfig.mk",
+      "git_blob_sha": "0e7a9a5a1fcf143f08a29304e023893911229523",
+      "sha256": "b8db1737e08a5034a88b0961d27eb522d94a216634dd89332fc9b326b0e608ef",
+      "finding": "Carrera TWRP geometry corroboration only",
+      "url": "https://github.com/huawei-dev-kirin/android_device_huawei_carrera/blob/aec3f54f68e7a31f98dd914cedf973a36b6793da/BoardConfig.mk"
+    },
+    {
+      "repository": "hisi-oss/android_hardware_hisi",
+      "revision": "59d67fdbc3d8ea8ebf63e7aaa204e49a4a956922",
+      "path": "libril/Android.mk",
+      "git_blob_sha": "ba3c78992dc7f54b9d01dbc20d4c4cfb873ddb9c",
+      "sha256": "a6bfd2913b9ec2a38681b4337f5a92e7fcaad6219d7d86b5af47f728d382b357",
+      "finding": "RIL wrapper depends on separate libril-hisi",
+      "url": "https://github.com/hisi-oss/android_hardware_hisi/blob/59d67fdbc3d8ea8ebf63e7aaa204e49a4a956922/libril/Android.mk"
+    },
+    {
+      "repository": "hisi-oss/android_hardware_hisi",
+      "revision": "59d67fdbc3d8ea8ebf63e7aaa204e49a4a956922",
+      "path": "libril/ril.cpp",
+      "git_blob_sha": "1bbfdd473917d940164e600485d1b4cc27366c92",
+      "sha256": "416473934d4efc9e1d4e25fd8978438baa567689a5ddf80656e8b3c7c89e5f30",
+      "finding": "interposes RTLD_NEXT and vendor RequestInfo layout",
+      "url": "https://github.com/hisi-oss/android_hardware_hisi/blob/59d67fdbc3d8ea8ebf63e7aaa204e49a4a956922/libril/ril.cpp"
+    },
+    {
+      "repository": "hisi-oss/android_hardware_hisi",
+      "revision": "59d67fdbc3d8ea8ebf63e7aaa204e49a4a956922",
+      "path": "libshims/libshim_ui.cpp",
+      "git_blob_sha": "d26d171047161088149bdd77002b06e234101f6b",
+      "sha256": "0a3ed16bbf735d9c0665e565180971c57f09515a6d429c8648c567b5cdbb7a12",
+      "finding": "modern mapper shim not B321 ABI proof",
+      "url": "https://github.com/hisi-oss/android_hardware_hisi/blob/59d67fdbc3d8ea8ebf63e7aaa204e49a4a956922/libshims/libshim_ui.cpp"
+    }
+  ]
+}

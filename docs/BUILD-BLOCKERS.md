@@ -1,13 +1,14 @@
 # Blocchi prioritari verso la ROM Carrera
 
 Direzione vigente: [PORTING-DIRECTION.md](PORTING-DIRECTION.md).
+Revisione e priorità aggiornate: [REVIEW-2026-10-29.md](REVIEW-2026-10-29.md).
 Stato dei gate: [PORTING-STATE.json](PORTING-STATE.json).
 La cronologia delle prove precedenti è in [STATUS.md](STATUS.md).
 
 | Priorità | Blocco | Prossima prova che riduce l'incertezza |
 |---|---|---|
 | G0 | Chiuso: base pubblica verificata sui byte, non ROM | Sistema40696459171; review40724596747; CARRERA-SYSTEM-RESULT.json |
-| G1 | First-stage provato su funzioni Q; DT reale/kernel-policy/APEX/overlay incompleti | G1-FIRST-STAGE-RESULT.json; closure essenziale, capability effettive e DT/cmdline privati |
+| G1 | Cache symlink/mount, capability SELinux Q mancanti nel sorgente kernel, bootstrap ELF/APEX e ADB autenticato pre-UI | REVIEW-2026-10-29.md: fixture first-stage passata; nuovi contratti da provare prima del rebuild deliberato |
 | G2 | Nessuna boot Q Carrera verificata | Formato v0, coda stock, DT handoff, dimensioni intere e percorso di recupero |
 | G3 | Kernel diagnostico e init Q mai avviati | Nuovo kernel identificato, policy/mount/Binder e ADB autenticato con log |
 | G4 | Buffer/ION/fence, ABI C++, EGL/HWC, display e touch non provati in Q | Prove incrementali di caricamento, allocazione, rendering e resume |

@@ -1,3 +1,17 @@
+# Stato corrente — 29 ottobre 2026
+
+La flag first_stage_mount per system è applicata su main dopo la fixture Q
+run40861056829 (117 test,116 passati,1 skip). La release G0 conserva la vecchia
+fstab: nessun nuovo output compilato o boot è implicito. Il testo sotto è
+cronologia e contiene decisioni superate.
+
+Nuovo controllo necessario: coerenza /cache symlink nell'immagine G0 contro
+mount cache fisica su root ro; [revisione](REVIEW-2026-10-29.md).
+La fixture first-stage prova selezione/flusso con mount e SwitchRoot stub,
+non l'intero primo avvio.
+
+---
+
 # Aggiornamento G1 — 28 ottobre 2026
 
 La release reale G0 è stata verificata sui byte. La precedente interpretazione

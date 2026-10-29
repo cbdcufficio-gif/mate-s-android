@@ -1,3 +1,30 @@
+# Revisione delle prossime fasi — 29 ottobre 2026
+
+Baseline dacba577; G1 run40861056829 già completato, 117 test/116 passati/1 skip.
+Nessun nuovo run o test eseguito da questa revisione documentale.
+
+[Analisi e piano](REVIEW-2026-10-29.md), con
+[25 sorgenti identificati e digest](REVIEW-2026-10-29-SOURCES.json).
+
+Priorità nuove: /cache è un symlink nell'inventory G0 ma fstab vuole montare
+cache fisica su root ro; il kernel enumera/attiva due policycap contro le quattro
+richieste da Q; USB FunctionFS e chiave ADB prima della UI vanno progettati.
+Non sono guasti runtime osservati. Esistono già fallback Q FFS sincrono/V1 e
+APEX flattened; kernel sorgente contiene TSYNC e CLONE_NEWNS: niente backport
+indiscriminati da deduzioni sul numero versione o su CONFIG_NAMESPACES.
+
+Riordinati i prossimi passi in PORTING-STATE. Una build di verifica motivata può
+essere necessaria PRIMA di chiudere G1: eliminato il vincolo circolare di attenderne
+la chiusura per verificare gli output. Nessuna modifica produttiva/kernel/policy
+né nuova dipendenza donatore. G0 resta immutato, G1 aperto, nessun boot attestato.
+
+L'utente ha autorizzato letture ADB con il telefono collegato. Il terminale
+sandbox ha impedito il socket del server prima dell'enumerazione; nessun dato
+hardware acquisito. Raccogliere le prove mancanti con accesso ADB effettivo,
+mantenendo metadati personali, chiavi e contenuti stock fuori dal repository.
+
+---
+
 # G1 first-stage: fixture Q verificata — 29 ottobre 2026
 
 Run [40861056829](https://github.com/cbdcufficio-gif/mate-s-android/actions/runs/40861056829), input ec2dd2ccb15463167124d6f49d14c5a0166c6ff4.

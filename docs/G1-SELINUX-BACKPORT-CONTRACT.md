@@ -307,3 +307,23 @@ Lo script controlla SHA dei sorgenti upstream/Huawei, applica entrambe le patch
 in una cartella temporanea e confronta esattamente la funzione testata.
 Nessuna patch è inserita nella build; nessun kernel o socket reale è stato
 eseguito. Restano compilazione oggetto combinato, mapping policy e AVC.
+
+## Policy G0: flag unknown verificati sui byte — 30 ottobre
+
+Il parser Huawei fissato legge magic, stringa, versione e flag config dal
+binario policydb.c; policydb.h definisce MLS=1, REJECT_UNKNOWN=2,
+ALLOW_UNKNOWN=4. Il file G0 pubblico SHA e450f263... ha versione30 e config1:
+MLS attivo, reject_unknown=false, allow_unknown=false. `policy-common.txt`
+SHA cf61edd3... non elenca recv_msg o send_msg nel common socket. Fonti:
+https://github.com/hi3635-dev/android_kernel_huawei_liszt/blob/3fe1625bed89c034996842c1af696ba9bc50d8a9/security/selinux/ss/policydb.c
+https://github.com/hi3635-dev/android_kernel_huawei_liszt/blob/3fe1625bed89c034996842c1af696ba9bc50d8a9/security/selinux/ss/policydb.h
+
+Con la semantica Huawei selinux_set_mapping/map_decision già testata, questi
+flag non richiedono il rifiuto della policy al solo nome sconosciuto e i
+permessi kernel senza corrispondenza sono negati. Non dimostra che un hook
+richieda quei permessi né che il caricamento completo riesca. `scripts/
+check_g1_policy_header_evidence.py` rilegge i due piccoli asset pubblici e
+verifica entrambi gli SHA; il parser rifiuta header malformati e policy diverse.
+
+L'oggetto combinato NNP/socket è compilato nel run40971722215; vedere
+G1-SELINUX-OBJECT-COMBINED-RESULT.json. Non è un kernel completo o prova boot.

@@ -1,0 +1,25 @@
+{
+  "status": "EXPERIMENTAL_COMBINED_SELINUX_OBJECT_COMPILED",
+  "run_id": 40971722215,
+  "job_id": 123789848147,
+  "source_commit": "2ad847468af0e0dda7a8f3a9f825838c4db3ca3f",
+  "kernel_revision": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+  "compiler_revision": "7280ce2399316a5dbd8872e0bfe69435d8719230",
+  "nnp_patch_sha256": "cc6a21af1662a548c059c3cdda764f7360ed7d2665bc4bba576193849980c2a2",
+  "socket_patch_sha256": "ed9afecf9222e315d613ad4f50d31563d2917bd67a8f3a388f1407079278487a",
+  "config_sha256": "0585ed84b0922346c10ed9785cb5b3a60b52ac905fd76790662e7eeaf3230264",
+  "selinux_object_sha256": "4b852f4a8f20c153d6e4f3cd747a120b0d60fe41fba82a6f39b4585a129f15ee",
+  "selinux_object_size": 4774192,
+  "digest_source": "runner job log; bytes not retained locally",
+  "tests": {
+    "run": 139,
+    "passed": 139,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 10.117
+  },
+  "image_built": false,
+  "policy_runtime_verified": false,
+  "hardware_boot_verified": false
+}

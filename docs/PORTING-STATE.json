@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_combined_selinux_object_prepared",
+    "status": "G1_policy_header_CI_pending",
     "active_runs": [],
-    "next_action": "Run one SELinux object compile with both experimental patches; no Image or target execution",
+    "next_action": "Check full CI and byte evidence; then investigate real policy mapping and authenticated USB init before candidate build",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -699,11 +699,11 @@
     "tests_skipped": 0
   },
   "g1_direction_review": {
-    "basis": "139/139 host tests and exact pinned-source application of NNP and socket candidate; object compilation earlier covered NNP alone",
-    "facts": "Authenticated GitHub API avoided prior raw HTTP429 without removing SHA guards; proposed socket semantics still unverified on real policy or target",
-    "risk": "Treating separate patch application as integrated kernel compilation would miss build errors; repeating same host-only tests adds cost",
-    "decision": "Compile only combined SELinux object once, preserving all source, config, touch and space guards; classify first error",
-    "alternatives": "Full kernel Image and Android build remain deferred until policy mapping and recovery contracts justify them",
+    "basis": "Both SELinux candidates compile together as a single object; 139/139 fixtures; actual G0 policy header parsed from SHA-verified bytes",
+    "facts": "Policy G0 config=1, unknown kernel permissions are not rejected during name mapping but are denied in Huawei map_decision; no runtime load",
+    "risk": "Object compilation and synthetic socket policy do not prove actual G0 policy mapping, USB or recovery",
+    "decision": "Verify small policy evidence on runner; prioritize real policy mapping and authenticated USB before full kernel image",
+    "alternatives": "Do not repeat equivalent host fixtures or launch full Android builds until these contracts are addressed",
     "full_android_build_automatic": false
   },
   "g1_selinux_integrated_candidate": {
@@ -753,5 +753,18 @@
     "source_verification": "authenticated API, pinned SHA256 and both patches verified",
     "run_id": 40948653774,
     "job_id": 123710583660
+  },
+  "g1_selinux_combined_object": {
+    "status": "EXPERIMENTAL_OBJECT_COMPILED",
+    "result": "docs/G1-SELINUX-OBJECT-COMBINED-RESULT.json",
+    "run_id": 40971722215,
+    "kernel_image_built": false,
+    "hardware_verified": false
+  },
+  "g1_selinux_policy_header": {
+    "status": "PUBLIC_G0_BYTES_VERIFIED_CI_PENDING",
+    "result": "docs/G1-SELINUX-G0-HEADER-RESULT.json",
+    "reject_unknown": false,
+    "allow_unknown": false
   }
 }

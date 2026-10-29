@@ -1,0 +1,18 @@
+{
+  "policy_sha256": "e450f2631168a9653694ce84f9882d86dbc6b9d16ff57b6049d5870102cdbe9f",
+  "header": {
+    "version": 30,
+    "config": 1,
+    "mls": true,
+    "reject_unknown": false,
+    "allow_unknown": false,
+    "other_config_bits": 0,
+    "symbol_tables": 8,
+    "object_context_tables": 7
+  },
+  "runtime_policy_loaded": false,
+  "socket_common_has_recv_msg": false,
+  "socket_common_has_send_msg": false,
+  "evidence": "local bytes of public G0 policy and previously SHA-verified seinfo output",
+  "interpretation": "Huawei mapping permits unknown kernel permission names at policy load when reject_unknown=false; allow_unknown=false means absent mapped permissions deny; no proof a hook requests them or that real policy loads."
+}

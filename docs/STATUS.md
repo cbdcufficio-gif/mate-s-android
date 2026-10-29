@@ -1,3 +1,13 @@
+## 30 ottobre — oggetto combinato e flag policy G0
+
+Run40971722215/job123789848147: oggetto SELinux con patch NNP/socket compilato,
+139/139 test passati senza skip; digest nel report. Non prodotto Image.
+Policy pubblica G0: SHA verificato, header config1, reject_unknown=false,
+allow_unknown=false; common socket non elenca recv_msg/send_msg. I permessi
+senza mapping sono negati dalla logica Huawei testata, ma non è prova di policy
+caricata o di un hook attivo. I due piccoli asset e il parser sono riverificati
+nel prossimo controllo CI. Prossimo: mapping policy reale e USB autenticata.
+
 ## 30 ottobre — controlli socket e prova oggetto combinato
 
 Run40948653774/job123710583660:139/139 passati, zero skip/errori/failure;

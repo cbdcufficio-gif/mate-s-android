@@ -1,0 +1,24 @@
+#include <cassert>
+#include <cerrno>
+#include <string>
+#include <sys/stat.h>
+#include <sys/mount.h>
+#include <unistd.h>
+struct FstabEntry { unsigned long flags=0; std::string fs_type="ext4",fs_options=""; };
+struct Log { template<class T> Log& operator<<(const T&){return *this;} } log_sink;
+#define PINFO log_sink
+static bool symlink_node,readonly_root,existing_dir;
+static int unlink_calls,mount_calls,retries;
+int fake_lstat(const char*,struct stat* s){s->st_mode=symlink_node?S_IFLNK:S_IFDIR;return 0;}
+int fake_unlink(const char*){++unlink_calls;if(readonly_root){errno=EROFS;return -1;}symlink_node=false;return 0;}
+int fake_mkdir(const char*,unsigned){if(existing_dir){errno=EEXIST;return -1;}if(readonly_root){errno=EROFS;return -1;}existing_dir=true;return 0;}
+int fake_mount(const char*,const char*,const char*,unsigned long,const void*){++mount_calls;if(retries++==0 && !symlink_node){errno=EAGAIN;return -1;}if(symlink_node||!existing_dir){errno=ENOENT;return -1;}errno=0;return 0;}
+int fake_access(const char*,int){return symlink_node?-1:0;}
+void fs_mgr_set_blk_ro(const std::string&){}
+#define lstat fake_lstat
+#define unlink fake_unlink
+#define mkdir fake_mkdir
+#define mount fake_mount
+#define access fake_access
+__UPSTREAM_FUNCTION__
+int main(){FstabEntry e;readonly_root=true;symlink_node=true;existing_dir=false;unlink_calls=mount_calls=retries=0;assert(__mount("dev","/cache",e)==-1);assert(symlink_node && unlink_calls==1 && errno==ENOENT);symlink_node=false;existing_dir=true;unlink_calls=mount_calls=retries=0;assert(__mount("dev","/cache",e)==0);assert(unlink_calls==0 && mount_calls==2);}

@@ -1,0 +1,39 @@
+#include <cassert>
+#include <cerrno>
+#include <map>
+#include <string>
+#include <vector>
+namespace android { namespace base { std::map<std::string,bool> properties; bool GetBoolProperty(const std::string& k,bool d){auto i=properties.find(k);return i==properties.end()?d:i->second;} } }
+static int modern_calls,legacy_calls,aio_calls;
+void usb_ffs_open_thread(){++modern_calls;}
+void usb_init_legacy(){++legacy_calls;}
+namespace fixture_std { struct thread { explicit thread(void(*fn)()){fn();} void detach(){} }; }
+#define std fixture_std
+__USB_INIT__
+#undef std
+void usb_ffs_write(){} void usb_ffs_read(){} void usb_ffs_aio_write(){} void usb_ffs_aio_read(){} void usb_ffs_kick(){} void usb_ffs_close(){}
+struct usb_handle {void(*write)()=nullptr;void(*read)()=nullptr;void(*kick)()=nullptr;void(*close)()=nullptr;unsigned io_size=0;int read_aiob=0,write_aiob=0;};
+void aio_block_init(int*,unsigned){++aio_calls;}
+__CREATE_HANDLE__
+struct Descriptor { struct {int magic=0,length=0,fs_count=0,hs_count=0;} header;int fs_descs=0,hs_descs=0;};
+static Descriptor v1_descriptor,v2_descriptor;static int fs_descriptors,hs_descriptors;
+struct FD {int get(){return 1;}} control;
+static std::vector<int> results,attempts;
+int adb_write(int,const void* buffer,unsigned){auto* d=static_cast<const Descriptor*>(buffer);attempts.push_back(d->header.magic);int n=results.at(attempts.size()-1);if(n<0)errno=EINVAL;return n;}
+int cpu_to_le32(int n){return n;}
+#define FUNCTIONFS_DESCRIPTORS_MAGIC 1
+#define USB_FFS_ADB_EP0 "/dev/usb-ffs/adb/ep0"
+#define D(...) do{}while(0)
+struct Log {template<class T> Log& operator<<(const T&){return *this;}} sink;
+#define PLOG(x) sink
+bool write_descriptors(){v2_descriptor.header.magic=2;__DESCRIPTOR_FALLBACK__ return true;}
+int main(){using android::base::properties;
+properties.clear();usb_init();assert(modern_calls==1 && legacy_calls==0);
+properties["ro.adb.nonblocking_ffs"]=false;usb_init();assert(legacy_calls==1);
+properties["persist.adb.nonblocking_ffs"]=true;usb_init();assert(modern_calls==2);
+properties.clear();properties["sys.usb.ffs.aio_compat"]=true;auto* sync=create_usb_handle(2,4096);assert(sync->read==usb_ffs_read && sync->write==usb_ffs_write && aio_calls==0);delete sync;
+properties.clear();auto* aio=create_usb_handle(2,4096);assert(aio->read==usb_ffs_aio_read && aio_calls==2);delete aio;
+results={1};attempts.clear();assert(write_descriptors());assert(attempts==std::vector<int>({2}));
+results={-1,1};attempts.clear();assert(write_descriptors());assert(attempts==std::vector<int>({2,1}));
+results={-1,-1};attempts.clear();assert(!write_descriptors());assert(attempts==std::vector<int>({2,1}));
+}

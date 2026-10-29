@@ -1,0 +1,26 @@
+name: Carrera G1 cache bootstrap and USB contracts
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: carrera-g1-contracts
+  cancel-in-progress: false
+jobs:
+  contracts:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Install small inspection and fixture tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends g++ make e2fsprogs android-sdk-libsparse-utils binutils setools
+      - name: Inspect immutable G0 and execute pinned host fixtures
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/g1_bootstrap_probe.py

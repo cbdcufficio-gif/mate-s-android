@@ -19,5 +19,6 @@
     "huawei-include-linux-user_namespace.h": "3f5eb70fd51381f02f89e024ee721b372dc4e47a57b5d0df31b8125c48cc90c1",
     "huawei-include-linux-mount.h": "9a1da6df7f86a3fece7db606f60bc7cfcd741dc6524daeebe8a49059bd7f9501",
     "huawei-fs-namespace.c": "e0474848bcab2bd4e1c7bfdc8e3ec5c5e2c155f1dfcb353efb4d91214ddcb67c"
-  }
+  },
+  "exec_caller_function_sha256": "a7b94fb8e4ce374b173b1b3f52c5e117fe33bffee991e3e3d209cad1b95a25c3"
 }

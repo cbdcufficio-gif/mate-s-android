@@ -1,0 +1,85 @@
+#include <assert.h>
+#include <errno.h>
+#include <stddef.h>
+typedef unsigned int u32;
+#define LSM_UNSAFE_NO_NEW_PRIVS 1
+#define LSM_UNSAFE_SHARE 2
+#define LSM_UNSAFE_PTRACE 4
+#define PROCESS2__NNP_TRANSITION 1
+#define PROCESS2__NOSUID_TRANSITION 2
+#define SECCLASS_PROCESS2 9
+#define SECCLASS_PROCESS 1
+#define SECCLASS_FILE 2
+#define FILE__EXECUTE_NO_TRANS 1
+#define FILE__ENTRYPOINT 2
+#define PROCESS__TRANSITION 4
+#define PROCESS__SHARE 8
+#define PROCESS__PTRACE 16
+#define PER_CLEAR_ON_SETID 32
+#define LSM_AUDIT_DATA_FILE 1
+struct task_security_struct { u32 sid,osid,exec_sid,create_sid,keycreate_sid,sockcreate_sid; };
+struct inode_security_struct { u32 sid; };
+struct inode { struct inode_security_struct *security; };
+struct mount { int suid; };
+struct file { struct { struct mount *mnt; } f_path; struct inode *inode; };
+struct cred { struct task_security_struct *security; };
+struct linux_binprm { int unsafe,cred_prepared; unsigned int per_clear; struct file *file; struct cred *cred; };
+struct common_audit_data { int type; union { struct file *file; } u; };
+static struct task_security_struct old;
+static int selinux_policycap_nnp_nosuid_transition, policy_allow, bound_allow;
+static int deny_class,deny_perm, transition_error, calls,exec_no_trans,transitions,entrypoints;
+static struct task_security_struct *current_security(void) { return &old; }
+static struct inode *file_inode(struct file *f) { return f->inode; }
+static struct inode_security_struct *inode_security(struct inode *i) { return i->security; }
+static int mnt_may_suid(struct mount *m) { return m->suid; }
+static u32 ptrace_parent_sid(void) { return 30; }
+static int security_transition_sid(u32 a,u32 b,int cls,void *name,u32 *sid) {
+ assert(a==10 && b==100 && cls==SECCLASS_PROCESS && !name);
+ *sid=20;return transition_error;
+}
+static int security_bounded_transition(u32 a,u32 b) { assert(a==10&&b==20);return bound_allow?0:-EPERM; }
+static int avc_has_perm(u32 a,u32 b,int cls,u32 av,void *audit) {
+ (void)a;(void)b;(void)audit;calls++;
+ if(cls==SECCLASS_PROCESS2) return policy_allow?0:-EACCES;
+ if(cls==SECCLASS_FILE && av==FILE__EXECUTE_NO_TRANS) exec_no_trans++;
+ if(cls==SECCLASS_FILE && av==FILE__ENTRYPOINT) entrypoints++;
+ if(cls==SECCLASS_PROCESS && av==PROCESS__TRANSITION) transitions++;
+ return cls==deny_class && av==(u32)deny_perm?-EACCES:0;
+}
+/*HELPER*/
+/*CALLER*/
+static int run_case(int explicit,int nnp,int nosuid,int allow,int bound,int cls,int perm,int unsafe,int prepared,int terr) {
+ old=(struct task_security_struct){.sid=10,.exec_sid=explicit?20:0};
+ struct task_security_struct next={.exec_sid=99,.create_sid=99,.keycreate_sid=99,.sockcreate_sid=99};
+ struct inode_security_struct isec={100};struct inode inode={&isec};
+ struct mount m={!nosuid};struct file file={{&m},&inode};struct cred cred={&next};
+ struct linux_binprm b={nnp|unsafe,prepared,0,&file,&cred};
+ selinux_policycap_nnp_nosuid_transition=1;policy_allow=allow;bound_allow=bound;
+ deny_class=cls;deny_perm=perm;transition_error=terr;calls=exec_no_trans=transitions=entrypoints=0;
+ int rc=selinux_bprm_set_creds(&b);
+ if(prepared) { assert(rc==0 && calls==0 && next.create_sid==99); return rc; }
+ assert(next.create_sid==0 && next.keycreate_sid==0 && next.sockcreate_sid==0);
+ if(!rc) {
+   if(next.sid==10) assert(exec_no_trans==1 && transitions==0 && b.per_clear==0);
+   else assert(next.sid==20 && transitions==1 && entrypoints==1 && b.per_clear==PER_CLEAR_ON_SETID);
+ }
+ return rc;
+}
+int main(void) {
+ for(int explicit=0;explicit<2;explicit++) for(int nnp=0;nnp<2;nnp++)
+ for(int nosuid=0;nosuid<2;nosuid++) for(int allow=0;allow<2;allow++)
+ for(int bound=0;bound<2;bound++) {
+   int blocked=(nnp||nosuid)&&!allow&&!bound;
+   int expected=explicit&&blocked?(nnp?-EPERM:-EACCES):0;
+   assert(run_case(explicit,nnp,nosuid,allow,bound,0,0,0,0,0)==expected);
+   if(!explicit && blocked) assert(exec_no_trans==1 && transitions==0);
+ }
+ assert(run_case(0,1,0,0,0,SECCLASS_FILE,FILE__EXECUTE_NO_TRANS,0,0,0)==-EACCES);
+ assert(run_case(1,0,0,1,0,SECCLASS_PROCESS,PROCESS__TRANSITION,0,0,0)==-EACCES);
+ assert(run_case(1,0,0,1,0,SECCLASS_FILE,FILE__ENTRYPOINT,0,0,0)==-EACCES);
+ assert(run_case(1,0,0,1,0,SECCLASS_PROCESS,PROCESS__SHARE,LSM_UNSAFE_SHARE,0,0)==-EPERM);
+ assert(run_case(1,0,0,1,0,SECCLASS_PROCESS,PROCESS__PTRACE,LSM_UNSAFE_PTRACE,0,0)==-EPERM);
+ assert(run_case(0,0,0,1,0,0,0,0,0,-EINVAL)==-EINVAL);
+ assert(run_case(0,0,0,1,0,0,0,0,1,0)==0);
+ return 0;
+}

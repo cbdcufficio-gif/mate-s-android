@@ -120,3 +120,26 @@ nella configurazione generata non autorizza a eliminare il controllo mount:
 il supporto interno ai mount namespace è già stato osservato nel codice.
 Resta da derivare la variante sicura Huawei dalle sue API userns/superblock,
 poi provare il chiamante exec completo. Nessun helper kernel è stato aggiunto.
+
+## Chiamante exec upstream provato — 29 ottobre
+
+La fixture conserva il corpo invariato selinux_bprm_set_creds e il helper già
+verificato. Esercita 32 combinazioni di exec_sid esplicito/automatico,
+NNP/nosuid, autorizzazione process2 e bounded fallback; altri sette casi
+verificano EXECUTE_NO_TRANS, TRANSITION, ENTRYPOINT, SHARE, PTRACE, errore
+security_transition_sid e cred_prepared. Controlla SID risultante, reset dei
+SID di creazione, percorso dei permessi e per_clear solo in transizione.
+Le interfacce policy/credential/inode/mount sono simulate; non è enforcement.
+
+Il rifiuto del helper ferma exec esplicito; nel caso automatico conserva il
+vecchio SID ma deve comunque passare EXECUTE_NO_TRANS. Anche una transizione
+NNP ammessa deve ancora passare TRANSITION/ENTRYPOINT e SHARE/PTRACE.
+Questi ultimi rifiuti conservano EPERM dove previsto dal chiamante.
+
+**Prerequisito Huawei da preservare:** il suo selinux_bprm_set_creds chiama
+cap_bprm_set_creds prima di cred_prepared; il corpo upstream acquisito non lo
+chiama. Sostituire l'intera funzione Huawei col corpo upstream perderebbe
+quell'integrazione. Il backport dovrà mantenere il controllo capability e i
+suoi errori, l'accesso inode/audit della versione Huawei e l'ordine del reset.
+Nessuna patch kernel applicata. Prossimo: fixture del percorso Huawei
+capability/exec e adattamento mount, poi policycap caricamento/reload/process2.

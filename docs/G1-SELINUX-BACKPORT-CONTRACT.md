@@ -195,3 +195,19 @@ ID numerici nella policy G0 né prova il parsing o l'enforcement sul telefono.
 In particolare la classe G0 ha entrambi i permessi, ma il codice Huawei senza
 una voce process2 non li collega agli hook. Non applicare una patch fino alla
 verifica dei generatori di costanti e integrazione nel percorso exec.
+
+## Costanti generate dal vero genheaders Huawei — 29 ottobre
+
+Compilati genheaders.c, classmap.h e initial_sid_to_string.h Huawei invariati,
+con digest nel registro. Nel classmap originale process2 è assente. In una
+copia sintetica che lo aggiunge in coda, il generatore originale produce
+SECCLASS_PROCESS2=51, PROCESS2__NNP_TRANSITION=1 e
+PROCESS2__NOSUID_TRANSITION=2; le costanti precedenti restano identiche.
+Sono valori di questa proposta di ordinamento, non ID policy G0 né una patch.
+
+La fixture mapping ora usa la struttura reale Huawei con array perms[33];
+-Wno-address è limitato al solo harness perché il corpo originale verifica la
+non-nullità dell'array. Le altre diagnostiche restano -Werror. Il test originale
+del generatore confronta baseline e candidato, senza alterare il classmap reale.
+Rimangono process2/policy mapping effettivo, exec/capabilities, mount e socket;
+nessun backport applicato né enforcement verificato.

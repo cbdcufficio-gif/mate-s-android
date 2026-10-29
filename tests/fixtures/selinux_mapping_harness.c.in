@@ -9,7 +9,7 @@ typedef uint16_t u16;typedef uint32_t u32;
 #define KERN_INFO ""
 #define printk(...) ((void)0)
 struct policydb { int reject_unknown,allow_unknown,missing_class,missing_permission; };
-struct security_class_mapping { const char *name; const char **perms; };
+struct security_class_mapping { const char *name; const char *perms[sizeof(unsigned) * 8 + 1]; };
 struct selinux_mapping { u16 value;unsigned num_perms;u32 perms[32]; };
 struct av_decision { u32 allowed,auditallow,auditdeny; };
 static struct selinux_mapping *current_mapping;
@@ -25,8 +25,7 @@ static u32 string_to_av_perm(struct policydb *p,u16 value,const char *name) {
 }
 /*FUNCTIONS*/
 int main(void) {
- const char *perms[]={"nnp_transition","nosuid_transition",NULL};
- struct security_class_mapping map[]={ {"process2",perms},{NULL,NULL} };
+ struct security_class_mapping map[]={ {"process2",{"nnp_transition","nosuid_transition",NULL}},{NULL,{NULL}} };
  struct selinux_mapping *out=NULL;u16 size=0;
  struct policydb p={0,0,0,0};
  assert(selinux_set_mapping(&p,map,&out,&size)==0 && size==2);

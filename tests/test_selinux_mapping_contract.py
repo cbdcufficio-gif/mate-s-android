@@ -12,6 +12,6 @@ class MappingContract(unittest.TestCase):
         harness=(ROOT/'tests/fixtures/selinux_mapping_harness.c.in').read_text().replace('/*FUNCTIONS*/',fixture)
         with tempfile.TemporaryDirectory() as directory:
             p=Path(directory);source=p/'mapping.c';binary=p/'mapping';source.write_text(harness)
-            compiled=subprocess.run(['cc','-std=c99','-Wall','-Wextra','-Werror',str(source),'-o',str(binary)],capture_output=True,text=True)
+            compiled=subprocess.run(['cc','-std=c99','-Wall','-Wextra','-Werror','-Wno-address',str(source),'-o',str(binary)],capture_output=True,text=True)
             self.assertEqual(compiled.returncode,0,compiled.stderr)
             subprocess.run([str(binary)],check=True,capture_output=True)

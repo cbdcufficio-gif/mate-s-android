@@ -1,3 +1,11 @@
+## 29 ottobre — generazione costanti process2
+
+Run40910755291:135/135 passati, zero skip/errori/failure,8.085secondi.
+Generatore Huawei originale eseguito con classmap baseline e candidato
+sintetico process2 in coda: classe51, bit1 e2, vecchie costanti invariate.
+Test locale passato, suite CI in attesa; il candidato non è una patch kernel.
+Fixture mapping corretta per usare l'array Huawei reale perms[33].
+
 ## 29 ottobre — mapping Huawei process2
 
 Fixture delle funzioni Huawei selinux_set_mapping/map_decision originali con

@@ -53,3 +53,17 @@ Non aggiungere solo una stringa in services.c o alzare POLICYVERS.
   runner Linux o TWRP permissive non sostituiscono queste prove.
 
 Non è autorizzato da questo documento alcun flash o riavvio del telefono.
+
+## Inventario effettivo dopo il probe
+
+Review40871087407:97classi policy,50entryclassmapkernel;5classi userspace
+separate,44classi policy restanti senza mappingkernel. Commons policy e macro
+classmap espansi prima del confronto. Nei mapping esistenti emergono anche
+map,watch*,audit_read,getrlimit,module_load,validate_trans e altri permessi.
+Il report esatto è G1-CAPTURED-REVIEW-RESULT.json. Questi sono nomi dichiarati,
+non prova che ogni permesso o classe sia esercitato nel primo boot.
+Prima di estendere il backport, ricondurre ciascuna differenza a feature
+configurata, hook e regole policy effettivamente usate: priorità a file mmap
+e transizioni/init. Verificare handling di unknown classes/permissions senza
+cambiarlo per aggirare i controlli. Non importare ciecamente44classi o tutti
+i watch hook moderni; non trattare le5classi userspace come hook mancanti.

@@ -1,3 +1,22 @@
+# G1 review finale dei contratti catturati — 29 ottobre 2026
+
+Run40871087407 riuscito su283cd3b; dati piccoli verificati con SHA256SUMS.
+Suite129eseguiti128passati1skip.339archiELF verificati,82conversioni richieste,
+nessun nomeversione assente nei provider candidati. Non prova tutti i simboli,
+selezione namespace o loader runtime. Policy:97classi,50mappingkernel,
+5classi userspace distinte,44classi senza mappingkernel; permessi commons e
+macroC espansi. Differenze di nomi non sono automaticamente tutti backport
+necessari: verificare feature/hook/regole. ReportG1-CAPTURED-REVIEW-RESULT.json.
+
+Implementazione del piano conclusa al risultato statico verificabile:
+rootcache corretto nei sorgenti; bootstrap/APEX censiti; .config e policy
+reali persistenti; fixture USB8casi e ordine trigger; contratto chiave privato.
+Nessuna buildAndroidcompleta o Image generata in questa fase, nessun gate
+hardware chiuso. Restano semantica SELinux,overrideUSB e runtimeAPEX/linker,
+poi rebuilddeliberato per first_stage/cache e G2packaging/recupero.
+Nessun run attivo alla conclusione; vecchio monitor locale G0 risultaPAUSED,
+nessun monitor cloud creato o continuità autonoma promessa.
+
 # G1 configurazione effettiva e policy — 29 ottobre 2026
 
 Run40870457480 riuscito, sorgente055f6f6; asset piccoli verificati sui byte.

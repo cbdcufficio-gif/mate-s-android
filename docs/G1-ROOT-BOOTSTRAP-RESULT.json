@@ -125,5 +125,5 @@
       "Version names do not prove every imported symbol exists, dlopen behavior or hardware ABI"
     ]
   },
-  "elf_version_review_scope": "Derived locally from byte-verified immutable report; runner regression validation pending"
+  "elf_version_review_scope": "Runner40871087407 validated against byte-verified captured G0 evidence"
 }

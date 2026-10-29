@@ -8,7 +8,7 @@ La cronologia delle prove precedenti è in [STATUS.md](STATUS.md).
 | Priorità | Blocco | Prossima prova che riduce l'incertezza |
 |---|---|---|
 | G0 | Chiuso: base pubblica verificata sui byte, non ROM | Sistema40696459171; review40724596747; CARRERA-SYSTEM-RESULT.json |
-| G1 | Cache directory corretta nei sorgenti ma non ricompilata; capability SELinux, bootstrap/APEX runtime e ordine USB autenticato restano aperti | REVIEW-2026-10-29.md: fixture first-stage passata; nuovi contratti da provare prima del rebuild deliberato |
+| G1 | Cache directory corretta nei sorgenti ma non ricompilata; capability SELinux, bootstrap/APEX runtime e ordine USB autenticato restano aperti | G1-ROOT-BOOTSTRAP/G1-KERNEL-POLICY/G1-CAPTURED-REVIEW: probe passati; semantica SELinux, override USB e runtime APEX/linker aperti |
 | G2 | Nessuna boot Q Carrera verificata | Formato v0, coda stock, DT handoff, dimensioni intere e percorso di recupero |
 | G3 | Kernel diagnostico e init Q mai avviati | Nuovo kernel identificato, policy/mount/Binder e ADB autenticato con log |
 | G4 | Buffer/ION/fence, ABI C++, EGL/HWC, display e touch non provati in Q | Prove incrementali di caricamento, allocazione, rendering e resume |

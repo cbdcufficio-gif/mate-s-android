@@ -1,0 +1,230 @@
+{
+  "status": "PUBLIC_G1_CAPTURED_CONTRACTS_REVIEWED",
+  "probe_run": 40871087407,
+  "source_commit": "283cd3b8d55bd24d40eced8351ee011a7b997410",
+  "bootstrap_run": 40869967507,
+  "kernel_run": 40870457480,
+  "input_digests_verified_on_bytes": true,
+  "elf_versions": {
+    "status": "STATIC_ELF_VERSION_NAMES_MATCH_CANDIDATES",
+    "edges_checked": 339,
+    "versioned_edges": 82,
+    "unresolved": [],
+    "limitations": [
+      "Only recorded candidate providers, not live linker namespace selection",
+      "Version names do not prove every imported symbol exists, dlopen behavior or hardware ABI"
+    ]
+  },
+  "policy_classes": {
+    "status": "STATIC_POLICY_CLASS_PERMISSION_INVENTORY",
+    "policy_class_count": 97,
+    "kernel_class_count": 50,
+    "userspace_classes_separated": [
+      "drmservice",
+      "hwservice_manager",
+      "keystore_key",
+      "property_service",
+      "service_manager"
+    ],
+    "policy_classes_without_kernel_mapping": [
+      "alg_socket",
+      "atmpvc_socket",
+      "atmsvc_socket",
+      "ax25_socket",
+      "bluetooth_socket",
+      "bpf",
+      "caif_socket",
+      "can_socket",
+      "cap2_userns",
+      "cap_userns",
+      "decnet_socket",
+      "icmp_socket",
+      "ieee802154_socket",
+      "infiniband_endport",
+      "infiniband_pkey",
+      "ipx_socket",
+      "irda_socket",
+      "isdn_socket",
+      "iucv_socket",
+      "kcm_socket",
+      "llc_socket",
+      "netlink_connector_socket",
+      "netlink_crypto_socket",
+      "netlink_fib_lookup_socket",
+      "netlink_generic_socket",
+      "netlink_iscsi_socket",
+      "netlink_netfilter_socket",
+      "netlink_rdma_socket",
+      "netlink_scsitransport_socket",
+      "netrom_socket",
+      "nfc_socket",
+      "phonet_socket",
+      "pppox_socket",
+      "process2",
+      "qipcrtr_socket",
+      "rds_socket",
+      "rose_socket",
+      "rxrpc_socket",
+      "sctp_socket",
+      "smc_socket",
+      "tipc_socket",
+      "vsock_socket",
+      "x25_socket",
+      "xdp_socket"
+    ],
+    "permissions_absent_from_mapped_kernel_classes": {
+      "appletalk_socket": [
+        "map"
+      ],
+      "blk_file": [
+        "map",
+        "watch",
+        "watch_mount",
+        "watch_reads",
+        "watch_sb",
+        "watch_with_perm"
+      ],
+      "capability2": [
+        "audit_read"
+      ],
+      "chr_file": [
+        "entrypoint",
+        "execute_no_trans",
+        "map",
+        "watch",
+        "watch_mount",
+        "watch_reads",
+        "watch_sb",
+        "watch_with_perm"
+      ],
+      "dccp_socket": [
+        "map"
+      ],
+      "dir": [
+        "map",
+        "watch",
+        "watch_mount",
+        "watch_reads",
+        "watch_sb",
+        "watch_with_perm"
+      ],
+      "fifo_file": [
+        "map",
+        "watch",
+        "watch_mount",
+        "watch_reads",
+        "watch_sb",
+        "watch_with_perm"
+      ],
+      "file": [
+        "map",
+        "watch",
+        "watch_mount",
+        "watch_reads",
+        "watch_sb",
+        "watch_with_perm"
+      ],
+      "filesystem": [
+        "watch"
+      ],
+      "key_socket": [
+        "map"
+      ],
+      "lnk_file": [
+        "map",
+        "watch",
+        "watch_mount",
+        "watch_reads",
+        "watch_sb",
+        "watch_with_perm"
+      ],
+      "netlink_audit_socket": [
+        "map"
+      ],
+      "netlink_dnrt_socket": [
+        "map"
+      ],
+      "netlink_kobject_uevent_socket": [
+        "map"
+      ],
+      "netlink_nflog_socket": [
+        "map"
+      ],
+      "netlink_route_socket": [
+        "map"
+      ],
+      "netlink_selinux_socket": [
+        "map"
+      ],
+      "netlink_socket": [
+        "map"
+      ],
+      "netlink_tcpdiag_socket": [
+        "map"
+      ],
+      "netlink_xfrm_socket": [
+        "map"
+      ],
+      "packet": [
+        "flow_in",
+        "flow_out"
+      ],
+      "packet_socket": [
+        "map"
+      ],
+      "process": [
+        "getrlimit"
+      ],
+      "rawip_socket": [
+        "map"
+      ],
+      "security": [
+        "validate_trans"
+      ],
+      "sock_file": [
+        "map",
+        "watch",
+        "watch_mount",
+        "watch_reads",
+        "watch_sb",
+        "watch_with_perm"
+      ],
+      "socket": [
+        "map"
+      ],
+      "system": [
+        "module_load"
+      ],
+      "tcp_socket": [
+        "map"
+      ],
+      "tun_socket": [
+        "map"
+      ],
+      "udp_socket": [
+        "map"
+      ],
+      "unix_dgram_socket": [
+        "map"
+      ],
+      "unix_stream_socket": [
+        "map"
+      ]
+    },
+    "limitations": [
+      "Unmapped classes may relate to disabled features; absence alone does not imply policy-load failure",
+      "Names do not prove hook semantics, allow/deny outcomes or enforcing compatibility"
+    ]
+  },
+  "tests": {
+    "run": 129,
+    "passed": 128,
+    "skipped": 1
+  },
+  "hardware_boot_verified": false,
+  "runtime_linker_verified": false,
+  "enforcing_compatibility_verified": false,
+  "run_id": 40871087407,
+  "release": "https://github.com/cbdcufficio-gif/mate-s-android/releases/tag/carrera-g1-captured-review-40871087407",
+  "digests_verified_on_bytes": true
+}

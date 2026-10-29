@@ -77,3 +77,37 @@ int main(void) {
             subprocess.run(['cc','-std=c99','-Wall','-Wextra','-Werror',str(source),'-o',str(binary)],check=True,capture_output=True)
             result=subprocess.run([str(binary)],check=True,capture_output=True,text=True)
             self.assertEqual(result.stdout.strip(),'128 decision cases passed')
+
+    @unittest.skipUnless(shutil.which('cc'), 'host C compiler required')
+    def test_mount_namespace_restrictions(self):
+        text = (ROOT/'tests/fixtures/selinux_mnt_may_suid.c').read_text()
+        body = text[text.index('bool mnt_may_suid('):]
+        meta = json.loads((ROOT/'docs/G1-SELINUX-EXEC-SOURCES.json').read_text())
+        self.assertEqual(hashlib.sha256(body.encode()).hexdigest(), meta['mount_function_sha256'])
+        header = r'''
+#include <assert.h>
+#include <stdbool.h>
+#define MNT_NOSUID 2
+struct super_block { int s_user_ns; };
+struct vfsmount { unsigned int mnt_flags; struct super_block *mnt_sb; int ours; };
+static struct vfsmount *real_mount(struct vfsmount *m) { return m; }
+static int check_mnt(struct vfsmount *m) { return m->ours; }
+static int current_in_userns(int ns) { return ns; }
+'''
+        main = r'''
+int main(void) {
+ for(int nosuid=0;nosuid<2;nosuid++) for(int ours=0;ours<2;ours++)
+ for(int userns=0;userns<2;userns++) {
+   struct super_block sb={userns};
+   struct vfsmount m={nosuid?MNT_NOSUID:0,&sb,ours};
+   assert(mnt_may_suid(&m)==(!nosuid && ours && userns));
+   if(!nosuid && (!ours || !userns)) assert(!(m.mnt_flags & MNT_NOSUID));
+ }
+ return 0;
+}
+'''
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory); source=p/'mount.c'; binary=p/'mount'
+            source.write_text(header+text+main)
+            subprocess.run(['cc','-std=c99','-Wall','-Wextra','-Werror',str(source),'-o',str(binary)],check=True,capture_output=True)
+            subprocess.run([str(binary)],check=True,capture_output=True)

@@ -10,5 +10,14 @@
     "huawei-services.c": "7c831a8003358e1cda5a8fc31f0675aada87fe7dba6ef6d4ebd9f3930524f694",
     "huawei-hooks.c": "706fb85c34bc44a292d8b66cf1eddb3cb15d11266b62e6fc88bf4f5e3eade0d4"
   },
-  "kernel_patch_applied": false
+  "kernel_patch_applied": false,
+  "mount_function_sha256": "a199d2e8d274aa16ec9c4038c8da1f9778594d0ea45330328d23f4af57866304",
+  "mount_sources_sha256": {
+    "upstream-include-linux-user_namespace.h": "5151dfe025955cd6ce4a67612dfd49dc41d90b21deb51f10957968529a6b6b5c",
+    "upstream-include-linux-mount.h": "dac4bca31b8ed7f8308a20325e92e989111e67f5d4d28683f7c5996a7e57644c",
+    "upstream-fs-namespace.c": "6dd641a398239a92980a87459cb61b78524eb87e663f8a577f87233b8165906f",
+    "huawei-include-linux-user_namespace.h": "3f5eb70fd51381f02f89e024ee721b372dc4e47a57b5d0df31b8125c48cc90c1",
+    "huawei-include-linux-mount.h": "9a1da6df7f86a3fece7db606f60bc7cfcd741dc6524daeebe8a49059bd7f9501",
+    "huawei-fs-namespace.c": "e0474848bcab2bd4e1c7bfdc8e3ec5c5e2c155f1dfcb353efb4d91214ddcb67c"
+  }
 }

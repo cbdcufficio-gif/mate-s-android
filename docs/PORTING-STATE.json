@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_complete_suite_verified",
+    "status": "G1_mount_fixture_CI_pending",
     "active_runs": [],
-    "next_action": "Verify mount helper prerequisites and explicit/automatic exec caller with fixtures before Huawei SELinux backport",
+    "next_action": "Check latest complete-public-tests.yml for mount fixture; then derive Huawei mount helper prerequisites and test exec caller",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -639,5 +639,11 @@
     "status": "ACTIVE",
     "notification_policy": "meaningful changes only",
     "full_android_build_automatic": false
+  },
+  "g1_selinux_mount_fixture": {
+    "status": "HOST_FIXTURE_PASSED_CI_PENDING",
+    "cases": 8,
+    "kernel_patch_applied": false,
+    "source": "tests/fixtures/selinux_mnt_may_suid.c"
   }
 }

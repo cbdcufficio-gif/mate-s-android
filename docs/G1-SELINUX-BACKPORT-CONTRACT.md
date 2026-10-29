@@ -104,3 +104,19 @@ MNT_NOSUID Huawei: verificare le restrizioni di mount/user namespace nel codice
 fissato e nella configurazione generata. Servono inoltre caricamento/reload del
 bit5, mapping process2 e fixture del chiamante esplicito/automatico. La patch
 kernel e una nuova compilazione Android restano non applicate.
+
+## Prerequisito mount verificato — 29 ottobre, controllo autonomo
+
+Il corpo upstream mnt_may_suid() richiede insieme: assenza di MNT_NOSUID,
+mount appartenente al mount namespace corrente e current_in_userns() rispetto
+al superblock. Il solo bit MNT_NOSUID non è un equivalente generale: mount
+estranei o un controllo user namespace negativo devono restare restrittivi.
+La nuova fixture compila il corpo invariato e verifica tutte le otto
+combinazioni, con check_mnt/current_in_userns simulati e digest fissato.
+
+Huawei possiede check_mnt() in fs/namespace.c (confronta mnt_ns corrente), ma
+non mnt_may_suid() nei file mount/namespace acquisiti. CONFIG_NAMESPACES=n
+nella configurazione generata non autorizza a eliminare il controllo mount:
+il supporto interno ai mount namespace è già stato osservato nel codice.
+Resta da derivare la variante sicura Huawei dalle sue API userns/superblock,
+poi provare il chiamante exec completo. Nessun helper kernel è stato aggiunto.

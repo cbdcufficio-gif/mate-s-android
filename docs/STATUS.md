@@ -1,3 +1,11 @@
+## 29 ottobre — mapping Huawei process2
+
+Fixture delle funzioni Huawei selinux_set_mapping/map_decision originali con
+policy sintetica: permessi policy in ordine diverso, reject/allow/deny_unknown
+e audit. Test locale passato; CI completa in attesa. Non sono stati letti ID
+numerici della policy G0 e non è stato applicato alcun backport.
+Prossimo: generatore costanti process2 e integrazione exec/mount.
+
 ## 29 ottobre — reload capability validato
 
 Run40897013630,job123528808641:134/134 passati,zero skip/errori/failure.

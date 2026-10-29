@@ -181,3 +181,17 @@ verificare generazione flask/av_perm_to_string, selinux_set_mapping, unknown
 permissions, ordine di classmap e corrispondenza degli access vector numerici,
 con policy reali e permessi avc, preservando controlli capability esistenti.
 Le stringhe del report seinfo non stabiliscono da sole l'ordine dei bit.
+
+## Mapping process2 Huawei con policy sintetica — 29 ottobre
+
+Fixture compilata con selinux_set_mapping e map_decision Huawei invariati.
+Il classmap sintetico contiene process2 con nnp_transition e nosuid_transition;
+le lookup policy sono stub e restituiscono valori volutamente differenti e in
+ordine diverso (class42, maschere8 e2). Il mapping li traduce nei bit kernel1
+e2, inclusi auditallow/auditdeny. Sono verificati anche classe e permesso
+mancanti con reject_unknown, allow_unknown/deny_unknown e classe vuota/null.
+Questa prova dimostra la traduzione sui valori sintetici, non identifica gli
+ID numerici nella policy G0 né prova il parsing o l'enforcement sul telefono.
+In particolare la classe G0 ha entrambi i permessi, ma il codice Huawei senza
+una voce process2 non li collega agli hook. Non applicare una patch fino alla
+verifica dei generatori di costanti e integrazione nel percorso exec.

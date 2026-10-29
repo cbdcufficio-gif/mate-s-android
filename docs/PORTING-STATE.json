@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_policycap_reload_CI_verified",
+    "status": "G1_mapping_fixture_CI_pending",
     "active_runs": [],
-    "next_action": "Verify process2 generated constants and selinux_set_mapping semantics against policy before a Huawei candidate",
+    "next_action": "Check complete-public-tests run, then verify generated process2 constants and prepare integrated Huawei candidate",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -674,5 +674,11 @@
     "tests_run": 134,
     "tests_passed": 134,
     "tests_skipped": 0
+  },
+  "g1_selinux_mapping_fixture": {
+    "status": "HOST_FIXTURE_PASSED_CI_PENDING",
+    "source": "tests/fixtures/selinux_huawei_mapping.c",
+    "policy": "synthetic lookup values; real G0 IDs not yet established",
+    "kernel_patch_applied": false
   }
 }

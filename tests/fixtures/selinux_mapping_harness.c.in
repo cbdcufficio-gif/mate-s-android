@@ -1,0 +1,48 @@
+#include <assert.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+typedef uint16_t u16;typedef uint32_t u32;
+#define GFP_ATOMIC 0
+#define KERN_INFO ""
+#define printk(...) ((void)0)
+struct policydb { int reject_unknown,allow_unknown,missing_class,missing_permission; };
+struct security_class_mapping { const char *name; const char **perms; };
+struct selinux_mapping { u16 value;unsigned num_perms;u32 perms[32]; };
+struct av_decision { u32 allowed,auditallow,auditdeny; };
+static struct selinux_mapping *current_mapping;
+static u16 current_mapping_size;
+static void *kcalloc(size_t n,size_t s,int flags) { (void)flags;return calloc(n,s); }
+static void kfree(void *p) { free(p); }
+static u16 string_to_security_class(struct policydb *p,const char *name) { return !strcmp(name,"process2")&&!p->missing_class?42:0; }
+static u32 string_to_av_perm(struct policydb *p,u16 value,const char *name) {
+ assert(value==42);if(p->missing_permission && !strcmp(name,"nosuid_transition")) return 0;
+ if(!strcmp(name,"nnp_transition")) return 8;
+ if(!strcmp(name,"nosuid_transition")) return 2;
+ return 0;
+}
+/*FUNCTIONS*/
+int main(void) {
+ const char *perms[]={"nnp_transition","nosuid_transition",NULL};
+ struct security_class_mapping map[]={ {"process2",perms},{NULL,NULL} };
+ struct selinux_mapping *out=NULL;u16 size=0;
+ struct policydb p={0,0,0,0};
+ assert(selinux_set_mapping(&p,map,&out,&size)==0 && size==2);
+ assert(out[1].value==42 && out[1].num_perms==2 && out[1].perms[0]==8 && out[1].perms[1]==2);
+ current_mapping=out;current_mapping_size=size;
+ struct av_decision av={8,2,8};map_decision(1,&av,0);
+ assert(av.allowed==1 && av.auditallow==2 && (av.auditdeny&3)==1);
+ free(out);out=NULL;p.missing_permission=1;p.reject_unknown=1;
+ assert(selinux_set_mapping(&p,map,&out,&size)==-EINVAL && !out);
+ p.reject_unknown=0;assert(selinux_set_mapping(&p,map,&out,&size)==0 && out[1].perms[1]==0);
+ current_mapping=out;current_mapping_size=size;av=(struct av_decision){0,0,0};map_decision(1,&av,0);
+ assert(av.allowed==0 && (av.auditdeny&2)==2);
+ av=(struct av_decision){0,0,0};map_decision(1,&av,1);assert(av.allowed==2 && (av.auditdeny&2)==0);
+ free(out);out=NULL;p.missing_class=1;p.reject_unknown=1;
+ assert(selinux_set_mapping(&p,map,&out,&size)==-EINVAL && !out);
+ p.reject_unknown=0;assert(selinux_set_mapping(&p,map,&out,&size)==0 && out[1].value==0 && out[1].num_perms==0);free(out);
+ assert(selinux_set_mapping(&p,NULL,&out,&size)==-EINVAL);
+ return 0;
+}

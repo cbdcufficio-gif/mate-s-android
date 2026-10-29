@@ -15,3 +15,10 @@ richiede tutte le dipendenze e fallisce anche se unittest termina con skip o
 expected failure. Nessun albero Android, blob privato o immagine del telefono;
 solo piccoli ELF sintetici e filesystem temporanei. Nessun artifact a pagamento.
 Il risultato è riportato nei log, non è una prova hardware del port.
+
+## Verifica eseguita
+
+Run 40875509984, job123453188711, sorgente6f681448cc7d7157b47ea783e848f4cc7c0cb348:
+SUCCESSO, 131 eseguiti e passati, zero skip/failure/errori; suite8.841secondi.
+Log job riletti: anche la fixture ARM32/ARM64 passa. Non è stato necessario
+installare toolchain sul PC o modificare le condizioni dei test esistenti.

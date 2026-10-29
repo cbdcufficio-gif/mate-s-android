@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "complete_fixture_validation_prepared",
+    "status": "G1_complete_suite_verified",
     "active_runs": [],
-    "next_action": "Run complete-public-tests.yml once, inspect zero-skip result then resume G1 exec/mount contracts",
+    "next_action": "Verify mount helper prerequisites and explicit/automatic exec caller with fixtures before Huawei SELinux backport",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -620,5 +620,24 @@
     "source_registry": "docs/G1-SELINUX-EXEC-SOURCES.json",
     "kernel_patch_applied": false,
     "kernel_enforcement_verified": false
+  },
+  "complete_public_tests": {
+    "run_id": 40875509984,
+    "job_id": 123453188711,
+    "source_commit": "6f681448cc7d7157b47ea783e848f4cc7c0cb348",
+    "status": "success",
+    "run": 131,
+    "passed": 131,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 8.841
+  },
+  "autonomous_routine": {
+    "automation_id": "carrera-g1-avanzamento-verificato",
+    "interval_minutes": 30,
+    "status": "ACTIVE",
+    "notification_policy": "meaningful changes only",
+    "full_android_build_automatic": false
   }
 }

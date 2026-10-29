@@ -165,3 +165,19 @@ gli hook supportati nel backport Huawei.
 Rimangono: bit parser/selinuxfs effettivi, mapping process2 e permessi numerici,
 integrazione exec con cap_bprm_set_creds preservato, mount helper compatibile
 e poi socket classes. Nessuna patch kernel produttiva ancora applicata.
+
+## process2: evidenza classmap — 29 ottobre
+
+La policy G0 estratta contiene process2 con nnp_transition e
+nosuid_transition (policy-classes.txt, run40870457480). Il classmap upstream
+fissato af63f419 dichiara process2 con entrambe le stringhe nello stesso
+ordine; il classmap Huawei fissato 3fe1625 non contiene process2. Fonti:
+https://github.com/torvalds/linux/blob/af63f4193f9fbbbac50fc766417d74735afd87ef/security/selinux/include/classmap.h
+https://github.com/hi3635-dev/android_kernel_huawei_liszt/blob/3fe1625bed89c034996842c1af696ba9bc50d8a9/security/selinux/include/classmap.h
+
+Questo conferma una differenza concreta nella mappatura; non prova da solo
+rifiuto della policy o che aggiungere due nomi produca enforcement. Occorre
+verificare generazione flask/av_perm_to_string, selinux_set_mapping, unknown
+permissions, ordine di classmap e corrispondenza degli access vector numerici,
+con policy reali e permessi avc, preservando controlli capability esistenti.
+Le stringhe del report seinfo non stabiliscono da sole l'ordine dei bit.

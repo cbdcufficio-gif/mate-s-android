@@ -1,3 +1,10 @@
+## 29 ottobre — reload capability validato
+
+Run40897013630,job123528808641:134/134 passati,zero skip/errori/failure.
+Classmap upstream process2 ha entrambi i permessi richiesti dalla policy G0;
+Huawei non ha process2. È confronto sorgente/policy, non prova enforcement.
+Prima di patch: generazione costanti e mappatura policy/kernel da verificare.
+
 ## 29 ottobre — exec verificato e loader capability
 
 Run40896541565:133/133 passati, zero skip/errori/failure,8.199secondi.

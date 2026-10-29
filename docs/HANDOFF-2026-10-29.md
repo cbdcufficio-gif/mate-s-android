@@ -1,3 +1,13 @@
+## 29 ottobre — source check e limite HTTP 429
+
+Run40944079145:139/139 test host passati, zero skip; il controllo successivo
+dei sorgenti pubblici è fallito con HTTP429 su una delle tre dipendenze socket.
+Il log non identifica quale. Non è errore di compilazione né verifica positiva
+delle patch. Correzione: GitHub API autenticata con token del job, richiesta
+contenuto raw, stessi commit, limite dimensione e SHA256; validata localmente
+sugli otto file e patch. Un successore soltanto; se fallisce per rate limit
+ancora, fermare i retry e valutare fonti/caching pubblico fissato.
+
 ## 29 ottobre — candidato socket estesi
 
 Seconda patch sperimentale sopra NNP/nosuid,25 famiglie Huawei e classi

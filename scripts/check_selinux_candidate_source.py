@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
 """Check the draft against pinned public source; never touch a kernel checkout."""
-import hashlib,json,subprocess,tempfile,urllib.request
+import hashlib,json,subprocess,tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 META=json.loads((ROOT/'docs/G1-SELINUX-CANDIDATE-SOURCES.json').read_text())
 PATCH=ROOT/'patches/experimental/selinux-nnp-nosuid-candidate.patch'
-BASE='https://raw.githubusercontent.com/hi3635-dev/android_kernel_huawei_liszt/'+META['kernel_commit']+'/'
+HUAWEI='hi3635-dev/android_kernel_huawei_liszt'
+UPSTREAM='torvalds/linux'
+
+def fetch_pinned(repo,revision,name,digest):
+    endpoint=f'repos/{repo}/contents/{name}?ref={revision}'
+    data=subprocess.check_output(['gh','api','-H','Accept: application/vnd.github.raw+json',endpoint],timeout=45)
+    if len(data)>2*1024*1024 or hashlib.sha256(data).hexdigest()!=digest:
+        raise ValueError('Pinned source digest mismatch: '+repo+'/'+name)
+    return data
 
 def functions(text):
     a=text.index('static bool carrera_mnt_may_suid(')
@@ -16,10 +24,7 @@ def main():
     with tempfile.TemporaryDirectory() as directory:
         p=Path(directory)
         for name,digest in META['original_sha256'].items():
-            with urllib.request.urlopen(BASE+name,timeout=30) as response:
-                data=response.read(2*1024*1024+1)
-            if len(data)>2*1024*1024 or hashlib.sha256(data).hexdigest()!=digest:
-                raise ValueError('Pinned source digest mismatch: '+name)
+            data=fetch_pinned(HUAWEI,META['kernel_commit'],name,digest)
             target=p/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
         subprocess.run(['git','apply','--check',str(PATCH)],cwd=p,check=True)
         subprocess.run(['git','apply',str(PATCH)],cwd=p,check=True)
@@ -32,13 +37,11 @@ def main():
         socketmeta=json.loads((ROOT/'docs/G1-SELINUX-SOCKET-CANDIDATE-SOURCES.json').read_text())
         if hashlib.sha256(PATCH.read_bytes()).hexdigest()!=socketmeta['base_nnp_patch_sha256']:
             raise ValueError('Socket candidate base patch mismatch')
-        dependencies=[(BASE+'include/linux/socket.h',socketmeta['huawei_socket_header_sha256']),
-          ('https://raw.githubusercontent.com/torvalds/linux/'+socketmeta['upstream_commit']+'/security/selinux/hooks.c',socketmeta['upstream_hooks_sha256']),
-          ('https://raw.githubusercontent.com/torvalds/linux/'+socketmeta['upstream_commit']+'/security/selinux/include/classmap.h',socketmeta['upstream_classmap_sha256'])]
-        for url,digest in dependencies:
-            with urllib.request.urlopen(url,timeout=30) as response:data=response.read(2*1024*1024+1)
-            if len(data)>2*1024*1024 or hashlib.sha256(data).hexdigest()!=digest:
-                raise ValueError('Pinned socket source digest mismatch')
+        dependencies=[(HUAWEI,META['kernel_commit'],'include/linux/socket.h',socketmeta['huawei_socket_header_sha256']),
+          (UPSTREAM,socketmeta['upstream_commit'],'security/selinux/hooks.c',socketmeta['upstream_hooks_sha256']),
+          (UPSTREAM,socketmeta['upstream_commit'],'security/selinux/include/classmap.h',socketmeta['upstream_classmap_sha256'])]
+        for repo,revision,name,digest in dependencies:
+            fetch_pinned(repo,revision,name,digest)
         socketpatch=ROOT/'patches/experimental/selinux-extended-sockets-candidate.patch'
         subprocess.run(['git','apply','--check',str(socketpatch)],cwd=p,check=True)
         subprocess.run(['git','apply',str(socketpatch)],cwd=p,check=True)

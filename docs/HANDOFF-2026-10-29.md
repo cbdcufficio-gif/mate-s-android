@@ -1,3 +1,12 @@
+## 29 ottobre — candidato integrato SELinux sperimentale
+
+Patch di studio NNP/nosuid su cinque file Huawei fissati; non inserita nella
+build. Prova locale: corpi candidate/patch corrispondenti, cap_bprm_set_creds,
+exec, mount estraneo e USER_NS fail closed; patch applicabile ai sorgenti
+controllati per SHA. Suite completa pubblica ancora da verificare.
+Socket estesi e gli altri hook non sono portati; nessuna compilazione kernel o
+prova target. Vedere G1-SELINUX-BACKPORT-CONTRACT.md prima di procedere.
+
 ## 29 ottobre — revisione di direzione dopo verifica genheaders
 
 Run40915718066/job123595277461:136/136 passati, zero skip/errori/failure.

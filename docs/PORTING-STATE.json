@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_source_contracts_reviewed",
+    "status": "G1_integrated_selinux_candidate_CI_pending",
     "active_runs": [],
-    "next_action": "Develop one integrated Huawei SELinux candidate patch on isolated pinned source, with tests for cap_bprm_set_creds, process2, policycap reload and mount; validate without flashing",
+    "next_action": "Check complete public suite and pinned patch application; then inspect remaining SELinux/socket contracts and validate candidate kernel build",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -705,5 +705,17 @@
     "decision": "Group the existing fixtures into a single bounded integrated Huawei candidate experiment; include kernel build/check only when source and safeguards justify it",
     "alternatives": "Further isolated fixture or whole Android rebuild only for a specific unanswered causal question",
     "full_android_build_automatic": false
+  },
+  "g1_selinux_integrated_candidate": {
+    "status": "EXPERIMENTAL_CANDIDATE_HOST_CHECKED_CI_PENDING",
+    "patch": "patches/experimental/selinux-nnp-nosuid-candidate.patch",
+    "automatically_applied": false,
+    "kernel_compiled": false,
+    "hardware_verified": false,
+    "unsupported": [
+      "extended_socket_class",
+      "CONFIG_USER_NS full semantics",
+      "other missing classes/hooks"
+    ]
   }
 }

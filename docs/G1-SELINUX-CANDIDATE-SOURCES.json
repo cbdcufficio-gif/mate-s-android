@@ -1,0 +1,11 @@
+{
+  "kernel_commit": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+  "original_sha256": {
+    "security/selinux/hooks.c": "706fb85c34bc44a292d8b66cf1eddb3cb15d11266b62e6fc88bf4f5e3eade0d4",
+    "security/selinux/ss/services.c": "7c831a8003358e1cda5a8fc31f0675aada87fe7dba6ef6d4ebd9f3930524f694",
+    "security/selinux/include/security.h": "c6df864b487f68c6e6af8da2eaf9d2c63d183f10d9e5ad76efca1204b41f1662",
+    "security/selinux/include/classmap.h": "6cd67e40a65d6c2f7b1ff5840a2dce89ea10f402de8f486681271d52c147b431",
+    "security/selinux/selinuxfs.c": "84b488497c49e7bf2d9ee08d4211a94b9ac815ee1577a476c507a567b942aea1"
+  },
+  "candidate_automatically_applied": false
+}

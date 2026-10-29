@@ -1,0 +1,181 @@
+diff --git a/security/selinux/hooks.c b/security/selinux/hooks.c
+index 6d1955f..f987442 100644
+--- a/security/selinux/hooks.c
++++ b/security/selinux/hooks.c
+@@ -2121,6 +2121,70 @@ static int selinux_vm_enough_memory(struct mm_struct *mm, long pages)
+ 
+ /* binprm security operations */
+ 
++/* Candidate deliberately fails closed when user namespaces are enabled. */
++static bool carrera_mnt_may_suid(struct vfsmount *mnt)
++{
++#ifdef CONFIG_USER_NS
++	(void)mnt;
++	return false;
++#else
++	return !(mnt->mnt_flags & MNT_NOSUID) && our_mnt(mnt);
++#endif
++}
++
++static int check_nnp_nosuid(const struct linux_binprm *bprm,
++			    const struct task_security_struct *old_tsec,
++			    const struct task_security_struct *new_tsec)
++{
++	int nnp = (bprm->unsafe & LSM_UNSAFE_NO_NEW_PRIVS);
++	int nosuid = !carrera_mnt_may_suid(bprm->file->f_path.mnt);
++	int rc;
++	u32 av;
++
++	if (!nnp && !nosuid)
++		return 0; /* neither NNP nor nosuid */
++
++	if (new_tsec->sid == old_tsec->sid)
++		return 0; /* No change in credentials */
++
++	/*
++	 * If the policy enables the nnp_nosuid_transition policy capability,
++	 * then we permit transitions under NNP or nosuid if the
++	 * policy allows the corresponding permission between
++	 * the old and new contexts.
++	 */
++	if (selinux_policycap_nnp_nosuid_transition) {
++		av = 0;
++		if (nnp)
++			av |= PROCESS2__NNP_TRANSITION;
++		if (nosuid)
++			av |= PROCESS2__NOSUID_TRANSITION;
++		rc = avc_has_perm(old_tsec->sid, new_tsec->sid,
++				  SECCLASS_PROCESS2, av, NULL);
++		if (!rc)
++			return 0;
++	}
++
++	/*
++	 * We also permit NNP or nosuid transitions to bounded SIDs,
++	 * i.e. SIDs that are guaranteed to only be allowed a subset
++	 * of the permissions of the current SID.
++	 */
++	rc = security_bounded_transition(old_tsec->sid, new_tsec->sid);
++	if (!rc)
++		return 0;
++
++	/*
++	 * On failure, preserve the errno values for NNP vs nosuid.
++	 * NNP:  Operation not permitted for caller.
++	 * nosuid:  Permission denied to file.
++	 */
++	if (nnp)
++		return -EPERM;
++	return -EACCES;
++}
++
++
+ static int selinux_bprm_set_creds(struct linux_binprm *bprm)
+ {
+ 	const struct task_security_struct *old_tsec;
+@@ -2157,12 +2221,9 @@ static int selinux_bprm_set_creds(struct linux_binprm *bprm)
+ 		/* Reset exec SID on execve. */
+ 		new_tsec->exec_sid = 0;
+ 
+-		/*
+-		 * Minimize confusion: if no_new_privs and a transition is
+-		 * explicitly requested, then fail the exec.
+-		 */
+-		if (bprm->unsafe & LSM_UNSAFE_NO_NEW_PRIVS)
+-			return -EPERM;
++		rc = check_nnp_nosuid(bprm, old_tsec, new_tsec);
++		if (rc)
++			return rc;
+ 	} else {
+ 		/* Check for a default transition on this program. */
+ 		rc = security_transition_sid(old_tsec->sid, isec->sid,
+@@ -2170,15 +2231,14 @@ static int selinux_bprm_set_creds(struct linux_binprm *bprm)
+ 					     &new_tsec->sid);
+ 		if (rc)
+ 			return rc;
++		rc = check_nnp_nosuid(bprm, old_tsec, new_tsec);
++		if (rc)
++			new_tsec->sid = old_tsec->sid;
+ 	}
+ 
+ 	ad.type = LSM_AUDIT_DATA_PATH;
+ 	ad.u.path = bprm->file->f_path;
+ 
+-	if ((bprm->file->f_path.mnt->mnt_flags & MNT_NOSUID) ||
+-	    (bprm->unsafe & LSM_UNSAFE_NO_NEW_PRIVS))
+-		new_tsec->sid = old_tsec->sid;
+-
+ 	if (new_tsec->sid == old_tsec->sid) {
+ 		rc = avc_has_perm(old_tsec->sid, isec->sid,
+ 				  SECCLASS_FILE, FILE__EXECUTE_NO_TRANS, &ad);
+diff --git a/security/selinux/include/classmap.h b/security/selinux/include/classmap.h
+index c32ff7b..b52ba03 100644
+--- a/security/selinux/include/classmap.h
++++ b/security/selinux/include/classmap.h
+@@ -152,5 +152,6 @@ struct security_class_mapping secclass_map[] = {
+ 	{ "tun_socket",
+ 	  { COMMON_SOCK_PERMS, "attach_queue", NULL } },
+ 	{ "binder", { "impersonate", "call", "set_context_mgr", "transfer", NULL } },
++	{ "process2", { "nnp_transition", "nosuid_transition", NULL } },
+ 	{ NULL }
+   };
+diff --git a/security/selinux/include/security.h b/security/selinux/include/security.h
+index c290ec3..71c3256 100644
+--- a/security/selinux/include/security.h
++++ b/security/selinux/include/security.h
+@@ -71,12 +71,17 @@ extern int selinux_enabled;
+ enum {
+ 	POLICYDB_CAPABILITY_NETPEER,
+ 	POLICYDB_CAPABILITY_OPENPERM,
++	POLICYDB_CAPABILITY_EXTSOCKCLASS, /* reserved: socket hooks not backported */
++	POLICYDB_CAPABILITY_ALWAYSNETWORK, /* reserved */
++	POLICYDB_CAPABILITY_CGROUPSECLABEL, /* reserved */
++	POLICYDB_CAPABILITY_NNP_NOSUID_TRANSITION,
+ 	__POLICYDB_CAPABILITY_MAX
+ };
+ #define POLICYDB_CAPABILITY_MAX (__POLICYDB_CAPABILITY_MAX - 1)
+ 
+ extern int selinux_policycap_netpeer;
+ extern int selinux_policycap_openperm;
++extern int selinux_policycap_nnp_nosuid_transition;
+ 
+ /*
+  * type_datum properties
+diff --git a/security/selinux/selinuxfs.c b/security/selinux/selinuxfs.c
+index 86f9694..c07f9ed 100644
+--- a/security/selinux/selinuxfs.c
++++ b/security/selinux/selinuxfs.c
+@@ -44,7 +44,11 @@
+ /* Policy capability filenames */
+ static char *policycap_names[] = {
+ 	"network_peer_controls",
+-	"open_perms"
++	"open_perms",
++	"unsupported_extended_socket_class",
++	"unsupported_always_check_network",
++	"unsupported_cgroup_seclabel",
++	"nnp_nosuid_transition"
+ };
+ 
+ unsigned int selinux_checkreqprot = CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE;
+diff --git a/security/selinux/ss/services.c b/security/selinux/ss/services.c
+index cf905cd..0ffd731 100644
+--- a/security/selinux/ss/services.c
++++ b/security/selinux/ss/services.c
+@@ -72,6 +72,7 @@
+ 
+ int selinux_policycap_netpeer;
+ int selinux_policycap_openperm;
++int selinux_policycap_nnp_nosuid_transition;
+ 
+ static DEFINE_RWLOCK(policy_rwlock);
+ 
+@@ -1989,6 +1990,8 @@ static void security_load_policycaps(void)
+ 						  POLICYDB_CAPABILITY_NETPEER);
+ 	selinux_policycap_openperm = ebitmap_get_bit(&policydb.policycaps,
+ 						  POLICYDB_CAPABILITY_OPENPERM);
++	selinux_policycap_nnp_nosuid_transition = ebitmap_get_bit(&policydb.policycaps,
++					  POLICYDB_CAPABILITY_NNP_NOSUID_TRANSITION);
+ }
+ 
+ static int security_preserve_bools(struct policydb *p);

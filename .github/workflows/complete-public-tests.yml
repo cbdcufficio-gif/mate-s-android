@@ -23,3 +23,5 @@ jobs:
         run: |
           sha256sum -c SHA256SUMS
           python3 scripts/run_complete_tests.py
+      - name: Verify experimental patch against pinned public sources
+        run: python3 scripts/check_selinux_candidate_source.py

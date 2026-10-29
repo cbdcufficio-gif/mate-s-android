@@ -211,3 +211,26 @@ non-nullità dell'array. Le altre diagnostiche restano -Werror. Il test original
 del generatore confronta baseline e candidato, senza alterare il classmap reale.
 Rimangono process2/policy mapping effettivo, exec/capabilities, mount e socket;
 nessun backport applicato né enforcement verificato.
+
+## Candidato integrato sperimentale NNP/nosuid — 29 ottobre
+
+Patch **di studio**, non inclusa nella build, in
+patches/experimental/selinux-nnp-nosuid-candidate.patch. Applica cinque file
+al commit Huawei fissato dopo controllo SHA dei sorgenti, conserva il controllo
+cap_bprm_set_creds e il codice Huawei ptrace/audit, aggiunge process2 in coda,
+indice NNP/nosuid5, reload del relativo flag e helper exec. Il controllo mount
+usa our_mnt e MNT_NOSUID con CONFIG_USER_NS disattivo; con CONFIG_USER_NS attivo
+nega le transizioni soggette al vincolo (fail closed), non pretende equivalenza
+all'implementazione completa dei namespace upstream. Le posizioni2–4 sono
+riservate e le relative funzionalità, inclusi socket estesi, NON sono portate.
+I nomi selinuxfs sono esplicitamente unsupported per tali posizioni: la loro
+presenza o il valore raw della policy non certificano supporto degli hook.
+
+La fixture host compila i tre corpi effettivamente proposti nella patch con
+stub di policy/AVC, mount e credenziali; verifica i casi exec precedenti, errore
+del controllo capability Huawei, mount estraneo e ramo CONFIG_USER_NS fail
+closed. Lo script check_selinux_candidate_source.py verifica SHA dei cinque file
+pubblici, applicabilità della patch e identità byte-per-byte dei corpi testati.
+La suite remota deve confermare questi controlli. Il candidato non copre il
+parsing reale, selinuxfs runtime, socket, file mmap, tutte le permessi mancanti,
+la compilazione del kernel o prove enforcing. Non è pronto per boot o flash.

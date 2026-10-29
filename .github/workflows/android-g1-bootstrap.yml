@@ -1,6 +1,12 @@
 name: Carrera G1 cache bootstrap and USB contracts
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: Inspect immutable G0 or validate already captured small evidence
+        type: choice
+        options: [inspect-g0, verify-captured]
+        default: inspect-g0
 permissions:
   contents: write
   actions: read
@@ -12,6 +18,8 @@ jobs:
     if: github.event.repository.private == false
     runs-on: ubuntu-22.04
     timeout-minutes: 30
+    env:
+      REVIEW_MODE: ${{ inputs.mode }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -23,4 +31,9 @@ jobs:
       - name: Inspect immutable G0 and execute pinned host fixtures
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python3 scripts/g1_bootstrap_probe.py
+        run: |
+          case "$REVIEW_MODE" in
+            inspect-g0) python3 scripts/g1_bootstrap_probe.py ;;
+            verify-captured) python3 scripts/g1_captured_review.py ;;
+            *) exit 1 ;;
+          esac

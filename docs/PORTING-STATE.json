@@ -537,26 +537,26 @@
   "next_public_actions": [
     {
       "priority": 1,
-      "id": "root-cache-bootstrap",
-      "action": "Cache directory correction source-tested/applied; root/bootstrap G1 report captured. Review actual policy against effective kernel config next; runtime linker/APEX remains open",
+      "id": "selinux-semantic-backports",
+      "action": "Design and test extended socket classes and NNP/nosuid semantic backports using G0 actual policy/effective config and pinned upstream references; do not renumber policycap bits",
       "full_android_build": false
     },
     {
       "priority": 2,
-      "id": "kernel-policy-contract",
-      "action": "Persist effective olddefconfig and compare actual Q policycaps/classes with Huawei SELinux hooks; scoped backports only when proven necessary",
+      "id": "usb-specific-init",
+      "action": "Design Carrera override for FunctionFS mount/alias/readiness and authenticated pre-UI path; generic Q enables before adbd",
       "full_android_build": false
     },
     {
       "priority": 3,
-      "id": "authenticated-usb",
-      "action": "Test Q legacy FunctionFS sync/V1 fallbacks and init ordering; design private /adb_keys provisioning in effective post-switch root",
+      "id": "runtime-linker-apex",
+      "action": "Review version candidates against actual linker namespaces and source default for unset ro.apex.updatable; target mounts remain unverified",
       "full_android_build": false
     },
     {
       "priority": 4,
       "id": "deliberate-candidate-build",
-      "action": "Build once a bounded set of source-tested contracts justifies it; verification build may be required before G1 closes",
+      "action": "Only after bounded source-tested contracts justify a rebuilt system/ramdisk; first_stage_mount/cache flag not present in G0",
       "full_android_build": "only_when_justified"
     }
   ],
@@ -578,5 +578,20 @@
     "status": "PUBLIC_G1_BOOTSTRAP_CONTRACTS_CAPTURED",
     "board_cache_ext4_applied": true,
     "candidate_rebuilt": false
+  },
+  "g1_kernel_policy": {
+    "result": "docs/G1-KERNEL-POLICY-RESULT.json",
+    "run_id": 40870457480,
+    "status": "PUBLIC_G1_KERNEL_CONFIG_POLICY_CAPTURED",
+    "effective_config_sha256": "0585ed84b0922346c10ed9785cb5b3a60b52ac905fd76790662e7eeaf3230264",
+    "image_compiled": false,
+    "enforcing_compatibility_verified": false
+  },
+  "g1_usb": {
+    "fixture_status": "PINNED_Q_USB_COMPAT_FIXTURE_PASSED",
+    "trigger_generic_enables_before_adbd": true,
+    "properties_applied": false,
+    "private_provisioning_design": "docs/G1-USB-PRIVATE-PROVISIONING.md",
+    "hardware_usb_verified": false
   }
 }

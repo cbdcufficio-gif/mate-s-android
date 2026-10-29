@@ -114,5 +114,16 @@
     "Host readonly ext4 is Linux runner, not Huawei",
     "ELF candidate paths do not certify loader namespace, symbol-version acceptance or runtime",
     "No target APEX activation, policy enforcement or USB proof"
-  ]
+  ],
+  "elf_version_name_review": {
+    "status": "STATIC_ELF_VERSION_NAMES_MATCH_CANDIDATES",
+    "edges_checked": 339,
+    "versioned_edges": 82,
+    "unresolved": [],
+    "limitations": [
+      "Only recorded candidate providers, not live linker namespace selection",
+      "Version names do not prove every imported symbol exists, dlopen behavior or hardware ABI"
+    ]
+  },
+  "elf_version_review_scope": "Derived locally from byte-verified immutable report; runner regression validation pending"
 }

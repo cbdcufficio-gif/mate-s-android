@@ -1,0 +1,203 @@
+{
+  "status": "PUBLIC_G1_KERNEL_CONFIG_POLICY_CAPTURED",
+  "probe_run": 40870457480,
+  "source_commit": "055f6f62f8705e0d3eeca466d8c0fe270a4c3955",
+  "kernel_commit": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+  "compiler_commit": "7280ce2399316a5dbd8872e0bfe69435d8719230",
+  "compiler_sha256": "43e72f9b69a8dbd2b77a68695b329bb87f5b0dec29345f48f64d35721d4df830",
+  "effective_config_sha256": "0585ed84b0922346c10ed9785cb5b3a60b52ac905fd76790662e7eeaf3230264",
+  "touch_patch_sha256": "60ff47c3cc04017d167427cf81f9be186cacaf497379cadc383065699c4d3de6",
+  "command": [
+    "make",
+    "-C",
+    "/home/runner/work/mate-s-android/mate-s-android/out/g1-kernel-policy/sources/kernel-hi3635",
+    "O=/home/runner/work/mate-s-android/mate-s-android/out/g1-kernel-policy/config-only",
+    "ARCH=arm64",
+    "CROSS_COMPILE=/home/runner/work/mate-s-android/mate-s-android/out/g1-kernel-policy/sources/gcc49/bin/aarch64-linux-android-",
+    "HOSTCFLAGS=-fcommon",
+    "olddefconfig"
+  ],
+  "policy_sha256": "e450f2631168a9653694ce84f9882d86dbc6b9d16ff57b6049d5870102cdbe9f",
+  "bootstrap_release": "carrera-g1-bootstrap-40869967507",
+  "effective_config": {
+    "CONFIG_SECCOMP": "y",
+    "CONFIG_SECCOMP_FILTER": "y",
+    "CONFIG_SECURITY_SELINUX": "y",
+    "CONFIG_SECURITY_SELINUX_POLICYDB_VERSION_MAX": "n",
+    "CONFIG_NAMESPACES": "n",
+    "CONFIG_USB_G_ANDROID": "y",
+    "CONFIG_USB_FUNCTIONFS": "n",
+    "CONFIG_NETFILTER_XT_MATCH_QTAGUID": "y",
+    "CONFIG_ANDROID_LOW_MEMORY_KILLER": "y",
+    "CONFIG_MEMCG": "n",
+    "CONFIG_BLK_DEV_LOOP": "y",
+    "CONFIG_PSTORE": "y",
+    "CONFIG_PSTORE_RAM": "y"
+  },
+  "actual_policycaps": [
+    "extended_socket_class",
+    "network_peer_controls",
+    "nnp_nosuid_transition",
+    "open_perms"
+  ],
+  "policycap_comparison": [
+    {
+      "policycap": "extended_socket_class",
+      "kernel_enum_present": false,
+      "semantic_compatibility_verified": false,
+      "action": "Review parser, classmap and hooks; scoped upstream backport with positive/negative target tests"
+    },
+    {
+      "policycap": "network_peer_controls",
+      "kernel_enum_present": true,
+      "semantic_compatibility_verified": false,
+      "action": "Verify generated configuration and target enforcement"
+    },
+    {
+      "policycap": "nnp_nosuid_transition",
+      "kernel_enum_present": false,
+      "semantic_compatibility_verified": false,
+      "action": "Review parser, classmap and hooks; scoped upstream backport with positive/negative target tests"
+    },
+    {
+      "policycap": "open_perms",
+      "kernel_enum_present": true,
+      "semantic_compatibility_verified": false,
+      "action": "Verify generated configuration and target enforcement"
+    }
+  ],
+  "policycap_abi_indices": {
+    "network_peer_controls": 0,
+    "open_perms": 1,
+    "extended_socket_class": 2,
+    "always_check_network": 3,
+    "cgroup_seclabel": 4,
+    "nnp_nosuid_transition": 5
+  },
+  "policy_classes_without_kernel_classmap_entry": [
+    "alg_socket",
+    "atmpvc_socket",
+    "atmsvc_socket",
+    "ax25_socket",
+    "bluetooth_socket",
+    "bpf",
+    "caif_socket",
+    "can_socket",
+    "cap2_userns",
+    "cap_userns",
+    "decnet_socket",
+    "drmservice",
+    "hwservice_manager",
+    "icmp_socket",
+    "ieee802154_socket",
+    "infiniband_endport",
+    "infiniband_pkey",
+    "ipx_socket",
+    "irda_socket",
+    "isdn_socket",
+    "iucv_socket",
+    "kcm_socket",
+    "keystore_key",
+    "llc_socket",
+    "netlink_connector_socket",
+    "netlink_crypto_socket",
+    "netlink_fib_lookup_socket",
+    "netlink_generic_socket",
+    "netlink_iscsi_socket",
+    "netlink_netfilter_socket",
+    "netlink_rdma_socket",
+    "netlink_scsitransport_socket",
+    "netrom_socket",
+    "nfc_socket",
+    "phonet_socket",
+    "pppox_socket",
+    "process2",
+    "property_service",
+    "qipcrtr_socket",
+    "rds_socket",
+    "rose_socket",
+    "rxrpc_socket",
+    "sctp_socket",
+    "service_manager",
+    "smc_socket",
+    "tipc_socket",
+    "vsock_socket",
+    "x25_socket",
+    "xdp_socket"
+  ],
+  "kernel_source_sha256": {
+    "security/selinux/include/security.h": "c6df864b487f68c6e6af8da2eaf9d2c63d183f10d9e5ad76efca1204b41f1662",
+    "security/selinux/ss/services.c": "7c831a8003358e1cda5a8fc31f0675aada87fe7dba6ef6d4ebd9f3930524f694",
+    "security/selinux/hooks.c": "706fb85c34bc44a292d8b66cf1eddb3cb15d11266b62e6fc88bf4f5e3eade0d4",
+    "security/selinux/include/classmap.h": "6cd67e40a65d6c2f7b1ff5840a2dce89ea10f402de8f486681271d52c147b431",
+    "kernel/nsproxy.c": "8c86ec2929931bff10aed7d2131a13afeb3ff66f0381dd31c9b50a06ab5e9aae",
+    "kernel/seccomp.c": "e8a78a11081573d9f638d791fbf462e72bbad5d12ad101b91fcea5e74aec606a",
+    "drivers/usb/gadget/android.c": "851ae022dcf162b2449d3a9c115456db60514a3101c4a18b57ef5301fa8c2c3d",
+    "drivers/usb/gadget/f_fs.c": "220024748f2f28e4f63f2e1ad8f26b71a269047b639fdbbe8a2d3d740350b788"
+  },
+  "source_observations": {
+    "mount_namespace_implementation_present": true,
+    "seccomp_tsync_implementation_present": true,
+    "legacy_gadget_includes_functionfs": true
+  },
+  "usb_fixture": {
+    "status": "PINNED_Q_USB_COMPAT_FIXTURE_PASSED",
+    "sources": {
+      "usb.cpp": "1f499785af1ab2a96f31336deb59780ae9eebc8a10829cf10731255a90b23e78",
+      "usb_legacy.cpp": "01459ea97ac01c36bf79740df18b862abd51e0eebd7b352272b751f2ff81fdc5",
+      "usb_ffs.cpp": "9f7729592be30c086ec537680a53946f10799a088ea2947ccd82b4d1e8b56728"
+    },
+    "cases": [
+      "default nonblocking path",
+      "explicit legacy path",
+      "persistent property overrides read-only property",
+      "sync read/write selected without AIO initialization",
+      "default AIO path",
+      "v2 descriptor succeeds",
+      "v2 failure then v1 succeeds",
+      "both descriptor versions fail"
+    ],
+    "trigger_fixture": {
+      "status": "PINNED_Q_GENERIC_USB_ORDER_CAPTURED",
+      "source_sha256": "4dde3aa1f087c79abdc960af50897a60ae794e742c6f1086e1c7a3d252eee2c6",
+      "generic_action": [
+        "write /sys/class/android_usb/android0/enable 0",
+        "write /sys/class/android_usb/android0/idVendor 18d1",
+        "write /sys/class/android_usb/android0/idProduct 4EE7",
+        "write /sys/class/android_usb/android0/functions ${sys.usb.config}",
+        "write /sys/class/android_usb/android0/enable 1",
+        "start adbd",
+        "setprop sys.usb.state ${sys.usb.config}"
+      ],
+      "generic_enables_before_adbd": true,
+      "candidate_state_cases": [
+        "prepared without ready stays disabled",
+        "ready without mount/aliases stays disabled",
+        "prepared and ready enables after adbd"
+      ],
+      "limitation": "Generic action parsed as a fixture; no Android init engine executed. Carrera override, labels and property triggers not installed"
+    },
+    "properties_applied": false,
+    "hardware_usb_verified": false,
+    "limitations": [
+      "Property/thread/endpoint/descriptor syscall interfaces stubbed",
+      "No USB request transferred, no target kernel or complete init-trigger execution"
+    ]
+  },
+  "tests": {
+    "run": 122,
+    "passed": 121,
+    "skipped": 1
+  },
+  "image_compiled": false,
+  "hardware_boot_verified": false,
+  "enforcing_compatibility_verified": false,
+  "limitations": [
+    "Policycap/class-name inventories are not permission/hook semantic validation",
+    "No target kernel policy load or denial tests executed",
+    "olddefconfig only; no Image compiled"
+  ],
+  "run_id": 40870457480,
+  "release": "https://github.com/cbdcufficio-gif/mate-s-android/releases/tag/carrera-g1-kernel-policy-40870457480",
+  "digests_verified_on_bytes": true
+}

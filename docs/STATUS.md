@@ -1,3 +1,26 @@
+# G1 configurazione effettiva e policy — 29 ottobre 2026
+
+Run40870457480 riuscito, sorgente055f6f6; asset piccoli verificati sui byte.
+.config diagnostica persistente SHA0585ed84b0922346c10ed9785cb5b3a60b52ac905fd76790662e7eeaf3230264,
+diff richiesto→effettivo, logolddefconfig, toolchain/patch/source fissati.
+Nessuna Image né Android compilati. USB_G_ANDROID=y,USB_FUNCTIONFS=n con
+include diretto f_fs.c; SECCOMP/FILTER=y eTSYNC sorgente presente; mountnamespace
+implementato; qtaguid/LMK preservati, MEMCG=n. Firmwareupdateframework=n.
+Policy G0 richiede4capability: enumkernel includeNETPEER/OPENPERM ma non
+EXTSOCKCLASS/NNP_NOSUID_TRANSITION. Divario provato, non prova di load fallito.
+Non trattare tutte le classi policy senza entrykernel come backport necessari:
+service_manager/property_service e altre classi sono gestite in userspace.
+Contratto backport upstream con bitABI e test in G1-SELINUX-BACKPORT-CONTRACT.md.
+
+Fixture USB con corpi Q e fallbackv2→v1, più ordine trigger/readiness passati sul
+runner. Suite122eseguiti121passati1skip. Proprietà USB non applicate, autenticazione
+conservata. Nessuna chiave o modifica del telefono. G1 resta aperto.
+
+Confronto locale dai report byteverificati:339archiELF,82conversioni di versione,
+nessuna versione richiesta assente nei provider candidati. Non prova selezione
+namespace né tutti simboli/dlopen: segue validazione piccola sugli output già
+catturati e inventario permessi con commons espansi, senza immagine/sourceclone.
+
 # G1 root/cache e bootstrap — 29 ottobre 2026
 
 Run40869967507 riuscito, sorgented3cc0e8. Piccoli asset verificati su byte.

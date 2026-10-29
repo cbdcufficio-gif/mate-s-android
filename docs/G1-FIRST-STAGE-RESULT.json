@@ -1,0 +1,61 @@
+{
+  "status": "PUBLIC_G1_FIRST_STAGE_SOURCE_FIXTURE_PASSED",
+  "run_id": 40861056829,
+  "source_commit": "ec2dd2ccb15463167124d6f49d14c5a0166c6ff4",
+  "android_system_core_revision": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+  "upstream_sha256": {
+    "init/first_stage_mount.cpp": "6f7733c05f474bb1475b0cd7e76babfb587050d11edff56842d0f3274ce497fa",
+    "init/first_stage_init.cpp": "6431c82fd0aa5bdec517b9872a368ce0b93c76ceca3471c4ac1716be2815e4ff",
+    "fs_mgr/fs_mgr_fstab.cpp": "9b0f65618fad1bf943b8883e1ea2324a9d4e3596a0e0167bf3fc61bcb513f650",
+    "fs_mgr/fs_mgr.cpp": "6e42159dffd82b570c924923c6841f98b3366800041d29ffbf83b1e48f1df0ee",
+    "init/devices.cpp": "7262d5c5dda920c4d09b06f77e027331baefda47d585463acd5531547f1b96c0"
+  },
+  "executed_upstream_functions": [
+    "static Fstab ReadFirstStageFstab()",
+    "bool FirstStageMount::TrySwitchSystemAsRoot()",
+    "std::set<std::string> ExtraBootDevices(",
+    "std::vector<std::string> DeviceHandler::GetBlockDeviceSymlinks("
+  ],
+  "g0_fstab_sha256": "f0b006e6dcad99e092a3fbea9e6a91bc1686c7402d6664624b391e6751d0ac2b",
+  "candidate_fstab_sha256": "ab7e55d81da35df4fcf08d1f902d6daa74b522702245709f3f4bc3e15784c40b",
+  "product_change": "Only system: wait -> wait,first_stage_mount; BoardConfig stays false",
+  "fixture_cases": [
+    "G0 fallback selects nothing and never switches",
+    "candidate selects only system and switches exactly once",
+    "mount failure returns false without switch-root",
+    "DT fstab overrides fallback file",
+    "boot-device extraction returns hi_mci.0",
+    "synthetic system uevent yields exact platform by-name path",
+    "unrecognized platform yields no links"
+  ],
+  "source_contracts": [
+    "mount_all skips non-formattable first-stage entries",
+    "mount_all skips root and system",
+    "first-stage loop skips already mounted system",
+    "first-stage completes before exec /system/bin/init",
+    "Q parser recognizes first_stage_mount"
+  ],
+  "path_evidence": "G0 root inventory and captured init/linker/APEX; simulated mount/switch-root",
+  "tests_before": {
+    "run": 117,
+    "passed": 116,
+    "skipped": 1
+  },
+  "tests_after": {
+    "run": 117,
+    "passed": 116,
+    "skipped": 1
+  },
+  "runtime_mounts_verified": false,
+  "system_image_rootdir_contents_verified": false,
+  "hardware_boot_verified": false,
+  "full_android_rebuild_started": false,
+  "limitations": [
+    "Host C++ fixture: parser, mount, switch-root and platform discovery stubbed",
+    "Real DT fstab precedence and androidboot.hardware/boot_devices remain private metadata checks",
+    "No execution of Q init binary or kernel mount/security/APEX namespace",
+    "G0 release retains original fstab; rebuilt ramdisk/system still required",
+    "Kernel-policy, essential ELF closure, APEX activation and vendor overlay remain G1",
+    "Huawei boot container, dtimage, stock tail and recovery remain G2"
+  ]
+}

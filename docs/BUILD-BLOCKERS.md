@@ -7,7 +7,7 @@ La cronologia delle prove precedenti è in [STATUS.md](STATUS.md).
 | Priorità | Blocco | Prossima prova che riduce l'incertezza |
 |---|---|---|
 | G0 | Chiuso: base pubblica verificata sui byte, non ROM | Sistema40696459171; review40724596747; CARRERA-SYSTEM-RESULT.json |
-| G1 | Layout q-root-with-system contro mount legacy /system; kernel/policy e overlay incompleti | G1-PUBLIC-CONFIG-RESULT.json: fixture first-stage/switch-root, linker/APEX effettivi, closure essenziale |
+| G1 | First-stage provato su funzioni Q; DT reale/kernel-policy/APEX/overlay incompleti | G1-FIRST-STAGE-RESULT.json; closure essenziale, capability effettive e DT/cmdline privati |
 | G2 | Nessuna boot Q Carrera verificata | Formato v0, coda stock, DT handoff, dimensioni intere e percorso di recupero |
 | G3 | Kernel diagnostico e init Q mai avviati | Nuovo kernel identificato, policy/mount/Binder e ADB autenticato con log |
 | G4 | Buffer/ION/fence, ABI C++, EGL/HWC, display e touch non provati in Q | Prove incrementali di caricamento, allocazione, rendering e resume |

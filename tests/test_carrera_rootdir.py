@@ -36,11 +36,11 @@ class CarreraRootdirContract(unittest.TestCase):
         self.assertEqual(actions,[
             ['on','fs'],['mount_all','/fstab.hi3635','--early'],
             ['on','late-fs'],['mount_all','/fstab.hi3635','--late']])
-    def test_separate_system_layout_is_not_switched_to_system_as_root(self):
+    def test_ramdisk_first_stage_switches_to_q_image_root(self):
         board=(DEVICE/'BoardConfig.mk').read_text()
         self.assertIn('BOARD_BUILD_SYSTEM_ROOT_IMAGE := false',board)
         system=next(r for r in entries(DEVICE/'rootdir/fstab.hi3635') if r[1]=='/system')
-        self.assertNotIn('first_stage_mount',system[4].split(','))
+        self.assertIn('first_stage_mount',system[4].split(','))
         self.assertIn('TARGET_COPY_OUT_VENDOR := system/vendor',board)
     def test_public_system_probe_requires_legacy_vendor_symlink(self):
         sys.path.insert(0,str(ROOT/'scripts'))

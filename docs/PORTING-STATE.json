@@ -70,8 +70,8 @@
         "G0"
       ],
       "deliverable": "coherent launch API, resolved linker/APEX/policy/kernel capabilities and minimal private overlay plan",
-      "evidence": "docs/G1-PUBLIC-CONFIG-RESULT.json",
-      "next": "Resolve Q root-with-system and first-stage mount contract, then effective linker/APEX and kernel-policy compatibility"
+      "evidence": "docs/G1-FIRST-STAGE-RESULT.json",
+      "next": "Essential ELF/APEX and kernel-policy; confirm DT/cmdline privately; rebuild after G1 closure"
     },
     {
       "id": "G2",
@@ -526,5 +526,11 @@
   },
   "g0_result": "docs/CARRERA-SYSTEM-RESULT.json",
   "g1_public_configuration": "docs/G1-PUBLIC-CONFIG-RESULT.json",
-  "automation_handoff": "G0 monitor complete; public G1 inputs captured; no hardware or complete ROM claimed"
+  "automation_handoff": "G0 monitor complete; public G1 inputs captured; no hardware or complete ROM claimed",
+  "g1_first_stage": {
+    "result": "docs/G1-FIRST-STAGE-RESULT.json",
+    "run_id": 40861056829,
+    "status": "PUBLIC_G1_FIRST_STAGE_SOURCE_FIXTURE_PASSED",
+    "hardware_boot_verified": false
+  }
 }

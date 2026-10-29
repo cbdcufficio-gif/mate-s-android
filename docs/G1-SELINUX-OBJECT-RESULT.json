@@ -1,0 +1,30 @@
+{
+  "status": "EXPERIMENTAL_SELINUX_OBJECT_COMPILED",
+  "run_id": 40934729173,
+  "job_id": 123662140263,
+  "source_commit": "453115c38ebfebae58aab9f70040e5983834d98d",
+  "kernel_revision": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+  "compiler_revision": "7280ce2399316a5dbd8872e0bfe69435d8719230",
+  "compiler_sha256": "43e72f9b69a8dbd2b77a68695b329bb87f5b0dec29345f48f64d35721d4df830",
+  "patch_sha256": "cc6a21af1662a548c059c3cdda764f7360ed7d2665bc4bba576193849980c2a2",
+  "config_sha256": "0585ed84b0922346c10ed9785cb5b3a60b52ac905fd76790662e7eeaf3230264",
+  "selinux_object_sha256": "bfc9be0f1bded73729a45605562b3b20237be46696e84b8183ed480acbba0a6c",
+  "selinux_object_size": 4749192,
+  "object_digest_source": "runner-generated report in job logs; object bytes not retained locally",
+  "tests": {
+    "run": 138,
+    "passed": 138,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 9.013
+  },
+  "kernel_image_built": false,
+  "policy_runtime_verified": false,
+  "hardware_boot_verified": false,
+  "limitations": [
+    "experimental NNP/nosuid only; extended socket classes and other policy capabilities unsupported",
+    "no full kernel link or runtime policy load",
+    "USER_NS path is fail closed, not full upstream namespace semantics"
+  ]
+}

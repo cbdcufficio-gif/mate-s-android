@@ -1,3 +1,15 @@
+## 29 ottobre — oggetto SELinux sperimentale compilato
+
+Run40934729173/job123662140263, sorgente453115c: successo,138 test
+passati senza skip, oggetto SELinux4.749.192 byte; digest e provenienza nel
+G1-SELINUX-OBJECT-RESULT.json. SHA è riportato dal runner nei log, i byte
+dell'oggetto non sono stati conservati localmente. Nessuna Image o boot.
+
+Revisione: il successo prova solo compilazione parziale. La policy G0 richiede
+extended_socket_class e il candidato NNP non ne implementa gli hook; va
+analizzata la mappatura Huawei prima di un kernel completo. Non ripetere un
+build Android o una prova oggetto equivalente senza una domanda nuova.
+
 ## 29 ottobre — correzione target SELinux
 
 Run40930048482:138 test passati, zero skip; compilazione non avviata perché

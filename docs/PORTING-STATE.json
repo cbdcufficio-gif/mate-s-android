@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_selinux_object_target_fixed",
+    "status": "G1_selinux_object_verified",
     "active_runs": [],
-    "next_action": "Run one bounded successor using kernel directory target; classify first compiler error or record object digest",
+    "next_action": "Investigate extended socket policy capability and Huawei hook/classmap compatibility before full candidate kernel build",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -699,15 +699,15 @@
     "tests_skipped": 0
   },
   "g1_direction_review": {
-    "basis": "Object probe failed before compilation because composite object lacks same-name .c",
-    "facts": "Pinned top-level Makefile has %.o: %.c and %/ directory rules; host suite138/138 passed",
-    "risk": "Blind retry would repeat the invalid target and waste public runner time",
-    "decision": "Use existing Kbuild directory rule and verify the composite object exists; one successor",
-    "alternatives": "Full kernel Image or Android build remains deferred",
+    "basis": "SELinux object compiled on pinned Huawei kernel/toolchain with experimental NNP/nosuid patch; 138 host tests pass",
+    "facts": "Partial object and runtime guards validated; object digest reported in CI, no image/link/runtime evidence",
+    "risk": "Policy G0 requires extended_socket_class; existing candidate explicitly reserves but does not implement it; treating compilation as ROM progress would be misleading",
+    "decision": "Investigate extended socket hook, classmap and policy mapping before integrating a full kernel candidate; retain original touch guards and enforce policy",
+    "alternatives": "Another full Android build or kernel Image is premature until the missing socket capability and boot/recovery path are understood",
     "full_android_build_automatic": false
   },
   "g1_selinux_integrated_candidate": {
-    "status": "HOST_AND_PINNED_SOURCE_SUITE_PASSED",
+    "status": "EXPERIMENTAL_OBJECT_COMPILED",
     "patch": "patches/experimental/selinux-nnp-nosuid-candidate.patch",
     "automatically_applied": false,
     "kernel_compiled": false,
@@ -721,7 +721,10 @@
     "job_id": 123629913608,
     "tests_run": 138,
     "tests_passed": 138,
-    "tests_skipped": 0
+    "tests_skipped": 0,
+    "object_result": "docs/G1-SELINUX-OBJECT-RESULT.json",
+    "object_run_id": 40934729173,
+    "selinux_object_compiled": true
   },
   "g1_selinux_object_previous_run": {
     "run_id": 40930048482,

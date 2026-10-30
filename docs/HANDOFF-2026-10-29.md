@@ -1,3 +1,12 @@
+## 30 ottobre — prova policy e correzione ipotesi USB
+
+Run40975265305:142/142 test passati, zero skip; SHA policy G0 e common socket
+riverificati sul runner. Revisione source Q: ready=1 viene impostato prima
+che adbd apra gli endpoint bulk; non è prova di trasporto. init.rc importa
+init.usb.configfs.rc il cui trigger globale adbd=stopped azzera ready anche
+senza condizione configfs. Fixture e source lock riproducibili, CI in attesa.
+Nessuna patch USB o chiave applicata. Evitare reset duplicati prima di prove.
+
 ## 30 ottobre — oggetto combinato e flag policy G0
 
 Run40971722215/job123789848147: oggetto SELinux con patch NNP/socket compilato,

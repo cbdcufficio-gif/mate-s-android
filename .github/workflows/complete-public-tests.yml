@@ -31,3 +31,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 scripts/check_g1_policy_header_evidence.py
+      - name: Verify pinned USB readiness source contract
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/check_g1_usb_ready_sources.py

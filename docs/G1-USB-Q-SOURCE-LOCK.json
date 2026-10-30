@@ -1,0 +1,22 @@
+{
+  "revision": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+  "repository": "LineageOS/android_system_core",
+  "files": {
+    "adb/daemon/usb_ffs.cpp": {
+      "fixture": "tests/fixtures/usb-q/adb__daemon__usb_ffs.cpp",
+      "sha256": "9f7729592be30c086ec537680a53946f10799a088ea2947ccd82b4d1e8b56728"
+    },
+    "rootdir/init.rc": {
+      "fixture": "tests/fixtures/usb-q/rootdir__init.rc",
+      "sha256": "65a90af157799a2e668bcf34ec3025813d6efdef9b2c2b9de42b4b3b9da3b55c"
+    },
+    "rootdir/init.usb.rc": {
+      "fixture": "tests/fixtures/usb-q/rootdir__init.usb.rc",
+      "sha256": "4dde3aa1f087c79abdc960af50897a60ae794e742c6f1086e1c7a3d252eee2c6"
+    },
+    "rootdir/init.usb.configfs.rc": {
+      "fixture": "tests/fixtures/usb-q/rootdir__init.usb.configfs.rc",
+      "sha256": "1384154db54fe5a8b3fb62f9c8e9c6732c379066c941364c25d853ac55aa994b"
+    }
+  }
+}

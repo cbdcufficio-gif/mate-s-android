@@ -46,3 +46,25 @@ attende sys.usb.ffs.ready nell'azione adb/configfs=0. La fixture cattura questo
 ordine reale; il candidato Carrera deve attendere mount/alias e readiness,
 senza assumere che il fallback generico lo faccia già. L'override specifico
 non è installato e rimane un blocco prima del candidato hardware.
+
+## Fonte del segnale ready — verifica statica 30 ottobre
+
+Nel `open_functionfs` Q fissato, `sys.usb.ffs.ready=1` viene impostato dopo
+la scrittura di descrittori e stringhe, ma **prima** dell'apertura degli
+endpoint bulk OUT e IN. Il segnale è emesso solo nel ramo che reinizializza
+il controllo. Una successiva apertura bulk può fallire: ready da solo non
+certifica endpoint aperti, trasporto funzionante o autenticazione.
+
+Correzione della precedente ipotesi di reset: init.rc Q importa anche
+init.usb.configfs.rc, dove l'azione `init.svc.adbd=stopped` azzera ready senza
+condizione configfs. Non assumere assenza di reset nel caso legacy; l'azione
+legacy `sys.usb.config=none` non lo azzera direttamente. Servono comunque
+verifiche su import effettivo, ordine di scheduling, errore/fine servizio e
+cambi configurazione sul candidato. Non aggiungere reset concorrenti basandosi
+soltanto sull'assenza nella singola azione legacy.
+
+I quattro sorgenti e digest sono in G1-USB-Q-SOURCE-LOCK.json; la fixture
+controlla ordine sorgente, import e trigger, non esegue il motore init. Il
+futuro percorso USB deve mantenere ready come segnale di descrittori e
+verificare separatamente endpoint, connessione e autenticazione ADB. Nessuna
+proprietà, patch al prodotto o chiave personale è stata applicata.

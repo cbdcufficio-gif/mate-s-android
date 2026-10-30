@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_usb_trigger_review_CI_pending",
+    "status": "G1_usb_legacy_candidate_CI_pending",
     "active_runs": [],
-    "next_action": "Check public fixture suite; then design replacement or selection of generic USB action without duplicate action races",
+    "next_action": "Check zero-skip public suite for experimental USB action; investigate stale readiness/stop races, mount and key provisioning",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -622,16 +622,16 @@
     "kernel_enforcement_verified": false
   },
   "complete_public_tests": {
-    "run_id": 40978568978,
-    "job_id": 123812584036,
-    "source_commit": "00f1c479f115863b9bc4b716aa2916733a179aa1",
+    "run_id": 41046928430,
+    "job_id": 124033177967,
+    "source_commit": "8b802ffc62b40ec8e31dcf4c608f06d03bc53759",
     "status": "success",
-    "run": 145,
-    "passed": 145,
+    "run": 146,
+    "passed": 146,
     "skipped": 0,
     "failures": 0,
     "errors": 0,
-    "seconds": 9.505
+    "seconds": 8.893
   },
   "autonomous_routine": {
     "automation_id": "carrera-g1-avanzamento-verificato",
@@ -699,11 +699,11 @@
     "tests_skipped": 0
   },
   "g1_direction_review": {
-    "basis": "145/145 CI; source Q readiness and action manager review",
-    "facts": "All matching init actions are queued; a new device-specific readiness action does not override the generic legacy action that enables early",
-    "risk": "Adding only init.hi3635.rc would keep the legacy early enable and could create competing USB actions",
-    "decision": "Exercise pinned Q property matcher and design a scoped replacement or selection of the generic action, preserving unrelated modes and ADB authentication",
-    "alternatives": "Avoid blind properties or additional init actions before the matching and root-staging contracts are verified",
+    "basis": "146/146 tests and pinned Q action matcher prove device-only ready action leaves generic early enable",
+    "facts": "Init queues all matching actions; descriptors ready precedes bulk open; adbd-stopped global reset exists",
+    "risk": "A stale ready property or stop/restart scheduling can still enable gadget prematurely; candidate source fixture does not execute init",
+    "decision": "Prepare isolated patch that splits only generic adb action, preserve other modes and auth; test rejection of unrelated changes before integration",
+    "alternatives": "Do not patch product until actual root staging, mount/alias and race tests exist",
     "full_android_build_automatic": false
   },
   "g1_selinux_integrated_candidate": {
@@ -784,9 +784,20 @@
     "tests_skipped": 0
   },
   "g1_usb_trigger_review": {
-    "status": "PINNED_Q_TRIGGER_HOST_FIXTURE_PASSED_CI_PENDING",
+    "status": "PINNED_Q_TRIGGER_CI_VERIFIED",
     "generic_action_still_matches_with_additional_ready_action": true,
     "source": "tests/fixtures/usb-q/init__action.cpp",
+    "hardware_verified": false,
+    "run_id": 41046928430,
+    "job_id": 124033177967,
+    "tests_run": 146,
+    "tests_passed": 146,
+    "tests_skipped": 0
+  },
+  "g1_usb_legacy_candidate": {
+    "status": "EXPERIMENTAL_ACTION_PATCH_HOST_CHECKED_CI_PENDING",
+    "patch": "patches/experimental/lineage-q-usb-ready-candidate.patch",
+    "installed_to_product": false,
     "hardware_verified": false
   }
 }

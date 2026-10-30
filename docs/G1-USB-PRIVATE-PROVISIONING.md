@@ -85,3 +85,20 @@ sua selezione effettiva; l'aggiunta isolata di init.hi3635.rc non basta.
 Va progettata una sostituzione circoscritta che non alteri altri stati USB e
 che non consideri ready=1 una prova di endpoint bulk o autenticazione. Non è
 ancora stata applicata alcuna modifica USB al prodotto.
+
+## Candidato sperimentale dell'azione legacy — 30 ottobre
+
+La patch di studio `patches/experimental/lineage-q-usb-ready-candidate.patch`
+si applica a init.usb.rc Q fissato. Modifica soltanto l'azione generica adb:
+configura il gadget disabilitato e avvia adbd; un'azione distinta, condizionata
+anche a ready=1, abilita il gadget e registra lo stato. Le altre azioni USB e
+la definizione del servizio adbd restano invariate. La verifica applica il
+diff a una copia temporanea del sorgente e rifiuta variazioni a stati non
+interessati. Non cambia la root di sistema né è integrata nella build.
+
+È un candidato, non una soluzione runtime: ready segnala solo descrittori,
+non endpoint bulk; vanno studiati valori ready obsoleti e scheduling di
+stop/restart, montaggio/alias FunctionFS, permessi/label e chiave pubblica
+nella root effettiva. Se l'azione genericamente pronta può attivarsi con un
+ready vecchio, occorre un controllo esplicito senza creare gare tra trigger.
+Non attivare proprietà né autenticazione insicura per aggirare questi blocchi.

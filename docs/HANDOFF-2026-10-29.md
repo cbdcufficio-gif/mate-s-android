@@ -1,3 +1,12 @@
+## 30 ottobre — candidato acción USB legacy
+
+Run41046928430/job124033177967:146/146 test passati, zero skip; sorgenti Q,
+patch e policy verificati. Revisione: azioni init aggiunte non sostituiscono
+il fallback. Preparata una patch sperimentale sulla sola azione generica adb:
+configurazione/adbd separati da enable dopo ready, senza toccare altri stati.
+Fixture locale passata, CI in attesa. Ready obsoleto, endpoint, mount/alias,
+label e autenticazione rimangono aperti; il prodotto non è modificato.
+
 ## 30 ottobre — revisione: azioni init USB concorrenti
 
 Run40978568978:145/145 test passati, zero skip; source USB, patch e piccoli

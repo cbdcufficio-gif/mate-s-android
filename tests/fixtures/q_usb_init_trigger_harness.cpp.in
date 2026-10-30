@@ -22,6 +22,10 @@ int main() {
  assert(generic.CheckPropertyTriggers("sys.usb.config","adb"));
  assert(!attempted_override.CheckPropertyTriggers("sys.usb.config","adb"));
  assert(generic.CheckPropertyTriggers("", ""));
+ // A queued ready=1 event can be evaluated after the current value becomes 0.
+ // This is a conditional matcher example, not proof of a reachable device race.
+ assert(attempted_override.CheckPropertyTriggers("sys.usb.ffs.ready","1"));
+ assert(!attempted_override.CheckPropertyTriggers("", ""));
  values["sys.usb.ffs.ready"]="1";
  assert(attempted_override.CheckPropertyTriggers("sys.usb.ffs.ready","1"));
  assert(generic.CheckPropertyTriggers("", ""));

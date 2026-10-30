@@ -27,6 +27,8 @@ def inspect(files):
     if on.index('write /sys/class/android_usb/android0/enable 1')>=on.index('start adbd'):raise ValueError('Legacy ordering changed')
     manager=function(files['init/action_manager.cpp'],'void ActionManager::ExecuteOneCommand()')
     if 'for (const auto& action : actions_)' not in manager or 'current_executing_actions_.emplace(action.get())' not in manager:raise ValueError('Init action queue semantics changed')
+    queue=function(files['init/action_manager.cpp'],'void ActionManager::QueuePropertyChange(')
+    if 'event_queue_.emplace(std::make_pair(name, value))' not in queue:raise ValueError('Property event queue semantics changed')
     stopped=conf['property:init.svc.adbd=stopped']
     if 'setprop sys.usb.ffs.ready 0' not in stopped:raise ValueError('Missing unconditional adbd stop reset')
     body=function(files['adb/daemon/usb_ffs.cpp'],'bool open_functionfs(')

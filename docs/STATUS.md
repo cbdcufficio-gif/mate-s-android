@@ -1097,3 +1097,5 @@ build del prodotto Carrera o a una build ROM. La suite locale corrente conta
 
 Android 10 è un primo candidato tecnico. Non si promettono una data di rilascio,
 un tetto massimo Android o una ROM completa senza build e prove sul dispositivo.
+
+- G1 USB: run 41050485165 riuscito, 149 test su 149 senza skip. Una fixture del matcher Q evidenzia un evento ready=1 accodato valutabile anche con ready corrente 0; raggiungibilità e comportamento hardware restano da verificare. Patch USB non integrata.

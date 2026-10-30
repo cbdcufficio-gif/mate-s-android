@@ -102,3 +102,7 @@ stop/restart, montaggio/alias FunctionFS, permessi/label e chiave pubblica
 nella root effettiva. Se l'azione genericamente pronta può attivarsi con un
 ready vecchio, occorre un controllo esplicito senza creare gare tra trigger.
 Non attivare proprietà né autenticazione insicura per aggirare questi blocchi.
+
+## Evento ready accodato — 30 ottobre
+
+Il gestore Q memorizza nome e valore dell’evento. Una fixture del matcher Q invariato mostra un caso condizionale: un evento ready=1 accodato può corrispondere anche quando il valore corrente è già 0, purché le altre proprietà corrispondano. La scansione verifica anche la memorizzazione della coppia nella coda. Non è una prova che tale interleaving sia raggiungibile sul dispositivo né che il gadget si abiliti: occorre verificare scheduling e sincronizzazione effettivi. Un semplice reset della proprietà non dimostra che gli eventi già accodati siano eliminati. La patch resta sperimentale.

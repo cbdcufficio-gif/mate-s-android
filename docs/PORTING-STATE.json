@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_usb_legacy_candidate_CI_pending",
+    "status": "G1_usb_stale_event_fixture_pending_CI",
     "active_runs": [],
-    "next_action": "Check zero-skip public suite for experimental USB action; investigate stale readiness/stop races, mount and key provisioning",
+    "next_action": "Verify conditional stale ready event fixture in public CI; investigate reachability and safe synchronization before product integration",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -622,16 +622,16 @@
     "kernel_enforcement_verified": false
   },
   "complete_public_tests": {
-    "run_id": 41046928430,
-    "job_id": 124033177967,
-    "source_commit": "8b802ffc62b40ec8e31dcf4c608f06d03bc53759",
+    "run_id": 41050485165,
+    "job_id": 124045006517,
+    "source_commit": "aa7755341c2f661477241f3aa72ba110dd0a6d33",
     "status": "success",
-    "run": 146,
-    "passed": 146,
+    "run": 149,
+    "passed": 149,
     "skipped": 0,
     "failures": 0,
     "errors": 0,
-    "seconds": 8.893
+    "seconds": 8.979
   },
   "autonomous_routine": {
     "automation_id": "carrera-g1-avanzamento-verificato",
@@ -699,11 +699,11 @@
     "tests_skipped": 0
   },
   "g1_direction_review": {
-    "basis": "146/146 tests and pinned Q action matcher prove device-only ready action leaves generic early enable",
-    "facts": "Init queues all matching actions; descriptors ready precedes bulk open; adbd-stopped global reset exists",
-    "risk": "A stale ready property or stop/restart scheduling can still enable gadget prematurely; candidate source fixture does not execute init",
-    "decision": "Prepare isolated patch that splits only generic adb action, preserve other modes and auth; test rejection of unrelated changes before integration",
-    "alternatives": "Do not patch product until actual root staging, mount/alias and race tests exist",
+    "basis": "149/149 public tests passed; pinned Q matcher fixture exposes conditional stale ready event",
+    "facts": "Property change queue stores event name and value; matcher compares the event value rather than rereading that trigger property",
+    "risk": "A ready=1 event evaluated with current ready=0 can match when other conditions hold; reachability and runtime consequences remain unverified",
+    "decision": "Keep USB patch experimental; test queue semantics and pursue scheduling and final-root evidence before integration",
+    "alternatives": "Do not assume resetting ready alone eliminates queued events; avoid full Android builds until a tested correction exists",
     "full_android_build_automatic": false
   },
   "g1_selinux_integrated_candidate": {
@@ -795,9 +795,14 @@
     "tests_skipped": 0
   },
   "g1_usb_legacy_candidate": {
-    "status": "EXPERIMENTAL_ACTION_PATCH_HOST_CHECKED_CI_PENDING",
+    "status": "EXPERIMENTAL_ACTION_PATCH_HOST_CI_VERIFIED",
     "patch": "patches/experimental/lineage-q-usb-ready-candidate.patch",
     "installed_to_product": false,
-    "hardware_verified": false
+    "hardware_verified": false,
+    "run_id": 41050485165,
+    "job_id": 124045006517,
+    "tests_run": 149,
+    "tests_passed": 149,
+    "tests_skipped": 0
   }
 }

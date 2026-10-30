@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_usb_stale_event_fixture_pending_CI",
+    "status": "G1_usb_event_reachability_open",
     "active_runs": [],
-    "next_action": "Verify conditional stale ready event fixture in public CI; investigate reachability and safe synchronization before product integration",
+    "next_action": "Investigate event scheduling and final root before integrating experimental USB patch",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -622,16 +622,16 @@
     "kernel_enforcement_verified": false
   },
   "complete_public_tests": {
-    "run_id": 41050485165,
-    "job_id": 124045006517,
-    "source_commit": "aa7755341c2f661477241f3aa72ba110dd0a6d33",
+    "run_id": 41054209440,
+    "job_id": 124057522812,
+    "source_commit": "e409ff4764ec12d7a092944e1cb84fce509b1e4a",
     "status": "success",
     "run": 149,
     "passed": 149,
     "skipped": 0,
     "failures": 0,
     "errors": 0,
-    "seconds": 8.979
+    "seconds": 13.736
   },
   "autonomous_routine": {
     "automation_id": "carrera-g1-avanzamento-verificato",
@@ -699,11 +699,11 @@
     "tests_skipped": 0
   },
   "g1_direction_review": {
-    "basis": "149/149 public tests passed; pinned Q matcher fixture exposes conditional stale ready event",
+    "basis": "Run 41054209440 passed 149 tests with zero skips and verified pinned sources, patches, policy and USB",
     "facts": "Property change queue stores event name and value; matcher compares the event value rather than rereading that trigger property",
     "risk": "A ready=1 event evaluated with current ready=0 can match when other conditions hold; reachability and runtime consequences remain unverified",
-    "decision": "Keep USB patch experimental; test queue semantics and pursue scheduling and final-root evidence before integration",
-    "alternatives": "Do not assume resetting ready alone eliminates queued events; avoid full Android builds until a tested correction exists",
+    "decision": "Keep candidate experimental and investigate actual scheduling and final-root mount; avoid repeating equivalent CI or full builds",
+    "alternatives": "A conditional matcher example is not a runtime proof and property reset alone does not clear queued events",
     "full_android_build_automatic": false
   },
   "g1_selinux_integrated_candidate": {

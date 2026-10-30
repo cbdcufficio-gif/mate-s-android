@@ -25,6 +25,8 @@ def inspect(files):
     on=legacy['property:sys.usb.config=adb && property:sys.usb.configfs=0']
     off=legacy['property:sys.usb.config=none && property:sys.usb.configfs=0']
     if on.index('write /sys/class/android_usb/android0/enable 1')>=on.index('start adbd'):raise ValueError('Legacy ordering changed')
+    manager=function(files['init/action_manager.cpp'],'void ActionManager::ExecuteOneCommand()')
+    if 'for (const auto& action : actions_)' not in manager or 'current_executing_actions_.emplace(action.get())' not in manager:raise ValueError('Init action queue semantics changed')
     stopped=conf['property:init.svc.adbd=stopped']
     if 'setprop sys.usb.ffs.ready 0' not in stopped:raise ValueError('Missing unconditional adbd stop reset')
     body=function(files['adb/daemon/usb_ffs.cpp'],'bool open_functionfs(')
@@ -35,7 +37,7 @@ def inspect(files):
     bulkin='bulk_in.reset(adb_open(USB_FFS_ADB_IN, O_WRONLY))'
     if not (body.index(strings)<body.index(marker)<body.index(bulkout)<body.index(bulkin)):raise ValueError('FunctionFS readiness ordering changed')
     if 'if (out_control->get() < 0)' not in body[:body.index(marker)]:raise ValueError('Control endpoint reuse branch missing')
-    return {'status':'PINNED_Q_USB_READINESS_SOURCE_REVIEWED','generic_legacy_enables_before_start':True,'ready_written_after_descriptors_and_strings':True,'ready_written_before_bulk_endpoint_opens':True,'ready_written_only_when_control_reinitialized':True,'global_adbd_stopped_trigger_resets_ready':True,'configfs_file_imported_by_init_rc':True,'legacy_none_action_resets_ready_explicitly':'setprop sys.usb.ffs.ready 0' in off,'limitations':['Static source ordering only; no init scheduling or property service executed','Descriptor readiness alone does not prove bulk endpoints, USB transport or authenticated shell']}
+    return {'status':'PINNED_Q_USB_READINESS_SOURCE_REVIEWED','generic_legacy_enables_before_start':True,'ready_written_after_descriptors_and_strings':True,'ready_written_before_bulk_endpoint_opens':True,'ready_written_only_when_control_reinitialized':True,'global_adbd_stopped_trigger_resets_ready':True,'configfs_file_imported_by_init_rc':True,'all_matching_actions_are_enqueued':True,'legacy_none_action_resets_ready_explicitly':'setprop sys.usb.ffs.ready 0' in off,'limitations':['Static source ordering only; no init scheduling or property service executed','Descriptor readiness alone does not prove bulk endpoints, USB transport or authenticated shell']}
 
 def load_fixtures():
     lock=json.loads(LOCK.read_text());files={}

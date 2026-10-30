@@ -1,3 +1,12 @@
+## 30 ottobre — revisione: azioni init USB concorrenti
+
+Run40978568978:145/145 test passati, zero skip; source USB, patch e piccoli
+asset policy verificati. Scoperto un blocco concettuale: init Q accoda tutte
+le azioni corrispondenti; una nuova azione device ready non sopprime il fallback
+generico che abilita prima di adbd. Fixture esegue il matcher Q invariato;
+CI in attesa. Prossimo: sostituzione/selezione circoscritta dell'azione
+preesistente, senza cambiare altre modalità o disabilitare autenticazione.
+
 ## 30 ottobre — prova policy e correzione ipotesi USB
 
 Run40975265305:142/142 test passati, zero skip; SHA policy G0 e common socket

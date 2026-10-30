@@ -17,6 +17,14 @@
     "rootdir/init.usb.configfs.rc": {
       "fixture": "tests/fixtures/usb-q/rootdir__init.usb.configfs.rc",
       "sha256": "1384154db54fe5a8b3fb62f9c8e9c6732c379066c941364c25d853ac55aa994b"
+    },
+    "init/action.cpp": {
+      "fixture": "tests/fixtures/usb-q/init__action.cpp",
+      "sha256": "8c5946c95e88bc9453349be153409eeae7f35a97500e857e311a0baf2d6ae1a9"
+    },
+    "init/action_manager.cpp": {
+      "fixture": "tests/fixtures/usb-q/init__action_manager.cpp",
+      "sha256": "667108952c94e8d9bd0fa83148bf50316a630e65197cbe0679063e765a7d021a"
     }
   }
 }

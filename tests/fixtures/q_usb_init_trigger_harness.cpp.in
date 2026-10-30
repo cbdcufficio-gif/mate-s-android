@@ -1,0 +1,32 @@
+#include <cassert>
+#include <map>
+#include <string>
+static std::map<std::string,std::string> values;
+namespace android { namespace base {
+std::string GetProperty(const std::string& key, const std::string& fallback) {
+ auto it=values.find(key); return it==values.end()?fallback:it->second;
+}
+}}
+class Action {
+public:
+ explicit Action(std::map<std::string,std::string> t):property_triggers_(t) {}
+ bool CheckPropertyTriggers(const std::string& name="",const std::string& value="") const;
+private:
+ std::map<std::string,std::string> property_triggers_;
+};
+__PINNED_CHECK_PROPERTY_TRIGGERS__
+int main() {
+ Action generic({{"sys.usb.config","adb"},{"sys.usb.configfs","0"}});
+ Action attempted_override({{"sys.usb.config","adb"},{"sys.usb.configfs","0"},{"sys.usb.ffs.ready","1"}});
+ values={{"sys.usb.config","adb"},{"sys.usb.configfs","0"},{"sys.usb.ffs.ready","0"}};
+ assert(generic.CheckPropertyTriggers("sys.usb.config","adb"));
+ assert(!attempted_override.CheckPropertyTriggers("sys.usb.config","adb"));
+ assert(generic.CheckPropertyTriggers("", ""));
+ values["sys.usb.ffs.ready"]="1";
+ assert(attempted_override.CheckPropertyTriggers("sys.usb.ffs.ready","1"));
+ assert(generic.CheckPropertyTriggers("", ""));
+ values["sys.usb.config"]="none";
+ assert(!generic.CheckPropertyTriggers("sys.usb.config","none"));
+ assert(!attempted_override.CheckPropertyTriggers("sys.usb.ffs.ready","1"));
+ return 0;
+}

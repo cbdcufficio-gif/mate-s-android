@@ -68,3 +68,20 @@ controlla ordine sorgente, import e trigger, non esegue il motore init. Il
 futuro percorso USB deve mantenere ready come segnale di descrittori e
 verificare separatamente endpoint, connessione e autenticazione ADB. Nessuna
 proprietà, patch al prodotto o chiave personale è stata applicata.
+
+## Azioni init non si sostituiscono automaticamente — 30 ottobre
+
+ActionManager Q scorre tutte le azioni e accoda ogni azione che corrisponde
+all'evento; non sostituisce la prima con una successiva avente proprietà simili.
+Una fixture compila il corpo Q invariato `Action::CheckPropertyTriggers` e
+mostra che, con config=adb, configfs=0 e ready=0, l'azione generica corrisponde
+anche se esiste un'azione aggiuntiva condizionata a ready=1. Quest'ultima non
+impedisce quindi al fallback generico di abilitare il gadget prima di adbd.
+La scansione del gestore e l'estrazione della funzione usano sorgenti fissati,
+ma non simulano il motore init completo o il kernel.
+
+Per correggere l'ordine occorre intervenire anche sull'azione generica o sulla
+sua selezione effettiva; l'aggiunta isolata di init.hi3635.rc non basta.
+Va progettata una sostituzione circoscritta che non alteri altri stati USB e
+che non consideri ready=1 una prova di endpoint bulk o autenticazione. Non è
+ancora stata applicata alcuna modifica USB al prodotto.

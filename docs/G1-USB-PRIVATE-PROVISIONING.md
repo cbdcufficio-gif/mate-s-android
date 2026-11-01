@@ -19,6 +19,18 @@ CONFIGURED. Non prova che Q abbia identica sequenza, label o disponibilità AIO.
 
 ## Chiave personale, fuori dal repository
 
+### Riconnessione legacy: osservazione statica in verifica
+
+Nel sorgente Q fissato `adb/daemon/usb_legacy.cpp` (SHA-256
+`01459ea97ac01c36bf79740df18b862abd51e0eebd7b352272b751f2ff81fdc5`),
+`usb_ffs_close` chiude i due endpoint bulk e chiede una nuova connessione,
+senza chiudere esplicitamente l'endpoint di controllo. Il thread di apertura
+richiama `open_functionfs`; se il controllo è ancora aperto, la funzione può
+saltare il ramo che imposta `sys.usb.ffs.ready=1`. Questo dato non dimostra
+che il valore sia stato azzerato in tale percorso né un guasto del dispositivo:
+occorrono verifiche sul ciclo di vita reale e sulle condizioni di reset.
+La patch resta sperimentale e non viene integrata sulla base di questa analisi.
+
 La futura preparazione privata deve ricevere esplicitamente la sola chiave
 pubblica del proprietario, verificarne il formato e ottenere un'immagine
 privata separata. Nessuna chiave di prova/default condivisa nel prodotto.

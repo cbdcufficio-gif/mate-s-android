@@ -1101,3 +1101,5 @@ un tetto massimo Android o una ROM completa senza build e prove sul dispositivo.
 - G1 USB: run 41050485165 riuscito, 149 test su 149 senza skip. Una fixture del matcher Q evidenzia un evento ready=1 accodato valutabile anche con ready corrente 0; raggiungibilità e comportamento hardware restano da verificare. Patch USB non integrata.
 
 - G1 USB: run 41054209440/job 124057522812, sorgente e409ff4, 149/149 test, zero skip; controlli sorgenti, patch, policy e USB riusciti. Il caso ready obsoleto è condizionale, senza prova della sequenza runtime. Prossimo: verificare scheduling e root effettiva; patch non integrata. Non ripetere CI equivalente o build completa.
+
+- G1 USB: sorgente legacy Q verificato SHA256 01459ea97ac01c36bf79740df18b862abd51e0eebd7b352272b751f2ff81fdc5. Close conserva esplicitamente il controllo e richiede riapertura bulk; se controllo riutilizzato, ready non viene riscritto. Coincidenza con reset non dimostrata; nessuna prova hardware. Candidato non integrato.

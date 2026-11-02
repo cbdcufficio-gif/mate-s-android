@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_usb_event_reachability_open",
+    "status": "G1_init_inventory_capture_pending",
     "active_runs": [],
-    "next_action": "Investigate event scheduling and final root before integrating experimental USB patch",
+    "next_action": "Run one bounded immutable G0 inspection to capture init scripts; review unresolved paths before USB integration",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -622,16 +622,16 @@
     "kernel_enforcement_verified": false
   },
   "complete_public_tests": {
-    "run_id": 41054209440,
-    "job_id": 124057522812,
-    "source_commit": "e409ff4764ec12d7a092944e1cb84fce509b1e4a",
+    "run_id": 41519311558,
+    "job_id": 125530922801,
+    "source_commit": "c73b87200adebba9dc89ca6fe11a4b092d48938a",
     "status": "success",
-    "run": 149,
-    "passed": 149,
+    "run": 150,
+    "passed": 150,
     "skipped": 0,
     "failures": 0,
     "errors": 0,
-    "seconds": 13.736
+    "seconds": 10.529
   },
   "autonomous_routine": {
     "automation_id": "carrera-g1-avanzamento-verificato",
@@ -699,10 +699,10 @@
     "tests_skipped": 0
   },
   "g1_direction_review": {
-    "basis": "Pinned Q USB legacy source sha256 01459ea97ac01c36bf79740df18b862abd51e0eebd7b352272b751f2ff81fdc5 and pinned open_functionfs source",
+    "basis": "150/150 public fixture tests, zero skips; real ext4 init inventory fixture passed",
     "facts": "Legacy close resets bulk endpoints and requests reconnect without explicitly closing control; open_functionfs sets ready only when reopening control",
-    "risk": "Whether a reconnect coincides with ready reset and blocks the candidate is not established",
-    "decision": "Keep USB candidate experimental; study lifecycle and reset conditions; no full build",
+    "risk": "Inventory does not execute init or resolve properties and symlinks; G1 and hardware remain open",
+    "decision": "Capture actual init scripts on public runner; avoid Android rebuild or relying on three source files alone",
     "alternatives": "Do not claim device failure from source ordering or reset ready blindly",
     "full_android_build_automatic": false
   },

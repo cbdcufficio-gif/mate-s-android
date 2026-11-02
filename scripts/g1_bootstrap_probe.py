@@ -171,6 +171,9 @@ def main():
             providers.append(row)
         versions=subprocess.check_output(['readelf','-W','-V',str(file)],text=True)
         matrix.append({'guest':guest,'physical':actual,'symlinks':chain,'sha256':sha(file.read_bytes()),'bits':elf.bits,'machine':elf.machine,'interpreter':interpreter,**dynamic,'version_info':versions,'search_paths':list(dict.fromkeys(paths)),'dependencies':providers,'resolution_scope':'Candidate paths only; ELF symbol versions and linked namespace runtime acceptance not proven'})
+    from g1_init_inventory import capture
+    init_inventory=capture(image)
+    (evidence/'g0-init-inventory.json').write_text(json.dumps(init_inventory,indent=2)+'\n')
     policy=image.read('/sepolicy');shutil.copyfile(policy,evidence/'g0-sepolicy')
     polcaps=subprocess.check_output(['seinfo',str(policy),'--polcap'],text=True,stderr=subprocess.STDOUT)
     classes=subprocess.check_output(['seinfo',str(policy),'--class','-x'],text=True,stderr=subprocess.STDOUT)

@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_usb_mount_order_and_failure_open",
+    "status": "G1_usb_mount_success_gating_open",
     "active_runs": [],
-    "next_action": "Verify init mount ordering and failure handling, sysfs alias access and ioctl restrictions before product integration",
+    "next_action": "Design verified mount-success gate before adbd/gadget activation; do not import raw preparation sequence",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -622,16 +622,16 @@
     "kernel_enforcement_verified": false
   },
   "complete_public_tests": {
-    "run_id": 41669047834,
-    "job_id": 126032144922,
-    "source_commit": "8696c0bc9cc909360d1e44c9ee1c7523e1bc211c",
+    "run_id": 41689942810,
+    "job_id": 126105567724,
+    "source_commit": "c2a0bc8fd801227d18d98c8d484eb9f129299748",
     "status": "success",
-    "run": 151,
-    "passed": 151,
+    "run": 152,
+    "passed": 152,
     "skipped": 0,
     "failures": 0,
     "errors": 0,
-    "seconds": 9.605
+    "seconds": 9.152
   },
   "autonomous_routine": {
     "automation_id": "carrera-g1-avanzamento-verificato",
@@ -699,10 +699,10 @@
     "tests_skipped": 0
   },
   "g1_direction_review": {
-    "basis": "151 public tests zero skips; six bounded queries against hash-verified G0 binary policy",
-    "facts": "G0 has functionfs genfscon, adbd directory/file access, init mount/device mounton, adbd key-file read grants",
-    "risk": "Queried grants do not prove complete policy coverage or Huawei enforcement; ioctl extended permissions and actual mountpoint label remain open",
-    "decision": "Keep policy unchanged; inspect remaining mount error/ordering and ioctl/sysfs contracts",
+    "basis": "152/152 public tests zero skips; pinned dispatcher fixture and actual G0 xperm/sysfs grants",
+    "facts": "Dispatcher advances after simulated command failure; G0 grants adbd ioctl 0x6703/0x6782 and init sysfs_android_usb write",
+    "risk": "Command behavior, mount, sysfs labels and enforcement on Huawei remain unverified",
+    "decision": "Keep rc experimental; add explicit verified success gate rather than assuming init aborts on mount error",
     "alternatives": "Do not repeat inventory or full Android build to answer missing initialization commands",
     "full_android_build_automatic": false
   },
@@ -839,8 +839,14 @@
   },
   "g1_functionfs_policy": {
     "status": "PUBLIC_G0_FUNCTIONFS_POLICY_QUERIED",
-    "run_id": 41669047834,
+    "run_id": 41689942810,
     "result": "docs/G1-FUNCTIONFS-POLICY-RESULT.json",
     "runtime_enforcement_verified": false
+  },
+  "g1_init_failure_fixture": {
+    "status": "PINNED_Q_DISPATCH_CI_VERIFIED",
+    "run_id": 41689942810,
+    "command_execution_stubbed": true,
+    "mount_executed": false
   }
 }

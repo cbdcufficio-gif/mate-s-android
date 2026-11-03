@@ -72,10 +72,36 @@
         "file"
       ],
       "output": "allow adbd adb_keys_file:file { getattr ioctl lock map open read watch watch_reads };\n"
+    },
+    {
+      "query": [
+        "sesearch",
+        "--allowxperm",
+        "-s",
+        "adbd",
+        "-t",
+        "functionfs",
+        "-c",
+        "file"
+      ],
+      "output": "allowxperm adbd functionfs:file ioctl { 0x6703 0x6782 };\nallowxperm domain fs_type:file ioctl { 0x5401 0x5450-0x5451 };\n"
+    },
+    {
+      "query": [
+        "sesearch",
+        "--allow",
+        "-s",
+        "init",
+        "-t",
+        "sysfs_android_usb",
+        "-c",
+        "file"
+      ],
+      "output": "allow init sysfs_android_usb:file { append lock map open setattr write };\nallow init sysfs_type:file { getattr relabelto };\n"
     }
   ],
   "runtime_enforcement_verified": false,
-  "run_id": 41669047834,
-  "job_id": 126032144922,
+  "run_id": 41689942810,
+  "job_id": 126105567724,
   "policy_sha256": "e450f2631168a9653694ce84f9882d86dbc6b9d16ff57b6049d5870102cdbe9f"
 }

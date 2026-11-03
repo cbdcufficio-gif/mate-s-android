@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_usb_preparation_candidate_open",
+    "status": "G1_functionfs_policy_and_init_order_open",
     "active_runs": [],
-    "next_action": "Prepare bounded FunctionFS mount/alias candidate with policy and authenticated ADB contracts; no full Android build",
+    "next_action": "Verify real G0 functionfs policy and init ordering/failure handling before product integration",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -622,16 +622,16 @@
     "kernel_enforcement_verified": false
   },
   "complete_public_tests": {
-    "run_id": 41519311558,
-    "job_id": 125530922801,
-    "source_commit": "c73b87200adebba9dc89ca6fe11a4b092d48938a",
+    "run_id": 41650521618,
+    "job_id": 125967122151,
+    "source_commit": "1fff325873ef6fdaccdf12f57a81b35b4e856e92",
     "status": "success",
-    "run": 150,
-    "passed": 150,
+    "run": 151,
+    "passed": 151,
     "skipped": 0,
     "failures": 0,
     "errors": 0,
-    "seconds": 10.529
+    "seconds": 11.223
   },
   "autonomous_routine": {
     "automation_id": "carrera-g1-avanzamento-verificato",
@@ -699,10 +699,10 @@
     "tests_skipped": 0
   },
   "g1_direction_review": {
-    "basis": "81 public G0 init scripts captured and asset SHA256 verified on bytes",
+    "basis": "151/151 public tests, zero skips; pinned Huawei parser digest and unchanged fixture verified",
     "facts": "No functionfs, usb-ffs or f_ffs/aliases matches in captured root/system/vendor rc files",
-    "risk": "Missing dirs, runtime property selection, APEX and future overlays are outside the evidence",
-    "decision": "Prepare explicit mount/alias/label/auth contracts before USB integration",
+    "risk": "Host numeric and namespace helpers are synthetic; mount and target enforcement remain unverified",
+    "decision": "Keep mount preparation experimental; verify compiled G0 policy and mount failure/ordering next",
     "alternatives": "Do not repeat inventory or full Android build to answer missing initialization commands",
     "full_android_build_automatic": false
   },
@@ -828,5 +828,13 @@
       "Future private overlays excluded",
       "Does not prove target USB or policy enforcement"
     ]
+  },
+  "g1_functionfs_options": {
+    "status": "PINNED_PARSER_HOST_CI_VERIFIED",
+    "run_id": 41650521618,
+    "cases": 8,
+    "mapping_and_numeric_helpers_stubbed": true,
+    "kernel_mount_verified": false,
+    "candidate_imported": false
   }
 }

@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_init_inventory_capture_pending",
+    "status": "G1_usb_preparation_candidate_open",
     "active_runs": [],
-    "next_action": "Run one bounded immutable G0 inspection to capture init scripts; review unresolved paths before USB integration",
+    "next_action": "Prepare bounded FunctionFS mount/alias candidate with policy and authenticated ADB contracts; no full Android build",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -699,11 +699,11 @@
     "tests_skipped": 0
   },
   "g1_direction_review": {
-    "basis": "150/150 public fixture tests, zero skips; real ext4 init inventory fixture passed",
-    "facts": "Legacy close resets bulk endpoints and requests reconnect without explicitly closing control; open_functionfs sets ready only when reopening control",
-    "risk": "Inventory does not execute init or resolve properties and symlinks; G1 and hardware remain open",
-    "decision": "Capture actual init scripts on public runner; avoid Android rebuild or relying on three source files alone",
-    "alternatives": "Do not claim device failure from source ordering or reset ready blindly",
+    "basis": "81 public G0 init scripts captured and asset SHA256 verified on bytes",
+    "facts": "No functionfs, usb-ffs or f_ffs/aliases matches in captured root/system/vendor rc files",
+    "risk": "Missing dirs, runtime property selection, APEX and future overlays are outside the evidence",
+    "decision": "Prepare explicit mount/alias/label/auth contracts before USB integration",
+    "alternatives": "Do not repeat inventory or full Android build to answer missing initialization commands",
     "full_android_build_automatic": false
   },
   "g1_selinux_integrated_candidate": {
@@ -804,5 +804,29 @@
     "tests_run": 149,
     "tests_passed": 149,
     "tests_skipped": 0
+  },
+  "g1_init_inventory": {
+    "status": "PUBLIC_INIT_SCRIPT_INVENTORY_BYTES_VERIFIED",
+    "run_id": 41534153025,
+    "job_id": 125581640187,
+    "source_commit": "6393f4b48123b9b310255ee2d709d8d92cd3dd97",
+    "asset": "g0-init-inventory.json",
+    "asset_bytes": 128549,
+    "asset_sha256": "df7c98c35a7ffdc7da8c4831c7ef17e9d464f53f03d4a49f5b5d7bbdb6310a5e",
+    "digest_verified_on_bytes": true,
+    "scripts": 81,
+    "functionfs_usb_ffs_alias_matches": 0,
+    "missing_directories": [
+      "/product/etc/init",
+      "/product_services/etc/init",
+      "/odm/etc/init"
+    ],
+    "runtime_imports_resolved": false,
+    "hardware_verified": false,
+    "limitations": [
+      "No runtime property expansion or APEX parsing",
+      "Future private overlays excluded",
+      "Does not prove target USB or policy enforcement"
+    ]
   }
 }

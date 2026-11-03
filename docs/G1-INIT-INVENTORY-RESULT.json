@@ -1,0 +1,24 @@
+{
+  "status": "PUBLIC_INIT_SCRIPT_INVENTORY_BYTES_VERIFIED",
+  "run_id": 41534153025,
+  "job_id": 125581640187,
+  "source_commit": "6393f4b48123b9b310255ee2d709d8d92cd3dd97",
+  "asset": "g0-init-inventory.json",
+  "asset_bytes": 128549,
+  "asset_sha256": "df7c98c35a7ffdc7da8c4831c7ef17e9d464f53f03d4a49f5b5d7bbdb6310a5e",
+  "digest_verified_on_bytes": true,
+  "scripts": 81,
+  "functionfs_usb_ffs_alias_matches": 0,
+  "missing_directories": [
+    "/product/etc/init",
+    "/product_services/etc/init",
+    "/odm/etc/init"
+  ],
+  "runtime_imports_resolved": false,
+  "hardware_verified": false,
+  "limitations": [
+    "No runtime property expansion or APEX parsing",
+    "Future private overlays excluded",
+    "Does not prove target USB or policy enforcement"
+  ]
+}

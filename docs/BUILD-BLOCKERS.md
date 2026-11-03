@@ -56,3 +56,5 @@ in TWRP non provano ancora il rollback completo dopo una ROM fallita.
 Le guardie firmware touch testate coprono i percorsi modificati, non ogni
 possibile scrittura firmware del sistema. Nessun flash/erase/format/restore o
 riavvio automatico, nessuna rimozione dei controlli per un risultato verde.
+
+- 3 novembre: inventario init G0 run41534153025 verificato sui byte,81rc senza functionfs/usb-ffs/f_ffs/aliases. Risultato G1-INIT-INVENTORY-RESULT.json. Product/product_services/odm assenti; import runtime/APEX e overlay futuri esclusi. Prossimo candidato mount/alias/label/autenticazione; nessun boot attestato e nessun nuovo build completo richiesto.

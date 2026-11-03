@@ -1,0 +1,35 @@
+#include <assert.h>
+#include <errno.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#define ENTER() ((void)0)
+#define unlikely(x) (x)
+#define pr_err(...) ((void)0)
+struct ffs_sb_fill_data { unsigned root_mode; struct {unsigned mode; unsigned long uid,gid;} perms; };
+/* Synthetic namespace mapping; host does not exercise Huawei namespace code. */
+#define current_user_ns() 0
+#define make_kuid(ns, v) (v)
+#define make_kgid(ns, v) (v)
+#define uid_valid(v) ((v)<65536)
+#define gid_valid(v) ((v)<65536)
+static int kstrtoul(const char *s, unsigned base, unsigned long *v) {
+ char *end; errno=0; *v=strtoul(s,&end,base);
+ return errno || end==s || *end ? -EINVAL : 0;
+}
+__PINNED_FUNCTION__
+static void check(const char *text,int expected) {
+ char options[256]; struct ffs_sb_fill_data data={0};
+ assert(strlen(text)<sizeof(options)); strcpy(options,text);
+ assert(ffs_fs_parse_opts(&data,options)==expected);
+ if (!expected && strstr(text,"uid=2000")) assert(data.perms.uid==2000);
+ if (!expected && strstr(text,"gid=2000")) assert(data.perms.gid==2000);
+}
+int main(void) {
+ check("uid=2000,gid=2000",0);
+ check("gid=2000,uid=2000",0);
+ check("uid=65536",-EINVAL); check("gid=65536",-EINVAL);
+ check("uid=invalid",-EINVAL); check("uid",-EINVAL);
+ check("unknown=2000",-EINVAL); check("uid=2000,",-EINVAL);
+ return 0;
+}

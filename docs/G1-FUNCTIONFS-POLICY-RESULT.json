@@ -1,0 +1,81 @@
+{
+  "status": "PUBLIC_G0_FUNCTIONFS_POLICY_QUERIED",
+  "queries": [
+    {
+      "query": [
+        "seinfo",
+        "--genfscon=functionfs"
+      ],
+      "output": "\nGenfscon: 1\n   genfscon functionfs /  u:object_r:functionfs:s0\n"
+    },
+    {
+      "query": [
+        "sesearch",
+        "--allow",
+        "-s",
+        "adbd",
+        "-t",
+        "functionfs",
+        "-c",
+        "dir"
+      ],
+      "output": "allow adbd functionfs:dir search;\nallow domain fs_type:dir getattr;\n"
+    },
+    {
+      "query": [
+        "sesearch",
+        "--allow",
+        "-s",
+        "adbd",
+        "-t",
+        "functionfs",
+        "-c",
+        "file"
+      ],
+      "output": "allow adbd functionfs:file { append getattr ioctl lock map open read watch watch_reads write };\n"
+    },
+    {
+      "query": [
+        "sesearch",
+        "--allow",
+        "-s",
+        "init",
+        "-t",
+        "functionfs",
+        "-c",
+        "filesystem"
+      ],
+      "output": "allow domain fs_type:filesystem getattr;\nallow init fs_type:filesystem { associate getattr mount quotaget quotamod relabelfrom remount unmount watch };\n"
+    },
+    {
+      "query": [
+        "sesearch",
+        "--allow",
+        "-s",
+        "init",
+        "-t",
+        "device",
+        "-c",
+        "dir"
+      ],
+      "output": "allow domain device:dir search;\nallow domain fs_type:dir getattr;\nallow init dev_type:dir { add_name create getattr ioctl lock open read remove_name rename reparent rmdir search setattr watch watch_reads write };\nallow init device:dir { mounton open read relabelto search setattr };\n"
+    },
+    {
+      "query": [
+        "sesearch",
+        "--allow",
+        "-s",
+        "adbd",
+        "-t",
+        "adb_keys_file",
+        "-c",
+        "file"
+      ],
+      "output": "allow adbd adb_keys_file:file { getattr ioctl lock map open read watch watch_reads };\n"
+    }
+  ],
+  "runtime_enforcement_verified": false,
+  "run_id": 41669047834,
+  "job_id": 126032144922,
+  "policy_sha256": "e450f2631168a9653694ce84f9882d86dbc6b9d16ff57b6049d5870102cdbe9f"
+}

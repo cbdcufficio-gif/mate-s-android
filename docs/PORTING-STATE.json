@@ -609,9 +609,9 @@
   },
   "active_work": {
     "owner": "Codex /root",
-    "status": "G1_functionfs_policy_and_init_order_open",
+    "status": "G1_usb_mount_order_and_failure_open",
     "active_runs": [],
-    "next_action": "Verify real G0 functionfs policy and init ordering/failure handling before product integration",
+    "next_action": "Verify init mount ordering and failure handling, sysfs alias access and ioctl restrictions before product integration",
     "full_android_rebuild_started": false
   },
   "g1_selinux_exec_fixture": {
@@ -622,16 +622,16 @@
     "kernel_enforcement_verified": false
   },
   "complete_public_tests": {
-    "run_id": 41650521618,
-    "job_id": 125967122151,
-    "source_commit": "1fff325873ef6fdaccdf12f57a81b35b4e856e92",
+    "run_id": 41669047834,
+    "job_id": 126032144922,
+    "source_commit": "8696c0bc9cc909360d1e44c9ee1c7523e1bc211c",
     "status": "success",
     "run": 151,
     "passed": 151,
     "skipped": 0,
     "failures": 0,
     "errors": 0,
-    "seconds": 11.223
+    "seconds": 9.605
   },
   "autonomous_routine": {
     "automation_id": "carrera-g1-avanzamento-verificato",
@@ -699,10 +699,10 @@
     "tests_skipped": 0
   },
   "g1_direction_review": {
-    "basis": "151/151 public tests, zero skips; pinned Huawei parser digest and unchanged fixture verified",
-    "facts": "No functionfs, usb-ffs or f_ffs/aliases matches in captured root/system/vendor rc files",
-    "risk": "Host numeric and namespace helpers are synthetic; mount and target enforcement remain unverified",
-    "decision": "Keep mount preparation experimental; verify compiled G0 policy and mount failure/ordering next",
+    "basis": "151 public tests zero skips; six bounded queries against hash-verified G0 binary policy",
+    "facts": "G0 has functionfs genfscon, adbd directory/file access, init mount/device mounton, adbd key-file read grants",
+    "risk": "Queried grants do not prove complete policy coverage or Huawei enforcement; ioctl extended permissions and actual mountpoint label remain open",
+    "decision": "Keep policy unchanged; inspect remaining mount error/ordering and ioctl/sysfs contracts",
     "alternatives": "Do not repeat inventory or full Android build to answer missing initialization commands",
     "full_android_build_automatic": false
   },
@@ -836,5 +836,11 @@
     "mapping_and_numeric_helpers_stubbed": true,
     "kernel_mount_verified": false,
     "candidate_imported": false
+  },
+  "g1_functionfs_policy": {
+    "status": "PUBLIC_G0_FUNCTIONFS_POLICY_QUERIED",
+    "run_id": 41669047834,
+    "result": "docs/G1-FUNCTIONFS-POLICY-RESULT.json",
+    "runtime_enforcement_verified": false
   }
 }

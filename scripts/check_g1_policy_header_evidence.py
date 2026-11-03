@@ -21,5 +21,17 @@ def main():
         if result['header']!=expected['header'] or result['policy_sha256']!=expected['policy_sha256']:raise ValueError('Policy header differs from evidence')
         for key in ('recv_msg','send_msg'):
             if (key in perms)!=expected['socket_common_has_'+key]:raise ValueError('Socket common evidence mismatch')
+        queries=[['seinfo','--genfscon=functionfs'],
+                 ['sesearch','--allow','-s','adbd','-t','functionfs','-c','dir'],
+                 ['sesearch','--allow','-s','adbd','-t','functionfs','-c','file'],
+                 ['sesearch','--allow','-s','init','-t','functionfs','-c','filesystem'],
+                 ['sesearch','--allow','-s','init','-t','device','-c','dir'],
+                 ['sesearch','--allow','-s','adbd','-t','adb_keys_file','-c','file']]
+        policy_queries=[]
+        for query in queries:
+            output=subprocess.check_output([*query,str(p/'g0-sepolicy')],text=True,timeout=30)
+            if len(output.encode())>128*1024:raise ValueError('Policy query output budget exceeded')
+            policy_queries.append({'query':query,'output':output})
+        print(json.dumps({'status':'PUBLIC_G0_FUNCTIONFS_POLICY_QUERIED','queries':policy_queries,'runtime_enforcement_verified':False},indent=2))
         print(json.dumps({'status':'PUBLIC_G0_POLICY_HEADER_BYTES_VERIFIED','policy_sha256':result['policy_sha256'],'header':result['header'],'socket_common_sha256':COMMON_SHA,'runtime_policy_loaded':False},indent=2))
 if __name__=='__main__':main()

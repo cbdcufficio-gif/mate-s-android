@@ -18,7 +18,7 @@ jobs:
       - name: Install bounded public fixture dependencies
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends gcc g++ make e2fsprogs android-sdk-libsparse-utils patchelf gcc-arm-linux-gnueabihf gcc-aarch64-linux-gnu
+          sudo apt-get install -y --no-install-recommends gcc g++ make e2fsprogs android-sdk-libsparse-utils patchelf gcc-arm-linux-gnueabihf gcc-aarch64-linux-gnu setools
       - name: Verify checksums and require zero skips
         run: |
           sha256sum -c SHA256SUMS

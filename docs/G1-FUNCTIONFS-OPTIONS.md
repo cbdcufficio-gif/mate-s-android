@@ -15,3 +15,9 @@ patches/experimental/init.carrera-functionfs.rc is not imported by the
 product. It prepares directories, mount and alias only. Effective policy,
 init scheduling, mount failure handling, readiness race and authenticated
 ADB remain open. No personal key or insecure ADB setting is included.
+
+The unchanged Q ActionManager::ExecuteOneCommand fixture dispatches the next
+command after a simulated first-command failure. Command execution is stubbed;
+the production Action::ExecuteCommand returns void and logs errors. Thus a
+sequence of mount followed by alias write does not itself gate later commands
+on successful mount. No successful mount signal is inferred from this rc.

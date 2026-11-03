@@ -1,6 +1,8 @@
 # Experimental preparation only. Not installed or imported by the product.
 # Validate Huawei mount options, effective policy and init ordering before use.
 # Endpoint labels must come from the pinned functionfs genfscon policy.
+# Init proceeds after command errors; this sequence does not gate later actions
+# on a successful mount. A verified failure-handling contract is still needed.
 on init
     mkdir /dev/usb-ffs 0770 shell shell
     mkdir /dev/usb-ffs/adb 0770 shell shell

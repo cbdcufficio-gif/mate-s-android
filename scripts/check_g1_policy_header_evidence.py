@@ -26,7 +26,9 @@ def main():
                  ['sesearch','--allow','-s','adbd','-t','functionfs','-c','file'],
                  ['sesearch','--allow','-s','init','-t','functionfs','-c','filesystem'],
                  ['sesearch','--allow','-s','init','-t','device','-c','dir'],
-                 ['sesearch','--allow','-s','adbd','-t','adb_keys_file','-c','file']]
+                 ['sesearch','--allow','-s','adbd','-t','adb_keys_file','-c','file'],
+                 ['sesearch','--allowxperm','-s','adbd','-t','functionfs','-c','file'],
+                 ['sesearch','--allow','-s','init','-t','sysfs_android_usb','-c','file']]
         policy_queries=[]
         for query in queries:
             output=subprocess.check_output([*query,str(p/'g0-sepolicy')],text=True,timeout=30)

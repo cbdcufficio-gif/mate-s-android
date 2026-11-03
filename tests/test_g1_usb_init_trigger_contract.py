@@ -6,6 +6,14 @@ from g1_first_stage_probe import function
 from g1_usb_ready_contract import load_fixtures
 class UsbTriggerContract(unittest.TestCase):
     @unittest.skipUnless(shutil.which('g++'),'host C++ compiler required')
+    def test_manager_continues_after_simulated_command_failure(self):
+        original=function(load_fixtures()['init/action_manager.cpp'],'void ActionManager::ExecuteOneCommand()')
+        harness=(ROOT/'tests/fixtures/q_init_command_failure.cpp.in').read_text().replace('__PINNED_EXECUTE_ONE_COMMAND__',original)
+        with tempfile.TemporaryDirectory() as directory:
+            p=Path(directory);source=p/'failure.cpp';binary=p/'failure';source.write_text(harness)
+            subprocess.run(['g++','-std=c++17','-Wall','-Wextra','-Werror',str(source),'-o',str(binary)],check=True,capture_output=True)
+            subprocess.run([str(binary)],check=True,capture_output=True)
+    @unittest.skipUnless(shutil.which('g++'),'host C++ compiler required')
     def test_added_ready_action_does_not_override_generic_action(self):
         original=function(load_fixtures()['init/action.cpp'],'bool Action::CheckPropertyTriggers(')
         harness=(ROOT/'tests/fixtures/q_usb_init_trigger_harness.cpp.in').read_text().replace('__PINNED_CHECK_PROPERTY_TRIGGERS__',original)

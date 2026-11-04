@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <sys/vfs.h>
 #include <unistd.h>
+#include "carrera_mount_identity.h"
 
 // parent_fd must already identify the verified /dev/usb-ffs directory.
 // Returns an owned descriptor, or -1. Does not certify mount source, labels,
@@ -38,4 +39,17 @@ inline int OpenCarreraFunctionfsFromDev(int dev_fd) {
     close(parent);
     errno = saved;
     return target;
+}
+
+// Requires both native filesystem-type check and a matching mount-table
+// snapshot. This cannot establish that the pathname stays attached for adbd.
+inline int OpenCarreraFunctionfsWithIdentity(int dev_fd) {
+    const int fd = OpenCarreraFunctionfsFromDev(dev_fd);
+    if (fd < 0) return -1;
+    if (!CarreraFunctionfsMountIdentity(fd)) {
+        close(fd);
+        errno = ENODEV;
+        return -1;
+    }
+    return fd;
 }

@@ -23,3 +23,5 @@ class UsbMountGate(unittest.TestCase):
         self.run_fixture('carrera_usb_prepare_gate.cpp')
     def test_real_host_rejects_missing_symlink_and_wrong_filesystem(self):
         self.run_fixture('carrera_functionfs_target.cpp',True)
+    def test_mount_identity_snapshot_and_ambiguous_records(self):
+        self.run_fixture('carrera_mount_identity.cpp')

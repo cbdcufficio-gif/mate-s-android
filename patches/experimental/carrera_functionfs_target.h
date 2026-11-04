@@ -25,3 +25,17 @@ inline int OpenCarreraFunctionfsTarget(int parent_fd) {
     }
     return fd;
 }
+
+// dev_fd must identify the caller's verified /dev directory. Resolve both
+// components relative to held descriptors, rejecting symlinks at either one.
+// This still does not bind adbd's later pathname open to these descriptors.
+inline int OpenCarreraFunctionfsFromDev(int dev_fd) {
+    const int parent = openat(dev_fd, "usb-ffs",
+                              O_RDONLY | O_DIRECTORY | O_NOFOLLOW | O_CLOEXEC);
+    if (parent < 0) return -1;
+    const int target = OpenCarreraFunctionfsTarget(parent);
+    const int saved = errno;
+    close(parent);
+    errno = saved;
+    return target;
+}

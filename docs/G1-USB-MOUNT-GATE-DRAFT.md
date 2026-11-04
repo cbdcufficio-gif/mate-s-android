@@ -73,3 +73,9 @@ operation must remain unavailable to unrelated untrusted rc subcontexts.
 ## Verified host subphase, 4 November
 
 Run41828619636/job126569721641 at03a42733b8ed33cf8ad4ae1e84225c6afdbcfc4c passed154/154 tests, zero skips,12.253s. Checksums and pinned-source/patch/policy/USB checks passed. Review found no blocker within the explicitly experimental scope. The sequencing matrix and real host rejection/cleanup subphase is complete; the mount-success gate remains open. Next: concrete checked Q adapter, parent/source/alias validation and lifecycle handling, followed by a bounded compilation check. Another equivalent model fixture or full Android build would not resolve this gap.
+
+## Parent-anchor work in progress
+
+OpenCarreraFunctionfsFromDev now resolves usb-ffs and adb through held directory descriptors with O_NOFOLLOW and O_DIRECTORY on each component. The caller still must supply a verified /dev descriptor. Real host tests reject a missing parent, a parent symlink that would otherwise reach adb, wrong filesystem and invalid root descriptor; repeated two-component rejection exercises cleanup under the existing descriptor limit. This is a native path-validation primitive, not the Q adapter: ownership/labels, mount source, context guard, alias and lifecycle remain unimplemented. Do not import rc or publish another equivalent sequencing-only CI.
+
+Pinned Q Command::InvokeFunc passes the vendor caller context even when a builtin map entry is false (execution in init). A dedicated privileged operation must explicitly reject non-init origin before side effects; false is not authorization. Existing Q class_start_post_data/class_reset_post_data show args.context comparison against kInitContext. Public source inputs and hashes are retained locally outside the repository.

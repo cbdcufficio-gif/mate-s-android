@@ -1,0 +1,16 @@
+{
+  "repository": "hi3635-dev/android_kernel_huawei_liszt",
+  "revision": "3fe1625bed89c034996842c1af696ba9bc50d8a9",
+  "path": "drivers/usb/gadget/android.c",
+  "sha256": "612467d967617f5f03959991f8a8d24e3cc1905aaa111fafe8bd1c57adfdefb8",
+  "functions": [
+    "ffs_aliases_store",
+    "ffs_aliases_show"
+  ],
+  "evidence": "static source read; no kernel callback executed",
+  "observations": [
+    "store returns -EBUSY while dev->enabled under dev->mutex",
+    "store trims input; show emits alias plus newline"
+  ],
+  "runtime_verified": false
+}

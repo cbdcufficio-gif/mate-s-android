@@ -25,3 +25,5 @@ class UsbMountGate(unittest.TestCase):
         self.run_fixture('carrera_functionfs_target.cpp',True)
     def test_mount_identity_snapshot_and_ambiguous_records(self):
         self.run_fixture('carrera_mount_identity.cpp')
+    def test_alias_rejects_symlink_and_non_sysfs_without_writing(self):
+        self.run_fixture('carrera_functionfs_alias.cpp',True)

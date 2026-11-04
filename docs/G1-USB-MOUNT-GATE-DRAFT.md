@@ -69,3 +69,7 @@ without changing the global command dispatcher. Validation must reject
 symlinked target components before mounting and verify the resulting fs type
 through an opened directory handle before the start request. The preparation
 operation must remain unavailable to unrelated untrusted rc subcontexts.
+
+## Verified host subphase, 4 November
+
+Run41828619636/job126569721641 at03a42733b8ed33cf8ad4ae1e84225c6afdbcfc4c passed154/154 tests, zero skips,12.253s. Checksums and pinned-source/patch/policy/USB checks passed. Review found no blocker within the explicitly experimental scope. The sequencing matrix and real host rejection/cleanup subphase is complete; the mount-success gate remains open. Next: concrete checked Q adapter, parent/source/alias validation and lifecycle handling, followed by a bounded compilation check. Another equivalent model fixture or full Android build would not resolve this gap.

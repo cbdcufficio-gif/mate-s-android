@@ -20,4 +20,20 @@ def main():
         raise ValueError('Huawei FunctionFS parser differs from fixture')
     print(json.dumps(inspect(files),indent=2))
     print('PINNED_HUAWEI_FUNCTIONFS_PARSER_VERIFIED')
+    adapter=json.loads((ROOT/'docs/G1-USB-ADAPTER-SOURCES.json').read_text())
+    for name,row in adapter['files'].items():
+        endpoint=f"repos/{adapter['repository']}/contents/{name}?ref={adapter['revision']}"
+        data=subprocess.check_output(['gh','api','-H','Accept: application/vnd.github.raw+json',endpoint],timeout=45)
+        if len(data)>2*1024*1024 or hashlib.sha256(data).hexdigest()!=row['sha256']:
+            raise ValueError('Pinned Q adapter source digest mismatch: '+name)
+        if 'fixture' in row and data!=(ROOT/row['fixture']).read_bytes():
+            raise ValueError('Q adapter header differs from fixture: '+name)
+        if 'required_line' in row and row['required_line'] not in data.decode().splitlines():
+            raise ValueError('Q init context constant mismatch')
+    alias=json.loads((ROOT/'docs/G1-USB-ALIAS-SOURCE.json').read_text())
+    endpoint=f"repos/{alias['repository']}/contents/{alias['path']}?ref={alias['revision']}"
+    data=subprocess.check_output(['gh','api','-H','Accept: application/vnd.github.raw+json',endpoint],timeout=45)
+    if len(data)>2*1024*1024 or hashlib.sha256(data).hexdigest()!=alias['sha256']:
+        raise ValueError('Pinned Huawei alias source digest mismatch')
+    print('PINNED_Q_ADAPTER_HEADERS_AND_HUAWEI_ALIAS_VERIFIED')
 if __name__=='__main__':main()

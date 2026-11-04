@@ -27,3 +27,5 @@ class UsbMountGate(unittest.TestCase):
         self.run_fixture('carrera_mount_identity.cpp')
     def test_alias_rejects_symlink_and_non_sysfs_without_writing(self):
         self.run_fixture('carrera_functionfs_alias.cpp',True)
+    def test_q_glue_rejects_untrusted_origin_mode_and_open_failure(self):
+        self.run_fixture('carrera_checked_adbd.cpp')

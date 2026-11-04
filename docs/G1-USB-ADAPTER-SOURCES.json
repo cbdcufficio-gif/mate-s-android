@@ -1,0 +1,23 @@
+{
+  "repository": "LineageOS/android_system_core",
+  "revision": "6d27634866be5b646a8cea1f9abeae902fd831e5",
+  "files": {
+    "init/result.h": {
+      "fixture": "tests/fixtures/q-init-types/result.h",
+      "sha256": "7d68c01a1835d2c662cf8d571747f98ca38f3e540df6768ce33684649190584a"
+    },
+    "init/builtin_arguments.h": {
+      "fixture": "tests/fixtures/q-init-types/builtin_arguments.h",
+      "sha256": "f572e25d886e99e14865b3300c1c28e170ba10c88de750be1b344040320ed13c"
+    },
+    "base/include/android-base/unique_fd.h": {
+      "fixture": "tests/fixtures/q-init-types/android-base/unique_fd.h",
+      "sha256": "9bbf23efb29211652cde48c66c6f27580372f26a40c04bc49bb7397f6221fd21"
+    },
+    "init/subcontext.cpp": {
+      "sha256": "304862659dc8becb12fa542b99d2a3c258e2317739c09fd11877034ccb9d6c5b",
+      "required_line": "const std::string kInitContext = \"u:r:init:s0\";"
+    }
+  },
+  "compilation_scope": "host glue plus actual pinned Q Result/BuiltinArguments/unique_fd headers; properties/open/service mocked, not full Q init"
+}
